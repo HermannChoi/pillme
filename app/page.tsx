@@ -44,7 +44,7 @@ export default function Home() {
     //같은 time에 같은 이름 입력 시 예외처리 해주기
     //
     const newItem: itemProps = {
-      id: uuidv4,
+      id: uuidv4(),
       time: time,
       name: name,
       isTaken: false,
@@ -64,6 +64,8 @@ export default function Home() {
 
     setName("");
     setTime("Morning");
+
+    console.log(newItem);
   };
 
   const toggleIsTaken = (time: keyof listProps, id: string) => {
