@@ -2,24 +2,13 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { SyntheticEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { styles } from "./style/style";
 import CoverPage from "./components/CoverPage";
-import { v4 as uuidv4 } from "uuid";
-
-interface itemProps {
-  id: string;
-  time: string;
-  name: string;
-  isTaken: boolean;
-}
-
-interface listProps {
-  Morning: itemProps[];
-  Noon: itemProps[];
-  Night: itemProps[];
-  Any: itemProps[];
-}
+import { listProps } from "./types/types";
+import { submitForm } from "./hooks/submitForm";
+import { toggleIsTaken } from "./hooks/toggleIsTaken";
+import { clickDelete } from "./hooks/clickDelete";
 
 export default function Home() {
   const [isCPGone, setIsCPGone] = useState<boolean>(false);
@@ -37,59 +26,6 @@ export default function Home() {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const timeOptions: (keyof listProps)[] = ["Morning", "Noon", "Night", "Any"];
-
-  const submitForm = (e: SyntheticEvent) => {
-    e.preventDefault();
-    //
-    //같은 time에 같은 이름 입력 시 예외처리 해주기
-    //
-    const newItem: itemProps = {
-      id: uuidv4(),
-      time: time,
-      name: name,
-      isTaken: false,
-    };
-
-    setList((prev) => {
-      return {
-        ...prev,
-        [time]: [...prev[time], newItem],
-      };
-    });
-
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 1000);
-
-    setName("");
-    setTime("Morning");
-
-    console.log(newItem);
-  };
-
-  const toggleIsTaken = (time: keyof listProps, id: string) => {
-    setList((prev) => ({
-      ...prev,
-      [time]: prev[time].map((item) =>
-        item.id === id ? { ...item, isTaken: !item.isTaken } : item
-      ),
-    }));
-  };
-
-  const clickDelete = (
-    e: SyntheticEvent,
-    id: string,
-    time: keyof listProps
-  ) => {
-    e.stopPropagation();
-    setList((prev) => {
-      return {
-        ...prev,
-        [time]: prev[time].filter((item) => item.id !== id),
-      };
-    });
-  };
 
   useEffect(() => {
     isInitialLoad && localStorage.setItem("medList", JSON.stringify(list));
@@ -112,7 +48,20 @@ export default function Home() {
       {!isCPGone && <CoverPage />}
       <h1 css={styles.h1}>Take Medicine</h1>
       <main css={styles.main}>
-        <form css={styles.form} onSubmit={submitForm}>
+        <form
+          css={styles.form}
+          onSubmit={(e) =>
+            submitForm({
+              e,
+              time,
+              name,
+              setList,
+              setIsSubmitted,
+              setName,
+              setTime,
+            })
+          }
+        >
           <input
             type="text"
             value={name}
@@ -145,7 +94,11 @@ export default function Home() {
                   <div
                     key={i}
                     onClick={() =>
-                      toggleIsTaken(key as keyof listProps, item.id)
+                      toggleIsTaken({
+                        time: key as keyof listProps,
+                        id: item.id,
+                        setList,
+                      })
                     }
                     css={styles.listItem}
                   >
@@ -159,7 +112,7 @@ export default function Home() {
                     <label htmlFor={item.id}>{item.name}</label>
                     <button
                       onClick={(e) =>
-                        clickDelete(e, item.id, key as keyof listProps)
+                        clickDelete(e, item.id, key as keyof listProps, setList)
                       }
                       css={styles.delBtn}
                     >
