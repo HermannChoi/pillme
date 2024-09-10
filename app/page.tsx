@@ -9,10 +9,12 @@ import { listProps } from "./types/types";
 import { submitForm } from "./hooks/submitForm";
 import { toggleIsTaken } from "./hooks/toggleIsTaken";
 import { clickDelete } from "./hooks/clickDelete";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Home() {
   const [isCPGone, setIsCPGone] = useState<boolean>(false);
   const [isInitialLoad, setIsInitialLoad] = useState<boolean>(false);
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
 
   const [list, setList] = useState<listProps>({
     Morning: [],
@@ -62,26 +64,65 @@ export default function Home() {
             })
           }
         >
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="add the medicne you take..."
-            css={styles.input}
-          />
-          <select
-            value={time}
-            onChange={(e) => setTime(e.currentTarget.value as keyof listProps)}
+          <div css={styles.inputContainer}>
+            <label htmlFor="name" css={styles.label}>
+              name of the medicine
+            </label>
+            <input
+              autoComplete="off"
+              id="name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="add the medicne you take..."
+              css={styles.input}
+            />
+          </div>
+          <div css={styles.timeSelectContainer}>
+            <label htmlFor="time" css={styles.label}>
+              time
+            </label>
+            <motion.div
+              css={styles.timeSlect}
+              whileHover={{ scale: 1.05 }}
+              onClick={() => setIsSelectOpen(!isSelectOpen)}
+            >
+              {time || "Select an option"}
+              <AnimatePresence>
+                {isSelectOpen && (
+                  <motion.ul
+                    id="time"
+                    css={styles.optionContrainer}
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 100 }}
+                    exit={{ opacity: 0, height: 0 }}
+                  >
+                    {timeOptions.map((opt, i) => {
+                      return (
+                        <li
+                          key={i}
+                          onClick={() => {
+                            setTime(opt as keyof listProps);
+                            setIsSelectOpen(false);
+                          }}
+                          css={styles.option}
+                        >
+                          {opt}
+                        </li>
+                      );
+                    })}
+                  </motion.ul>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          </div>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            css={styles.addBtn}
           >
-            {timeOptions.map((opt, i) => {
-              return (
-                <option key={i} value={opt}>
-                  {opt}
-                </option>
-              );
-            })}
-          </select>
-          <button css={styles.addBtn}>{isSubmitted ? "✓" : "💊"}</button>
+            {isSubmitted ? "✓" : "💊"}
+          </motion.button>
         </form>
         <div css={styles.sectionContainer}>
           {Object.keys(list).map((key) => (
@@ -91,8 +132,16 @@ export default function Home() {
               )}
               {list[key as keyof listProps].map((item, i) => {
                 return (
-                  <div
+                  <motion.div
                     key={i}
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 50 }}
+                    transition={{
+                      duration: 0.3,
+                      type: "just",
+                      stiffness: 700,
+                      damping: 30,
+                    }}
                     onClick={() =>
                       toggleIsTaken({
                         time: key as keyof listProps,
@@ -102,13 +151,17 @@ export default function Home() {
                     }
                     css={styles.listItem}
                   >
-                    <input
-                      readOnly
-                      type="checkbox"
-                      id={item.id}
-                      checked={item.isTaken}
-                      css={styles.checkBox}
-                    />
+                    <div id={item.id} css={styles.toggle(item.isTaken)}>
+                      <motion.div
+                        css={styles.handle}
+                        layout
+                        transition={{
+                          type: "spring",
+                          stiffness: 700,
+                          damping: 20,
+                        }}
+                      />
+                    </div>
                     <label htmlFor={item.id}>{item.name}</label>
                     <button
                       onClick={(e) =>
@@ -118,7 +171,7 @@ export default function Home() {
                     >
                       DEL
                     </button>
-                  </div>
+                  </motion.div>
                 );
               })}
             </section>

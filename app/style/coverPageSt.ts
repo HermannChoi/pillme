@@ -10,7 +10,12 @@ export const CPSt = {
     ${flexColumnCenterX2}
     width: 100%;
     height: 100vh;
-    background-color: #000;
+    background-color: #101010;
     animation: ${fadeOut} 1s forwards;
+    z-index: 1000;
+
+    @media (prefers-color-scheme: light) {
+      background-color: #ffffff;
+    }
   `,
 };
