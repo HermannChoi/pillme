@@ -58,6 +58,7 @@ export const styles = {
     padding: 5px 10px;
     border: 1px solid #808080;
     border-radius: 5px;
+    cursor: pointer;
   `,
   checkBox: css`
     width: 30px;

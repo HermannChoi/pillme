@@ -1,13 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import { styles } from "./style/style";
 
 interface itemProps {
   id: string;
   time: string;
   name: string;
+  isTaken: boolean;
 }
 
 interface listProps {
@@ -24,6 +26,7 @@ export default function Home() {
   });
   const [name, setName] = useState<string>("");
   const [time, setTime] = useState<keyof listProps>("Morning");
+  const [isInitialLoad, setIsInitialLoad] = useState<boolean>(false);
 
   const timeOptions: (keyof listProps)[] = ["Morning", "Noon", "Night"];
 
@@ -32,7 +35,12 @@ export default function Home() {
     //
     //같은 time에 같은 이름 입력 시 예외처리 해주기
     //
-    const newItem: itemProps = { id: name, time, name };
+    const newItem: itemProps = {
+      id: name,
+      time: time,
+      name: name,
+      isTaken: false,
+    };
 
     setList((prev) => {
       return {
@@ -45,7 +53,21 @@ export default function Home() {
     setTime("Morning");
   };
 
-  const clickDelete = (id: string, time: keyof listProps) => {
+  const toggleIsTaken = (time: keyof listProps, id: string) => {
+    setList((prev) => ({
+      ...prev,
+      [time]: prev[time].map((item) =>
+        item.id === id ? { ...item, isTaken: !item.isTaken } : item
+      ),
+    }));
+  };
+
+  const clickDelete = (
+    e: SyntheticEvent,
+    id: string,
+    time: keyof listProps
+  ) => {
+    e.stopPropagation();
     setList((prev) => {
       return {
         ...prev,
@@ -53,6 +75,21 @@ export default function Home() {
       };
     });
   };
+
+  useEffect(() => {
+    isInitialLoad && localStorage.setItem("medList", JSON.stringify(list));
+  }, [list]);
+
+  useEffect(() => {
+    const storedList = localStorage.getItem("medList");
+    if (storedList) {
+      setList(JSON.parse(storedList));
+    }
+
+    setTimeout(() => {
+      setIsInitialLoad(true);
+    }, 1000);
+  }, []);
 
   return (
     <div css={styles.container}>
@@ -87,12 +124,22 @@ export default function Home() {
               )}
               {list[key as keyof listProps].map((item, i) => {
                 return (
-                  <div key={i} css={styles.listItem}>
-                    <input type="checkbox" css={styles.checkBox} />
+                  <div
+                    key={i}
+                    onClick={() =>
+                      toggleIsTaken(key as keyof listProps, item.id)
+                    }
+                    css={styles.listItem}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={item.isTaken}
+                      css={styles.checkBox}
+                    />
                     <p>{item.name}</p>
                     <button
-                      onClick={() =>
-                        clickDelete(item.id, key as keyof listProps)
+                      onClick={(e) =>
+                        clickDelete(e, item.id, key as keyof listProps)
                       }
                       css={styles.delBtn}
                     >
