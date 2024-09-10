@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-const flexColumnCenterX2 = css`
+export const flexColumnCenterX2 = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,10 +44,17 @@ export const styles = {
     font-size: 1.5rem;
   `,
   sectionContainer: css`
+    ${flexColumnCenterX2}
+    row-gap: 5px;
     width: 100%;
   `,
   section: css`
+    ${flexColumnCenterX2}
+    row-gap: 5px;
     width: 100%;
+    padding: 5px;
+    border: 1px solid #808080;
+    border-radius: 5px;
   `,
   listItem: css`
     display: flex;
@@ -68,5 +75,10 @@ export const styles = {
     height: 30px;
     padding: 0 5px;
     border: none;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: red;
+    }
   `,
 };

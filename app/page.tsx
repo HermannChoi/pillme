@@ -4,6 +4,8 @@
 
 import { SyntheticEvent, useEffect, useState } from "react";
 import { styles } from "./style/style";
+import CoverPage from "./components/CoverPage";
+import { v4 as uuidv4 } from "uuid";
 
 interface itemProps {
   id: string;
@@ -16,19 +18,25 @@ interface listProps {
   Morning: itemProps[];
   Noon: itemProps[];
   Night: itemProps[];
+  Any: itemProps[];
 }
 
 export default function Home() {
+  const [isCPGone, setIsCPGone] = useState<boolean>(false);
+  const [isInitialLoad, setIsInitialLoad] = useState<boolean>(false);
+
   const [list, setList] = useState<listProps>({
     Morning: [],
     Noon: [],
     Night: [],
+    Any: [],
   });
   const [name, setName] = useState<string>("");
   const [time, setTime] = useState<keyof listProps>("Morning");
-  const [isInitialLoad, setIsInitialLoad] = useState<boolean>(false);
 
-  const timeOptions: (keyof listProps)[] = ["Morning", "Noon", "Night"];
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+
+  const timeOptions: (keyof listProps)[] = ["Morning", "Noon", "Night", "Any"];
 
   const submitForm = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -36,7 +44,7 @@ export default function Home() {
     //같은 time에 같은 이름 입력 시 예외처리 해주기
     //
     const newItem: itemProps = {
-      id: name,
+      id: uuidv4,
       time: time,
       name: name,
       isTaken: false,
@@ -48,6 +56,11 @@ export default function Home() {
         [time]: [...prev[time], newItem],
       };
     });
+
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 1000);
 
     setName("");
     setTime("Morning");
@@ -88,11 +101,13 @@ export default function Home() {
 
     setTimeout(() => {
       setIsInitialLoad(true);
+      setIsCPGone(true);
     }, 1000);
   }, []);
 
   return (
     <div css={styles.container}>
+      {!isCPGone && <CoverPage />}
       <h1 css={styles.h1}>Take Medicine</h1>
       <main css={styles.main}>
         <form css={styles.form} onSubmit={submitForm}>
@@ -100,6 +115,7 @@ export default function Home() {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            placeholder="add the medicne you take..."
             css={styles.input}
           />
           <select
@@ -114,7 +130,7 @@ export default function Home() {
               );
             })}
           </select>
-          <button css={styles.addBtn}>💊</button>
+          <button css={styles.addBtn}>{isSubmitted ? "✓" : "💊"}</button>
         </form>
         <div css={styles.sectionContainer}>
           {Object.keys(list).map((key) => (
@@ -132,11 +148,13 @@ export default function Home() {
                     css={styles.listItem}
                   >
                     <input
+                      readOnly
                       type="checkbox"
+                      id={item.id}
                       checked={item.isTaken}
                       css={styles.checkBox}
                     />
-                    <p>{item.name}</p>
+                    <label htmlFor={item.id}>{item.name}</label>
                     <button
                       onClick={(e) =>
                         clickDelete(e, item.id, key as keyof listProps)
