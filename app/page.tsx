@@ -170,7 +170,13 @@ export default function Home() {
             {isSubmitted ? (
               <span>✓</span>
             ) : (
-              <Image src={pill} alt="pill" width={30} height={30} />
+              <Image
+                src={pill}
+                alt="pill"
+                loading="lazy"
+                width={30}
+                height={30}
+              />
             )}
           </motion.button>
         </form>
@@ -192,7 +198,7 @@ export default function Home() {
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 50 }}
+                    animate={{ opacity: 1, height: 60 }}
                     transition={{
                       type: "spring",
                       stiffness: 700,

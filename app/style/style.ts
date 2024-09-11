@@ -25,12 +25,16 @@ export const styles = {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 15vw;
+    margin-top: 3rem;
     row-gap: 5px;
     width: 100%;
   `,
   h1: css`
     font-size: 4rem;
+
+    @media (max-width: 430px) {
+      font-size: 3rem;
+    }
   `,
   h2: css`
     margin-bottom: 10px;
@@ -39,7 +43,9 @@ export const styles = {
   main: css`
     ${flexColumnCenterX2}
     row-gap: 5px;
-    width: 410px;
+    max-width: 700px;
+    width: 50%;
+    min-width: 360px;
   `,
   form: css`
     display: flex;
@@ -59,6 +65,7 @@ export const styles = {
     height: 40px;
     border: 1px solid ${colors.gray};
     border-radius: 5px;
+    font-size: 1rem;
     text-indent: 5px;
 
     &:focus {
@@ -158,7 +165,7 @@ export const styles = {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 50px;
+    height: 60px;
     padding: 5px 10px;
     border: 1px solid ${colors.gray};
     border-radius: 5px;
@@ -167,19 +174,19 @@ export const styles = {
 
     &:hover {
       border-color: ${colors.green};
-      background-color: #3cffd359;
+      background-color: ${colors.green}10;
     }
   `,
   toggle: (isTaken: boolean) => {
     return css`
-      width: 60px;
-      height: 30px;
-      background-color: ${isTaken ? `${colors.green}` : `#90909099`};
       display: flex;
       justify-content: ${isTaken ? `flex-end` : `flex-start`};
       align-items: center;
-      border-radius: 50px;
-      padding: 0 5px;
+      width: 60px;
+      height: 30px;
+      border-radius: 5px;
+      padding: 3px;
+      background-color: ${isTaken ? `${colors.green}` : `#90909099`};
       cursor: pointer;
     `;
   },
@@ -187,7 +194,7 @@ export const styles = {
     width: 25px;
     height: 25px;
     background-color: white;
-    border-radius: 40px;
+    border-radius: 5px;
 
     @media (prefers-color-scheme: light) {
       background-color: #303030;
@@ -195,17 +202,19 @@ export const styles = {
   `,
   name: css`
     width: 50%;
+    font-size: 1.2rem;
   `,
   delBtn: css`
-    height: 30px;
+    height: 35px;
     padding: 0 5px;
     border: none;
     border-radius: 5px;
+    background-color: ${colors.red}d9;
+    font-size: 1rem;
     transition: 0.2s;
 
     &:hover {
-      transform: scale(1.1);
-      background-color: #ff3939;
+      background-color: ${colors.red};
     }
   `,
   bottomText: css`
