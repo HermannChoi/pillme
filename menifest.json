@@ -1,0 +1,21 @@
+{
+  "name": "Take Medicine",
+  "short_name": "TakMedi",
+  "description": "An app for people who keep forgetting to take their medicine",
+  "icons": [
+    {
+      "src": "app/assets/png/192icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "app/assets/png/512icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a"
+}

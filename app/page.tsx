@@ -33,45 +33,30 @@ export default function Home() {
   const [isEMsgChanged, setIsEMsgChanged] = useState(false);
 
   const timeOptions: (keyof listProps)[] = ["Morning", "Noon", "Night", "Any"];
+
   const totalMedLen = Object.values(list).reduce(
     (sum, array) => sum + array.length,
     0
   );
 
-  const getTodayDate = () => {
+  const getKoreanDate = () => {
     const today = new Date();
-    return today.toISOString().split("T")[0]; // YYYY-MM-DD 형식의 날짜 반환
+    today.setHours(today.getHours() + 9); // UTC 시간에 9시간 더함
+    return today.toISOString().split("T")[0]; // 변환된 한국 시간 반환
   };
 
   useEffect(() => {
-    isInitialLoad && localStorage.setItem("medList", JSON.stringify(list));
-  }, [list]);
-
-  useEffect(() => {
-    if (isDateChanged)
-      for (const time in list) {
-        setList((prev) => ({
-          ...prev,
-          [time]: prev[time as keyof listProps].map((item) => {
-            return item.isTaken ? { ...item, isTaken: false } : item;
-          }),
-        }));
-      }
-  }, [isDateChanged]);
-
-  useEffect(() => {
     const storedDate = localStorage.getItem("lastCheckedDate");
+    const today = getKoreanDate();
 
     if (storedDate) {
-      const today = getTodayDate();
-
-      if (storedDate !== today) {
+      const today = getKoreanDate();
+      if (storedDate == today) {
         setIsDateChanged(true);
-        setLastCheckedDate(today); // 마지막 확인한 날짜를 오늘 날짜로 업데이트
-        localStorage.setItem("lastCheckedDate", today); // 로컬 스토리지에 새로운 날짜 저장
+        setLastCheckedDate(today);
+        localStorage.setItem("lastCheckedDate", today);
       }
     } else {
-      const today = getTodayDate();
       setLastCheckedDate(today);
       localStorage.setItem("lastCheckedDate", today);
     }
@@ -86,6 +71,25 @@ export default function Home() {
       setIsCPGone(true);
     }, 1000);
   }, []);
+
+  useEffect(() => {
+    if (isDateChanged) {
+      for (const time in list) {
+        setList((prev) => ({
+          ...prev,
+          [time]: prev[time as keyof listProps].map((item) => {
+            return item.isTaken ? { ...item, isTaken: false } : item;
+          }),
+        }));
+      }
+      localStorage.setItem("medList", JSON.stringify(list));
+    }
+  }, [isDateChanged]);
+
+  useEffect(() => {
+    (isInitialLoad || isDateChanged) &&
+      localStorage.setItem("medList", JSON.stringify(list));
+  }, [list]);
 
   return (
     <div css={styles.container}>
