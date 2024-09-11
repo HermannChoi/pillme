@@ -11,8 +11,12 @@ import { toggleIsTaken } from "./hooks/toggleIsTaken";
 import { clickDelete } from "./hooks/clickDelete";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
+import pill from "@/app/assets/svg/pill.svg";
 
 export default function Home() {
+  const [lastCheckedDate, setLastCheckedDate] = useState<string | null>(null);
+  const [isDateChanged, setIsDateChanged] = useState<boolean>(false);
   const [isCPGone, setIsCPGone] = useState<boolean>(false);
   const [isInitialLoad, setIsInitialLoad] = useState<boolean>(false);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
@@ -34,11 +38,44 @@ export default function Home() {
     0
   );
 
+  const getTodayDate = () => {
+    const today = new Date();
+    return today.toISOString().split("T")[0]; // YYYY-MM-DD 형식의 날짜 반환
+  };
+
   useEffect(() => {
     isInitialLoad && localStorage.setItem("medList", JSON.stringify(list));
   }, [list]);
 
   useEffect(() => {
+    if (isDateChanged)
+      for (const time in list) {
+        setList((prev) => ({
+          ...prev,
+          [time]: prev[time as keyof listProps].map((item) => {
+            return item.isTaken ? { ...item, isTaken: false } : item;
+          }),
+        }));
+      }
+  }, [isDateChanged]);
+
+  useEffect(() => {
+    const storedDate = localStorage.getItem("lastCheckedDate");
+
+    if (storedDate) {
+      const today = getTodayDate();
+
+      if (storedDate !== today) {
+        setIsDateChanged(true);
+        setLastCheckedDate(today); // 마지막 확인한 날짜를 오늘 날짜로 업데이트
+        localStorage.setItem("lastCheckedDate", today); // 로컬 스토리지에 새로운 날짜 저장
+      }
+    } else {
+      const today = getTodayDate();
+      setLastCheckedDate(today);
+      localStorage.setItem("lastCheckedDate", today);
+    }
+
     const storedList = localStorage.getItem("medList");
     if (storedList) {
       setList(JSON.parse(storedList));
@@ -130,13 +167,18 @@ export default function Home() {
             whileTap={{ scale: 0.9 }}
             css={styles.addBtn}
           >
-            {isSubmitted ? "✓" : "💊"}
+            {isSubmitted ? (
+              <span>✓</span>
+            ) : (
+              <Image src={pill} alt="pill" width={30} height={30} />
+            )}
           </motion.button>
         </form>
         <div css={styles.messageContainer}>
           <p css={styles.errorMessage(isEMsgChanged)}>{errorMsg}</p>
         </div>
         <div css={styles.section}>
+          <p>{lastCheckedDate}</p>
           <p>{"registered medicine : " + totalMedLen}</p>
         </div>
         <div css={styles.sectionContainer}>

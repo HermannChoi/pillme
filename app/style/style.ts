@@ -28,7 +28,6 @@ export const styles = {
     margin-top: 15vw;
     row-gap: 5px;
     width: 100%;
-    height: 100vh;
   `,
   h1: css`
     font-size: 4rem;
@@ -77,7 +76,7 @@ export const styles = {
     height: 40px;
     border: 1px solid ${colors.gray};
     border-radius: 5px;
-    background-color: #0a0a0a;
+    background-color: ${colors.green}30;
     cursor: pointer;
 
     &:hover {
@@ -112,6 +111,7 @@ export const styles = {
     }
   `,
   addBtn: css`
+    ${flexCenterX2}
     flex: 2;
     height: 40px;
     background-color: ${colors.green};
@@ -209,7 +209,7 @@ export const styles = {
     }
   `,
   bottomText: css`
-    margin-top: 20px;
+    padding: 20px 0;
     color: ${colors.gray}80;
   `,
   Link: css`
