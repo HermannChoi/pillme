@@ -10,6 +10,7 @@ import { submitForm } from "./hooks/submitForm";
 import { toggleIsTaken } from "./hooks/toggleIsTaken";
 import { clickDelete } from "./hooks/clickDelete";
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Home() {
   const [isCPGone, setIsCPGone] = useState<boolean>(false);
@@ -28,6 +29,10 @@ export default function Home() {
   const [isEMsgChanged, setIsEMsgChanged] = useState(false);
 
   const timeOptions: (keyof listProps)[] = ["Morning", "Noon", "Night", "Any"];
+  const totalMedLen = Object.values(list).reduce(
+    (sum, array) => sum + array.length,
+    0
+  );
 
   useEffect(() => {
     isInitialLoad && localStorage.setItem("medList", JSON.stringify(list));
@@ -75,6 +80,7 @@ export default function Home() {
               autoComplete="off"
               id="name"
               type="text"
+              maxLength={20}
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="add the medicne you take..."
@@ -130,6 +136,9 @@ export default function Home() {
         <div css={styles.messageContainer}>
           <p css={styles.errorMessage(isEMsgChanged)}>{errorMsg}</p>
         </div>
+        <div css={styles.section}>
+          <p>{"registered medicine : " + totalMedLen}</p>
+        </div>
         <div css={styles.sectionContainer}>
           {Object.keys(list).map((key) => (
             <section key={key} css={styles.section}>
@@ -167,7 +176,8 @@ export default function Home() {
                         }}
                       />
                     </div>
-                    <label htmlFor={item.id}>{item.name}</label>
+                    <p>{item.date}</p>
+                    <p css={styles.name}>{item.name}</p>
                     <button
                       onClick={(e) =>
                         clickDelete(e, item.id, key as keyof listProps, setList)
@@ -182,6 +192,12 @@ export default function Home() {
             </section>
           ))}
         </div>
+        <p css={styles.bottomText}>
+          made by{" "}
+          <Link href={"https://yunseokchoi.vercel.app/"} css={styles.Link}>
+            Yunseok Choi
+          </Link>
+        </p>
       </main>
     </div>
   );

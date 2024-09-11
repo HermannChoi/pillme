@@ -28,6 +28,7 @@ export const submitForm = ({
   setIsEMsgChanged,
 }: SubmitFormProps) => {
   e.preventDefault();
+  //예외처리
   if (name === "") {
     setErrorMsg("Please write a name of the medicine");
     setIsEMsgChanged(true);
@@ -48,20 +49,22 @@ export const submitForm = ({
       setIsEMsgChanged(false);
     }, 2000);
   }
+  //생성 아이템
   const newItem: itemProps = {
     id: uuidv4(),
     time: time,
+    date: "M/D",
     name: name,
     isTaken: false,
   };
-
+  //생성함수
   setList((prev) => {
     return {
       ...prev,
       [time]: [...prev[time], newItem],
     };
   });
-
+  //생성 후 처리되는 함수들
   setIsSubmitted(true);
   setTimeout(() => {
     setIsSubmitted(false);

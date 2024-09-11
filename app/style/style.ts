@@ -3,7 +3,7 @@ import { twitching1 } from "./keyframes";
 
 const colors = {
   gray: "#808080",
-  green: "#3cffd399",
+  green: "#00d5a5",
   red: "#ff3939",
 };
 
@@ -131,6 +131,14 @@ export const styles = {
       animation: ${isEMsgChanged && twitching1} 0.4s;
     `;
   },
+  pill: () => {
+    return css`
+      width: 10px;
+      height: 10px;
+      border: 1px solid ${colors.gray};
+      border-radius: 50%;
+    `;
+  },
   sectionContainer: css`
     ${flexColumnCenterX2}
     row-gap: 5px;
@@ -185,6 +193,9 @@ export const styles = {
       background-color: #303030;
     }
   `,
+  name: css`
+    width: 50%;
+  `,
   delBtn: css`
     height: 30px;
     padding: 0 5px;
@@ -196,5 +207,13 @@ export const styles = {
       transform: scale(1.1);
       background-color: #ff3939;
     }
+  `,
+  bottomText: css`
+    margin-top: 20px;
+    color: ${colors.gray}80;
+  `,
+  Link: css`
+    color: ${colors.green};
+    text-decoration: underline;
   `,
 };
