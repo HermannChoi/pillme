@@ -15,7 +15,6 @@ export default function Home() {
   const [isCPGone, setIsCPGone] = useState<boolean>(false);
   const [isInitialLoad, setIsInitialLoad] = useState<boolean>(false);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
-
   const [list, setList] = useState<listProps>({
     Morning: [],
     Noon: [],
@@ -24,8 +23,9 @@ export default function Home() {
   });
   const [name, setName] = useState<string>("");
   const [time, setTime] = useState<keyof listProps>("Morning");
-
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [errorMsg, setErrorMsg] = useState("Here you medicine");
+  const [isEMsgChanged, setIsEMsgChanged] = useState(false);
 
   const timeOptions: (keyof listProps)[] = ["Morning", "Noon", "Night", "Any"];
 
@@ -57,10 +57,13 @@ export default function Home() {
               e,
               time,
               name,
+              list,
               setList,
               setIsSubmitted,
               setName,
               setTime,
+              setErrorMsg,
+              setIsEMsgChanged,
             })
           }
         >
@@ -124,6 +127,9 @@ export default function Home() {
             {isSubmitted ? "✓" : "💊"}
           </motion.button>
         </form>
+        <div css={styles.messageContainer}>
+          <p css={styles.errorMessage(isEMsgChanged)}>{errorMsg}</p>
+        </div>
         <div css={styles.sectionContainer}>
           {Object.keys(list).map((key) => (
             <section key={key} css={styles.section}>
@@ -137,10 +143,9 @@ export default function Home() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 50 }}
                     transition={{
-                      duration: 0.3,
-                      type: "just",
+                      type: "spring",
                       stiffness: 700,
-                      damping: 30,
+                      damping: 20,
                     }}
                     onClick={() =>
                       toggleIsTaken({

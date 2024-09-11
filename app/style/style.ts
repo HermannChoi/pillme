@@ -1,8 +1,10 @@
 import { css } from "@emotion/react";
+import { twitching1 } from "./keyframes";
 
 const colors = {
   gray: "#808080",
   green: "#3cffd399",
+  red: "#ff3939",
 };
 
 export const flexColumnCenterX2 = css`
@@ -117,6 +119,18 @@ export const styles = {
     border-radius: 5px;
     font-size: 1.5rem;
   `,
+  messageContainer: css`
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 3px;
+  `,
+  errorMessage: (isEMsgChanged: boolean) => {
+    return css`
+      color: ${isEMsgChanged && colors.red};
+      animation: ${isEMsgChanged && twitching1} 0.4s;
+    `;
+  },
   sectionContainer: css`
     ${flexColumnCenterX2}
     row-gap: 5px;
@@ -140,7 +154,8 @@ export const styles = {
     padding: 5px 10px;
     border: 1px solid ${colors.gray};
     border-radius: 5px;
-    transition: 0.2s;
+    transition: background-color 0.2s;
+    overflow: hidden;
 
     &:hover {
       border-color: ${colors.green};
