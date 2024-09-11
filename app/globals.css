@@ -40,6 +40,7 @@ a {
 
 button {
   cursor: pointer;
+  color: var(--foreground);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -29,7 +29,7 @@ export default function Home() {
   const [name, setName] = useState<string>("");
   const [time, setTime] = useState<keyof listProps>("Morning");
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const [errorMsg, setErrorMsg] = useState("Here you medicine");
+  const [errorMsg, setErrorMsg] = useState("");
   const [isEMsgChanged, setIsEMsgChanged] = useState(false);
 
   const timeOptions: (keyof listProps)[] = ["Morning", "Noon", "Night", "Any"];
@@ -120,7 +120,6 @@ export default function Home() {
               maxLength={20}
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="add the medicne you take..."
               css={styles.input}
             />
           </div>
@@ -140,7 +139,7 @@ export default function Home() {
                     id="time"
                     css={styles.optionContrainer}
                     initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 100 }}
+                    animate={{ opacity: 1, height: 160 }}
                     exit={{ opacity: 0, height: 0 }}
                   >
                     {timeOptions.map((opt, i) => {
@@ -185,7 +184,7 @@ export default function Home() {
         </div>
         <div css={styles.section}>
           <p>{lastCheckedDate}</p>
-          <p>{"registered medicine : " + totalMedLen}</p>
+          <p>{"Registered Medicine : " + totalMedLen}</p>
         </div>
         <div css={styles.sectionContainer}>
           {Object.keys(list).map((key) => (

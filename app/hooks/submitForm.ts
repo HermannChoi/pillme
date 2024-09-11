@@ -33,7 +33,7 @@ export const submitForm = ({
     setErrorMsg("Please write a name of the medicine");
     setIsEMsgChanged(true);
     return setTimeout(() => {
-      setErrorMsg("Here your medicine");
+      setErrorMsg("");
       setIsEMsgChanged(false);
     }, 2000);
   }
@@ -45,7 +45,7 @@ export const submitForm = ({
     setErrorMsg("It already exists on the time.");
     setIsEMsgChanged(true);
     return setTimeout(() => {
-      setErrorMsg("Here your medicine");
+      setErrorMsg("");
       setIsEMsgChanged(false);
     }, 2000);
   }

@@ -33,7 +33,7 @@ export const styles = {
     font-size: 4rem;
 
     @media (max-width: 430px) {
-      font-size: 3rem;
+      font-size: 3.4rem;
     }
   `,
   h2: css`
@@ -98,6 +98,8 @@ export const styles = {
     position: absolute;
     top: 45px;
     left: 0;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     border: 1px solid ${colors.gray};
     border-radius: 5px;
@@ -110,8 +112,10 @@ export const styles = {
     }
   `,
   option: css`
+    display: flex;
+    align-items: center;
     width: 100%;
-    height: 25px;
+    height: 40px;
     padding-left: 5px;
     &:hover {
       background-color: ${colors.gray}80;
@@ -202,7 +206,7 @@ export const styles = {
   `,
   name: css`
     width: 50%;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   `,
   delBtn: css`
     height: 35px;
