@@ -50,8 +50,7 @@ export default function Home() {
     const today = getKoreanDate();
 
     if (storedDate) {
-      const today = getKoreanDate();
-      if (storedDate == today) {
+      if (storedDate !== today) {
         setIsDateChanged(true);
         setLastCheckedDate(today);
         localStorage.setItem("lastCheckedDate", today);
