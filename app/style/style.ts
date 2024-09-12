@@ -76,7 +76,7 @@ export const styles = {
     flex: 3;
     bottom: 0;
   `,
-  timeSlect: css`
+  timeSelect: css`
     position: relative;
     ${flexCenterX2}
     width: 100%;
@@ -94,7 +94,7 @@ export const styles = {
       background-color: #efefef;
     }
   `,
-  optionContrainer: css`
+  optionContainer: css`
     position: absolute;
     top: 45px;
     left: 0;
@@ -130,13 +130,13 @@ export const styles = {
     border-radius: 5px;
     font-size: 1.5rem;
   `,
-  messageContainer: css`
+  msgContainer: css`
     display: flex;
     align-items: center;
     width: 100%;
     padding: 3px;
   `,
-  errorMessage: (isEMsgChanged: boolean) => {
+  errorMsg: (isEMsgChanged: boolean) => {
     return css`
       color: ${isEMsgChanged && colors.red};
       animation: ${isEMsgChanged && twitching1} 0.4s;
@@ -221,7 +221,10 @@ export const styles = {
       background-color: ${colors.red};
     }
   `,
-  bottomText: css`
+  footer: css`
+    ${flexCenterX2}
+  `,
+  footerText: css`
     padding: 20px 0;
     color: ${colors.gray}80;
   `,

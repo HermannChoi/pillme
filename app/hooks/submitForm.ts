@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, SyntheticEvent } from "react";
+import { SyntheticEvent } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { itemProps, listProps } from "../types/types";
 
@@ -8,11 +8,11 @@ interface SubmitFormProps {
   name: string;
   list: listProps;
   setList: (prev: (prev: listProps) => listProps) => void;
-  setIsSubmitted: Dispatch<SetStateAction<boolean>>;
-  setName: Dispatch<SetStateAction<string>>;
-  setTime: Dispatch<SetStateAction<keyof listProps>>;
-  setErrorMsg: Dispatch<SetStateAction<string>>;
-  setIsEMsgChanged: Dispatch<SetStateAction<boolean>>;
+  setIsSubmitted: (value: boolean) => void;
+  setName: (value: string) => void;
+  setTime: (value: keyof listProps) => void;
+  setErrorMsg: (value: string) => void;
+  setIsErrorMsgChanged: (value: boolean) => void;
 }
 
 export const submitForm = ({
@@ -25,16 +25,16 @@ export const submitForm = ({
   setName,
   setTime,
   setErrorMsg,
-  setIsEMsgChanged,
+  setIsErrorMsgChanged,
 }: SubmitFormProps) => {
   e.preventDefault();
   //예외처리
   if (name === "") {
     setErrorMsg("Please write a name of the medicine");
-    setIsEMsgChanged(true);
+    setIsErrorMsgChanged(true);
     return setTimeout(() => {
       setErrorMsg("");
-      setIsEMsgChanged(false);
+      setIsErrorMsgChanged(false);
     }, 2000);
   }
   if (
@@ -43,10 +43,10 @@ export const submitForm = ({
     })
   ) {
     setErrorMsg("It already exists on the time.");
-    setIsEMsgChanged(true);
+    setIsErrorMsgChanged(true);
     return setTimeout(() => {
       setErrorMsg("");
-      setIsEMsgChanged(false);
+      setIsErrorMsgChanged(false);
     }, 2000);
   }
   //생성 아이템
