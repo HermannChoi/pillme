@@ -47,91 +47,89 @@ const ItemSection = () => {
   }, []);
 
   return (
-    <AnimatePresence>
-      <div css={styles.sectionContainer}>
-        {getTotalListLength(list) > 0 ? (
-          <AnimatePresence>
-            {Object.keys(list).map(
-              (timePeriod) =>
-                list[timePeriod as keyof listProps].length > 0 && (
-                  <motion.section
-                    key={timePeriod}
-                    exit={{ opacity: 0, y: 20 }}
-                    css={styles.section}
-                  >
-                    {list[timePeriod as keyof listProps].length > 0 && (
-                      <h2 css={styles.h2}>{timePeriod}</h2>
-                    )}
-                    {list[timePeriod as keyof listProps].map((item, i) => {
-                      return (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 60 }}
-                          exit={{ opacity: 0, y: 20 }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 700,
-                            damping: 20,
-                          }}
-                          onClick={() =>
-                            toggleIsTaken({
-                              timePeriod: timePeriod as keyof listProps,
-                              id: item.id,
-                              setList,
-                            })
+    <div css={styles.sectionContainer}>
+      {getTotalListLength(list) > 0 ? (
+        <AnimatePresence>
+          {Object.keys(list).map(
+            (timePeriod) =>
+              list[timePeriod as keyof listProps].length > 0 && (
+                <motion.section
+                  key={timePeriod}
+                  exit={{ opacity: 0, y: 20 }}
+                  css={styles.section}
+                >
+                  {list[timePeriod as keyof listProps].length > 0 && (
+                    <h2 css={styles.h2}>{timePeriod}</h2>
+                  )}
+                  {list[timePeriod as keyof listProps].map((item, i) => {
+                    return (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 60 }}
+                        exit={{ opacity: 0, y: 20 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 700,
+                          damping: 20,
+                        }}
+                        onClick={() =>
+                          toggleIsTaken({
+                            timePeriod: timePeriod as keyof listProps,
+                            id: item.id,
+                            setList,
+                          })
+                        }
+                        css={styles.listItem}
+                      >
+                        <div id={item.id} css={styles.toggle(item.isTaken)}>
+                          <motion.div
+                            css={styles.handle}
+                            layout
+                            transition={{
+                              type: "spring",
+                              stiffness: 700,
+                              damping: 20,
+                            }}
+                          />
+                        </div>
+                        <p>{item.date}</p>
+                        <p css={styles.name}>{item.name}</p>
+                        <p>{item.time}</p>
+                        <button
+                          onClick={(e) =>
+                            clickDelete(
+                              e,
+                              item.id,
+                              timePeriod as keyof listProps,
+                              setList
+                            )
                           }
-                          css={styles.listItem}
+                          css={styles.delBtn}
                         >
-                          <div id={item.id} css={styles.toggle(item.isTaken)}>
-                            <motion.div
-                              css={styles.handle}
-                              layout
-                              transition={{
-                                type: "spring",
-                                stiffness: 700,
-                                damping: 20,
-                              }}
-                            />
-                          </div>
-                          <p>{item.date}</p>
-                          <p css={styles.name}>{item.name}</p>
-                          <p>{item.time}</p>
-                          <button
-                            onClick={(e) =>
-                              clickDelete(
-                                e,
-                                item.id,
-                                timePeriod as keyof listProps,
-                                setList
-                              )
-                            }
-                            css={styles.delBtn}
-                          >
-                            D
-                          </button>
-                        </motion.div>
-                      );
-                    })}
-                  </motion.section>
-                )
-            )}
-          </AnimatePresence>
-        ) : (
-          <section css={[styles.section, `height: 80px`]}>
-            <p
-              css={[
-                `
+                          D
+                        </button>
+                      </motion.div>
+                    );
+                  })}
+                </motion.section>
+              )
+          )}
+        </AnimatePresence>
+      ) : (
+        <section css={[styles.section, `height: 80px`]}>
+          <p
+            css={[
+              `
                 color: #808080;
               `,
-              ]}
-            >
-              Add your medicine!
-            </p>
-          </section>
-        )}
-      </div>
-    </AnimatePresence>
+            ]}
+          >
+            Add your medicine!
+          </p>
+        </section>
+      )}
+    </div>
   );
 };
 
