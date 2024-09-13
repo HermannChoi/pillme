@@ -4,8 +4,8 @@ import { listProps } from "../types/types";
 interface UseFormStoreProps {
   name: string;
   setName: (value: string) => void;
-  time: keyof listProps;
-  setTime: (value: keyof listProps) => void;
+  timePeriod: keyof listProps;
+  setTimePeriod: (value: keyof listProps) => void;
   isSelectOpen: boolean;
   setIsSelectOpen: (value: boolean) => void;
   list: listProps;
@@ -17,8 +17,8 @@ interface UseFormStoreProps {
 const useFormStore = create<UseFormStoreProps>((set) => ({
   name: "",
   setName: (value) => set({ name: value }),
-  time: "Morning",
-  setTime: (value) => set({ time: value }),
+  timePeriod: "Morning",
+  setTimePeriod: (value) => set({ timePeriod: value }),
   isSelectOpen: false,
   setIsSelectOpen: (value) => set({ isSelectOpen: value }),
   list: {

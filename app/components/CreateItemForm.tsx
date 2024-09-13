@@ -9,13 +9,14 @@ import { styles } from "../style/style";
 import { listProps } from "../types/types";
 import Image from "next/image";
 import pill from "@/app/assets/svg/pill.svg";
+import { timeOptions } from "../constant/timeOptions";
 
 const CreateItemForm = () => {
   const {
     name,
     setName,
-    time,
-    setTime,
+    timePeriod,
+    setTimePeriod,
     isSelectOpen,
     setIsSelectOpen,
     list,
@@ -26,21 +27,18 @@ const CreateItemForm = () => {
 
   const { setErrorMsg, setIsErrorMsgChanged } = useErrorMsgStore();
 
-  const timeOptions: (keyof listProps)[] = ["Morning", "Noon", "Night", "Any"];
-
   return (
     <form
       css={styles.form}
       onSubmit={(e) =>
         submitForm({
           e,
-          time,
+          timePeriod,
           name,
           list,
           setList,
           setIsSubmitted,
           setName,
-          setTime,
           setErrorMsg,
           setIsErrorMsgChanged,
         })
@@ -69,7 +67,7 @@ const CreateItemForm = () => {
           whileHover={{ scale: 1.05 }}
           onClick={() => setIsSelectOpen(!isSelectOpen)}
         >
-          {time || "Select an option"}
+          {timePeriod || "Select an option"}
           <AnimatePresence>
             {isSelectOpen && (
               <motion.ul
@@ -84,7 +82,7 @@ const CreateItemForm = () => {
                     <li
                       key={i}
                       onClick={() => {
-                        setTime(opt as keyof listProps);
+                        setTimePeriod(opt as keyof listProps);
                         setIsSelectOpen(false);
                       }}
                       css={styles.option}

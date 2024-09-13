@@ -50,28 +50,37 @@ const ItemSection = () => {
     <AnimatePresence>
       <div css={styles.sectionContainer}>
         {getTotalListLength(list) > 0 ? (
-          <>
+          <AnimatePresence>
             {Object.keys(list).map(
-              (key) =>
-                list[key as keyof listProps].length > 0 && (
-                  <section key={key} css={styles.section}>
-                    {list[key as keyof listProps].length > 0 && (
-                      <h2 css={styles.h2}>{key}</h2>
+              (timePeriod) =>
+                list[timePeriod as keyof listProps].length > 0 && (
+                  <motion.section
+                    key={timePeriod}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{
+                      duration: 0.3,
+                    }}
+                    css={styles.section}
+                  >
+                    {list[timePeriod as keyof listProps].length > 0 && (
+                      <h2 css={styles.h2}>{timePeriod}</h2>
                     )}
-                    {list[key as keyof listProps].map((item, i) => {
+                    {list[timePeriod as keyof listProps].map((item, i) => {
                       return (
                         <motion.div
                           key={i}
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 60 }}
+                          exit={{ opacity: 0, y: 20 }}
                           transition={{
+                            duration: 0.3,
                             type: "spring",
                             stiffness: 700,
                             damping: 20,
                           }}
                           onClick={() =>
                             toggleIsTaken({
-                              time: key as keyof listProps,
+                              timePeriod: timePeriod as keyof listProps,
                               id: item.id,
                               setList,
                             })
@@ -91,26 +100,27 @@ const ItemSection = () => {
                           </div>
                           <p>{item.date}</p>
                           <p css={styles.name}>{item.name}</p>
+                          <p>{item.time}</p>
                           <button
                             onClick={(e) =>
                               clickDelete(
                                 e,
                                 item.id,
-                                key as keyof listProps,
+                                timePeriod as keyof listProps,
                                 setList
                               )
                             }
                             css={styles.delBtn}
                           >
-                            DEL
+                            D
                           </button>
                         </motion.div>
                       );
                     })}
-                  </section>
+                  </motion.section>
                 )
             )}
-          </>
+          </AnimatePresence>
         ) : (
           <section css={[styles.section, `height: 80px`]}>
             <p

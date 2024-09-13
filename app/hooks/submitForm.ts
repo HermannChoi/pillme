@@ -4,26 +4,24 @@ import { itemProps, listProps } from "../types/types";
 
 interface SubmitFormProps {
   e: SyntheticEvent;
-  time: keyof listProps;
+  timePeriod: keyof listProps;
   name: string;
   list: listProps;
   setList: (prev: (prev: listProps) => listProps) => void;
   setIsSubmitted: (value: boolean) => void;
   setName: (value: string) => void;
-  setTime: (value: keyof listProps) => void;
   setErrorMsg: (value: string) => void;
   setIsErrorMsgChanged: (value: boolean) => void;
 }
 
 export const submitForm = ({
   e,
-  time,
+  timePeriod,
   name,
   list,
   setList,
   setIsSubmitted,
   setName,
-  setTime,
   setErrorMsg,
   setIsErrorMsgChanged,
 }: SubmitFormProps) => {
@@ -38,7 +36,7 @@ export const submitForm = ({
     }, 2000);
   }
   if (
-    list[time].some((it) => {
+    list[timePeriod].some((it) => {
       return it.name === name;
     })
   ) {
@@ -52,16 +50,17 @@ export const submitForm = ({
   //생성 아이템
   const newItem: itemProps = {
     id: uuidv4(),
-    time: time,
+    timePeriod: timePeriod,
     date: "M/D",
     name: name,
+    time: "00:00",
     isTaken: false,
   };
   //생성함수
   setList((prev) => {
     return {
       ...prev,
-      [time]: [...prev[time], newItem],
+      [timePeriod]: [...prev[timePeriod], newItem],
     };
   });
   //생성 후 처리되는 함수들
@@ -71,5 +70,4 @@ export const submitForm = ({
   }, 1000);
 
   setName("");
-  setTime("Morning");
 };

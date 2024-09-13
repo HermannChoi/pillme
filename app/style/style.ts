@@ -168,6 +168,7 @@ export const styles = {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
     width: 100%;
     height: 60px;
     padding: 5px 10px;
@@ -188,8 +189,8 @@ export const styles = {
       align-items: center;
       width: 60px;
       height: 30px;
-      border-radius: 5px;
       padding: 3px;
+      border-radius: 5px;
       background-color: ${isTaken ? `${colors.green}` : `#90909099`};
       cursor: pointer;
     `;
@@ -205,10 +206,10 @@ export const styles = {
     }
   `,
   name: css`
-    width: 50%;
-    font-size: 1.1rem;
+    flex: 1;
   `,
   delBtn: css`
+    ${flexCenterX2}
     height: 35px;
     padding: 0 5px;
     border: none;

@@ -1,8 +1,9 @@
 export interface itemProps {
   id: string;
-  time: string;
+  timePeriod: string;
   date: string;
   name: string;
+  time: string;
   isTaken: boolean;
 }
 
