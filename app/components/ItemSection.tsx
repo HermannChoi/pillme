@@ -53,11 +53,7 @@ const ItemSection = () => {
           {Object.keys(list).map(
             (timePeriod) =>
               list[timePeriod as keyof listProps].length > 0 && (
-                <motion.section
-                  key={timePeriod}
-                  exit={{ opacity: 0, y: 20 }}
-                  css={styles.section}
-                >
+                <section key={timePeriod} css={styles.section}>
                   {list[timePeriod as keyof listProps].length > 0 && (
                     <h2 css={styles.h2}>{timePeriod}</h2>
                   )}
@@ -67,7 +63,6 @@ const ItemSection = () => {
                         key={i}
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 60 }}
-                        exit={{ opacity: 0, y: 20 }}
                         transition={{
                           type: "spring",
                           stiffness: 700,
@@ -112,7 +107,7 @@ const ItemSection = () => {
                       </motion.div>
                     );
                   })}
-                </motion.section>
+                </section>
               )
           )}
         </AnimatePresence>
