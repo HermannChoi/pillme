@@ -57,9 +57,6 @@ const ItemSection = () => {
                   <motion.section
                     key={timePeriod}
                     exit={{ opacity: 0, y: 20 }}
-                    transition={{
-                      duration: 0.3,
-                    }}
                     css={styles.section}
                   >
                     {list[timePeriod as keyof listProps].length > 0 && (
@@ -73,7 +70,6 @@ const ItemSection = () => {
                           animate={{ opacity: 1, height: 60 }}
                           exit={{ opacity: 0, y: 20 }}
                           transition={{
-                            duration: 0.3,
                             type: "spring",
                             stiffness: 700,
                             damping: 20,
