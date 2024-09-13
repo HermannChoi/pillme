@@ -106,7 +106,7 @@ const CreateItemForm = () => {
         {isSubmitted ? (
           <span>✓</span>
         ) : (
-          <Image src={pill} alt="pill" loading="lazy" width={30} height={30} />
+          <Image src={pill} alt="pill" property="true" width={30} height={30} />
         )}
       </motion.button>
     </form>
