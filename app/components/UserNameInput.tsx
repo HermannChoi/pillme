@@ -36,6 +36,7 @@ const UserNameInput = () => {
           <form onSubmit={submitForm} css={userNameInputSt.form}>
             <input
               autoFocus
+              required
               type="text"
               maxLength={8}
               value={userName}
