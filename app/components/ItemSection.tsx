@@ -2,7 +2,7 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { styles } from "../style/style";
 import useFormStore from "../store/useFormStore";
 import { listProps } from "../types/types";
@@ -13,7 +13,7 @@ import useDateStore from "../store/useDateStore";
 import { getTotalListLength } from "../utils/getToTalListLength";
 
 const ItemSection = () => {
-  const { list, setList } = useFormStore();
+  const { list, setList, focusInput } = useFormStore();
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
 
   useEffect(() => {
@@ -26,7 +26,6 @@ const ItemSection = () => {
           }),
         }));
       }
-      localStorage.setItem("medList", JSON.stringify(list));
     }
   }, [isDateChanged]);
 
@@ -49,7 +48,7 @@ const ItemSection = () => {
   return (
     <div css={styles.sectionContainer}>
       {getTotalListLength(list) > 0 ? (
-        <AnimatePresence>
+        <>
           {Object.keys(list).map(
             (timePeriod) =>
               list[timePeriod as keyof listProps].length > 0 && (
@@ -110,9 +109,12 @@ const ItemSection = () => {
                 </section>
               )
           )}
-        </AnimatePresence>
+        </>
       ) : (
-        <section css={[styles.section, `height: 80px`]}>
+        <button
+          onClick={() => focusInput()}
+          css={[styles.section, `height: 80px; background-color: transparent;`]}
+        >
           <p
             css={[
               `
@@ -122,7 +124,7 @@ const ItemSection = () => {
           >
             Add your medicine!
           </p>
-        </section>
+        </button>
       )}
     </div>
   );

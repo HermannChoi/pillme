@@ -10,8 +10,10 @@ import { listProps } from "../types/types";
 import Image from "next/image";
 import pill from "@/app/assets/svg/pill.svg";
 import { timeOptions } from "../constant/timeOptions";
+import { useEffect, useRef } from "react";
 
 const CreateItemForm = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const {
     name,
     setName,
@@ -23,9 +25,15 @@ const CreateItemForm = () => {
     setList,
     isSubmitted,
     setIsSubmitted,
+    setFocusInput,
   } = useFormStore();
-
   const { setErrorMsg, setIsErrorMsgChanged } = useErrorMsgStore();
+
+  useEffect(() => {
+    setFocusInput(() => {
+      inputRef.current && inputRef.current.focus(); // 실제 포커스 함수
+    });
+  }, [setFocusInput]);
 
   return (
     <form
@@ -49,6 +57,7 @@ const CreateItemForm = () => {
           Name
         </label>
         <input
+          ref={inputRef}
           autoComplete="off"
           id="name"
           type="text"
@@ -104,7 +113,7 @@ const CreateItemForm = () => {
         {isSubmitted ? (
           <span>✓</span>
         ) : (
-          <Image src={pill} alt="pill" property="true" width={30} height={30} />
+          <Image src={pill} alt="pill" priority={true} width={30} height={30} />
         )}
       </motion.button>
     </form>

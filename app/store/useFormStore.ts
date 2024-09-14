@@ -12,6 +12,8 @@ interface UseFormStoreProps {
   setList: (newList: listProps | ((prevList: listProps) => listProps)) => void;
   isSubmitted: boolean;
   setIsSubmitted: (value: boolean) => void;
+  focusInput: () => void;
+  setFocusInput: (focusFunc: () => void) => void;
 }
 
 const useFormStore = create<UseFormStoreProps>((set) => ({
@@ -38,6 +40,8 @@ const useFormStore = create<UseFormStoreProps>((set) => ({
 
   isSubmitted: false,
   setIsSubmitted: (value) => set({ isSubmitted: value }),
+  focusInput: () => {}, // 기본적으로 빈 함수로 초기화
+  setFocusInput: (focusFunc) => set({ focusInput: focusFunc }),
 }));
 
 export default useFormStore;
