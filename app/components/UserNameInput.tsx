@@ -16,7 +16,7 @@ const UserNameInput = () => {
     localStorage.setItem("userName", userName);
     setTimeout(() => {
       setIsUserNameInputOn(false);
-    }, 3000);
+    }, 3500);
   };
 
   useLayoutEffect(() => {
@@ -38,7 +38,7 @@ const UserNameInput = () => {
               autoFocus
               required
               type="text"
-              maxLength={8}
+              maxLength={15}
               value={userName}
               onChange={(e) => setUserName(e.currentTarget.value)}
               css={userNameInputSt.input}

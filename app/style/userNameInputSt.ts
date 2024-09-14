@@ -13,7 +13,7 @@ export const userNameInputSt = {
       height: 100vh;
       background-color: ${colors.darkBackground};
       z-index: 900;
-      animation: ${isSubmitted && fadeOut} 1s 2s;
+      animation: ${isSubmitted && fadeOut} 1s 2s forwards;
 
       @media (prefers-color-scheme: light) {
         background-color: #ffffff;

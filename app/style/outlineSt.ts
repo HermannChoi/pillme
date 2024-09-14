@@ -2,13 +2,6 @@ import { css } from "@emotion/react";
 import { colors, flexCenterX2, flexColumnCenterX2 } from "./commonSt";
 
 export const outlineSt = {
-  container: css`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 5px;
-    width: 100%;
-  `,
   header: css`
     margin-top: 3rem;
   `,

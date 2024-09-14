@@ -36,6 +36,7 @@ export const itemSectionSt = {
   ],
   emptyItemSectionText: css`
     color: ${colors.grey};
+    font-size: 1rem;
   `,
   listItem: css`
     display: flex;

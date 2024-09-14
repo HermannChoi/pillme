@@ -73,7 +73,6 @@ const CreateItemForm = () => {
         </label>
         <motion.div
           css={createItemFormSt.timeSelect}
-          whileHover={{ scale: 1.05 }}
           onClick={() => setIsSelectOpen(!isSelectOpen)}
         >
           {timePeriod || "Select an option"}

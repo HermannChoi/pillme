@@ -13,7 +13,7 @@ import UserNameInput from "./components/UserNameInput";
 
 const Home = () => {
   return (
-    <div css={outlineSt.container}>
+    <>
       <CoverPage />
       <UserNameInput />
       <header css={outlineSt.header}>
@@ -27,7 +27,7 @@ const Home = () => {
         <ItemSection />
       </main>
       <Footer />
-    </div>
+    </>
   );
 };
 

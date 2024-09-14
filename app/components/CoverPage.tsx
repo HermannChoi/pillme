@@ -11,7 +11,7 @@ const CoverPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsCoverPageGone(true);
-    }, 1000);
+    }, 1200);
   }, [setIsCoverPageGone]);
 
   return (
