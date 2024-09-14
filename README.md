@@ -1,36 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Take Medicine
 
-## Getting Started
+사람들이 그 날 먹을 약을 복용or사용 했는지 헷갈리는 경우가 자주 있다는 것을 깨달았습니다. '어떻게 하면 헷갈리지 않을 수 있을까?'를 생각하다가 본 서비스를 만들게 되었습니다. 시간대에 맞게 약을 추가할 수 있고, 해당 약을 사용or복용 시 그 아이템를 클릭 하면 활성화되고 클릭한 날짜 및 시간이 저장되게 됩니다. 그리고 활성화된 아이템들은 매일 00시에 비활성화 됩니다.
 
-First, run the development server:
+> 링크 : https://take-medicine.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Next.js, TypeScript, Emotion, Zustand, Github Actions
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Introduce
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 상단 인풋에 이름과 원하는 시간대를 선택하고 추가 시 하단에 아이템이 추가가 됩니다.
+- 아이템 좌측의 토글버튼을 클릭으로 활성화를 할 수 있고 클릭 시 날짜 및 현재시각이 기록됩니다.
+- 아이템 우측 D 버튼으로 원하는 아이템을 삭제할 수 있습니다.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+  <img src="app/assets/readme/img1.png" width=300 />
