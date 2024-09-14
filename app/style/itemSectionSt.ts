@@ -15,7 +15,7 @@ export const itemSectionSt = {
       row-gap: 5px;
       width: 100%;
       padding: 5px;
-      border: 1px solid ${colors.gray};
+      border: 1px solid ${colors.grey};
       border-radius: 5px;
     `,
   ],
@@ -24,7 +24,7 @@ export const itemSectionSt = {
     css`
       width: 100%;
       height: 80px;
-      border: 1px solid ${colors.gray};
+      border: 1px solid ${colors.grey};
       border-radius: 5px;
       background-color: transparent;
       transition: 0.2s;
@@ -35,7 +35,7 @@ export const itemSectionSt = {
     `,
   ],
   emptyItemSectionText: css`
-    color: ${colors.gray};
+    color: ${colors.grey};
   `,
   listItem: css`
     display: flex;
@@ -45,7 +45,7 @@ export const itemSectionSt = {
     width: 100%;
     height: 60px;
     padding: 5px 10px;
-    border: 1px solid ${colors.gray};
+    border: 1px solid ${colors.grey};
     border-radius: 5px;
     transition: background-color 0.2s;
     overflow: hidden;

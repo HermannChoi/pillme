@@ -6,9 +6,11 @@ export const outlineSt = {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 3rem;
     row-gap: 5px;
     width: 100%;
+  `,
+  header: css`
+    margin-top: 3rem;
   `,
   h1: css`
     font-size: 3.4rem;
@@ -26,10 +28,18 @@ export const outlineSt = {
       min-width: 360px;
     `,
   ],
+  userNameContainer: css`
+    ${flexCenterX2}
+    gap: 10px;
+    width: 100%;
+    height: 30px;
+    border-radius: 3px;
+    background-color: ${colors.green}bb;
+  `,
   footer: [flexCenterX2, css``],
   footerText: css`
     padding: 20px 0;
-    color: ${colors.gray}80;
+    color: ${colors.grey}80;
   `,
   Link: css`
     color: ${colors.green};

@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 /** @jsxImportSource @emotion/react */
 
@@ -7,18 +6,18 @@ import { coverPageSt } from "../style/coverPageSt";
 import useCoverPageStore from "../store/useCoverPageStore";
 
 const CoverPage = () => {
-  const { setIsCoverPageGone } = useCoverPageStore();
+  const { isCoverPageGone, setIsCoverPageGone } = useCoverPageStore();
 
   useEffect(() => {
     setTimeout(() => {
       setIsCoverPageGone(true);
     }, 1000);
-  }, []);
+  }, [setIsCoverPageGone]);
 
   return (
-    <header css={coverPageSt.container}>
-      <h1>Take Medicine</h1>
-    </header>
+    <div css={coverPageSt.container(isCoverPageGone)}>
+      <p css={coverPageSt.text}>Take Medicine</p>
+    </div>
   );
 };
 

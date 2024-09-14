@@ -24,3 +24,12 @@ export const twitching2 = keyframes`
   80%{transform: translateX(2px)}
   100%{transform: translateX(0px)}
 `;
+
+export const welcomeTextAni = keyframes`
+  0% {
+    opacity: 0;
+  }
+    100% {
+    opacity: 1;
+  }
+`;

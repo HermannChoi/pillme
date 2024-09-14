@@ -7,23 +7,28 @@ import CreateItemForm from "./components/CreateItemForm";
 import ErrorMsg from "./components/ErrorMsg";
 import ItemSection from "./components/ItemSection";
 import Footer from "./components/Footer";
-import useCoverPageStore from "./store/useCoverPageStore";
 import InfoSec from "./components/InfoSec";
+import UserNameSection from "./components/UserNameSection";
+import UserNameInput from "./components/UserNameInput";
 
-export default function Home() {
-  const { isCoverPageGone } = useCoverPageStore();
-
+const Home = () => {
   return (
     <div css={outlineSt.container}>
-      {!isCoverPageGone && <CoverPage />}
-      <h1 css={outlineSt.h1}>Take Medicine</h1>
+      <CoverPage />
+      <UserNameInput />
+      <header css={outlineSt.header}>
+        <h1 css={outlineSt.h1}>Take Medicine</h1>
+      </header>
       <main css={outlineSt.main}>
+        <UserNameSection />
         <CreateItemForm />
         <ErrorMsg />
         <InfoSec />
         <ItemSection />
-        <Footer />
       </main>
+      <Footer />
     </div>
   );
-}
+};
+
+export default Home;

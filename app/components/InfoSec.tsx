@@ -25,7 +25,7 @@ const InfoSec = () => {
     } else {
       setLastCheckedDate(storedDate);
     }
-  }, [today, setIsDateChanged]);
+  }, [today, setIsDateChanged, lastCheckedDate, setLastCheckedDate]);
 
   return (
     <div css={itemSectionSt.section}>

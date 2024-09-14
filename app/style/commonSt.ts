@@ -1,8 +1,9 @@
 import { css } from "@emotion/react";
 
 export const colors = {
-  gray: "#808080",
+  grey: "#808080",
   green: "#00d5a5",
+  darkBackground: "#0a0a0a",
   red: "#ff3939",
 };
 
