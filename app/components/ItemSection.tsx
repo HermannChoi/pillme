@@ -3,7 +3,6 @@
 /** @jsxImportSource @emotion/react */
 
 import { motion } from "framer-motion";
-import { styles } from "../style/style";
 import useFormStore from "../store/useFormStore";
 import { listProps } from "../types/types";
 import { toggleIsTaken } from "../hooks/toggleIsTaken";
@@ -11,6 +10,8 @@ import { clickDelete } from "../hooks/clickDelete";
 import { useEffect } from "react";
 import useDateStore from "../store/useDateStore";
 import { getTotalListLength } from "../utils/getToTalListLength";
+import { itemSectionSt } from "../style/itemSectionSt";
+import { outlineSt } from "../style/outlineSt";
 
 const ItemSection = () => {
   const { list, setList, focusInput } = useFormStore();
@@ -46,15 +47,15 @@ const ItemSection = () => {
   }, []);
 
   return (
-    <div css={styles.sectionContainer}>
+    <div css={itemSectionSt.sectionContainer}>
       {getTotalListLength(list) > 0 ? (
         <>
           {Object.keys(list).map(
             (timePeriod) =>
               list[timePeriod as keyof listProps].length > 0 && (
-                <section key={timePeriod} css={styles.section}>
+                <section key={timePeriod} css={itemSectionSt.section}>
                   {list[timePeriod as keyof listProps].length > 0 && (
-                    <h2 css={styles.h2}>{timePeriod}</h2>
+                    <h2 css={outlineSt.h2}>{timePeriod}</h2>
                   )}
                   {list[timePeriod as keyof listProps].map((item, i) => {
                     return (
@@ -67,18 +68,20 @@ const ItemSection = () => {
                           stiffness: 700,
                           damping: 20,
                         }}
-                        onClick={() =>
-                          toggleIsTaken({
-                            timePeriod: timePeriod as keyof listProps,
-                            id: item.id,
-                            setList,
-                          })
-                        }
-                        css={styles.listItem}
+                        css={itemSectionSt.listItem}
                       >
-                        <div id={item.id} css={styles.toggle(item.isTaken)}>
+                        <div
+                          onClick={() =>
+                            toggleIsTaken({
+                              timePeriod: timePeriod as keyof listProps,
+                              id: item.id,
+                              setList,
+                            })
+                          }
+                          css={itemSectionSt.toggle(item.isTaken)}
+                        >
                           <motion.div
-                            css={styles.handle}
+                            css={itemSectionSt.handle}
                             layout
                             transition={{
                               type: "spring",
@@ -88,7 +91,7 @@ const ItemSection = () => {
                           />
                         </div>
                         <p>{item.date}</p>
-                        <p css={styles.name}>{item.name}</p>
+                        <p css={itemSectionSt.name}>{item.name}</p>
                         <p>{item.time}</p>
                         <button
                           onClick={(e) =>
@@ -99,7 +102,7 @@ const ItemSection = () => {
                               setList
                             )
                           }
-                          css={styles.delBtn}
+                          css={itemSectionSt.delBtn}
                         >
                           D
                         </button>
@@ -113,17 +116,9 @@ const ItemSection = () => {
       ) : (
         <button
           onClick={() => focusInput()}
-          css={[styles.section, `height: 80px; background-color: transparent;`]}
+          css={itemSectionSt.emptyItemSection}
         >
-          <p
-            css={[
-              `
-                color: #808080;
-              `,
-            ]}
-          >
-            Add your medicine!
-          </p>
+          <p css={itemSectionSt.emptyItemSectionText}>Add your medicine!</p>
         </button>
       )}
     </div>

@@ -5,12 +5,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { submitForm } from "../hooks/submitForm";
 import useErrorMsgStore from "../store/useErrorMsgStore";
 import useFormStore from "../store/useFormStore";
-import { styles } from "../style/style";
 import { listProps } from "../types/types";
 import Image from "next/image";
 import pill from "@/app/assets/svg/pill.svg";
 import { timeOptions } from "../constant/timeOptions";
 import { useEffect, useRef } from "react";
+import { createItemFormSt } from "../style/createItemFormSt";
 
 const CreateItemForm = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -37,7 +37,7 @@ const CreateItemForm = () => {
 
   return (
     <form
-      css={styles.form}
+      css={createItemFormSt.form}
       onSubmit={(e) =>
         submitForm({
           e,
@@ -52,8 +52,8 @@ const CreateItemForm = () => {
         })
       }
     >
-      <div css={styles.inputContainer}>
-        <label htmlFor="name" css={styles.label}>
+      <div css={createItemFormSt.inputContainer}>
+        <label htmlFor="name" css={createItemFormSt.label}>
           Name
         </label>
         <input
@@ -64,15 +64,15 @@ const CreateItemForm = () => {
           maxLength={20}
           value={name}
           onChange={(e) => setName(e.target.value)}
-          css={styles.input}
+          css={createItemFormSt.input}
         />
       </div>
-      <div css={styles.timeSelectContainer}>
-        <label htmlFor="time" css={styles.label}>
+      <div css={createItemFormSt.timeSelectContainer}>
+        <label htmlFor="time" css={createItemFormSt.label}>
           Time
         </label>
         <motion.div
-          css={styles.timeSelect}
+          css={createItemFormSt.timeSelect}
           whileHover={{ scale: 1.05 }}
           onClick={() => setIsSelectOpen(!isSelectOpen)}
         >
@@ -81,7 +81,7 @@ const CreateItemForm = () => {
             {isSelectOpen && (
               <motion.ul
                 id="time"
-                css={styles.optionContainer}
+                css={createItemFormSt.optionContainer}
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 160 }}
                 exit={{ opacity: 0, height: 0 }}
@@ -94,7 +94,7 @@ const CreateItemForm = () => {
                         setTimePeriod(opt as keyof listProps);
                         setIsSelectOpen(false);
                       }}
-                      css={styles.option}
+                      css={createItemFormSt.option}
                     >
                       {opt}
                     </li>
@@ -108,7 +108,7 @@ const CreateItemForm = () => {
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        css={styles.addBtn}
+        css={createItemFormSt.addBtn}
       >
         {isSubmitted ? (
           <span>✓</span>

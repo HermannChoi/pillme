@@ -1,7 +1,7 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { styles } from "./style/style";
+import { outlineSt } from "./style/outlineSt";
 import CoverPage from "./components/CoverPage";
 import CreateItemForm from "./components/CreateItemForm";
 import ErrorMsg from "./components/ErrorMsg";
@@ -14,10 +14,10 @@ export default function Home() {
   const { isCoverPageGone } = useCoverPageStore();
 
   return (
-    <div css={styles.container}>
+    <div css={outlineSt.container}>
       {!isCoverPageGone && <CoverPage />}
-      <h1 css={styles.h1}>Take Medicine</h1>
-      <main css={styles.main}>
+      <h1 css={outlineSt.h1}>Take Medicine</h1>
+      <main css={outlineSt.main}>
         <CreateItemForm />
         <ErrorMsg />
         <InfoSec />

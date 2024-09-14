@@ -4,9 +4,9 @@
 import { useEffect } from "react";
 import useDateStore from "../store/useDateStore";
 import useFormStore from "../store/useFormStore";
-import { styles } from "../style/style";
 import { getTotalListLength } from "../utils/getToTalListLength";
 import { getKoreanDate } from "../utils/getKoreanDate";
+import { itemSectionSt } from "../style/itemSectionSt";
 
 const InfoSec = () => {
   const { list } = useFormStore();
@@ -28,7 +28,7 @@ const InfoSec = () => {
   }, [today, setIsDateChanged]);
 
   return (
-    <div css={styles.section}>
+    <div css={itemSectionSt.section}>
       <p>{lastCheckedDate}</p>
       <p>{"Registered Item : " + getTotalListLength(list)}</p>
     </div>

@@ -1,15 +1,15 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { styles } from "../style/style";
 import useErrorMsgStore from "../store/useErrorMsgStore";
+import { createItemFormSt } from "../style/createItemFormSt";
 
 const ErrorMsg = () => {
   const { errorMsg, isErrorMsgChanged } = useErrorMsgStore();
 
   return (
-    <div css={styles.msgContainer}>
-      <p css={styles.errorMsg(isErrorMsgChanged)}>{errorMsg}</p>
+    <div css={createItemFormSt.errorMsgContainer}>
+      <p css={createItemFormSt.errorMsg(isErrorMsgChanged)}>{errorMsg}</p>
     </div>
   );
 };

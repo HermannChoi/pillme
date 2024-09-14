@@ -3,7 +3,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { useEffect } from "react";
-import { CPSt } from "../style/coverPageSt";
+import { coverPageSt } from "../style/coverPageSt";
 import useCoverPageStore from "../store/useCoverPageStore";
 
 const CoverPage = () => {
@@ -16,7 +16,7 @@ const CoverPage = () => {
   }, []);
 
   return (
-    <header css={CPSt.container}>
+    <header css={coverPageSt.container}>
       <h1>Take Medicine</h1>
     </header>
   );

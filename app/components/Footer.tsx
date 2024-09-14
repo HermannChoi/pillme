@@ -1,15 +1,15 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { styles } from "../style/style";
+import { outlineSt } from "../style/outlineSt";
 import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer css={styles.footer}>
-      <p css={styles.footerText}>
+    <footer css={outlineSt.footer}>
+      <p css={outlineSt.footerText}>
         made by{" "}
-        <Link href={"https://yunseokchoi.vercel.app/"} css={styles.Link}>
+        <Link href={"https://yunseokchoi.vercel.app/"} css={outlineSt.Link}>
           Yunseok Choi
         </Link>
       </p>
