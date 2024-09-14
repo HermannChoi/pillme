@@ -39,10 +39,11 @@ export const userNameInputSt = {
     font-size: 1.2rem;
   `,
   button: css`
-    height: 2rem;
+    padding: 0.5rem;
     border: 1px solid ${colors.grey};
     border-radius: 5px;
     background-color: ${colors.green}90;
+    font-size: 1rem;
 
     &:hover {
       background-color: ${colors.green};
