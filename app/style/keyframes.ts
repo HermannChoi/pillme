@@ -25,11 +25,17 @@ export const twitching2 = keyframes`
   100%{transform: translateX(0px)}
 `;
 
-export const welcomeTextAni = keyframes`
+export const fadeIn = keyframes`
   0% {
     opacity: 0;
   }
-    100% {
+  100% {
     opacity: 1;
+  }
+`;
+
+export const rotate360 = keyframes`
+  100% {
+    transform: rotate(360deg);
   }
 `;

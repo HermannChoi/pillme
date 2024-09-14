@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { colors, flexColumnCenterX2 } from "./commonSt";
-import { fadeOut, welcomeTextAni } from "./keyframes";
+import { fadeIn, fadeOut, rotate360 } from "./keyframes";
 
 export const userNameInputSt = {
   container: (isUserNameInputOn: boolean, isSubmitted: boolean) => {
@@ -20,10 +20,22 @@ export const userNameInputSt = {
       }
     `;
   },
-  innerContainer: css`
+  innerContainer: (isSubmitted: boolean) => {
+    return css`
+      ${flexColumnCenterX2}
+      row-gap: 0.5rem;
+      width: 300px;
+      margin-bottom: 5rem;
+      animation ${isSubmitted && fadeOut} 0.3s;
+    `;
+  },
+  pill: css`
+    animation: ${rotate360} 5s linear infinite;
+  `,
+  formContainer: css`
     ${flexColumnCenterX2}
     row-gap: 0.5rem;
-    width: 300px;
+    width: 100%;
   `,
   form: css`
     display: flex;
@@ -51,6 +63,6 @@ export const userNameInputSt = {
   `,
   welcomeText: css`
     font-size: 1.2rem;
-    animation: ${welcomeTextAni} 1s;
+    animation: ${fadeIn} 1s;
   `,
 };
