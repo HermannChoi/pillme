@@ -55,7 +55,7 @@ const UserNameInput = () => {
             }}
             css={userNameInputSt.formContainer}
           >
-            <p>hello, it's Take Medicine!</p>
+            <p>{`hello, it's Take Medicine!`}</p>
             <Image
               src={pill}
               alt="pill"
