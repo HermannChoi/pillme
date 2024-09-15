@@ -88,7 +88,6 @@ export const createItemFormSt = {
       background-color: ${colors.green};
       border: none;
       border-radius: 10px;
-      font-size: 1rem;
     `,
   ],
   pill: () => {
