@@ -12,6 +12,7 @@ import useDateStore from "../store/useDateStore";
 import { getTotalListLength } from "../utils/getToTalListLength";
 import { itemSectionSt } from "../style/itemSectionSt";
 import { outlineSt } from "../style/outlineSt";
+import { vibrate } from "../utils/vibrate";
 
 const ItemSection = () => {
   const { list, setList, focusInput } = useFormStore();
@@ -23,7 +24,7 @@ const ItemSection = () => {
       id: item.id,
       setList,
     });
-    window.navigator.vibrate(100);
+    vibrate(100);
   };
 
   useEffect(() => {
