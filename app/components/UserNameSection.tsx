@@ -9,7 +9,7 @@ const UserNameSection = () => {
 
   return (
     <div css={outlineSt.userNameContainer}>
-      <p>Welcome, {userName}</p>
+      <p>Hello, {userName}</p>
     </div>
   );
 };

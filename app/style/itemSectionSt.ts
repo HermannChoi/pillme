@@ -16,8 +16,9 @@ export const itemSectionSt = {
       row-gap: 5px;
       width: 100%;
       padding: 5px;
-      border: 1px solid ${colors.grey};
-      border-radius: 5px;
+      border: none;
+      border-radius: 10px;
+      background-color: ${colors.grey}12;
     `,
   ],
   emptyItemSection: [
@@ -25,15 +26,15 @@ export const itemSectionSt = {
     css`
       width: 100%;
       height: 80px;
-      border: 3px solid ${colors.grey};
-      border-radius: 5px;
-      background-color: transparent;
+      border: none;
+      border-radius: 10px;
+      background-color: ${colors.grey}12;
       color: ${colors.grey};
       transition: 0.2s;
-      animation: ${emptyItemSectionAni} 1s ease-in alternate infinite;
+      animation: ${emptyItemSectionAni} 2s ease-in-out alternate infinite;
 
       &:hover {
-        border-color: ${colors.green};
+        background-color: ${colors.grey}24;
         color: ${colors.green};
       }
     `,
@@ -46,14 +47,15 @@ export const itemSectionSt = {
     width: 100%;
     height: 60px;
     padding: 5px 10px;
-    border: 1px solid ${colors.grey};
-    border-radius: 5px;
+    border: none;
+    border-radius: 10px;
+    background-color: ${colors.grey}12;
     transition: background-color 0.2s;
     overflow: hidden;
 
     &:hover {
       border-color: ${colors.green};
-      background-color: ${colors.green}10;
+      background-color: ${colors.green}20;
     }
   `,
   toggle: (isTaken: boolean) => {
@@ -64,7 +66,7 @@ export const itemSectionSt = {
       width: 60px;
       height: 30px;
       padding: 3px;
-      border-radius: 5px;
+      border-radius: 10px;
       background-color: ${isTaken ? `${colors.green}` : `#90909099`};
       cursor: pointer;
     `;
@@ -73,7 +75,7 @@ export const itemSectionSt = {
     width: 25px;
     height: 25px;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 10px;
   `,
   name: css`
     flex: 1;
@@ -84,7 +86,7 @@ export const itemSectionSt = {
       height: 35px;
       padding: 0 5px;
       border: none;
-      border-radius: 5px;
+      border-radius: 10px;
       background-color: ${colors.red};
       transition: 0.2s;
     `,

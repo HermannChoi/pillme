@@ -69,7 +69,7 @@ const UserNameInput = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 3.5 }}
+            transition={{ duration: 1, delay: 3 }}
             css={userNameInputSt.formContainer}
           >
             <label htmlFor="userNameInput">{question}</label>

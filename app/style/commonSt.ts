@@ -4,7 +4,7 @@ export const colors = {
   grey: "#808080",
   green: "#00d5a5",
   darkBackground: "#0a0a0a",
-  red: "#ff3939",
+  red: "#ff5353",
 };
 
 export const flexColumnCenterX2 = css`

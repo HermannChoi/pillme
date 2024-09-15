@@ -46,14 +46,18 @@ export const userNameInputSt = {
   input: css`
     height: 2.5rem;
     border: 1px solid ${colors.grey};
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: center;
     font-size: 1.2rem;
+
+    &:focus {
+      border-color: ${colors.green};
+    }
   `,
   button: css`
     padding: 0.5rem;
-    border: 1px solid ${colors.grey};
-    border-radius: 5px;
+    border: none;
+    border-radius: 10px;
     background-color: ${colors.green}90;
 
     &:hover {

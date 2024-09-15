@@ -26,18 +26,21 @@ export const outlineSt = {
     gap: 10px;
     width: 100%;
     height: 30px;
-    border-radius: 3px;
+    border-radius: 10px;
     background-color: ${colors.green}bb;
   `,
   resetUserNameBtn: css`
     width: 100%;
     padding: 0.2rem;
-    border: 1px solid ${colors.red}60;
-    border-radius: 5px;
-    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    background-color: ${colors.red}60;
+    color: ${colors.red};
+    transition: 0.3s;
 
     &:hover {
-      color: ${colors.red};
+      background-color: ${colors.red}50;
+      transform: scale(0.98);
     }
   `,
   footer: [flexCenterX2],

@@ -43,7 +43,6 @@ export const rotate360 = keyframes`
 
 export const emptyItemSectionAni = keyframes`
   100% {
-    border-color: ${colors.green};
-    font-size: 1.1rem;
+    color: ${colors.green};
   }
 `;

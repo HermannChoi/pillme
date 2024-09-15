@@ -20,7 +20,7 @@ export const createItemFormSt = {
     width: 100%;
     height: 40px;
     border: 1px solid ${colors.grey};
-    border-radius: 5px;
+    border-radius: 10px;
     text-indent: 5px;
 
     &:focus {
@@ -37,13 +37,14 @@ export const createItemFormSt = {
       position: relative;
       width: 100%;
       height: 40px;
-      border: 1px solid ${colors.grey};
-      border-radius: 5px;
+      border: none;
+      border-radius: 10px;
       background-color: ${colors.green}30;
+      transition: 0.2s;
       cursor: pointer;
 
       &:hover {
-        border-color: ${colors.green};
+        background-color: ${colors.green}60;
       }
 
       @media (prefers-color-scheme: light) {
@@ -58,9 +59,10 @@ export const createItemFormSt = {
     display: flex;
     flex-direction: column;
     width: 100%;
-    border: 1px solid ${colors.grey};
-    border-radius: 5px;
+    border: none;
+    border-radius: 10px;
     background-color: #0a0a0a;
+    overflow: hidden;
     cursor: pointer;
     z-index: 10;
 
@@ -85,7 +87,7 @@ export const createItemFormSt = {
       height: 40px;
       background-color: ${colors.green};
       border: none;
-      border-radius: 5px;
+      border-radius: 10px;
       font-size: 1.5rem;
     `,
   ],
@@ -93,7 +95,7 @@ export const createItemFormSt = {
     return css`
       width: 10px;
       height: 10px;
-      border: 1px solid ${colors.grey};
+      border: none;
       border-radius: 50%;
     `;
   },

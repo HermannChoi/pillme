@@ -8,7 +8,6 @@ import { getTotalListLength } from "../utils/getToTalListLength";
 import { getKoreanDate } from "../utils/getKoreanDate";
 import { itemSectionSt } from "../style/itemSectionSt";
 import { css } from "@emotion/react";
-import { colors } from "../style/commonSt";
 
 const InfoSec = () => {
   const { list } = useFormStore();
@@ -34,11 +33,11 @@ const InfoSec = () => {
     css`
       position: sticky;
       top: 0;
-      background-color: ${colors.darkBackground};
+      background-color: #151515;
       z-index: 1;
 
       @media (prefers-color-scheme: light) {
-        background-color: #ffffff;
+        background-color: #f5f5f5;
       }
     `,
   ];
