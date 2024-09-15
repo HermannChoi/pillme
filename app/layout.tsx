@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CoverPage from "./components/CoverPage";
+import UserNameInput from "./components/UserNameInput";
 
 export const metadata: Metadata = {
   title: "Take Medicine",
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en" className={`${SUSE.variable} system-ui`}>
       <body>
         <CoverPage />
+        <UserNameInput />
         <Header />
         {children}
         <Footer />
