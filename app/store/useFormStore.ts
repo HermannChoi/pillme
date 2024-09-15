@@ -14,6 +14,8 @@ interface UseFormStoreProps {
   setIsSubmitted: (value: boolean) => void;
   focusInput: () => void;
   setFocusInput: (focusFunc: () => void) => void;
+  isEasterEggsOn: boolean;
+  setIsEasterEggsOn: (value: boolean) => void;
 }
 
 const useFormStore = create<UseFormStoreProps>((set) => ({
@@ -42,6 +44,8 @@ const useFormStore = create<UseFormStoreProps>((set) => ({
   setIsSubmitted: (value) => set({ isSubmitted: value }),
   focusInput: () => {}, // 기본적으로 빈 함수로 초기화
   setFocusInput: (focusFunc) => set({ focusInput: focusFunc }),
+  isEasterEggsOn: false,
+  setIsEasterEggsOn: (value) => set({ isEasterEggsOn: value }),
 }));
 
 export default useFormStore;

@@ -8,15 +8,18 @@ export const outlineSt = {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 2.5rem;
-    margin-top: 0.5rem;
+    height: 3rem;
     background-color: #0a0a0ae6;
     backdrop-filter: blur(10px);
     z-index: 100;
+
+    @media (prefers-color-scheme: light) {
+      background-color: #ffffffe6;
+    }
   `,
   h1: css`
     color: ${colors.grey};
-    font-size: 1.5rem;
+    font-size: 2rem;
   `,
   h2: css`
     margin-bottom: 10px;
@@ -29,14 +32,19 @@ export const outlineSt = {
       width: 100%;
     `,
   ],
-  userNameContainer: css`
-    ${flexCenterX2}
-    width: 100%;
-    height: 30px;
-    border-radius: 10px;
-    margin-top: 0.5rem;
-    background-color: ${colors.grey}20;
-  `,
+  userNameContainer: (isEasterEggsOn: boolean) => {
+    return css`
+      ${flexCenterX2}
+      width: 100%;
+      height: 3rem;
+      border-radius: 10px;
+      margin-top: 0.5rem;
+      background-color: ${colors.grey}12;
+      ${isEasterEggsOn && `color: green;`}
+      font-size: 1.2rem;
+      font-weight: 600;
+    `;
+  },
   resetUserNameBtn: css`
     width: 100%;
     padding: 0.2rem;

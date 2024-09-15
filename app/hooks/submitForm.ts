@@ -1,5 +1,5 @@
 import { SyntheticEvent } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuid } from "uuid";
 import { itemProps, listProps } from "../types/types";
 import { vibrate } from "../utils/vibrate";
 
@@ -13,6 +13,7 @@ interface SubmitFormProps {
   setName: (value: string) => void;
   setErrorMsg: (value: string) => void;
   setIsErrorMsgChanged: (value: boolean) => void;
+  setIsEasterEggsOn: (value: boolean) => void;
 }
 
 export const submitForm = ({
@@ -25,6 +26,7 @@ export const submitForm = ({
   setName,
   setErrorMsg,
   setIsErrorMsgChanged,
+  setIsEasterEggsOn,
 }: SubmitFormProps) => {
   e.preventDefault();
   //예외처리
@@ -46,9 +48,16 @@ export const submitForm = ({
       setIsErrorMsgChanged,
     });
   }
+  //이스터에그
+  if (name.toLocaleLowerCase() === "thank you") {
+    setIsEasterEggsOn(true);
+    setTimeout(() => {
+      setIsEasterEggsOn(false);
+    }, 3000);
+  }
   //생성 아이템
   const newItem: itemProps = {
-    id: uuidv4(),
+    id: uuid(),
     timePeriod: timePeriod,
     date: "M/D",
     name: name,

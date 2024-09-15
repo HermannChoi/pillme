@@ -24,6 +24,7 @@ const CreateItemForm = () => {
     isSubmitted,
     setIsSubmitted,
     setFocusInput,
+    setIsEasterEggsOn,
   } = useFormStore();
   const { setErrorMsg, setIsErrorMsgChanged } = useErrorMsgStore();
 
@@ -47,6 +48,7 @@ const CreateItemForm = () => {
           setName,
           setErrorMsg,
           setIsErrorMsgChanged,
+          setIsEasterEggsOn,
         })
       }
     >
@@ -107,7 +109,7 @@ const CreateItemForm = () => {
         whileTap={{ scale: 0.9 }}
         css={createItemFormSt.addBtn}
       >
-        {isSubmitted ? "✓" : "﹢"}
+        {isSubmitted ? "✓" : "Add"}
       </motion.button>
     </form>
   );
