@@ -1,12 +1,14 @@
 import { css } from "@emotion/react";
-import { colors, flexCenterX2, flexColumnCenterX2 } from "./commonSt";
+import { colors, flexCenterX2 } from "./commonSt";
 
 export const outlineSt = {
   header: css`
     position: sticky;
     top: 0;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
+    gap: 0.3em;
     width: 100%;
     height: 3rem;
     background-color: #0a0a0ae6;
@@ -25,13 +27,6 @@ export const outlineSt = {
     margin-bottom: 10px;
     font-size: 2rem;
   `,
-  main: [
-    flexColumnCenterX2,
-    css`
-      row-gap: 5px;
-      width: 100%;
-    `,
-  ],
   userNameContainer: (isEasterEggsOn: boolean) => {
     return css`
       ${flexCenterX2}

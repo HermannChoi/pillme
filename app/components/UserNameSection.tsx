@@ -15,8 +15,8 @@ const UserNameSection = () => {
     const hours = new Date().getHours();
 
     if (hours >= 0 && hours < 5) setGreeting("Good Dawn");
-    else if (hours >= 5 && hours < 9) setGreeting("Good Morning");
-    else if (hours >= 9 && hours < 17) setGreeting("Good Afternoon");
+    else if (hours >= 5 && hours < 12) setGreeting("Good Morning");
+    else if (hours >= 12 && hours < 18) setGreeting("Good Afternoon");
     else setGreeting("Good Evening");
   }, [setGreeting]);
 
