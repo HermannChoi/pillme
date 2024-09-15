@@ -26,7 +26,7 @@ export const outlineSt = {
   `,
   h2: css`
     margin-bottom: 10px;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 500;
   `,
   userNameContainer: (isEasterEggsOn: boolean) => {
