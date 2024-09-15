@@ -77,7 +77,7 @@ export const createItemFormSt = {
     height: 40px;
     padding-left: 5px;
     &:hover {
-      background-color: ${colors.grey}80;
+      background-color: ${colors.green}30;
     }
   `,
   addBtn: [

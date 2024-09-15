@@ -1,5 +1,5 @@
 import { SyntheticEvent } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuid } from "uuid";
 import { itemProps, listProps } from "../types/types";
 import { vibrate } from "../utils/vibrate";
 
@@ -29,26 +29,30 @@ export const submitForm = ({
   e.preventDefault();
   //예외처리
   if (name === "") {
-    return exceptionFunction({
-      errorMsg: "Please write a name of the medicine",
-      setErrorMsg,
-      setIsErrorMsgChanged,
-    });
+    setErrorMsg("Please write a name of the medicine");
+    setIsErrorMsgChanged(true);
+    vibrate(200);
+    return setTimeout(() => {
+      setErrorMsg("");
+      setIsErrorMsgChanged(false);
+    }, 2000);
   }
   if (
     list[timePeriod].some((it) => {
       return it.name === name;
     })
   ) {
-    return exceptionFunction({
-      errorMsg: "It already exists on the time.",
-      setErrorMsg,
-      setIsErrorMsgChanged,
-    });
+    setErrorMsg("It already exists on the time.");
+    setIsErrorMsgChanged(true);
+    vibrate(200);
+    return setTimeout(() => {
+      setErrorMsg("");
+      setIsErrorMsgChanged(false);
+    }, 2000);
   }
   //생성 아이템
   const newItem: itemProps = {
-    id: uuidv4(),
+    id: uuid(),
     timePeriod: timePeriod,
     date: "M/D",
     name: name,
@@ -63,31 +67,11 @@ export const submitForm = ({
     };
   });
   vibrate(100);
+
   //생성 후 처리되는 함수들
   setIsSubmitted(true);
+  setName("");
   setTimeout(() => {
     setIsSubmitted(false);
   }, 1000);
-
-  setName("");
-};
-
-interface ExceptionFunctionProps {
-  errorMsg: string;
-  setErrorMsg: (value: string) => void;
-  setIsErrorMsgChanged: (value: boolean) => void;
-}
-
-const exceptionFunction = ({
-  errorMsg,
-  setErrorMsg,
-  setIsErrorMsgChanged,
-}: ExceptionFunctionProps) => {
-  setErrorMsg(errorMsg);
-  setIsErrorMsgChanged(true);
-  vibrate(200);
-  return setTimeout(() => {
-    setErrorMsg("");
-    setIsErrorMsgChanged(false);
-  }, 2000);
 };

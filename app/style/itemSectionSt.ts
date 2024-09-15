@@ -49,7 +49,7 @@ export const itemSectionSt = {
     padding: 5px 10px;
     border: none;
     border-radius: 10px;
-    background-color: ${colors.grey}12;
+    background-color: ${colors.grey}05;
     transition: background-color 0.2s;
     overflow: hidden;
 
