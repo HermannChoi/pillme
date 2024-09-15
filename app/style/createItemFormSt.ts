@@ -108,7 +108,7 @@ export const createItemFormSt = {
   `,
   errorMsg: (isEMsgChanged: boolean) => {
     return css`
-      color: ${isEMsgChanged && colors.red};
+      color: ${isEMsgChanged ? colors.red : "#2777ff"};
       animation: ${isEMsgChanged && twitching1} 0.4s;
     `;
   },

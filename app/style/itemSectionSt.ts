@@ -45,17 +45,18 @@ export const itemSectionSt = {
     align-items: center;
     gap: 10px;
     width: 100%;
-    height: 60px;
+    height: fit-content;
+    min-height: 60px;
     padding: 5px 10px;
     border: none;
     border-radius: 10px;
-    background-color: ${colors.grey}05;
+    background-color: ${colors.grey}12;
     transition: background-color 0.2s;
     overflow: hidden;
 
     &:hover {
       border-color: ${colors.green};
-      background-color: ${colors.green}20;
+      background-color: ${colors.green}10;
     }
   `,
   toggle: (isTaken: boolean) => {
@@ -83,12 +84,19 @@ export const itemSectionSt = {
   delBtn: [
     flexCenterX2,
     css`
-      height: 35px;
+      width: 30px;
+      height: 30px;
       padding: 0 5px;
       border: none;
       border-radius: 10px;
-      background-color: ${colors.red};
+      background-color: ${colors.red}60;
+      color: ${colors.red};
       transition: 0.2s;
+
+      &:hover {
+        transform: scale(0.98);
+        background-color: ${colors.red}50;
+      }
     `,
   ],
 };

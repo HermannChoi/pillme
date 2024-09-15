@@ -61,7 +61,7 @@ const CreateItemForm = () => {
           autoComplete="off"
           id="name"
           type="text"
-          maxLength={20}
+          maxLength={18}
           value={name}
           onChange={(e) => setName(e.target.value)}
           css={createItemFormSt.input}

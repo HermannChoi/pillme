@@ -1,5 +1,5 @@
 import { SyntheticEvent } from "react";
-import { v4 as uuid } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import { itemProps, listProps } from "../types/types";
 import { vibrate } from "../utils/vibrate";
 
@@ -29,30 +29,26 @@ export const submitForm = ({
   e.preventDefault();
   //예외처리
   if (name === "") {
-    setErrorMsg("Please write a name of the medicine");
-    setIsErrorMsgChanged(true);
-    vibrate(200);
-    return setTimeout(() => {
-      setErrorMsg("");
-      setIsErrorMsgChanged(false);
-    }, 2000);
+    return exceptionFunction({
+      errorMsg: "Please write a name of the medicine",
+      setErrorMsg,
+      setIsErrorMsgChanged,
+    });
   }
   if (
     list[timePeriod].some((it) => {
       return it.name === name;
     })
   ) {
-    setErrorMsg("It already exists on the time.");
-    setIsErrorMsgChanged(true);
-    vibrate(200);
-    return setTimeout(() => {
-      setErrorMsg("");
-      setIsErrorMsgChanged(false);
-    }, 2000);
+    return exceptionFunction({
+      errorMsg: "It already exists on the time.",
+      setErrorMsg,
+      setIsErrorMsgChanged,
+    });
   }
   //생성 아이템
   const newItem: itemProps = {
-    id: uuid(),
+    id: uuidv4(),
     timePeriod: timePeriod,
     date: "M/D",
     name: name,
@@ -66,12 +62,35 @@ export const submitForm = ({
       [timePeriod]: [...prev[timePeriod], newItem],
     };
   });
-  vibrate(100);
-
   //생성 후 처리되는 함수들
+  vibrate(100);
   setIsSubmitted(true);
-  setName("");
+  setIsErrorMsgChanged(false);
+  setErrorMsg("the item got added.");
   setTimeout(() => {
     setIsSubmitted(false);
+    setErrorMsg("");
   }, 1000);
+
+  setName("");
+};
+
+interface ExceptionFunctionProps {
+  errorMsg: string;
+  setErrorMsg: (value: string) => void;
+  setIsErrorMsgChanged: (value: boolean) => void;
+}
+
+const exceptionFunction = ({
+  errorMsg,
+  setErrorMsg,
+  setIsErrorMsgChanged,
+}: ExceptionFunctionProps) => {
+  setIsErrorMsgChanged(true);
+  setErrorMsg(errorMsg);
+  vibrate(200);
+  return setTimeout(() => {
+    setErrorMsg("");
+    setIsErrorMsgChanged(false);
+  }, 2000);
 };
