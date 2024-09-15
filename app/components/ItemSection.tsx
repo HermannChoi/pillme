@@ -118,7 +118,7 @@ const ItemSection = () => {
           onClick={() => focusInput()}
           css={itemSectionSt.emptyItemSection}
         >
-          <p css={itemSectionSt.emptyItemSectionText}>Add your medicine!</p>
+          Add your medicine!
         </button>
       )}
     </div>

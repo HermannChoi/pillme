@@ -1,4 +1,5 @@
 import { keyframes } from "@emotion/react";
+import { colors } from "./commonSt";
 
 export const fadeOut = keyframes`
   0% {
@@ -37,5 +38,12 @@ export const fadeIn = keyframes`
 export const rotate360 = keyframes`
   100% {
     transform: rotate(360deg);
+  }
+`;
+
+export const emptyItemSectionAni = keyframes`
+  100% {
+    border-color: ${colors.green};
+    font-size: 1.1rem;
   }
 `;

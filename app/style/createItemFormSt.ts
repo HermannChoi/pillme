@@ -21,7 +21,6 @@ export const createItemFormSt = {
     height: 40px;
     border: 1px solid ${colors.grey};
     border-radius: 5px;
-    font-size: 1rem;
     text-indent: 5px;
 
     &:focus {

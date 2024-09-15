@@ -29,7 +29,18 @@ export const outlineSt = {
     border-radius: 3px;
     background-color: ${colors.green}bb;
   `,
-  footer: [flexCenterX2, css``],
+  resetUserNameBtn: css`
+    width: 100%;
+    padding: 0.2rem;
+    border: 1px solid ${colors.red}60;
+    border-radius: 5px;
+    background-color: transparent;
+
+    &:hover {
+      color: ${colors.red};
+    }
+  `,
+  footer: [flexCenterX2],
   footerText: css`
     padding: 20px 0;
     color: ${colors.grey}80;

@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import InfoSec from "./components/InfoSec";
 import UserNameSection from "./components/UserNameSection";
 import UserNameInput from "./components/UserNameInput";
+import UserNameResetBtn from "./components/UserNameResetBtn";
 
 const Home = () => {
   return (
@@ -25,6 +26,7 @@ const Home = () => {
         <ErrorMsg />
         <InfoSec />
         <ItemSection />
+        <UserNameResetBtn />
       </main>
       <Footer />
     </>

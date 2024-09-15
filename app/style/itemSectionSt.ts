@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { colors, flexCenterX2, flexColumnCenterX2 } from "./commonSt";
+import { emptyItemSectionAni } from "./keyframes";
 
 export const itemSectionSt = {
   sectionContainer: [
@@ -24,20 +25,19 @@ export const itemSectionSt = {
     css`
       width: 100%;
       height: 80px;
-      border: 1px solid ${colors.grey};
+      border: 3px solid ${colors.grey};
       border-radius: 5px;
       background-color: transparent;
+      color: ${colors.grey};
       transition: 0.2s;
+      animation: ${emptyItemSectionAni} 1s ease-in alternate infinite;
 
       &:hover {
         border-color: ${colors.green};
+        color: ${colors.green};
       }
     `,
   ],
-  emptyItemSectionText: css`
-    color: ${colors.grey};
-    font-size: 1rem;
-  `,
   listItem: css`
     display: flex;
     justify-content: space-between;
@@ -86,7 +86,6 @@ export const itemSectionSt = {
       border: none;
       border-radius: 5px;
       background-color: ${colors.red};
-      font-size: 1rem;
       transition: 0.2s;
     `,
   ],

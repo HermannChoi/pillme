@@ -7,12 +7,18 @@ import { SyntheticEvent, useEffect, useLayoutEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import pill from "@/app/assets/svg/pill.svg";
+import { helloItsTakeMedicine } from "../style/framerMotion";
 
 const UserNameInput = () => {
-  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [question, setQuestion] = useState<string>("What is your name?");
-  const { userName, setUserName, isUserNameInputOn, setIsUserNameInputOn } =
-    useUserNameStore();
+  const {
+    userName,
+    setUserName,
+    isSubmitted,
+    setIsSubmitted,
+    isUserNameInputOn,
+    setIsUserNameInputOn,
+  } = useUserNameStore();
 
   const submitForm = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -47,12 +53,7 @@ const UserNameInput = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              delay: 1.5,
-              type: "spring",
-              stiffness: 500,
-              damping: 20,
-            }}
+            transition={helloItsTakeMedicine}
             css={userNameInputSt.formContainer}
           >
             <p>{`hello, it's Take Medicine!`}</p>
@@ -71,10 +72,11 @@ const UserNameInput = () => {
             transition={{ duration: 1, delay: 3.5 }}
             css={userNameInputSt.formContainer}
           >
-            <h2>{question}</h2>
+            <label htmlFor="userNameInput">{question}</label>
             <form onSubmit={submitForm} css={userNameInputSt.form}>
               <input
-                autoFocus
+                id="userNameInput"
+                autoComplete="off"
                 required
                 type="text"
                 maxLength={15}
@@ -82,7 +84,9 @@ const UserNameInput = () => {
                 onChange={(e) => setUserName(e.currentTarget.value)}
                 css={userNameInputSt.input}
               />
-              <button css={userNameInputSt.button}>완료</button>
+              <button css={userNameInputSt.button}>
+                {isSubmitted ? "✓" : "Done"}
+              </button>
             </form>
           </motion.div>
         </div>
