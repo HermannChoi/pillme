@@ -8,7 +8,6 @@ export const outlineSt = {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 0.3em;
     width: 100%;
     height: 3rem;
     background-color: #0a0a0ae6;
@@ -20,9 +19,10 @@ export const outlineSt = {
     }
   `,
   h1: css`
-    color: ${colors.grey};
-    font-size: 2rem;
-    font-weight: 600;
+    color: ${colors.grey}80;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -1px;
   `,
   h2: css`
     margin-bottom: 10px;
@@ -39,7 +39,7 @@ export const outlineSt = {
       background-color: ${colors.grey}12;
       ${isEasterEggsOn && `color: green;`}
       font-size: 1.2rem;
-      font-weight: 600;
+      font-weight: 500;
     `;
   },
   resetUserNameBtn: css`
