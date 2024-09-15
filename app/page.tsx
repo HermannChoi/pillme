@@ -11,15 +11,14 @@ import InfoSec from "./components/InfoSec";
 import UserNameSection from "./components/UserNameSection";
 import UserNameInput from "./components/UserNameInput";
 import UserNameResetBtn from "./components/UserNameResetBtn";
+import Header from "./components/Header";
 
 const Home = () => {
   return (
     <>
       <CoverPage />
       <UserNameInput />
-      <header css={outlineSt.header}>
-        <h1 css={outlineSt.h1}>Take Medicine</h1>
-      </header>
+      <Header />
       <main css={outlineSt.main}>
         <UserNameSection />
         <CreateItemForm />

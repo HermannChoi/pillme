@@ -4,6 +4,8 @@
 import { useEffect } from "react";
 import { coverPageSt } from "../style/coverPageSt";
 import useCoverPageStore from "../store/useCoverPageStore";
+import Image from "next/image";
+import pill from "@/app/assets/svg/pill.svg";
 
 const CoverPage = () => {
   const { isCoverPageGone, setIsCoverPageGone } = useCoverPageStore();
@@ -16,7 +18,7 @@ const CoverPage = () => {
 
   return (
     <div css={coverPageSt.container(isCoverPageGone)}>
-      <p css={coverPageSt.text}>Take Medicine</p>
+      <Image src={pill} alt="pill" priority={true} css={coverPageSt.pill} />
     </div>
   );
 };

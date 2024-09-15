@@ -32,8 +32,9 @@ const InfoSec = () => {
     itemSectionSt.section,
     css`
       position: sticky;
-      top: 0;
-      background-color: #151515;
+      top: 2.5rem;
+      background-color: #151515e6;
+      backdrop-filter: blur(10px);
       z-index: 1;
 
       @media (prefers-color-scheme: light) {

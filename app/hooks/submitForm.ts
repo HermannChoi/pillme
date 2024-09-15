@@ -63,16 +63,16 @@ export const submitForm = ({
     };
   });
   //생성 후 처리되는 함수들
-  vibrate(100);
+  setName("");
   setIsSubmitted(true);
   setIsErrorMsgChanged(false);
-  setErrorMsg("the item got added.");
+  setErrorMsg("✓ the item got added.");
   setTimeout(() => {
     setIsSubmitted(false);
     setErrorMsg("");
   }, 1000);
 
-  setName("");
+  vibrate(100);
 };
 
 interface ExceptionFunctionProps {

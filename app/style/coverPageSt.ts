@@ -23,8 +23,8 @@ export const coverPageSt = {
       `,
     ];
   },
-  text: css`
-    font-size: 2rem;
-    font-weight: bold;
+  pill: css`
+    width: 5rem;
+    height: 5rem;
   `,
 };

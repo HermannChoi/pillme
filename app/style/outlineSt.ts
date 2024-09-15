@@ -3,10 +3,20 @@ import { colors, flexCenterX2, flexColumnCenterX2 } from "./commonSt";
 
 export const outlineSt = {
   header: css`
-    margin-top: 3rem;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 2.5rem;
+    margin-top: 0.5rem;
+    background-color: #0a0a0ae6;
+    backdrop-filter: blur(10px);
+    z-index: 100;
   `,
   h1: css`
-    font-size: 3.4rem;
+    color: ${colors.grey};
+    font-size: 1.5rem;
   `,
   h2: css`
     margin-bottom: 10px;
@@ -16,18 +26,16 @@ export const outlineSt = {
     flexColumnCenterX2,
     css`
       row-gap: 5px;
-      max-width: 700px;
-      width: 90%;
-      min-width: 360px;
+      width: 100%;
     `,
   ],
   userNameContainer: css`
     ${flexCenterX2}
-    gap: 10px;
     width: 100%;
     height: 30px;
     border-radius: 10px;
-    background-color: ${colors.green}bb;
+    margin-top: 0.5rem;
+    background-color: ${colors.grey}20;
   `,
   resetUserNameBtn: css`
     width: 100%;

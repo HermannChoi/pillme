@@ -6,8 +6,6 @@ import { submitForm } from "../hooks/submitForm";
 import useErrorMsgStore from "../store/useErrorMsgStore";
 import useFormStore from "../store/useFormStore";
 import { listProps } from "../types/types";
-import Image from "next/image";
-import pill from "@/app/assets/svg/pill.svg";
 import { timeOptions } from "../constant/timeOptions";
 import { useEffect, useRef } from "react";
 import { createItemFormSt } from "../style/createItemFormSt";
@@ -109,11 +107,7 @@ const CreateItemForm = () => {
         whileTap={{ scale: 0.9 }}
         css={createItemFormSt.addBtn}
       >
-        {isSubmitted ? (
-          <span>✓</span>
-        ) : (
-          <Image src={pill} alt="pill" priority={true} width={30} height={30} />
-        )}
+        {isSubmitted ? "✓" : "﹢"}
       </motion.button>
     </form>
   );
