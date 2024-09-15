@@ -4,7 +4,7 @@
 
 import { motion } from "framer-motion";
 import useFormStore from "../store/useFormStore";
-import { listProps } from "../types/types";
+import { itemProps, listProps } from "../types/types";
 import { toggleIsTaken } from "../hooks/toggleIsTaken";
 import { clickDelete } from "../hooks/clickDelete";
 import { useEffect } from "react";
@@ -16,6 +16,15 @@ import { outlineSt } from "../style/outlineSt";
 const ItemSection = () => {
   const { list, setList, focusInput } = useFormStore();
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
+
+  const clickToggle = (timePeriod: keyof listProps, item: itemProps) => {
+    toggleIsTaken({
+      timePeriod: timePeriod as keyof listProps,
+      id: item.id,
+      setList,
+    });
+    window.navigator.vibrate(100);
+  };
 
   useEffect(() => {
     if (isDateChanged) {
@@ -72,11 +81,7 @@ const ItemSection = () => {
                       >
                         <div
                           onClick={() =>
-                            toggleIsTaken({
-                              timePeriod: timePeriod as keyof listProps,
-                              id: item.id,
-                              setList,
-                            })
+                            clickToggle(timePeriod as keyof listProps, item)
                           }
                           css={itemSectionSt.toggle(item.isTaken)}
                         >
