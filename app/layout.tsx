@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 
 const SUSE = localFont({
   src: "./fonts/SUSE-VariableFont_wght.ttf",
+  display: "swap",
   variable: "--font-SUSE",
 });
 

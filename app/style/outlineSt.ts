@@ -22,12 +22,12 @@ export const outlineSt = {
   h1: css`
     color: ${colors.grey};
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 600;
   `,
   h2: css`
     margin-bottom: 10px;
     font-size: 2rem;
-    font-weight: 600;
+    font-weight: 500;
   `,
   userNameContainer: (isEasterEggsOn: boolean) => {
     return css`
