@@ -85,7 +85,7 @@ export const createItemFormSt = {
     css`
       flex: 2;
       height: 40px;
-      background-color: ${colors.green};
+      background-color: ${colors.green}80;
       border: none;
       border-radius: 10px;
     `,
@@ -107,7 +107,7 @@ export const createItemFormSt = {
   `,
   errorMsg: (isEMsgChanged: boolean) => {
     return css`
-      color: ${isEMsgChanged ? colors.red : "#2777ff"};
+      color: ${isEMsgChanged ? colors.red : colors.blue};
       animation: ${isEMsgChanged && twitching1} 0.4s;
     `;
   },

@@ -37,7 +37,7 @@ export const outlineSt = {
       border-radius: 10px;
       margin-top: 0.5rem;
       background-color: ${colors.grey}12;
-      ${isEasterEggsOn && `color: green;`}
+      color: ${isEasterEggsOn && colors.blue};
       font-size: 1.2rem;
       font-weight: 500;
     `;
