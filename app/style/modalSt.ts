@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, flexCenterX2, flexColumnCenterX2 } from "./commonSt";
+import { colors, flexCenterX2 } from "./commonSt";
 import { fadeIn } from "./keyframes";
 
 export const modalSt = {
@@ -17,10 +17,14 @@ export const modalSt = {
     `;
   },
   container: css`
-    ${flexColumnCenterX2}
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     row-gap: 0.5em;
     width: 300px;
-    padding: 0.5em;
+    height: 160px;
+    padding: 1rem;
     border-radius: 10px;
     background-color: ${colors.darkBackground};
     box-shadow: 0px 0px 10px gray;
@@ -32,8 +36,9 @@ export const modalSt = {
   `,
   text: css`
     width: 100%;
+    font-size: 1.2rem;
     text-align: center;
-    line-height: 1.5rem;
+    line-height: 1.8rem;
   `,
   itemName: css`
     padding: 1px 5px;
@@ -41,31 +46,39 @@ export const modalSt = {
     border-radius: 10px;
     margin-right: 5px;
     background-color: ${colors.green}60;
+    font-size: 1.2rem;
   `,
   btnContainer: css`
     ${flexCenterX2}
     gap: 10px;
+    width: 100%;
   `,
   cancelBtn: css`
+    flex: 1;
+    height: 40px;
     padding: 5px 10px;
     border: 1px solid ${colors.grey};
     border-radius: 10px;
     background-color: transparent;
+    font-size: 1.2rem;
     transition: 0.2s;
 
     &:hover {
-      transform: scale(0.98);
+      transform: scale(0.99);
     }
   `,
   delBtn: css`
+    flex: 1;
+    height: 40px;
     padding: 5px 10px;
     border: none;
     border-radius: 10px;
     background-color: ${colors.red};
+    font-size: 1.2rem;
     transition: 0.2s;
 
     &:hover {
-      transform: scale(0.98);
+      transform: scale(0.99);
       background-color: ${colors.red}b6;
     }
   `,
