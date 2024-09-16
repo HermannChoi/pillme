@@ -5,7 +5,7 @@ import { fadeIn } from "./keyframes";
 export const modalSt = {
   background: (isModalOn: boolean) => {
     return css`
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       ${flexCenterX2}
