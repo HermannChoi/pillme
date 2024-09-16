@@ -12,7 +12,7 @@ export const modalSt = {
       ${!isModalOn && `display: none;`}
       width: 100%;
       height: 100vh;
-      background-color: #00000030;
+      background-color: #00000080;
       z-index: 500;
     `;
   },
@@ -26,8 +26,7 @@ export const modalSt = {
     height: 160px;
     padding: 1rem;
     border-radius: 10px;
-    background-color: ${colors.darkBackground};
-    box-shadow: 0px 0px 10px gray;
+    background-color: #191919;
     animation: ${fadeIn} 0.5s;
 
     @media (prefers-color-scheme: light) {
