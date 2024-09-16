@@ -6,17 +6,18 @@ import { motion } from "framer-motion";
 import useFormStore from "../store/useFormStore";
 import { itemProps, listProps } from "../types/types";
 import { toggleIsTaken } from "../hooks/toggleIsTaken";
-import { clickDelete } from "../hooks/clickDelete";
-import { useEffect } from "react";
+import { SyntheticEvent, useEffect } from "react";
 import useDateStore from "../store/useDateStore";
 import { getTotalListLength } from "../utils/getToTalListLength";
 import { itemSectionSt } from "../style/itemSectionSt";
 import { outlineSt } from "../style/outlineSt";
 import { vibrate } from "../utils/vibrate";
+import useModalStore from "../store/useModalStore";
 
 const ItemSection = () => {
   const { list, setList, focusInput } = useFormStore();
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
+  const { setIsModalOn, setItemInfoToDelete } = useModalStore();
 
   const clickToggle = (timePeriod: keyof listProps, item: itemProps) => {
     toggleIsTaken({
@@ -25,6 +26,17 @@ const ItemSection = () => {
       setList,
     });
     vibrate(100);
+  };
+
+  const clickDeleteBtn = (
+    e: SyntheticEvent,
+    id: string,
+    name: string,
+    timePeriod: keyof listProps
+  ) => {
+    e.stopPropagation();
+    setIsModalOn(true);
+    setItemInfoToDelete({ id, name, timePeriod });
   };
 
   useEffect(() => {
@@ -101,11 +113,11 @@ const ItemSection = () => {
                         <p>{item.time}</p>
                         <button
                           onClick={(e) =>
-                            clickDelete(
+                            clickDeleteBtn(
                               e,
                               item.id,
-                              timePeriod as keyof listProps,
-                              setList
+                              item.name,
+                              timePeriod as keyof listProps
                             )
                           }
                           css={itemSectionSt.delBtn}

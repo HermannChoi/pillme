@@ -71,7 +71,7 @@ const CreateItemForm = () => {
         <label htmlFor="time" css={createItemFormSt.label}>
           Time
         </label>
-        <motion.div
+        <div
           css={createItemFormSt.timeSelect}
           onClick={() => setIsSelectOpen(!isSelectOpen)}
         >
@@ -102,7 +102,7 @@ const CreateItemForm = () => {
               </motion.ul>
             )}
           </AnimatePresence>
-        </motion.div>
+        </div>
       </div>
       <motion.button
         whileHover={{ scale: 1.1 }}
