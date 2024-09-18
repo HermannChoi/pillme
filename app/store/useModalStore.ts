@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { listProps } from "../types/types";
+import { listProps, modalList } from "../types/types";
 
 interface itemInfoToDelete {
   id: string;
@@ -8,15 +8,15 @@ interface itemInfoToDelete {
 }
 
 interface UseModalStoreProps {
-  isModalOn: boolean;
-  setIsModalOn: (value: boolean) => void;
+  whichModal: null | keyof modalList;
+  setWhichModal: (value: null | keyof modalList) => void;
   itemInfoToDelete: itemInfoToDelete;
   setItemInfoToDelete: (itemInfo: itemInfoToDelete) => void;
 }
 
 const useModalStore = create<UseModalStoreProps>((set) => ({
-  isModalOn: false,
-  setIsModalOn: (value) => set({ isModalOn: value }),
+  whichModal: null,
+  setWhichModal: (value) => set({ whichModal: value }),
   itemInfoToDelete: { id: "", name: "", timePeriod: "" as keyof listProps },
   setItemInfoToDelete: (itemInfo) => set({ itemInfoToDelete: itemInfo }),
 }));

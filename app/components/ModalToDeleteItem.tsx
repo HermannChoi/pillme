@@ -8,17 +8,17 @@ import { modalSt } from "../style/modalSt";
 
 const ModalToDeleteItem = () => {
   const { setList } = useFormStore();
-  const { isModalOn, setIsModalOn, itemInfoToDelete } = useModalStore();
+  const { whichModal, setWhichModal, itemInfoToDelete } = useModalStore();
 
   const clickDeleteOnModal = () => {
     clickDelete(itemInfoToDelete.id, itemInfoToDelete.timePeriod, setList);
-    setIsModalOn(false);
+    setWhichModal(null);
   };
 
   return (
     <div
-      onClick={() => setIsModalOn(false)}
-      css={modalSt.background(isModalOn)}
+      onClick={() => setWhichModal(null)}
+      css={modalSt.background(whichModal, "deleteItem")}
     >
       <div
         onClick={(e) => {
@@ -26,7 +26,7 @@ const ModalToDeleteItem = () => {
         }}
         css={modalSt.container}
       >
-        <div>
+        <div css={modalSt.textContainer}>
           <p css={modalSt.text}>Are you sure you want to delete</p>
           <p css={modalSt.text}>
             <span css={modalSt.itemName}>{itemInfoToDelete.name}</span>
@@ -34,7 +34,7 @@ const ModalToDeleteItem = () => {
           </p>
         </div>
         <div css={modalSt.btnContainer}>
-          <button onClick={() => setIsModalOn(false)} css={modalSt.cancelBtn}>
+          <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
             CANCEL
           </button>
           <button onClick={() => clickDeleteOnModal()} css={modalSt.delBtn}>

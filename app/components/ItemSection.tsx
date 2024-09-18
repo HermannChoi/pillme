@@ -17,7 +17,7 @@ import useModalStore from "../store/useModalStore";
 const ItemSection = () => {
   const { list, setList, focusInput } = useFormStore();
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
-  const { setIsModalOn, setItemInfoToDelete } = useModalStore();
+  const { setWhichModal, setItemInfoToDelete } = useModalStore();
 
   const clickToggle = (timePeriod: keyof listProps, item: itemProps) => {
     toggleIsTaken({
@@ -35,7 +35,7 @@ const ItemSection = () => {
     timePeriod: keyof listProps
   ) => {
     e.stopPropagation();
-    setIsModalOn(true);
+    setWhichModal("deleteItem");
     setItemInfoToDelete({ id, name, timePeriod });
   };
 

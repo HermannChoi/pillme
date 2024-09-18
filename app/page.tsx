@@ -3,8 +3,9 @@ import ErrorMsg from "./components/ErrorMsg";
 import ItemSection from "./components/ItemSection";
 import InfoSec from "./components/InfoSec";
 import UserNameSection from "./components/UserNameSection";
-import UserNameResetBtn from "./components/UserNameResetBtn";
 import ModalToDeleteItem from "./components/ModalToDeleteItem";
+import UserNameRenameBtn from "./components/UserNameRenameBtn";
+import ModalToRename from "./components/ModalToRename";
 
 const Home = () => {
   return (
@@ -15,7 +16,8 @@ const Home = () => {
       <InfoSec />
       <ItemSection />
       <ModalToDeleteItem />
-      <UserNameResetBtn />
+      <UserNameRenameBtn />
+      <ModalToRename />
     </main>
   );
 };

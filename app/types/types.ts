@@ -13,3 +13,8 @@ export interface listProps {
   Night: itemProps[];
   Any: itemProps[];
 }
+
+export interface modalList {
+  deleteItem: string;
+  renameUsername: string;
+}
