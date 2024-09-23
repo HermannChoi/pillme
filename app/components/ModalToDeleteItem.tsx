@@ -8,10 +8,10 @@ import { modalSt } from "../style/modalSt";
 
 const ModalToDeleteItem = () => {
   const { setList } = useFormStore();
-  const { whichModal, setWhichModal, itemInfoToDelete } = useModalStore();
+  const { whichModal, setWhichModal, itemForModal } = useModalStore();
 
   const clickDeleteOnModal = () => {
-    clickDelete(itemInfoToDelete.id, itemInfoToDelete.timePeriod, setList);
+    clickDelete(itemForModal, setList);
     setWhichModal(null);
   };
 
@@ -29,8 +29,8 @@ const ModalToDeleteItem = () => {
         <div css={modalSt.textContainer}>
           <p css={modalSt.text}>Are you sure you want to delete</p>
           <p css={modalSt.text}>
-            <span css={modalSt.itemName}>{itemInfoToDelete.name}</span>
-            from {itemInfoToDelete.timePeriod} list?
+            <span css={modalSt.itemName}>{itemForModal.name}</span>
+            from {itemForModal.timePeriod} list?
           </p>
         </div>
         <div css={modalSt.btnContainer}>

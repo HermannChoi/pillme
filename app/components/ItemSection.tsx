@@ -18,8 +18,7 @@ const ItemSection = () => {
   const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
   const { list, setList, focusInput } = useFormStore();
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
-  const { setWhichModal, setItemInfoToDelete, setItemForModal } =
-    useModalStore();
+  const { setWhichModal, setItemForModal } = useModalStore();
 
   const clickItem = (itemId: string) => {
     if (selectedItemId === itemId) return setSelectedItemId(null);
@@ -40,15 +39,10 @@ const ItemSection = () => {
     vibrate(100);
   };
 
-  const clickDeleteBtn = (
-    e: SyntheticEvent,
-    id: string,
-    name: string,
-    timePeriod: keyof listProps
-  ) => {
+  const clickDeleteBtn = (e: SyntheticEvent, item: itemProps) => {
     e.stopPropagation();
     setWhichModal("deleteItem");
-    setItemInfoToDelete({ id, name, timePeriod });
+    setItemForModal(item);
   };
 
   const clickModifyTime = (item: itemProps) => {
@@ -139,14 +133,7 @@ const ItemSection = () => {
                               String(item.minutes).padStart(2, "0")}
                           </p>
                           <button
-                            onClick={(e) =>
-                              clickDeleteBtn(
-                                e,
-                                item.id,
-                                item.name,
-                                timePeriod as keyof listProps
-                              )
-                            }
+                            onClick={(e) => clickDeleteBtn(e, item)}
                             css={itemSectionSt.delBtn}
                           >
                             D
