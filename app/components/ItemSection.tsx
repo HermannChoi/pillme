@@ -132,12 +132,6 @@ const ItemSection = () => {
                               ":" +
                               String(item.minutes).padStart(2, "0")}
                           </p>
-                          <button
-                            onClick={(e) => clickDeleteBtn(e, item)}
-                            css={itemSectionSt.delBtn}
-                          >
-                            D
-                          </button>
                         </motion.div>
                         <div
                           css={itemSectionSt.optionContainer(
@@ -146,13 +140,19 @@ const ItemSection = () => {
                           )}
                         >
                           <button css={itemSectionSt.optionBtn}>
-                            modify date : coming soon
+                            Coming soon
                           </button>
                           <button
                             onClick={() => clickModifyTime(item)}
                             css={itemSectionSt.optionBtn}
                           >
-                            modify time
+                            Modify Time
+                          </button>
+                          <button
+                            onClick={(e) => clickDeleteBtn(e, item)}
+                            css={itemSectionSt.delBtn}
+                          >
+                            DEL
                           </button>
                         </div>
                       </>

@@ -10,13 +10,7 @@ export const clickModifyTime = (
       [itemForModal.timePeriod]: prev[
         itemForModal.timePeriod as keyof listProps
       ].map((item) => {
-        return item.id === itemForModal.id
-          ? {
-              ...item,
-              hours: itemForModal.hours,
-              minutes: itemForModal.minutes,
-            }
-          : item;
+        return item.id === itemForModal.id ? (item = itemForModal) : item;
       }),
     };
   });

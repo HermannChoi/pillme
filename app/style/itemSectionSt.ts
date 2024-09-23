@@ -89,8 +89,8 @@ export const itemSectionSt = {
   delBtn: [
     flexCenterX2,
     css`
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       padding: 0 5px;
       border: none;
       border-radius: 10px;
