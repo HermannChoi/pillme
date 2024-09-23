@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import useFormStore from "../store/useFormStore";
 import { itemProps, listProps } from "../types/types";
 import { toggleIsTaken } from "../hooks/toggleIsTaken";
-import { SyntheticEvent, useEffect } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import useDateStore from "../store/useDateStore";
 import { getTotalListLength } from "../utils/getToTalListLength";
 import { itemSectionSt } from "../style/itemSectionSt";
@@ -15,11 +15,22 @@ import { vibrate } from "../utils/vibrate";
 import useModalStore from "../store/useModalStore";
 
 const ItemSection = () => {
+  const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
   const { list, setList, focusInput } = useFormStore();
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
   const { setWhichModal, setItemInfoToDelete } = useModalStore();
 
-  const clickToggle = (timePeriod: keyof listProps, item: itemProps) => {
+  const clickItem = (itemId: string) => {
+    if (selectedItemId === itemId) return setSelectedItemId(null);
+    setSelectedItemId(itemId);
+  };
+
+  const clickToggle = (
+    e: SyntheticEvent,
+    timePeriod: keyof listProps,
+    item: itemProps
+  ) => {
+    e.stopPropagation();
     toggleIsTaken({
       timePeriod: timePeriod as keyof listProps,
       id: item.id,
@@ -81,50 +92,71 @@ const ItemSection = () => {
                   )}
                   {list[timePeriod as keyof listProps].map((item, i) => {
                     return (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 60 }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 700,
-                          damping: 20,
-                        }}
-                        css={itemSectionSt.listItem}
-                      >
+                      <>
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 60 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 700,
+                            damping: 20,
+                          }}
+                          onClick={() => clickItem(item.id)}
+                          css={itemSectionSt.listItem(item.id, selectedItemId)}
+                        >
+                          <div
+                            onClick={(e) =>
+                              clickToggle(
+                                e,
+                                timePeriod as keyof listProps,
+                                item
+                              )
+                            }
+                            css={itemSectionSt.toggle(item.isTaken)}
+                          >
+                            <motion.div
+                              css={itemSectionSt.handle}
+                              layout
+                              transition={{
+                                type: "spring",
+                                stiffness: 700,
+                                damping: 20,
+                              }}
+                            />
+                          </div>
+                          <p>{item.date}</p>
+                          <p css={itemSectionSt.name}>{item.name}</p>
+                          <p>{item.time}</p>
+                          <button
+                            onClick={(e) =>
+                              clickDeleteBtn(
+                                e,
+                                item.id,
+                                item.name,
+                                timePeriod as keyof listProps
+                              )
+                            }
+                            css={itemSectionSt.delBtn}
+                          >
+                            D
+                          </button>
+                        </motion.div>
                         <div
-                          onClick={() =>
-                            clickToggle(timePeriod as keyof listProps, item)
-                          }
-                          css={itemSectionSt.toggle(item.isTaken)}
+                          css={itemSectionSt.optionContainer(
+                            item.id,
+                            selectedItemId
+                          )}
                         >
-                          <motion.div
-                            css={itemSectionSt.handle}
-                            layout
-                            transition={{
-                              type: "spring",
-                              stiffness: 700,
-                              damping: 20,
-                            }}
-                          />
+                          <button css={itemSectionSt.optionBtn}>
+                            modify date : coming soon
+                          </button>
+                          <button css={itemSectionSt.optionBtn}>
+                            modify time
+                          </button>
+                          {/* <input type="" /> */}
                         </div>
-                        <p>{item.date}</p>
-                        <p css={itemSectionSt.name}>{item.name}</p>
-                        <p>{item.time}</p>
-                        <button
-                          onClick={(e) =>
-                            clickDeleteBtn(
-                              e,
-                              item.id,
-                              item.name,
-                              timePeriod as keyof listProps
-                            )
-                          }
-                          css={itemSectionSt.delBtn}
-                        >
-                          D
-                        </button>
-                      </motion.div>
+                      </>
                     );
                   })}
                 </section>

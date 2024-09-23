@@ -1,6 +1,24 @@
 import { keyframes } from "@emotion/react";
 import { colors } from "./commonSt";
 
+export const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+export const toBottom = keyframes`
+  0% {
+    transform: scaleY(0.1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+`;
+
 export const fadeOut = keyframes`
   0% {
     opacity: 1;
@@ -24,15 +42,6 @@ export const twitching2 = keyframes`
   60%{transform: translateX(-2px)}
   80%{transform: translateX(2px)}
   100%{transform: translateX(0px)}
-`;
-
-export const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 `;
 
 export const rotate360 = keyframes`
