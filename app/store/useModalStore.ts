@@ -6,6 +6,7 @@ interface UseModalStoreProps {
   setWhichModal: (value: null | keyof modalList) => void;
   itemForModal: itemProps;
   setItemForModal: (value: itemProps) => void;
+  resetItemForModal: () => void;
 }
 
 const useModalStore = create<UseModalStoreProps>((set) => ({
@@ -21,6 +22,18 @@ const useModalStore = create<UseModalStoreProps>((set) => ({
     isTaken: false,
   },
   setItemForModal: (value) => set({ itemForModal: value }),
+  resetItemForModal: () =>
+    set({
+      itemForModal: {
+        id: "",
+        timePeriod: "",
+        date: "",
+        name: "",
+        hours: 0,
+        minutes: 0,
+        isTaken: false,
+      },
+    }),
 }));
 
 export default useModalStore;

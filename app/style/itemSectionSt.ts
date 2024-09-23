@@ -57,7 +57,6 @@ export const itemSectionSt = {
         : colors.grey}12;
       transition: background-color 0.2s, border-radius 0.2s;
       cursor: pointer;
-      z-index: 1;
 
       &:hover {
         border-color: ${colors.green};
@@ -113,7 +112,7 @@ export const itemSectionSt = {
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        height: 50px;
+        height: 60px;
         padding: 5px 10px 5px;
         border-radius: 0 0 10px 10px;
         margin-top: -5px;
@@ -123,14 +122,15 @@ export const itemSectionSt = {
     ];
   },
   optionBtn: css`
+    height: 40px;
     padding: 5px 10px;
     border: none;
     border-radius: 10px;
-    background-color: ${colors.grey}80;
+    background-color: ${colors.green}50;
     transition: 0.2s;
 
     &:hover {
-      background-color: ${colors.grey}70;
+      background-color: ${colors.green}40;
     }
   `,
 };

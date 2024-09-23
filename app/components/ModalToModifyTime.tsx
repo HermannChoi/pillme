@@ -9,8 +9,13 @@ import { modalSt } from "../style/modalSt";
 
 const ModalToModifyTime = () => {
   const { setList } = useFormStore();
-  const { whichModal, setWhichModal, itemForModal, setItemForModal } =
-    useModalStore();
+  const {
+    whichModal,
+    setWhichModal,
+    itemForModal,
+    setItemForModal,
+    resetItemForModal,
+  } = useModalStore();
 
   const hoursMin = 0;
   const hoursMax = 23;
@@ -20,9 +25,12 @@ const ModalToModifyTime = () => {
   const clickModifyOnModal = () => {
     setWhichModal(null);
     clickModifyTime(itemForModal, setList);
+    resetItemForModal();
   };
 
   const handleHoursChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length > 2) e.target.value = e.target.value.substring(1);
+
     if (Number(e.target.value) < hoursMin) e.target.value = hoursMin.toString();
     else if (Number(e.target.value) > hoursMax)
       e.target.value = hoursMax.toString();
@@ -33,6 +41,8 @@ const ModalToModifyTime = () => {
   };
 
   const handleMinutesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length > 2) e.target.value = e.target.value.substring(1);
+
     if (Number(e.target.value) < minutesMin)
       e.target.value = minutesMin.toString();
     else if (Number(e.target.value) > minutesMax)
