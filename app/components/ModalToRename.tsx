@@ -6,16 +6,12 @@ import useUserNameStore from "../store/useUserNameStore";
 import useModalStore from "../store/useModalStore";
 
 const ModalToRename = () => {
-  const { userName, setUserName, setIsSubmitted, setIsUserNameInputOn } =
-    useUserNameStore();
+  const { userName } = useUserNameStore();
   const { whichModal, setWhichModal } = useModalStore();
 
   const clickResetUserName = () => {
     localStorage.removeItem("userName");
-    setIsUserNameInputOn(true);
-    setIsSubmitted(false);
-    setUserName("");
-    setWhichModal(null);
+    window.location.reload();
   };
 
   return (
