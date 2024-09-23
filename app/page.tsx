@@ -6,6 +6,7 @@ import UserNameSection from "./components/UserNameSection";
 import ModalToDeleteItem from "./components/ModalToDeleteItem";
 import UserNameRenameBtn from "./components/UserNameRenameBtn";
 import ModalToRename from "./components/ModalToRename";
+import ModalToModifyTime from "./components/ModalToModifyTime";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <InfoSec />
       <ItemSection />
       <ModalToDeleteItem />
+      <ModalToModifyTime />
       <UserNameRenameBtn />
       <ModalToRename />
     </main>

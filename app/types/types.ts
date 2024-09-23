@@ -3,7 +3,8 @@ export interface itemProps {
   timePeriod: string;
   date: string;
   name: string;
-  time: string;
+  hours: number;
+  minutes: number;
   isTaken: boolean;
 }
 
@@ -17,4 +18,5 @@ export interface listProps {
 export interface modalList {
   deleteItem: string;
   renameUsername: string;
+  modifyTime: string;
 }

@@ -12,8 +12,8 @@ export const toggleIsTaken = ({
   setList,
 }: ToggleIsTakeProps) => {
   const today = new Date();
-  const hours = String(today.getHours()).padStart(2, "0"); // 시를 2자리로 변환
-  const minutes = String(today.getMinutes()).padStart(2, "0"); // 분을 2자리로 변환
+  const hours = today.getHours();
+  const minutes = today.getMinutes();
   setList((prev) => ({
     ...prev,
     [timePeriod]: prev[timePeriod].map((item) =>
@@ -22,7 +22,8 @@ export const toggleIsTaken = ({
             ...item,
             isTaken: !item.isTaken,
             date: today.getMonth() + 1 + "/" + today.getDate(),
-            time: hours + ":" + minutes,
+            hours,
+            minutes,
           }
         : item
     ),

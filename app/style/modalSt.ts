@@ -9,8 +9,7 @@ export const modalSt = {
       position: fixed;
       top: 0;
       left: 0;
-      display: none;
-      ${whichModal === modal && `display: flex;`}
+      display: ${whichModal === modal ? `flex` : `none`};
       justify-content: center;
       align-items: center;
       width: 100%;
@@ -53,6 +52,15 @@ export const modalSt = {
     border-radius: 10px;
     margin-right: 5px;
     background-color: ${colors.green}60;
+    font-size: 1.2rem;
+  `,
+  timeInput: css`
+    width: 20%;
+    height: 40px;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    background-color: ${colors.grey}30;
     font-size: 1.2rem;
   `,
   btnContainer: css`

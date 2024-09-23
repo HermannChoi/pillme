@@ -18,7 +18,8 @@ const ItemSection = () => {
   const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
   const { list, setList, focusInput } = useFormStore();
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
-  const { setWhichModal, setItemInfoToDelete } = useModalStore();
+  const { setWhichModal, setItemInfoToDelete, setItemForModal } =
+    useModalStore();
 
   const clickItem = (itemId: string) => {
     if (selectedItemId === itemId) return setSelectedItemId(null);
@@ -50,12 +51,17 @@ const ItemSection = () => {
     setItemInfoToDelete({ id, name, timePeriod });
   };
 
+  const clickModifyTime = (item: itemProps) => {
+    setWhichModal("modifyTime");
+    setItemForModal(item);
+  };
+
   useEffect(() => {
     if (isDateChanged) {
-      for (const time in list) {
+      for (const timePeriod in list) {
         setList((prev) => ({
           ...prev,
-          [time]: prev[time as keyof listProps].map((item) => {
+          [timePeriod]: prev[timePeriod as keyof listProps].map((item) => {
             return item.isTaken ? { ...item, isTaken: false } : item;
           }),
         }));
@@ -127,7 +133,11 @@ const ItemSection = () => {
                           </div>
                           <p>{item.date}</p>
                           <p css={itemSectionSt.name}>{item.name}</p>
-                          <p>{item.time}</p>
+                          <p>
+                            {String(item.hours).padStart(2, "0") +
+                              ":" +
+                              String(item.minutes).padStart(2, "0")}
+                          </p>
                           <button
                             onClick={(e) =>
                               clickDeleteBtn(
@@ -151,10 +161,12 @@ const ItemSection = () => {
                           <button css={itemSectionSt.optionBtn}>
                             modify date : coming soon
                           </button>
-                          <button css={itemSectionSt.optionBtn}>
+                          <button
+                            onClick={() => clickModifyTime(item)}
+                            css={itemSectionSt.optionBtn}
+                          >
                             modify time
                           </button>
-                          {/* <input type="" /> */}
                         </div>
                       </>
                     );

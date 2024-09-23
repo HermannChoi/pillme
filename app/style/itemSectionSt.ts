@@ -118,7 +118,7 @@ export const itemSectionSt = {
         border-radius: 0 0 10px 10px;
         margin-top: -5px;
         background-color: ${colors.grey}30;
-        animation: ${toBottom} 0.3s;
+        animation: ${toBottom} 0.2s;
       `,
     ];
   },

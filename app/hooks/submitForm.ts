@@ -61,7 +61,8 @@ export const submitForm = ({
     timePeriod: timePeriod,
     date: "M/D",
     name: name,
-    time: "00:00",
+    hours: 0,
+    minutes: 0,
     isTaken: false,
   };
   //생성함수
