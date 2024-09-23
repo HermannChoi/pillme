@@ -72,6 +72,7 @@ const CreateItemForm = () => {
           Time
         </label>
         <div
+          id="time"
           css={createItemFormSt.timeSelect}
           onClick={() => setIsSelectOpen(!isSelectOpen)}
         >

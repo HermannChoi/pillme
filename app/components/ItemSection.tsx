@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import useFormStore from "../store/useFormStore";
 import { itemProps, listProps } from "../types/types";
 import { toggleIsTaken } from "../hooks/toggleIsTaken";
-import { SyntheticEvent, useEffect, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import useDateStore from "../store/useDateStore";
 import { getTotalListLength } from "../utils/getToTalListLength";
 import { itemSectionSt } from "../style/itemSectionSt";
@@ -92,9 +92,8 @@ const ItemSection = () => {
                   )}
                   {list[timePeriod as keyof listProps].map((item, i) => {
                     return (
-                      <>
+                      <React.Fragment key={i}>
                         <motion.div
-                          key={i}
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 60 }}
                           transition={{
@@ -155,7 +154,7 @@ const ItemSection = () => {
                             DEL
                           </button>
                         </div>
-                      </>
+                      </React.Fragment>
                     );
                   })}
                 </section>
