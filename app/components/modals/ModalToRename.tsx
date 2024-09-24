@@ -1,9 +1,9 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { modalSt } from "../style/modalSt";
-import useUserNameStore from "../store/useUserNameStore";
-import useModalStore from "../store/useModalStore";
+import useModalStore from "@/app/store/useModalStore";
+import useUserNameStore from "@/app/store/useUserNameStore";
+import { modalSt } from "@/app/style/modalSt";
 
 const ModalToRename = () => {
   const { userName } = useUserNameStore();

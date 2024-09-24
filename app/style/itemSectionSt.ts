@@ -129,6 +129,7 @@ export const itemSectionSt = {
     transition: 0.2s;
 
     &:hover {
+      transform: scale(0.98);
       background-color: ${colors.green}40;
     }
   `,

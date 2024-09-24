@@ -19,4 +19,5 @@ export interface modalList {
   deleteItem: string;
   renameUsername: string;
   modifyTime: string;
+  modifyDate: string;
 }

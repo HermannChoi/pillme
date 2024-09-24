@@ -2,10 +2,11 @@
 /** @jsxImportSource @emotion/react */
 
 import React from "react";
-import { clickModifyTime } from "../hooks/clickModifyTime";
-import useFormStore from "../store/useFormStore";
-import useModalStore from "../store/useModalStore";
-import { modalSt } from "../style/modalSt";
+import { clickModifyTime } from "@/app/hooks/clickModifyTime";
+import useFormStore from "@/app/store/useFormStore";
+import useModalStore from "@/app/store/useModalStore";
+import { modalSt } from "@/app/style/modalSt";
+import useItemStore from "@/app/store/useItemStore";
 
 const ModalToModifyTime = () => {
   const { setList } = useFormStore();
@@ -16,6 +17,7 @@ const ModalToModifyTime = () => {
     setItemForModal,
     resetItemForModal,
   } = useModalStore();
+  const { setSelectedItemId } = useItemStore();
 
   const hoursMin = 0;
   const hoursMax = 23;
@@ -26,6 +28,7 @@ const ModalToModifyTime = () => {
     setWhichModal(null);
     clickModifyTime(itemForModal, setList);
     resetItemForModal();
+    setSelectedItemId(null);
   };
 
   const handleHoursChange = (e: React.ChangeEvent<HTMLInputElement>) => {

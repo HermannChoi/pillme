@@ -12,6 +12,9 @@ export const toggleIsTaken = ({
   setList,
 }: ToggleIsTakeProps) => {
   const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1;
+  const day = today.getDate() + 1;
   const hours = today.getHours();
   const minutes = today.getMinutes();
   setList((prev) => ({
@@ -21,7 +24,7 @@ export const toggleIsTaken = ({
         ? {
             ...item,
             isTaken: !item.isTaken,
-            date: today.getMonth() + 1 + "/" + today.getDate(),
+            date: year + "-" + month + "-" + day,
             hours,
             minutes,
           }

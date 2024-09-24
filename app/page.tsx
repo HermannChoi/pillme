@@ -3,10 +3,11 @@ import ErrorMsg from "./components/ErrorMsg";
 import ItemSection from "./components/ItemSection";
 import InfoSec from "./components/InfoSec";
 import UserNameSection from "./components/UserNameSection";
-import ModalToDeleteItem from "./components/ModalToDeleteItem";
 import UserNameRenameBtn from "./components/UserNameRenameBtn";
-import ModalToRename from "./components/ModalToRename";
-import ModalToModifyTime from "./components/ModalToModifyTime";
+import ModalToDeleteItem from "./components/modals/ModalToDeleteItem";
+import ModalToModifyTime from "./components/modals/ModalToModifyTime";
+import ModalToRename from "./components/modals/ModalToRename";
+import ModalToModifyDate from "./components/modals/ModalToModifyDate";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <ModalToDeleteItem />
       <ModalToModifyTime />
       <UserNameRenameBtn />
+      <ModalToModifyDate />
       <ModalToRename />
     </main>
   );

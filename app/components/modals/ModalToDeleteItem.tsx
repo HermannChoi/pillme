@@ -1,10 +1,10 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { clickDelete } from "../hooks/clickDelete";
-import useFormStore from "../store/useFormStore";
-import useModalStore from "../store/useModalStore";
-import { modalSt } from "../style/modalSt";
+import { clickDelete } from "@/app/hooks/clickDelete";
+import useFormStore from "@/app/store/useFormStore";
+import useModalStore from "@/app/store/useModalStore";
+import { modalSt } from "@/app/style/modalSt";
 
 const ModalToDeleteItem = () => {
   const { setList } = useFormStore();

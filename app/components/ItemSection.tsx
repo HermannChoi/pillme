@@ -6,16 +6,17 @@ import { motion } from "framer-motion";
 import useFormStore from "../store/useFormStore";
 import { itemProps, listProps } from "../types/types";
 import { toggleIsTaken } from "../hooks/toggleIsTaken";
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import React, { SyntheticEvent, useEffect } from "react";
 import useDateStore from "../store/useDateStore";
 import { getTotalListLength } from "../utils/getToTalListLength";
 import { itemSectionSt } from "../style/itemSectionSt";
 import { outlineSt } from "../style/outlineSt";
 import { vibrate } from "../utils/vibrate";
 import useModalStore from "../store/useModalStore";
+import useItemStore from "../store/useItemStore";
 
 const ItemSection = () => {
-  const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
+  const { selectedItemId, setSelectedItemId } = useItemStore();
   const { list, setList, focusInput } = useFormStore();
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
   const { setWhichModal, setItemForModal } = useModalStore();
@@ -47,6 +48,11 @@ const ItemSection = () => {
 
   const clickModifyTime = (item: itemProps) => {
     setWhichModal("modifyTime");
+    setItemForModal(item);
+  };
+
+  const clickModifyDate = (item: itemProps) => {
+    setWhichModal("modifyDate");
     setItemForModal(item);
   };
 
@@ -124,7 +130,7 @@ const ItemSection = () => {
                               }}
                             />
                           </div>
-                          <p>{item.date}</p>
+                          <p>{item.date.substring(5).replaceAll("-", "/")}</p>
                           <p css={itemSectionSt.name}>{item.name}</p>
                           <p>
                             {String(item.hours).padStart(2, "0") +
@@ -138,8 +144,11 @@ const ItemSection = () => {
                             selectedItemId
                           )}
                         >
-                          <button css={itemSectionSt.optionBtn}>
-                            Coming soon
+                          <button
+                            onClick={() => clickModifyDate(item)}
+                            css={itemSectionSt.optionBtn}
+                          >
+                            Modify Date
                           </button>
                           <button
                             onClick={() => clickModifyTime(item)}

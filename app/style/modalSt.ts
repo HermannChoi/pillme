@@ -63,6 +63,15 @@ export const modalSt = {
     background-color: ${colors.grey}30;
     font-size: 1.2rem;
   `,
+  dateInput: css`
+    width: 60%;
+    height: 40px;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    background-color: ${colors.grey}30;
+    font-size: 1.2rem;
+  `,
   btnContainer: css`
     ${flexCenterX2}
     gap: 10px;
