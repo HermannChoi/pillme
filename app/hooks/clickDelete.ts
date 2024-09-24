@@ -1,15 +1,15 @@
 import { itemProps, listProps } from "../types/types";
 
 export const clickDelete = (
-  item: itemProps,
+  itemForModal: itemProps,
   setList: (prev: (prev: listProps) => listProps) => void
 ) => {
   setList((prev) => {
     return {
       ...prev,
-      [item.timePeriod]: prev[item.timePeriod as keyof listProps].filter(
-        (item) => item.id !== item.id
-      ),
+      [itemForModal.timePeriod]: prev[
+        itemForModal.timePeriod as keyof listProps
+      ].filter((item) => item.id !== itemForModal.id),
     };
   });
 };

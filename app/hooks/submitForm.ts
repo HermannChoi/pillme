@@ -59,7 +59,7 @@ export const submitForm = ({
   const newItem: itemProps = {
     id: uuid(),
     timePeriod: timePeriod,
-    date: "M/D",
+    date: "0000-00-00",
     name: name,
     hours: 0,
     minutes: 0,
