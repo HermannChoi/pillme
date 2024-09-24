@@ -64,10 +64,10 @@ export const modalSt = {
     font-size: 1.2rem;
   `,
   dateInput: css`
-    width: 60%;
+    width: 65%;
     height: 40px;
     text-align: center;
-    border: none;
+    border: 1px solid grey;
     border-radius: 10px;
     background-color: ${colors.grey}30;
     font-size: 1.2rem;

@@ -25,7 +25,7 @@ export const itemSectionSt = {
     flexCenterX2,
     css`
       width: 100%;
-      height: 80px;
+      height: 10rem;
       border: none;
       border-radius: 10px;
       background-color: ${colors.grey}12;

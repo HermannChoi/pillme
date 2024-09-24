@@ -36,6 +36,7 @@ const CreateItemForm = () => {
 
   return (
     <form
+      id="createItemForm"
       css={createItemFormSt.form}
       onSubmit={(e) =>
         submitForm({

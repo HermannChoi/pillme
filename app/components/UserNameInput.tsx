@@ -73,7 +73,11 @@ const UserNameInput = () => {
             css={userNameInputSt.formContainer}
           >
             <label htmlFor="userNameInput">{question}</label>
-            <form onSubmit={submitForm} css={userNameInputSt.form}>
+            <form
+              id="usernameForm"
+              onSubmit={submitForm}
+              css={userNameInputSt.form}
+            >
               <input
                 id="userNameInput"
                 autoComplete="off"

@@ -17,7 +17,8 @@ export interface listProps {
 
 export interface modalList {
   deleteItem: string;
-  renameUsername: string;
+  resetUsername: string;
   modifyTime: string;
   modifyDate: string;
+  resetItems: string;
 }

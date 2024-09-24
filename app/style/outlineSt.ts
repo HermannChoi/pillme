@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, flexCenterX2 } from "./commonSt";
+import { colors, flexCenterX2, flexColumnCenterX2 } from "./commonSt";
 
 export const outlineSt = {
   header: css`
@@ -10,13 +10,9 @@ export const outlineSt = {
     align-items: center;
     width: 100%;
     height: 3rem;
-    background-color: #0a0a0ae6;
-    backdrop-filter: blur(10px);
+    background-color: transparent;
+    backdrop-filter: blur(15px);
     z-index: 100;
-
-    @media (prefers-color-scheme: light) {
-      background-color: #ffffffe6;
-    }
   `,
   h1: css`
     color: ${colors.grey}80;
@@ -42,17 +38,37 @@ export const outlineSt = {
       font-weight: 500;
     `;
   },
+  resetBtnContainer: css`
+    ${flexColumnCenterX2}
+    gap: 5px;
+    width: 100%;
+  `,
   resetUserNameBtn: css`
     width: 100%;
+    height: 3rem;
     padding: 0.2rem;
     border: none;
     border-radius: 10px;
-    background-color: ${colors.red}60;
+    background-color: ${colors.green}40;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: ${colors.green}30;
+      transform: scale(0.98);
+    }
+  `,
+  resetItemNameBtn: css`
+    width: 100%;
+    height: 3rem;
+    padding: 0.2rem;
+    border: none;
+    border-radius: 10px;
+    background-color: ${colors.red}40;
     color: ${colors.red};
     transition: 0.3s;
 
     &:hover {
-      background-color: ${colors.red}50;
+      background-color: ${colors.red}30;
       transform: scale(0.98);
     }
   `,

@@ -1,23 +1,28 @@
 "use client";
+import useFormStore from "@/app/store/useFormStore";
 /** @jsxImportSource @emotion/react */
 
 import useModalStore from "@/app/store/useModalStore";
-import useUserNameStore from "@/app/store/useUserNameStore";
 import { modalSt } from "@/app/style/modalSt";
 
-const ModalToRename = () => {
-  const { userName } = useUserNameStore();
+const ModalToResetItem = () => {
   const { whichModal, setWhichModal } = useModalStore();
+  const { setList } = useFormStore();
 
   const clickResetUserName = () => {
-    localStorage.removeItem("userName");
-    window.location.reload();
+    setList({
+      Morning: [],
+      Noon: [],
+      Night: [],
+      Any: [],
+    });
+    setWhichModal(null);
   };
 
   return (
     <div
       onClick={() => setWhichModal(null)}
-      css={modalSt.background(whichModal, "renameUsername")}
+      css={modalSt.background(whichModal, "resetItems")}
     >
       <div
         onClick={(e) => {
@@ -26,18 +31,14 @@ const ModalToRename = () => {
         css={modalSt.container}
       >
         <div css={modalSt.textContainer}>
-          <p css={modalSt.text}>
-            Do you really want to change your name,{" "}
-            <span css={modalSt.itemName}>{userName}</span>?
-          </p>
-          <p css={modalSt.subText}>* the items will not be deleted.</p>
+          <p css={modalSt.text}>Do you really want to reset all the items?</p>
         </div>
         <div css={modalSt.btnContainer}>
           <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
             CANCEL
           </button>
           <button onClick={() => clickResetUserName()} css={modalSt.delBtn}>
-            DELETE
+            DELETE ALL
           </button>
         </div>
       </div>
@@ -45,4 +46,4 @@ const ModalToRename = () => {
   );
 };
 
-export default ModalToRename;
+export default ModalToResetItem;

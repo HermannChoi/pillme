@@ -1,13 +1,14 @@
 import CreateItemForm from "./components/CreateItemForm";
 import ErrorMsg from "./components/ErrorMsg";
 import ItemSection from "./components/ItemSection";
-import InfoSec from "./components/InfoSec";
 import UserNameSection from "./components/UserNameSection";
-import UserNameRenameBtn from "./components/UserNameRenameBtn";
+import UserNameRenameBtn from "./components/ResetButtons";
 import ModalToDeleteItem from "./components/modals/ModalToDeleteItem";
 import ModalToModifyTime from "./components/modals/ModalToModifyTime";
-import ModalToRename from "./components/modals/ModalToRename";
 import ModalToModifyDate from "./components/modals/ModalToModifyDate";
+import ModalToResetItem from "./components/modals/ModalToResetItem";
+import ModalToResetUsername from "./components/modals/ModalToResetUsername";
+import InfoSection from "./components/InfoSection";
 
 const Home = () => {
   return (
@@ -15,13 +16,14 @@ const Home = () => {
       <UserNameSection />
       <CreateItemForm />
       <ErrorMsg />
-      <InfoSec />
+      <InfoSection />
       <ItemSection />
       <ModalToDeleteItem />
       <ModalToModifyTime />
       <UserNameRenameBtn />
       <ModalToModifyDate />
-      <ModalToRename />
+      <ModalToResetUsername />
+      <ModalToResetItem />
     </main>
   );
 };

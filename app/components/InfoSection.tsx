@@ -9,7 +9,7 @@ import { getKoreanDate } from "../utils/getKoreanDate";
 import { itemSectionSt } from "../style/itemSectionSt";
 import { css } from "@emotion/react";
 
-const InfoSec = () => {
+const InfoSection = () => {
   const { list } = useFormStore();
   const { lastCheckedDate, setLastCheckedDate, setIsDateChanged } =
     useDateStore();
@@ -34,7 +34,7 @@ const InfoSec = () => {
       position: sticky;
       top: 3rem;
       background-color: #151515e6;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(5px);
       z-index: 1;
 
       @media (prefers-color-scheme: light) {
@@ -51,4 +51,4 @@ const InfoSec = () => {
   );
 };
 
-export default InfoSec;
+export default InfoSection;
