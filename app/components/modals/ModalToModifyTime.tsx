@@ -70,6 +70,7 @@ const ModalToModifyTime = () => {
         <div css={modalSt.textContainer}>
           <p css={modalSt.text}>Modify the last time you took</p>
           <input
+            name="modifyHours"
             min={hoursMin}
             max={hoursMax}
             type="number"
@@ -79,6 +80,7 @@ const ModalToModifyTime = () => {
           />
           <span> : </span>
           <input
+            name="modifyMinutes"
             min={minutesMin}
             max={minutesMax}
             type="number"

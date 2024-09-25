@@ -14,6 +14,7 @@ import { outlineSt } from "../style/outlineSt";
 import { vibrate } from "../utils/vibrate";
 import useModalStore from "../store/useModalStore";
 import useItemStore from "../store/useItemStore";
+import { clickSetWhichModal } from "../hooks/clickSetWhichModal";
 
 const ItemSection = () => {
   const { selectedItemId, setSelectedItemId } = useItemStore();
@@ -21,7 +22,7 @@ const ItemSection = () => {
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
   const { setWhichModal, setItemForModal, setMessage } = useModalStore();
 
-  const clickItem = (item: itemProps) => {
+  const clickItemForOptionsWindow = (item: itemProps) => {
     if (item.date === "0000-00-00") {
       setMessage(
         "you can close the options window after activating the item once."
@@ -34,36 +35,14 @@ const ItemSection = () => {
     setSelectedItemId(item.id);
   };
 
-  const clickToggle = (
-    e: SyntheticEvent,
-    timePeriod: keyof listProps,
-    item: itemProps
-  ) => {
+  const clickToggle = (e: SyntheticEvent, clickedItem: itemProps) => {
     e.stopPropagation();
     toggleIsTaken({
-      timePeriod: timePeriod as keyof listProps,
-      id: item.id,
+      clickedItem,
       setList,
     });
     vibrate(100);
   };
-  //옵션버튼 함수 커스텀 훅으로 만들기-------------------------
-  const clickDeleteBtn = (e: SyntheticEvent, item: itemProps) => {
-    e.stopPropagation();
-    setWhichModal("deleteItem");
-    setItemForModal(item);
-  };
-
-  const clickModifyTime = (item: itemProps) => {
-    setWhichModal("modifyTime");
-    setItemForModal(item);
-  };
-
-  const clickModifyDate = (item: itemProps) => {
-    setWhichModal("modifyDate");
-    setItemForModal(item);
-  };
-  //여기까지----------------------------------------------
 
   useEffect(() => {
     if (isDateChanged) {
@@ -119,17 +98,11 @@ const ItemSection = () => {
                             stiffness: 700,
                             damping: 20,
                           }}
-                          onClick={() => clickItem(item)}
+                          onClick={() => clickItemForOptionsWindow(item)}
                           css={itemSectionSt.listItem(item.id, selectedItemId)}
                         >
                           <div
-                            onClick={(e) =>
-                              clickToggle(
-                                e,
-                                timePeriod as keyof listProps,
-                                item
-                              )
-                            }
+                            onClick={(e) => clickToggle(e, item)}
                             css={itemSectionSt.toggle(item.isTaken)}
                           >
                             <motion.div
@@ -158,19 +131,43 @@ const ItemSection = () => {
                           )}
                         >
                           <button
-                            onClick={() => clickModifyDate(item)}
+                            onClick={(e) =>
+                              clickSetWhichModal({
+                                e,
+                                whichModal: "modifyDate",
+                                setWhichModal,
+                                item,
+                                setItemForModal,
+                              })
+                            }
                             css={itemSectionSt.optionBtn}
                           >
                             Modify Date
                           </button>
                           <button
-                            onClick={() => clickModifyTime(item)}
+                            onClick={(e) =>
+                              clickSetWhichModal({
+                                e,
+                                whichModal: "modifyTime",
+                                setWhichModal,
+                                item,
+                                setItemForModal,
+                              })
+                            }
                             css={itemSectionSt.optionBtn}
                           >
                             Modify Time
                           </button>
                           <button
-                            onClick={(e) => clickDeleteBtn(e, item)}
+                            onClick={(e) =>
+                              clickSetWhichModal({
+                                e,
+                                whichModal: "deleteItem",
+                                setWhichModal,
+                                item,
+                                setItemForModal,
+                              })
+                            }
                             css={itemSectionSt.delBtn}
                           >
                             DEL

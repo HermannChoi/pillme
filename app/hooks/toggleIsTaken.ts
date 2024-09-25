@@ -1,16 +1,11 @@
-import { listProps } from "../types/types";
+import { itemProps, listProps } from "../types/types";
 
 interface ToggleIsTakeProps {
-  timePeriod: keyof listProps;
-  id: string;
+  clickedItem: itemProps;
   setList: (prev: (prev: listProps) => listProps) => void;
 }
 
-export const toggleIsTaken = ({
-  timePeriod,
-  id,
-  setList,
-}: ToggleIsTakeProps) => {
+export const toggleIsTaken = ({ clickedItem, setList }: ToggleIsTakeProps) => {
   const today = new Date();
   const year = today.getFullYear();
   const month = String(today.getMonth() + 1).padStart(2, "0");
@@ -19,8 +14,10 @@ export const toggleIsTaken = ({
   const minutes = today.getMinutes();
   setList((prev) => ({
     ...prev,
-    [timePeriod]: prev[timePeriod].map((item) =>
-      item.id === id
+    [clickedItem.timePeriod]: prev[
+      clickedItem.timePeriod as keyof listProps
+    ].map((item) =>
+      item.id === clickedItem.id
         ? item.isTaken
           ? //비활성화 할때는 토글만 변경
             {

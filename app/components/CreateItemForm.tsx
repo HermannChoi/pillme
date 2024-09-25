@@ -36,7 +36,6 @@ const CreateItemForm = () => {
 
   return (
     <form
-      id="createItemForm"
       css={createItemFormSt.form}
       onSubmit={(e) =>
         submitForm({
@@ -69,11 +68,8 @@ const CreateItemForm = () => {
         />
       </div>
       <div css={createItemFormSt.timeSelectContainer}>
-        <label htmlFor="time" css={createItemFormSt.label}>
-          Time
-        </label>
+        <p css={createItemFormSt.label}>Time</p>
         <div
-          id="time"
           css={createItemFormSt.timeSelect}
           onClick={() => setIsSelectOpen(!isSelectOpen)}
         >
