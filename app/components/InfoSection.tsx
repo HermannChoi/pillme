@@ -33,12 +33,12 @@ const InfoSection = () => {
     css`
       position: sticky;
       top: 3rem;
-      background-color: #151515e6;
+      background-color: #15151580;
       backdrop-filter: blur(5px);
       z-index: 1;
 
       @media (prefers-color-scheme: light) {
-        background-color: #f5f5f5;
+        background-color: #f5f5f580;
       }
     `,
   ];
@@ -46,7 +46,11 @@ const InfoSection = () => {
   return (
     <div css={infoSectionSt}>
       <p>{lastCheckedDate?.replaceAll("-", "/")}</p>
-      <p>{getTotalListLength(list) + " items has been registered."}</p>
+      <p>
+        {getTotalListLength(list) +
+          (getTotalListLength(list) > 1 ? " items have" : " item has") +
+          " been registered."}
+      </p>
     </div>
   );
 };
