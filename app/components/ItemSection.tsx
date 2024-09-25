@@ -44,15 +44,33 @@ const ItemSection = () => {
     vibrate(100);
   };
 
+  const clickToggleIsEveryOtherDay = (clickedItem: itemProps) => {
+    setList((prev) => ({
+      ...prev,
+      [clickedItem.timePeriod]: prev[
+        clickedItem.timePeriod as keyof listProps
+      ].map((item) => {
+        return item.id === clickedItem.id
+          ? { ...item, isEveryOtherDay: !item.isEveryOtherDay, leftDay: 1 }
+          : item;
+      }),
+    }));
+    vibrate(100);
+  };
+
   useEffect(() => {
     if (isDateChanged) {
       for (const timePeriod in list) {
         setList((prev) => ({
           ...prev,
-          //격일 기능 추가하기
-          //아이템 객체에 격일 isToday boolean만들어서 하루 바뀌면 토글시키고 isToday인것만 비활성화 시키기
           [timePeriod]: prev[timePeriod as keyof listProps].map((item) => {
-            return item.isTaken ? { ...item, isTaken: false } : item;
+            return item.isTaken
+              ? item.isEveryOtherDay
+                ? item.leftDay === 0
+                  ? { ...item, isTaken: false, leftDay: item.leftDay + 1 }
+                  : { ...item, leftDay: item.leftDay - 1 }
+                : { ...item, isTaken: false }
+              : item;
           }),
         }));
       }
@@ -88,7 +106,7 @@ const ItemSection = () => {
                   )}
                   {list[timePeriod as keyof listProps].map((item, i) => {
                     return (
-                      <React.Fragment key={i}>
+                      <div key={i} css={itemSectionSt.listItemContainer}>
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 60 }}
@@ -111,7 +129,7 @@ const ItemSection = () => {
                               transition={{
                                 type: "spring",
                                 stiffness: 700,
-                                damping: 20,
+                                damping: 30,
                               }}
                             />
                           </div>
@@ -130,34 +148,44 @@ const ItemSection = () => {
                             item.date
                           )}
                         >
-                          <button
-                            onClick={(e) =>
-                              clickSetWhichModal({
-                                e,
-                                whichModal: "modifyDate",
-                                setWhichModal,
-                                item,
-                                setItemForModal,
-                              })
-                            }
-                            css={itemSectionSt.optionBtn}
+                          <div css={itemSectionSt.optionBtnContainer}>
+                            <button
+                              onClick={(e) =>
+                                clickSetWhichModal({
+                                  e,
+                                  whichModal: "modifyDate",
+                                  setWhichModal,
+                                  item,
+                                  setItemForModal,
+                                })
+                              }
+                              css={itemSectionSt.optionBtn}
+                            >
+                              Date
+                            </button>
+                            <button
+                              onClick={(e) =>
+                                clickSetWhichModal({
+                                  e,
+                                  whichModal: "modifyTime",
+                                  setWhichModal,
+                                  item,
+                                  setItemForModal,
+                                })
+                              }
+                              css={itemSectionSt.optionBtn}
+                            >
+                              Time
+                            </button>
+                          </div>
+                          <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => clickToggleIsEveryOtherDay(item)}
+                            css={itemSectionSt.toggle2(item.isEveryOtherDay)}
                           >
-                            Modify Date
-                          </button>
-                          <button
-                            onClick={(e) =>
-                              clickSetWhichModal({
-                                e,
-                                whichModal: "modifyTime",
-                                setWhichModal,
-                                item,
-                                setItemForModal,
-                              })
-                            }
-                            css={itemSectionSt.optionBtn}
-                          >
-                            Modify Time
-                          </button>
+                            {item.isEveryOtherDay ? "2D" : "1D"}
+                          </motion.div>
                           <button
                             onClick={(e) =>
                               clickSetWhichModal({
@@ -173,7 +201,7 @@ const ItemSection = () => {
                             DEL
                           </button>
                         </div>
-                      </React.Fragment>
+                      </div>
                     );
                   })}
                 </section>

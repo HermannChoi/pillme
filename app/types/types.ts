@@ -6,6 +6,8 @@ export interface itemProps {
   hours: number;
   minutes: number;
   isTaken: boolean;
+  isEveryOtherDay: boolean;
+  leftDay: number;
 }
 
 export interface listProps {

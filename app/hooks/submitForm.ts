@@ -64,6 +64,8 @@ export const submitForm = ({
     hours: 0,
     minutes: 0,
     isTaken: false,
+    isEveryOtherDay: false,
+    leftDay: 0,
   };
   //생성함수
   setList((prev) => {

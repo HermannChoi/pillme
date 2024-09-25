@@ -39,6 +39,9 @@ export const itemSectionSt = {
       }
     `,
   ],
+  listItemContainer: css`
+    width: 100%;
+  `,
   listItem: (itemId: string, selectedItemId: string | null) => {
     return css`
       position: relative;
@@ -72,20 +75,79 @@ export const itemSectionSt = {
       width: 60px;
       height: 30px;
       padding: 3px;
-      border-radius: 10px;
+      border-radius: 30px;
       background-color: ${isTaken ? `${colors.green}` : `#90909099`};
       cursor: pointer;
     `;
   },
   handle: css`
-    width: 25px;
-    height: 25px;
+    width: 24px;
+    height: 24px;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 24px;
   `,
   name: css`
     flex: 1;
   `,
+  optionContainer: (
+    itemId: string,
+    selectedItemId: string | null,
+    itemDate: string
+  ) => {
+    return [
+      css`
+        transform-origin: top;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 60px;
+        padding: 5px 10px 5px;
+        border-radius: 0 0 10px 10px;
+        background-color: ${colors.grey}30;
+        overflow: hidden;
+        animation: ${itemId === selectedItemId
+            ? scaleYFadeIn
+            : itemDate !== "0000-00-00" && scaleYFadeOut}
+          0.2s forwards;
+      `,
+    ];
+  },
+  optionBtnContainer: css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    height: 100%;
+  `,
+  optionBtn: css`
+    height: 40px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: ${colors.green}50;
+    transition: 0.2s;
+
+    &:hover {
+      transform: scale(0.98);
+      background-color: ${colors.green}40;
+    }
+  `,
+  toggle2: (isTaken: boolean) => {
+    return css`
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      padding: 3px;
+      border-radius: 10px;
+      background-color: ${isTaken ? `${colors.green}50` : `#90909050`};
+      cursor: pointer;
+    `;
+  },
   delBtn: [
     flexCenterX2,
     css`
@@ -103,42 +165,4 @@ export const itemSectionSt = {
       }
     `,
   ],
-  optionContainer: (
-    itemId: string,
-    selectedItemId: string | null,
-    itemDate: string
-  ) => {
-    return [
-      css`
-        transform-origin: top;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        height: 60px;
-        padding: 5px 10px 5px;
-        border-radius: 0 0 10px 10px;
-        margin-top: -5px;
-        background-color: ${colors.grey}30;
-        overflow: hidden;
-        animation: ${itemId === selectedItemId
-            ? scaleYFadeIn
-            : itemDate !== "0000-00-00" && scaleYFadeOut}
-          0.2s forwards;
-      `,
-    ];
-  },
-  optionBtn: css`
-    height: 40px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 10px;
-    background-color: ${colors.green}50;
-    transition: 0.2s;
-
-    &:hover {
-      transform: scale(0.98);
-      background-color: ${colors.green}40;
-    }
-  `,
 };
