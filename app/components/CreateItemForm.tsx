@@ -9,9 +9,11 @@ import { listProps } from "../types/types";
 import { timeOptions } from "../constant/timeOptions";
 import { useEffect, useRef } from "react";
 import { createItemFormSt } from "../style/createItemFormSt";
+import useClickOutside from "../hooks/useClickOutside";
 
 const CreateItemForm = () => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const timePeriodDivRef = useRef<HTMLDivElement>(null);
   const {
     name,
     setName,
@@ -27,6 +29,9 @@ const CreateItemForm = () => {
     setIsEasterEggsOn,
   } = useFormStore();
   const { setErrorMsg, setIsErrorMsgChanged } = useErrorMsgStore();
+
+  //다른 곳 누를 시에 시간 대 버튼 비활성화 됨.
+  useClickOutside(timePeriodDivRef, () => setIsSelectOpen(false));
 
   useEffect(() => {
     setFocusInput(() => {
@@ -70,6 +75,7 @@ const CreateItemForm = () => {
       <div css={createItemFormSt.timeSelectContainer}>
         <p css={createItemFormSt.label}>Time</p>
         <div
+          ref={timePeriodDivRef}
           css={createItemFormSt.timeSelect}
           onClick={() => setIsSelectOpen(!isSelectOpen)}
         >
