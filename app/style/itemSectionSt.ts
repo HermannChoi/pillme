@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { colors, flexCenterX2, flexColumnCenterX2 } from "./commonSt";
-import { emptyItemSectionAni, toBottom } from "./keyframes";
+import { emptyItemSectionAni, scaleYFadeIn, scaleYFadeOut } from "./keyframes";
 
 export const itemSectionSt = {
   sectionContainer: [
@@ -103,11 +103,15 @@ export const itemSectionSt = {
       }
     `,
   ],
-  optionContainer: (itemId: string, selectedItemId: string | null) => {
+  optionContainer: (
+    itemId: string,
+    selectedItemId: string | null,
+    itemDate: string
+  ) => {
     return [
       css`
         transform-origin: top;
-        display: ${itemId === selectedItemId ? `flex` : `none`};
+        display: flex;
         justify-content: space-between;
         align-items: center;
         width: 100%;
@@ -116,7 +120,11 @@ export const itemSectionSt = {
         border-radius: 0 0 10px 10px;
         margin-top: -5px;
         background-color: ${colors.grey}30;
-        animation: ${toBottom} 0.2s;
+        overflow: hidden;
+        animation: ${itemId === selectedItemId
+            ? scaleYFadeIn
+            : itemDate !== "0000-00-00" && scaleYFadeOut}
+          0.2s forwards;
       `,
     ];
   },

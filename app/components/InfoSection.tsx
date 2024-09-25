@@ -45,8 +45,8 @@ const InfoSection = () => {
 
   return (
     <div css={infoSectionSt}>
-      <p>{lastCheckedDate}</p>
-      <p>{"Registered Item : " + getTotalListLength(list)}</p>
+      <p>{lastCheckedDate?.replaceAll("-", "/")}</p>
+      <p>{getTotalListLength(list) + " items has been registered."}</p>
     </div>
   );
 };

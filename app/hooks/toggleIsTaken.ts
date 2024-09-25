@@ -21,13 +21,20 @@ export const toggleIsTaken = ({
     ...prev,
     [timePeriod]: prev[timePeriod].map((item) =>
       item.id === id
-        ? {
-            ...item,
-            isTaken: !item.isTaken,
-            date: year + "-" + month + "-" + day,
-            hours,
-            minutes,
-          }
+        ? item.isTaken
+          ? //비활성화 할때는 토글만 변경
+            {
+              ...item,
+              isTaken: !item.isTaken,
+            }
+          : //활성화 할 때는 시간 업데이트 추가
+            {
+              ...item,
+              isTaken: !item.isTaken,
+              date: year + "-" + month + "-" + day,
+              hours,
+              minutes,
+            }
         : item
     ),
   }));

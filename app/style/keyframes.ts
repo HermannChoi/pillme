@@ -10,9 +10,9 @@ export const fadeIn = keyframes`
   }
 `;
 
-export const toBottom = keyframes`
+export const scaleYFadeIn = keyframes`
   0% {
-    transform: scaleY(0.1);
+    transform: scaleY(0);
   }
   100% {
     transform: scaleY(1);
@@ -24,6 +24,17 @@ export const fadeOut = keyframes`
     opacity: 1;
   }
     100% {
+    opacity: 0;
+  }
+`;
+
+export const scaleYFadeOut = keyframes`
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+    height: 0;
     opacity: 0;
   }
 `;

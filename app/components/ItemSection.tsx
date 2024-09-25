@@ -21,9 +21,15 @@ const ItemSection = () => {
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
   const { setWhichModal, setItemForModal } = useModalStore();
 
-  const clickItem = (itemId: string) => {
-    if (selectedItemId === itemId) return setSelectedItemId(null);
-    setSelectedItemId(itemId);
+  const clickItem = (item: itemProps) => {
+    if (item.date === "0000-00-00")
+      return alert(
+        "you can close the options window after activating the item once."
+      );
+
+    if (selectedItemId === item.id) return setSelectedItemId(null);
+
+    setSelectedItemId(item.id);
   };
 
   const clickToggle = (
@@ -39,7 +45,7 @@ const ItemSection = () => {
     });
     vibrate(100);
   };
-
+  //옵션버튼 함수 커스텀 훅으로 만들기-------------------------
   const clickDeleteBtn = (e: SyntheticEvent, item: itemProps) => {
     e.stopPropagation();
     setWhichModal("deleteItem");
@@ -55,12 +61,15 @@ const ItemSection = () => {
     setWhichModal("modifyDate");
     setItemForModal(item);
   };
+  //여기까지----------------------------------------------
 
   useEffect(() => {
     if (isDateChanged) {
       for (const timePeriod in list) {
         setList((prev) => ({
           ...prev,
+          //격일 기능 추가하기
+          //아이템 객체에 격일 isToday boolean만들어서 하루 바뀌면 토글시키고 isToday인것만 비활성화 시키기
           [timePeriod]: prev[timePeriod as keyof listProps].map((item) => {
             return item.isTaken ? { ...item, isTaken: false } : item;
           }),
@@ -103,11 +112,12 @@ const ItemSection = () => {
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 60 }}
                           transition={{
+                            duration: 3000,
                             type: "spring",
                             stiffness: 700,
                             damping: 20,
                           }}
-                          onClick={() => clickItem(item.id)}
+                          onClick={() => clickItem(item)}
                           css={itemSectionSt.listItem(item.id, selectedItemId)}
                         >
                           <div
@@ -141,7 +151,8 @@ const ItemSection = () => {
                         <div
                           css={itemSectionSt.optionContainer(
                             item.id,
-                            selectedItemId
+                            selectedItemId,
+                            item.date
                           )}
                         >
                           <button
