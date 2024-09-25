@@ -19,13 +19,15 @@ const ItemSection = () => {
   const { selectedItemId, setSelectedItemId } = useItemStore();
   const { list, setList, focusInput } = useFormStore();
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
-  const { setWhichModal, setItemForModal } = useModalStore();
+  const { setWhichModal, setItemForModal, setMessage } = useModalStore();
 
   const clickItem = (item: itemProps) => {
-    if (item.date === "0000-00-00")
-      return alert(
+    if (item.date === "0000-00-00") {
+      setMessage(
         "you can close the options window after activating the item once."
       );
+      return setWhichModal("message");
+    }
 
     if (selectedItemId === item.id) return setSelectedItemId(null);
 

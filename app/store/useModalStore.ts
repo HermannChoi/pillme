@@ -7,6 +7,8 @@ interface UseModalStoreProps {
   itemForModal: itemProps;
   setItemForModal: (value: itemProps) => void;
   resetItemForModal: () => void;
+  message: string;
+  setMessage: (value: string) => void;
 }
 
 const useModalStore = create<UseModalStoreProps>((set) => ({
@@ -34,6 +36,8 @@ const useModalStore = create<UseModalStoreProps>((set) => ({
         isTaken: false,
       },
     }),
+  message: "",
+  setMessage: (value) => set({ message: value }),
 }));
 
 export default useModalStore;

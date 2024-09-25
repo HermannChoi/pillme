@@ -9,6 +9,7 @@ import ModalToModifyDate from "./components/modals/ModalToModifyDate";
 import ModalToResetItem from "./components/modals/ModalToResetItem";
 import ModalToResetUsername from "./components/modals/ModalToResetUsername";
 import InfoSection from "./components/InfoSection";
+import MessageModal from "./components/modals/MessageModal";
 
 const Home = () => {
   return (
@@ -24,6 +25,7 @@ const Home = () => {
       <ModalToModifyDate />
       <ModalToResetUsername />
       <ModalToResetItem />
+      <MessageModal />
     </main>
   );
 };

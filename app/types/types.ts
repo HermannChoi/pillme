@@ -21,4 +21,5 @@ export interface modalList {
   modifyTime: string;
   modifyDate: string;
   resetItems: string;
+  message: string;
 }
