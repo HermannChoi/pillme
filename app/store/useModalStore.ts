@@ -11,30 +11,26 @@ interface UseModalStoreProps {
   setMessage: (value: string) => void;
 }
 
+const defaultItemSetup = {
+  id: "",
+  timePeriod: "",
+  date: "0000-00-00",
+  name: "",
+  hours: 0,
+  minutes: 0,
+  isTaken: false,
+  isEveryOtherDay: false,
+  leftDay: 0,
+};
+
 const useModalStore = create<UseModalStoreProps>((set) => ({
   whichModal: null,
   setWhichModal: (value) => set({ whichModal: value }),
-  itemForModal: {
-    id: "",
-    timePeriod: "",
-    date: "",
-    name: "",
-    hours: 0,
-    minutes: 0,
-    isTaken: false,
-  },
+  itemForModal: defaultItemSetup,
   setItemForModal: (value) => set({ itemForModal: value }),
   resetItemForModal: () =>
     set({
-      itemForModal: {
-        id: "",
-        timePeriod: "",
-        date: "",
-        name: "",
-        hours: 0,
-        minutes: 0,
-        isTaken: false,
-      },
+      itemForModal: defaultItemSetup,
     }),
   message: "",
   setMessage: (value) => set({ message: value }),

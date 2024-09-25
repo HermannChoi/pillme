@@ -39,6 +39,31 @@ export const scaleYFadeOut = keyframes`
   }
 `;
 
+export const fadeInAndOut = keyframes`
+  0% {
+    opacity: 0;
+  }
+  30%,80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`;
+
+export const scaleZeroTo100 = keyframes`
+  0% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+`;
+
 export const twitching1 = keyframes`
   20%{transform: translateX(-2px)}
   40%{transform: translateX(2px)}
@@ -64,5 +89,16 @@ export const rotate360 = keyframes`
 export const emptyItemSectionAni = keyframes`
   100% {
     color: ${colors.green};
+  }
+`;
+
+export const congratsBarAni = keyframes`
+  0% {
+    opacity: 1;
+    transform: scaleX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
   }
 `;

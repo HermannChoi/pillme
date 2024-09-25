@@ -17,7 +17,8 @@ import useItemStore from "../store/useItemStore";
 import { clickSetWhichModal } from "../hooks/clickSetWhichModal";
 
 const ItemSection = () => {
-  const { selectedItemId, setSelectedItemId } = useItemStore();
+  const { selectedItemId, setSelectedItemId, setIsEverythingTaken } =
+    useItemStore();
   const { list, setList, focusInput } = useFormStore();
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
   const { setWhichModal, setItemForModal, setMessage } = useModalStore();
@@ -80,6 +81,19 @@ const ItemSection = () => {
   useEffect(() => {
     (!isInitialLoad || isDateChanged) &&
       localStorage.setItem("medList", JSON.stringify(list));
+
+    const allItems = [
+      ...list.Morning,
+      ...list.Noon,
+      ...list.Night,
+      ...list.Any,
+    ];
+    if (allItems.every((item) => item.isTaken) && allItems.length > 0) {
+      setIsEverythingTaken(true);
+      setTimeout(() => {
+        setIsEverythingTaken(false);
+      }, 3000);
+    }
   }, [list]);
 
   useEffect(() => {
@@ -111,7 +125,7 @@ const ItemSection = () => {
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 60 }}
                           transition={{
-                            duration: 3000,
+                            duration: 700,
                             type: "spring",
                             stiffness: 700,
                             damping: 20,
