@@ -9,8 +9,10 @@ const CongratsPage = () => {
 
   return (
     <div css={congratsPageSt.container(isEverythingTaken)}>
-      <div css={congratsPageSt.bar} />
-      <p css={congratsPageSt.text}>Well done!</p>
+      <div css={congratsPageSt.barContainer}>
+        <div css={congratsPageSt.bar} />
+      </div>
+      <p css={congratsPageSt.text}>Good job!</p>
     </div>
   );
 };

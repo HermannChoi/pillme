@@ -10,6 +10,7 @@ export const outlineSt = {
     align-items: center;
     width: 100%;
     height: 3rem;
+    padding: 0 5%;
     background-color: transparent;
     backdrop-filter: blur(15px);
     z-index: 100;
@@ -32,7 +33,7 @@ export const outlineSt = {
       height: 3rem;
       border-radius: 10px;
       margin-top: 0.5rem;
-      background-color: ${colors.grey}12;
+      background-color: ${colors.grey}15;
       color: ${isEasterEggsOn && colors.blue};
       font-size: 1.2rem;
       font-weight: 500;

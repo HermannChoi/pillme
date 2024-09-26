@@ -14,7 +14,7 @@ interface UseModalStoreProps {
 const defaultItemSetup = {
   id: "",
   timePeriod: "",
-  date: "0000-00-00",
+  date: "",
   name: "",
   hours: 0,
   minutes: 0,

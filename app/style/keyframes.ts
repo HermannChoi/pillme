@@ -35,6 +35,7 @@ export const scaleYFadeOut = keyframes`
   100% {
     transform: scaleY(0);
     height: 0;
+    padding: 0;
     opacity: 0;
   }
 `;

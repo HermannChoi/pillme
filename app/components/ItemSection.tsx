@@ -17,8 +17,13 @@ import useItemStore from "../store/useItemStore";
 import { clickSetWhichModal } from "../hooks/clickSetWhichModal";
 
 const ItemSection = () => {
-  const { selectedItemId, setSelectedItemId, setIsEverythingTaken } =
-    useItemStore();
+  const {
+    selectedItemId,
+    setSelectedItemId,
+    setIsEverythingTaken,
+    previousIsEverythingTaken,
+    setPreviousIsEverythingTaken,
+  } = useItemStore();
   const { list, setList, focusInput } = useFormStore();
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
   const { setWhichModal, setItemForModal, setMessage } = useModalStore();
@@ -52,7 +57,9 @@ const ItemSection = () => {
         clickedItem.timePeriod as keyof listProps
       ].map((item) => {
         return item.id === clickedItem.id
-          ? { ...item, isEveryOtherDay: !item.isEveryOtherDay, leftDay: 1 }
+          ? item.isEveryOtherDay
+            ? { ...item, isEveryOtherDay: false, leftDay: 0 }
+            : { ...item, isEveryOtherDay: true, leftDay: 1 }
           : item;
       }),
     }));
@@ -88,11 +95,21 @@ const ItemSection = () => {
       ...list.Night,
       ...list.Any,
     ];
-    if (allItems.every((item) => item.isTaken) && allItems.length > 0) {
-      setIsEverythingTaken(true);
-      setTimeout(() => {
-        setIsEverythingTaken(false);
-      }, 3000);
+    const allTaken =
+      allItems.every((item) => item.isTaken) &&
+      allItems.length > 0 &&
+      !isInitialLoad;
+
+    // 아이템의 isTaken 상태가 변경된 경우에만 동작
+    if (allTaken !== previousIsEverythingTaken) {
+      setIsEverythingTaken(allTaken);
+      setPreviousIsEverythingTaken(allTaken);
+
+      if (allTaken) {
+        setTimeout(() => {
+          setIsEverythingTaken(false);
+        }, 3000);
+      }
     }
   }, [list]);
 
@@ -131,9 +148,9 @@ const ItemSection = () => {
                             damping: 20,
                           }}
                           onClick={() => clickItemForOptionsWindow(item)}
-                          css={itemSectionSt.listItem(item.id, selectedItemId)}
+                          css={itemSectionSt.listItem(item, selectedItemId)}
                         >
-                          <div
+                          <button
                             onClick={(e) => clickToggle(e, item)}
                             css={itemSectionSt.toggle(item.isTaken)}
                           >
@@ -146,7 +163,7 @@ const ItemSection = () => {
                                 damping: 30,
                               }}
                             />
-                          </div>
+                          </button>
                           <p>{item.date.substring(5).replaceAll("-", "/")}</p>
                           <p css={itemSectionSt.name}>{item.name}</p>
                           <p>
@@ -198,7 +215,7 @@ const ItemSection = () => {
                             onClick={() => clickToggleIsEveryOtherDay(item)}
                             css={itemSectionSt.toggle2(item.isEveryOtherDay)}
                           >
-                            {item.isEveryOtherDay ? "2D" : "1D"}
+                            {item.isEveryOtherDay ? "2D 1T" : "1D 1T"}
                           </motion.div>
                           <button
                             onClick={(e) =>

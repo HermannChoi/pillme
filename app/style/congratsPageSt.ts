@@ -5,7 +5,7 @@ import { congratsBarAni, fadeInAndOut, scaleZeroTo100 } from "./keyframes";
 export const congratsPageSt = {
   container: (isEverythingTaken: boolean) => {
     return css`
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       ${flexColumnCenterX2}
@@ -22,19 +22,24 @@ export const congratsPageSt = {
       }
     `;
   },
-  bar: css`
+  barContainer: css`
     width: 300px;
     height: 10px;
+    border-radius: 5px;
+    background-color: ${colors.grey};
+  `,
+  bar: css`
+    width: 100%;
+    height: 100%;
     border-radius: 5px;
     background-color: ${colors.green};
     opacity: 0;
     transform-origin: left;
-    animation: ${congratsBarAni} 0.5s 0.2s forwards linear;
+    animation: ${congratsBarAni} 0.5s 0.2s forwards;
   `,
   text: css`
     font-size: 2rem;
-    font-weight: bold;
-    text-shadow: 0 0 20px #ffffff;
+    font-weight: 500;
     opacity: 0;
     animation: ${scaleZeroTo100} 0.5s 0.8s forwards;
   `,

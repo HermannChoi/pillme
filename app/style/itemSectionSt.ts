@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 import { colors, flexCenterX2, flexColumnCenterX2 } from "./commonSt";
 import { emptyItemSectionAni, scaleYFadeIn, scaleYFadeOut } from "./keyframes";
+import { itemProps } from "../types/types";
 
 export const itemSectionSt = {
   sectionContainer: [
@@ -18,7 +19,7 @@ export const itemSectionSt = {
       padding: 5px;
       border: none;
       border-radius: 10px;
-      background-color: ${colors.grey}12;
+      background-color: ${colors.grey}15;
     `,
   ],
   emptyItemSection: [
@@ -28,13 +29,13 @@ export const itemSectionSt = {
       height: 10rem;
       border: none;
       border-radius: 10px;
-      background-color: ${colors.grey}12;
+      background-color: ${colors.grey}15;
       color: ${colors.grey};
       transition: 0.2s;
       animation: ${emptyItemSectionAni} 2s ease-in-out alternate infinite;
 
       &:hover {
-        background-color: ${colors.grey}24;
+        background-color: ${colors.grey}20;
         color: ${colors.green};
       }
     `,
@@ -42,7 +43,7 @@ export const itemSectionSt = {
   listItemContainer: css`
     width: 100%;
   `,
-  listItem: (itemId: string, selectedItemId: string | null) => {
+  listItem: (item: itemProps, selectedItemId: string | null) => {
     return css`
       position: relative;
       display: flex;
@@ -54,17 +55,14 @@ export const itemSectionSt = {
       min-height: 60px;
       padding: 5px 10px;
       border: none;
-      border-radius: ${itemId === selectedItemId ? `10px 10px 0 0` : `10px`};
-      background-color: ${itemId === selectedItemId
+      border-radius: ${item.id === selectedItemId || item.date === "0000-00-00"
+        ? `10px 10px 0 0`
+        : `10px`};
+      background-color: ${item.id === selectedItemId
         ? colors.green
-        : colors.grey}12;
+        : colors.grey}15;
       transition: background-color 0.2s, border-radius 0.2s;
       cursor: pointer;
-
-      &:hover {
-        border-color: ${colors.green};
-        background-color: ${colors.green}10;
-      }
     `;
   },
   toggle: (isTaken: boolean) => {
@@ -75,6 +73,7 @@ export const itemSectionSt = {
       width: 60px;
       height: 30px;
       padding: 3px;
+      border: 2px solid ${isTaken ? colors.grey : colors.red};
       border-radius: 30px;
       background-color: ${isTaken ? `${colors.green}` : `#90909099`};
       cursor: pointer;
@@ -140,9 +139,9 @@ export const itemSectionSt = {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 40px;
+      width: fit-content;
       height: 40px;
-      padding: 3px;
+      padding: 5px 10px;
       border-radius: 10px;
       background-color: ${isTaken ? `${colors.green}50` : `#90909050`};
       cursor: pointer;
