@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { flexCenterX2 } from "./commonSt";
+import { colors, flexCenterX2 } from "./commonSt";
 
 export const navigatorSt = {
   container: css`
@@ -25,14 +25,21 @@ export const navigatorSt = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: ${colors.grey}30;
+    }
   `,
   figure: css`
     ${flexCenterX2}
-    width: 2.3rem;
-    height: 2.3rem;
-    background-color: #808080;
+    width: 2rem;
+    height: 2rem;
+    background-color: transparent;
   `,
   text: css`
     font-size: 0.9rem;
