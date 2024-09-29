@@ -20,6 +20,9 @@ export const navigatorSt = {
       background-color: #ffffff;
     }
   `,
+  linkContainer: css`
+    border-radius: 10px;
+  `,
   link: css`
     display: flex;
     flex-direction: column;
@@ -27,13 +30,8 @@ export const navigatorSt = {
     align-items: center;
     width: 3.5rem;
     height: 3.5rem;
-    padding: 0.5rem;
-    border-radius: 10px;
+    padding: 2rem;
     transition: 0.2s;
-
-    &:hover {
-      background-color: ${colors.grey}30;
-    }
   `,
   figure: css`
     ${flexCenterX2}

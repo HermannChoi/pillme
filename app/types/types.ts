@@ -25,3 +25,8 @@ export interface modalList {
   resetItems: string;
   message: string;
 }
+
+export interface WhichPage {
+  Home: string;
+  Setting: string;
+}
