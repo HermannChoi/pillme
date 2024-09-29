@@ -26,9 +26,8 @@ const Navigator = () => {
                   css={css`
                     width: 100%;
                     height: 100%;
-                    //filter: contrast(
-                      0.1
-                    ); // 상태로 해당 페이지 아닌 거에만 적용하기
+                    filter: invert(16%) sepia(89%) saturate(6054%)
+                      hue-rotate(150deg) brightness(97%) contrast(113%); // 상태로 해당 페이지만 적용하기
                   `}
                 />
               </figure>
