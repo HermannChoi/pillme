@@ -35,6 +35,7 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  color: var(--foreground);
   font-size: 1rem;
   text-decoration: none;
   list-style: none;
@@ -55,6 +56,7 @@ main {
   align-items: center;
   gap: 0.5rem;
   width: 90%;
+  margin-bottom: 4rem;
 }
 
 @media (prefers-color-scheme: dark) {

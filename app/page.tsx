@@ -11,6 +11,7 @@ import ModalToResetUsername from "./components/modals/ModalToResetUsername";
 import InfoSection from "./components/InfoSection";
 import MessageModal from "./components/modals/MessageModal";
 import CongratsPage from "./components/CongratsPage";
+import Footer from "./components/Footer";
 
 const Home = () => {
   return (
@@ -28,6 +29,7 @@ const Home = () => {
       <ModalToResetItem />
       <MessageModal />
       <CongratsPage />
+      <Footer />
     </main>
   );
 };
