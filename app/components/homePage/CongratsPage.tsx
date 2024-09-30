@@ -1,9 +1,9 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import useItemStore from "../store/useItemStore";
-import useSettingStore from "../store/useSettingStore";
-import { congratsPageSt } from "../style/congratsPageSt";
+import useItemStore from "@/app/store/homePage/useItemStore";
+import useSettingStore from "@/app/store/useSettingStore";
+import { congratsPageSt } from "@/app/style/homePage/congratsPageSt";
 
 const CongratsPage = () => {
   const { isEverythingTaken } = useItemStore();

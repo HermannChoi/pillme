@@ -1,9 +1,9 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
+import { settingPageSt } from "@/app/style/settingPage/settingPageSt";
 import useModalStore from "../../store/useModalStore";
 import useSettingStore from "../../store/useSettingStore";
-import { settingPageSt } from "../../style/settingPageSt";
 
 const ResetButtons = () => {
   const { setWhichModal } = useModalStore();

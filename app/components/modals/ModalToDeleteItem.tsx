@@ -2,7 +2,7 @@
 /** @jsxImportSource @emotion/react */
 
 import { clickDelete } from "@/app/hooks/clickDelete";
-import useFormStore from "@/app/store/useFormStore";
+import useFormStore from "@/app/store/homePage/useFormStore";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { modalSt } from "@/app/style/modalSt";

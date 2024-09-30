@@ -1,14 +1,14 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import useUserNameStore from "../store/useUserNameStore";
-import { userNameInputSt } from "../style/userNameInputSt";
 import { SyntheticEvent, useEffect, useLayoutEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import pill from "@/app/assets/svg/pill.svg";
-import { helloItsTakeMedicine } from "../style/framerMotion";
-import useSettingStore from "../store/useSettingStore";
+import useUserNameStore from "@/app/store/homePage/useUserNameStore";
+import useSettingStore from "@/app/store/useSettingStore";
+import { helloItsTakeMedicine } from "@/app/style/framerMotion";
+import { userNameInputSt } from "@/app/style/layout/userNameInputSt";
 
 const UserNameInput = () => {
   const [question, setQuestion] = useState<string>("What is your name?");

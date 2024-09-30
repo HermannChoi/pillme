@@ -1,8 +1,8 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import useErrorMsgStore from "../store/useErrorMsgStore";
-import { createItemFormSt } from "../style/createItemFormSt";
+import useErrorMsgStore from "@/app/store/homePage/useErrorMsgStore";
+import { createItemFormSt } from "@/app/style/homePage/createItemFormSt";
 
 const ErrorMsg = () => {
   const { errorMsg, isErrorMsgChanged } = useErrorMsgStore();

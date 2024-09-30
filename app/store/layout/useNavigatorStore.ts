@@ -1,5 +1,5 @@
+import { WhichPage } from "@/app/types/types";
 import { create } from "zustand";
-import { WhichPage } from "./../types/types";
 
 interface UseNavigatorStoreProps {
   whichPage: keyof WhichPage;

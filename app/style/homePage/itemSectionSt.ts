@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
-import { colors, flexCenterX2, flexColumnCenterX2 } from "./commonSt";
-import { emptyItemSectionAni } from "./keyframes";
-import { itemProps } from "../types/types";
+import { colors, flexCenterX2, flexColumnCenterX2 } from "../commonSt";
+import { emptyItemSectionAni } from "../keyframes";
+import { itemProps } from "@/app/types/types";
 
 export const itemSectionSt = {
   sectionContainer: [

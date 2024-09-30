@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { fadeOut } from "./keyframes";
-import { flexColumnCenterX2 } from "./commonSt";
+import { flexColumnCenterX2 } from "../commonSt";
+import { fadeOut } from "../keyframes";
 
 export const coverPageSt = {
   container: (isCoverPageGone: boolean) => {

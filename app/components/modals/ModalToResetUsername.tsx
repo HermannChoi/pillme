@@ -3,7 +3,7 @@
 
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
-import useUserNameStore from "@/app/store/useUserNameStore";
+import useUserNameStore from "@/app/store/homePage/useUserNameStore";
 import { modalSt } from "@/app/style/modalSt";
 import { useRouter } from "next/navigation";
 

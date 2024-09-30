@@ -1,16 +1,17 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { outlineSt } from "../style/outlineSt";
-import useUserNameStore from "../store/useUserNameStore";
-import useFormStore from "../store/useFormStore";
+import useToggleLanguage from "@/app/hooks/useToggleLanguage";
+import useSettingStore from "@/app/store/useSettingStore";
+import useUserNameStore from "@/app/store/homePage/useUserNameStore";
 import { useEffect, useState } from "react";
-import useSettingStore from "../store/useSettingStore";
-import useToggleLanguage from "../hooks/useToggleLanguage";
-import useDateStore from "../store/useDateStore";
+import useFormStore from "@/app/store/homePage/useFormStore";
+import useDateStore from "@/app/store/homePage/useDateStore";
+import { outlineSt } from "@/app/style/homePage/outlineSt";
 
 const UserNameSection = () => {
   const [greeting, setGreeting] = useState("");
+
   const { userName } = useUserNameStore();
   const { isEasterEggsOn } = useFormStore();
   const { isEnglish, setIsEnglish } = useSettingStore();

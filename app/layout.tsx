@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import CoverPage from "./components/CoverPage";
-import UserNameInput from "./components/UserNameInput";
-import Navigator from "./components/Navigator";
+
+import CoverPage from "./components/layout/CoverPage";
+import UserNameInput from "./components/layout/UserNameInput";
+import Navigator from "./components/layout/Navigator";
+import Footer from "./components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Take Medicine",
@@ -34,6 +36,7 @@ export default function RootLayout({
         <CoverPage />
         <UserNameInput />
         {children}
+        <Footer />
         <Navigator />
       </body>
     </html>

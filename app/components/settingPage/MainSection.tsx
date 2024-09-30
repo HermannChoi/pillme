@@ -3,10 +3,10 @@
 
 import { useEffect } from "react";
 import ResetButtons from "./ResetButtons";
-import useNavigatorStore from "@/app/store/useNavigatorStore";
-import { settingPageSt } from "@/app/style/settingPageSt";
 import LanguageToggle from "./LanguageToggle";
 import useSettingStore from "@/app/store/useSettingStore";
+import useNavigatorStore from "@/app/store/layout/useNavigatorStore";
+import { settingPageSt } from "@/app/style/settingPage/settingPageSt";
 
 const MainSection = () => {
   const { setWhichPage } = useNavigatorStore();

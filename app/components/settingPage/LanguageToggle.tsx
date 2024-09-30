@@ -2,9 +2,9 @@
 /** @jsxImportSource @emotion/react */
 
 import useToggleLanguage from "@/app/hooks/useToggleLanguage";
-import useDateStore from "@/app/store/useDateStore";
+import useDateStore from "@/app/store/homePage/useDateStore";
 import useSettingStore from "@/app/store/useSettingStore";
-import { settingPageSt } from "@/app/style/settingPageSt";
+import { settingPageSt } from "@/app/style/settingPage/settingPageSt";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 

@@ -1,9 +1,9 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { outlineSt } from "../style/outlineSt";
 import Image from "next/image";
 import pill from "@/app/assets/svg/pill.svg";
+import { outlineSt } from "@/app/style/homePage/outlineSt";
 
 const Header = () => {
   return (

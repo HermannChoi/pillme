@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, flexCenterX2 } from "./commonSt";
+import { colors, flexCenterX2 } from "../commonSt";
 
 export const outlineSt = {
   header: css`
@@ -38,7 +38,12 @@ export const outlineSt = {
       font-weight: 500;
     `;
   },
-  footer: [flexCenterX2],
+  footer: [
+    flexCenterX2,
+    css`
+      margin-bottom: 5rem;
+    `,
+  ],
   footerText: css`
     padding: 20px 0;
     color: ${colors.grey}80;

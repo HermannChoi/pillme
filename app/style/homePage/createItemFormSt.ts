@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { colors, flexCenterX2 } from "./commonSt";
-import { twitching1 } from "./keyframes";
+import { colors, flexCenterX2 } from "../commonSt";
+import { twitching1 } from "../keyframes";
 
 export const createItemFormSt = {
   form: css`
@@ -8,7 +8,6 @@ export const createItemFormSt = {
     align-items: end;
     gap: 5px;
     width: 100%;
-    height: 60px;
   `,
   label: css`
     margin-left: 3px;
@@ -18,7 +17,7 @@ export const createItemFormSt = {
   `,
   input: css`
     width: 100%;
-    height: 40px;
+    height: 50px;
     border: 1px solid ${colors.grey}80;
     border-radius: 10px;
     text-indent: 5px;
@@ -36,7 +35,7 @@ export const createItemFormSt = {
     css`
       position: relative;
       width: 100%;
-      height: 40px;
+      height: 50px;
       border: none;
       border-radius: 10px;
       background-color: ${colors.green}30;
@@ -54,7 +53,7 @@ export const createItemFormSt = {
   ],
   optionContainer: css`
     position: absolute;
-    top: 45px;
+    top: 55px;
     left: 0;
     display: flex;
     flex-direction: column;
@@ -84,7 +83,7 @@ export const createItemFormSt = {
     flexCenterX2,
     css`
       flex: 2;
-      height: 40px;
+      height: 50px;
       background-color: ${colors.green}80;
       border: none;
       border-radius: 10px;

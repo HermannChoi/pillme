@@ -2,10 +2,10 @@
 /** @jsxImportSource @emotion/react */
 
 import { useEffect } from "react";
-import { coverPageSt } from "../style/coverPageSt";
-import useCoverPageStore from "../store/useCoverPageStore";
 import Image from "next/image";
 import pill from "@/app/assets/svg/pill.svg";
+import useCoverPageStore from "@/app/store/layout/useCoverPageStore";
+import { coverPageSt } from "@/app/style/layout/coverPageSt";
 
 const CoverPage = () => {
   const { isCoverPageGone, setIsCoverPageGone } = useCoverPageStore();

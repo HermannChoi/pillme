@@ -2,7 +2,7 @@
 /** @jsxImportSource @emotion/react */
 
 import useSettingStore from "@/app/store/useSettingStore";
-import { settingPageSt } from "@/app/style/settingPageSt";
+import { settingPageSt } from "@/app/style/settingPage/settingPageSt";
 
 const Title = () => {
   const { isEnglish } = useSettingStore();

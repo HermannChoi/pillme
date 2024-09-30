@@ -1,5 +1,5 @@
+import { listProps } from "@/app/types/types";
 import { create } from "zustand";
-import { listProps } from "../types/types";
 
 interface UseFormStoreProps {
   name: string;

@@ -2,20 +2,22 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
+import { clickSetWhichModal } from "@/app/hooks/clickSetWhichModal";
+import { toggleIsTaken } from "@/app/hooks/toggleIsTaken";
+import useDateStore from "@/app/store/homePage/useDateStore";
+import useFormStore from "@/app/store/homePage/useFormStore";
+
+import useItemStore from "@/app/store/homePage/useItemStore";
+import useModalStore from "@/app/store/useModalStore";
+import useSettingStore from "@/app/store/useSettingStore";
+import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
+import { outlineSt } from "@/app/style/homePage/outlineSt";
+
+import { itemProps, listProps } from "@/app/types/types";
+import { getTotalListLength } from "@/app/utils/getToTalListLength";
+import { vibrate } from "@/app/utils/vibrate";
 import { motion } from "framer-motion";
-import useFormStore from "../store/useFormStore";
-import { itemProps, listProps } from "../types/types";
-import { toggleIsTaken } from "../hooks/toggleIsTaken";
-import React, { SyntheticEvent, useEffect } from "react";
-import useDateStore from "../store/useDateStore";
-import { getTotalListLength } from "../utils/getToTalListLength";
-import { itemSectionSt } from "../style/itemSectionSt";
-import { outlineSt } from "../style/outlineSt";
-import { vibrate } from "../utils/vibrate";
-import useModalStore from "../store/useModalStore";
-import useItemStore from "../store/useItemStore";
-import { clickSetWhichModal } from "../hooks/clickSetWhichModal";
-import useSettingStore from "../store/useSettingStore";
+import { SyntheticEvent, useEffect } from "react";
 
 const ItemSection = () => {
   const {

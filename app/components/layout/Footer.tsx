@@ -1,7 +1,7 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { outlineSt } from "../style/outlineSt";
+import { outlineSt } from "../../style/homePage/outlineSt";
 import Link from "next/link";
 
 const Footer = () => {

@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { colors, flexColumnCenterX2 } from "./commonSt";
-import { congratsBarAni, fadeInAndOut, scaleZeroTo100 } from "./keyframes";
+import { colors, flexColumnCenterX2 } from "../commonSt";
+import { congratsBarAni, fadeInAndOut, scaleZeroTo100 } from "../keyframes";
 
 export const congratsPageSt = {
   container: (isEverythingTaken: boolean) => {

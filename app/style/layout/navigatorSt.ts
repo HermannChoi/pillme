@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { flexCenterX2 } from "./commonSt";
+import { flexCenterX2 } from "../commonSt";
 
 export const navigatorSt = {
   container: css`

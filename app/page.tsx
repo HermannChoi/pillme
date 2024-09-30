@@ -1,15 +1,14 @@
-import CreateItemForm from "./components/CreateItemForm";
-import ErrorMsg from "./components/ErrorMsg";
-import ItemSection from "./components/ItemSection";
-import ModalToDeleteItem from "./components/modals/ModalToDeleteItem";
-import ModalToModifyTime from "./components/modals/ModalToModifyTime";
-import ModalToModifyDate from "./components/modals/ModalToModifyDate";
-import InfoSection from "./components/InfoSection";
+import CongratsPage from "./components/homePage/CongratsPage";
+import CreateItemForm from "./components/homePage/CreateItemForm";
+import ErrorMsg from "./components/homePage/ErrorMsg";
+import Header from "./components/homePage/Header";
+import InfoSection from "./components/homePage/InfoSection";
+import ItemSection from "./components/homePage/ItemSection";
+import UserNameSection from "./components/homePage/UserNameSection";
 import MessageModal from "./components/modals/MessageModal";
-import CongratsPage from "./components/CongratsPage";
-import Footer from "./components/Footer";
-import UserNameSection from "./components/UserNameSection";
-import Header from "./components/Header";
+import ModalToDeleteItem from "./components/modals/ModalToDeleteItem";
+import ModalToModifyDate from "./components/modals/ModalToModifyDate";
+import ModalToModifyTime from "./components/modals/ModalToModifyTime";
 
 const Home = () => {
   return (
@@ -25,7 +24,6 @@ const Home = () => {
       <ModalToModifyDate />
       <MessageModal />
       <CongratsPage />
-      <Footer />
     </main>
   );
 };

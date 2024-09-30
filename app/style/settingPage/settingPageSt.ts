@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors } from "./commonSt";
+import { colors } from "../commonSt";
 
 export const settingPageSt = {
   title: css`

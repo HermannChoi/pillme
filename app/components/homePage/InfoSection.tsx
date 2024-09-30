@@ -1,15 +1,15 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { useEffect } from "react";
-import useDateStore from "../store/useDateStore";
-import useFormStore from "../store/useFormStore";
-import { getTotalListLength } from "../utils/getToTalListLength";
-import { getKoreanDate } from "../utils/getKoreanDate";
-import { itemSectionSt } from "../style/itemSectionSt";
+import useDateStore from "@/app/store/homePage/useDateStore";
+import useFormStore from "@/app/store/homePage/useFormStore";
+import useSettingStore from "@/app/store/useSettingStore";
+import { colors } from "@/app/style/commonSt";
+import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
+import { getKoreanDate } from "@/app/utils/getKoreanDate";
+import { getTotalListLength } from "@/app/utils/getToTalListLength";
 import { css } from "@emotion/react";
-import { colors } from "../style/commonSt";
-import useSettingStore from "../store/useSettingStore";
+import { useEffect } from "react";
 
 const InfoSection = () => {
   const { list } = useFormStore();

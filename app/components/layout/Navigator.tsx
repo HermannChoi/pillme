@@ -2,14 +2,15 @@
 /** @jsxImportSource @emotion/react */
 
 import Link from "next/link";
-import { navigatorSt } from "../style/navigatorSt";
-import { navigatorItems } from "../constant/navigatorItems";
+
 import Image from "next/image";
 import { css } from "@emotion/react";
 import { motion } from "framer-motion";
-import useNavigatorStore from "../store/useNavigatorStore";
-import { WhichPage } from "../types/types";
-import useSettingStore from "../store/useSettingStore";
+import useSettingStore from "@/app/store/useSettingStore";
+import { navigatorItems } from "@/app/constant/navigatorItems";
+import { WhichPage } from "@/app/types/types";
+import useNavigatorStore from "@/app/store/layout/useNavigatorStore";
+import { navigatorSt } from "@/app/style/layout/navigatorSt";
 
 const Navigator = () => {
   const { whichPage, setWhichPage } = useNavigatorStore();

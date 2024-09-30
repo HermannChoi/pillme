@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { colors, flexColumnCenterX2 } from "./commonSt";
-import { fadeIn, fadeOut, rotate360 } from "./keyframes";
+import { colors, flexColumnCenterX2 } from "../commonSt";
+import { fadeIn, fadeOut, rotate360 } from "../keyframes";
 
 export const userNameInputSt = {
   container: (isUserNameInputOn: boolean, isSubmitted: boolean) => {
