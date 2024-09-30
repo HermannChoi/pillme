@@ -5,7 +5,7 @@ import MainSection from "@/app/components/settingPage/MainSection";
 const page = () => {
   return (
     <main>
-      <p>Setting Page</p>
+      <h1>Setting</h1>
       <MainSection />
       <ModalToResetUsername />
       <ModalToResetItem />

@@ -1,10 +1,11 @@
 "use client";
-import useNavigatorStore from "@/app/store/useNavigatorStore";
 /** @jsxImportSource @emotion/react */
 
-import { css } from "@emotion/react";
 import { useEffect } from "react";
 import ResetButtons from "../ResetButtons";
+import useNavigatorStore from "@/app/store/useNavigatorStore";
+import { settingPageSt } from "@/app/style/settingPageSt";
+import LanguageToggle from "./LanguageToggle";
 
 const MainSection = () => {
   const { setWhichPage } = useNavigatorStore();
@@ -14,16 +15,14 @@ const MainSection = () => {
   }, [setWhichPage]);
 
   return (
-    <section
-      css={css`
-        width: 100%;
-        padding: 1rem;
-        border-radius: 10px;
-        background-color: #80808020;
-      `}
-    >
-      <ResetButtons />
-    </section>
+    <>
+      <section css={settingPageSt.section}>
+        <ResetButtons />
+      </section>
+      <section css={settingPageSt.section}>
+        <LanguageToggle />
+      </section>
+    </>
   );
 };
 
