@@ -3,7 +3,6 @@
 
 import useModalStore from "../store/useModalStore";
 import useSettingStore from "../store/useSettingStore";
-import { outlineSt } from "../style/outlineSt";
 import { settingPageSt } from "../style/settingPageSt";
 
 const ResetButtons = () => {

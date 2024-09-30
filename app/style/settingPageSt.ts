@@ -31,11 +31,11 @@ export const settingPageSt = {
     padding: 0.2rem;
     border: none;
     border-radius: 10px;
-    background-color: ${colors.green}40;
-    transition: 0.3s;
+    background-color: ${colors.green}80;
+    transition: 0.2s;
 
     &:hover {
-      background-color: ${colors.green}30;
+      background-color: ${colors.green}60;
       transform: scale(0.98);
     }
   `,
@@ -45,12 +45,11 @@ export const settingPageSt = {
     padding: 0.2rem;
     border: none;
     border-radius: 10px;
-    background-color: ${colors.red}40;
-    color: ${colors.red};
-    transition: 0.3s;
+    background-color: ${colors.red}80;
+    transition: 0.2s;
 
     &:hover {
-      background-color: ${colors.red}30;
+      background-color: ${colors.red}60;
       transform: scale(0.98);
     }
   `,

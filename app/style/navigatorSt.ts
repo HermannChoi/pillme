@@ -41,5 +41,6 @@ export const navigatorSt = {
   `,
   text: css`
     font-size: 0.7rem;
+    font-weight: 600;
   `,
 };
