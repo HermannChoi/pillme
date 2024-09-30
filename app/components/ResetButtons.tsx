@@ -23,7 +23,7 @@ const ResetButtons = () => {
       <div css={settingPageSt.listContainer}>
         <p> {isEnglish ? `Reset Items` : `아이템 초기화`}</p>
         <button
-          onClick={() => setWhichModal("resetUsername")}
+          onClick={() => setWhichModal("resetItems")}
           css={settingPageSt.resetItemBtn}
         >
           {isEnglish ? `Reset` : `초기화`}
