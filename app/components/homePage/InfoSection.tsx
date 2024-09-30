@@ -38,7 +38,7 @@ const InfoSection = () => {
       top: 3rem;
       background-color: ${colors.grey}20;
       backdrop-filter: blur(5px);
-      z-index: 1;
+      z-index: 2;
     `,
   ];
 
