@@ -10,6 +10,7 @@ import { timeOptions } from "../constant/timeOptions";
 import { useEffect, useRef } from "react";
 import { createItemFormSt } from "../style/createItemFormSt";
 import useClickOutside from "../hooks/useClickOutside";
+import useSettingStore from "../store/useSettingStore";
 
 const CreateItemForm = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -29,6 +30,7 @@ const CreateItemForm = () => {
     setIsEasterEggsOn,
   } = useFormStore();
   const { setErrorMsg, setIsErrorMsgChanged } = useErrorMsgStore();
+  const { isEnglish } = useSettingStore();
 
   //다른 곳 누를 시에 시간 대 버튼 비활성화 됨.
   useClickOutside(timePeriodDivRef, () => setIsSelectOpen(false));
@@ -54,12 +56,13 @@ const CreateItemForm = () => {
           setErrorMsg,
           setIsErrorMsgChanged,
           setIsEasterEggsOn,
+          isEnglish,
         })
       }
     >
       <div css={createItemFormSt.inputContainer}>
         <label htmlFor="name" css={createItemFormSt.label}>
-          Name
+          {isEnglish ? `Name` : `이름`}
         </label>
         <input
           ref={inputRef}
@@ -73,7 +76,7 @@ const CreateItemForm = () => {
         />
       </div>
       <div css={createItemFormSt.timeSelectContainer}>
-        <p css={createItemFormSt.label}>Time</p>
+        <p css={createItemFormSt.label}> {isEnglish ? `Time` : `시간대`}</p>
         <div
           ref={timePeriodDivRef}
           css={createItemFormSt.timeSelect}
@@ -113,7 +116,7 @@ const CreateItemForm = () => {
         whileTap={{ scale: 0.9 }}
         css={createItemFormSt.addBtn}
       >
-        {isSubmitted ? "✓" : "Add"}
+        {isSubmitted ? "✓" : isEnglish ? "Add" : "추가"}
       </motion.button>
     </form>
   );

@@ -15,6 +15,7 @@ import { vibrate } from "../utils/vibrate";
 import useModalStore from "../store/useModalStore";
 import useItemStore from "../store/useItemStore";
 import { clickSetWhichModal } from "../hooks/clickSetWhichModal";
+import useSettingStore from "../store/useSettingStore";
 
 const ItemSection = () => {
   const {
@@ -27,11 +28,14 @@ const ItemSection = () => {
   const { list, setList, focusInput } = useFormStore();
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
   const { setWhichModal, setItemForModal, setMessage } = useModalStore();
+  const { isEnglish } = useSettingStore();
 
   const clickItemForOptionsWindow = (item: itemProps) => {
     if (item.date === "0000-00-00") {
       setMessage(
-        "you can close the options window after activating the item once."
+        isEnglish
+          ? "you can close the options window after activating the item once."
+          : "옵션창은 해당 아이템을 최초 1회 활성화 후 닫을 수 있습니다."
       );
       return setWhichModal("message");
     }
@@ -192,7 +196,7 @@ const ItemSection = () => {
                               }
                               css={itemSectionSt.optionBtn}
                             >
-                              Date
+                              {isEnglish ? `Date` : `날짜`}
                             </button>
                             <button
                               onClick={(e) =>
@@ -206,7 +210,7 @@ const ItemSection = () => {
                               }
                               css={itemSectionSt.optionBtn}
                             >
-                              Time
+                              {isEnglish ? `Time` : `시간`}
                             </button>
                           </div>
                           <motion.div
@@ -215,7 +219,13 @@ const ItemSection = () => {
                             onClick={() => clickToggleIsEveryOtherDay(item)}
                             css={itemSectionSt.toggle2(item.isEveryOtherDay)}
                           >
-                            {item.isEveryOtherDay ? "2D 1T" : "1D 1T"}
+                            {isEnglish
+                              ? item.isEveryOtherDay
+                                ? "2D 1T"
+                                : "1D 1T"
+                              : item.isEveryOtherDay
+                              ? "격일"
+                              : "매일"}
                           </motion.div>
                           <button
                             onClick={(e) =>
@@ -229,7 +239,7 @@ const ItemSection = () => {
                             }
                             css={itemSectionSt.delBtn}
                           >
-                            DEL
+                            {isEnglish ? `DEL` : `삭제`}
                           </button>
                         </div>
                       </div>
@@ -244,7 +254,7 @@ const ItemSection = () => {
           onClick={() => focusInput()}
           css={itemSectionSt.emptyItemSection}
         >
-          Add your medicine!
+          {isEnglish ? `Add your medicine!` : `약을 추가해 보세요!`}
         </button>
       )}
     </div>

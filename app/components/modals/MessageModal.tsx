@@ -2,10 +2,12 @@
 /** @jsxImportSource @emotion/react */
 
 import useModalStore from "@/app/store/useModalStore";
+import useSettingStore from "@/app/store/useSettingStore";
 import { modalSt } from "@/app/style/modalSt";
 
 const MessageModal = () => {
   const { whichModal, setWhichModal, message, setMessage } = useModalStore();
+  const { isEnglish } = useSettingStore();
 
   const clickCloseBtn = () => {
     setWhichModal(null);
@@ -28,7 +30,7 @@ const MessageModal = () => {
         </div>
         <div css={modalSt.btnContainer}>
           <button onClick={() => clickCloseBtn()} css={modalSt.cancelBtn}>
-            CLOSE
+            {isEnglish ? `CLOSE` : `닫기`}
           </button>
         </div>
       </div>

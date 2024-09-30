@@ -2,10 +2,12 @@
 /** @jsxImportSource @emotion/react */
 
 import useModalStore from "../store/useModalStore";
+import useSettingStore from "../store/useSettingStore";
 import { outlineSt } from "../style/outlineSt";
 
 const ResetButtons = () => {
   const { setWhichModal } = useModalStore();
+  const { isEnglish } = useSettingStore();
 
   return (
     <div css={outlineSt.resetBtnContainer}>
@@ -13,13 +15,13 @@ const ResetButtons = () => {
         onClick={() => setWhichModal("resetUsername")}
         css={outlineSt.resetUserNameBtn}
       >
-        Rename Username
+        {isEnglish ? `Rename Username` : `이름 재설정`}
       </button>
       <button
         onClick={() => setWhichModal("resetItems")}
         css={outlineSt.resetItemNameBtn}
       >
-        Reset Items
+        {isEnglish ? `Reset Items` : `아이템 초기화`}
       </button>
     </div>
   );

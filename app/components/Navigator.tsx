@@ -9,9 +9,11 @@ import { css } from "@emotion/react";
 import { motion } from "framer-motion";
 import useNavigatorStore from "../store/useNavigatorStore";
 import { WhichPage } from "../types/types";
+import useSettingStore from "../store/useSettingStore";
 
 const Navigator = () => {
   const { whichPage, setWhichPage } = useNavigatorStore();
+  const { isEnglish } = useSettingStore();
 
   return (
     <nav css={navigatorSt.container}>
@@ -37,7 +39,9 @@ const Navigator = () => {
                   `}
                 />
               </figure>
-              <p css={navigatorSt.text}>{item.name}</p>
+              <p css={navigatorSt.text}>
+                {isEnglish ? item.name : item.nameKo}
+              </p>
             </Link>
           </motion.div>
         );

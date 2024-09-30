@@ -9,11 +9,13 @@ import { getKoreanDate } from "../utils/getKoreanDate";
 import { itemSectionSt } from "../style/itemSectionSt";
 import { css } from "@emotion/react";
 import { colors } from "../style/commonSt";
+import useSettingStore from "../store/useSettingStore";
 
 const InfoSection = () => {
   const { list } = useFormStore();
   const { lastCheckedDate, setLastCheckedDate, setIsDateChanged } =
     useDateStore();
+  const { isEnglish } = useSettingStore();
 
   const today = getKoreanDate();
 
@@ -44,9 +46,11 @@ const InfoSection = () => {
     <div css={infoSectionSt}>
       <p>{lastCheckedDate?.replaceAll("-", "/")}</p>
       <p>
-        {getTotalListLength(list) +
-          (getTotalListLength(list) > 1 ? " items have" : " item has") +
-          " been registered."}
+        {isEnglish
+          ? getTotalListLength(list) +
+            (getTotalListLength(list) > 1 ? " items have" : " item has") +
+            " been registered."
+          : getTotalListLength(list) + "개의 아이템이 등록되었습니다."}
       </p>
     </div>
   );

@@ -7,6 +7,7 @@ import useFormStore from "@/app/store/useFormStore";
 import useModalStore from "@/app/store/useModalStore";
 import { modalSt } from "@/app/style/modalSt";
 import useItemStore from "@/app/store/useItemStore";
+import useSettingStore from "@/app/store/useSettingStore";
 
 const ModalToModifyTime = () => {
   const { setList } = useFormStore();
@@ -18,6 +19,7 @@ const ModalToModifyTime = () => {
     resetItemForModal,
   } = useModalStore();
   const { setSelectedItemId } = useItemStore();
+  const { isEnglish } = useSettingStore();
 
   const hoursMin = 0;
   const hoursMax = 23;
@@ -68,7 +70,11 @@ const ModalToModifyTime = () => {
         css={modalSt.container}
       >
         <div css={modalSt.textContainer}>
-          <p css={modalSt.text}>Modify the last time you took</p>
+          <p css={modalSt.text}>
+            {isEnglish
+              ? `Modify the last time you took`
+              : `마지막으로 복용(사용)한 시간`}
+          </p>
           <input
             name="modifyHours"
             min={hoursMin}
@@ -91,10 +97,10 @@ const ModalToModifyTime = () => {
         </div>
         <div css={modalSt.btnContainer}>
           <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
-            CANCEL
+            {isEnglish ? `CANCEL` : `취소`}
           </button>
           <button onClick={() => clickModifyOnModal()} css={modalSt.delBtn}>
-            Modify
+            {isEnglish ? `Modify` : `수정`}
           </button>
         </div>
       </div>

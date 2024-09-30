@@ -4,10 +4,12 @@
 import useModalStore from "@/app/store/useModalStore";
 import { modalSt } from "@/app/style/modalSt";
 import useFormStore from "@/app/store/useFormStore";
+import useSettingStore from "@/app/store/useSettingStore";
 
 const ModalToResetItem = () => {
   const { whichModal, setWhichModal } = useModalStore();
   const { setList } = useFormStore();
+  const { isEnglish } = useSettingStore();
 
   const clickResetUserName = () => {
     setList({
@@ -31,14 +33,18 @@ const ModalToResetItem = () => {
         css={modalSt.container}
       >
         <div css={modalSt.textContainer}>
-          <p css={modalSt.text}>Do you really want to reset all the items?</p>
+          <p css={modalSt.text}>
+            {isEnglish
+              ? `Do you really want to reset all the items?`
+              : `모든 아이템을 삭제하시겠습니까?`}
+          </p>
         </div>
         <div css={modalSt.btnContainer}>
           <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
-            CANCEL
+            {isEnglish ? `CANCEL` : `취소`}
           </button>
           <button onClick={() => clickResetUserName()} css={modalSt.delBtn}>
-            DELETE ALL
+            {isEnglish ? `DELETE ALL` : `전체 삭제`}
           </button>
         </div>
       </div>

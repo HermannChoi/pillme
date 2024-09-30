@@ -14,6 +14,7 @@ interface SubmitFormProps {
   setErrorMsg: (value: string) => void;
   setIsErrorMsgChanged: (value: boolean) => void;
   setIsEasterEggsOn: (value: boolean) => void;
+  isEnglish: boolean;
 }
 
 export const submitForm = ({
@@ -27,12 +28,15 @@ export const submitForm = ({
   setErrorMsg,
   setIsErrorMsgChanged,
   setIsEasterEggsOn,
+  isEnglish,
 }: SubmitFormProps) => {
   e.preventDefault();
   //예외처리
   if (name === "") {
     return exceptionFunction({
-      errorMsg: "Please write a name of the medicine",
+      errorMsg: isEnglish
+        ? "Please write a name of the medicine"
+        : "이름을 입력해 주세요",
       setErrorMsg,
       setIsErrorMsgChanged,
     });
@@ -43,7 +47,9 @@ export const submitForm = ({
     })
   ) {
     return exceptionFunction({
-      errorMsg: "It already exists on the time.",
+      errorMsg: isEnglish
+        ? "It already exists on the time."
+        : "이미 해당 아이템이 존재합니다",
       setErrorMsg,
       setIsErrorMsgChanged,
     });

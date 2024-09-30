@@ -4,11 +4,13 @@
 import { clickDelete } from "@/app/hooks/clickDelete";
 import useFormStore from "@/app/store/useFormStore";
 import useModalStore from "@/app/store/useModalStore";
+import useSettingStore from "@/app/store/useSettingStore";
 import { modalSt } from "@/app/style/modalSt";
 
 const ModalToDeleteItem = () => {
   const { setList } = useFormStore();
   const { whichModal, setWhichModal, itemForModal } = useModalStore();
+  const { isEnglish } = useSettingStore();
 
   const clickDeleteOnModal = () => {
     clickDelete(itemForModal, setList);
@@ -27,18 +29,30 @@ const ModalToDeleteItem = () => {
         css={modalSt.container}
       >
         <div css={modalSt.textContainer}>
-          <p css={modalSt.text}>Are you sure you want to delete</p>
-          <p css={modalSt.text}>
-            <span css={modalSt.itemName}>{itemForModal.name}</span>
-            from {itemForModal.timePeriod} list?
-          </p>
+          {isEnglish ? (
+            <>
+              <p css={modalSt.text}>Are you sure you want to delete</p>
+              <p css={modalSt.text}>
+                <span css={modalSt.itemName}>{itemForModal.name}</span>
+                from {itemForModal.timePeriod} list?
+              </p>
+            </>
+          ) : (
+            <>
+              <p css={modalSt.text}>
+                정말 {itemForModal.timePeriod}에서{" "}
+                <span css={modalSt.itemName}>{itemForModal.name}</span>을(를)
+                지우시겠습니까?
+              </p>
+            </>
+          )}
         </div>
         <div css={modalSt.btnContainer}>
           <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
-            CANCEL
+            {isEnglish ? `CANCEL` : `취소`}
           </button>
           <button onClick={() => clickDeleteOnModal()} css={modalSt.delBtn}>
-            DELETE
+            {isEnglish ? `DELETE` : `삭제`}
           </button>
         </div>
       </div>

@@ -7,6 +7,7 @@ import useFormStore from "@/app/store/useFormStore";
 import useModalStore from "@/app/store/useModalStore";
 import { modalSt } from "@/app/style/modalSt";
 import useItemStore from "@/app/store/useItemStore";
+import useSettingStore from "@/app/store/useSettingStore";
 
 const ModalToModifyDate = () => {
   const { setList } = useFormStore();
@@ -18,6 +19,7 @@ const ModalToModifyDate = () => {
     resetItemForModal,
   } = useModalStore();
   const { setSelectedItemId } = useItemStore();
+  const { isEnglish } = useSettingStore();
 
   const clickModifyOnModal = () => {
     setWhichModal(null);
@@ -45,7 +47,11 @@ const ModalToModifyDate = () => {
         css={modalSt.container}
       >
         <div css={modalSt.textContainer}>
-          <p css={modalSt.text}>Modify the last time you took</p>
+          <p css={modalSt.text}>
+            {isEnglish
+              ? `Modify the last time you took`
+              : `마지막으로 복용(사용)한 날`}
+          </p>
           <input
             type="date"
             css={modalSt.dateInput}
@@ -55,10 +61,10 @@ const ModalToModifyDate = () => {
         </div>
         <div css={modalSt.btnContainer}>
           <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
-            CANCEL
+            {isEnglish ? `CANCEL` : `취소`}
           </button>
           <button onClick={() => clickModifyOnModal()} css={modalSt.delBtn}>
-            Modify
+            {isEnglish ? `Modify` : `수정`}
           </button>
         </div>
       </div>

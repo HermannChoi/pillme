@@ -8,10 +8,12 @@ import InfoSection from "./components/InfoSection";
 import MessageModal from "./components/modals/MessageModal";
 import CongratsPage from "./components/CongratsPage";
 import Footer from "./components/Footer";
+import UserNameSection from "./components/UserNameSection";
 
 const Home = () => {
   return (
     <main>
+      <UserNameSection />
       <CreateItemForm />
       <ErrorMsg />
       <InfoSection />

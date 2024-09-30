@@ -1,7 +1,8 @@
 "use client";
-import useDateStore from "@/app/store/useDateStore";
 /** @jsxImportSource @emotion/react */
 
+import useToggleLanguage from "@/app/hooks/useToggleLanguage";
+import useDateStore from "@/app/store/useDateStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { settingPageSt } from "@/app/style/settingPageSt";
 import { motion } from "framer-motion";
@@ -11,26 +12,13 @@ const LanguageToggle = () => {
   const { isEnglish, setIsEnglish } = useSettingStore();
   const { isInitialLoad, setIsInitialLoad } = useDateStore();
 
-  useEffect(() => {
-    if (!isEnglish && !isInitialLoad) {
-      window.localStorage.setItem("isEnglish", "false");
-    }
-    if (isEnglish && !isInitialLoad) {
-      window.localStorage.setItem("isEnglish", "true");
-    }
-  }, [isEnglish, setIsEnglish, isInitialLoad]);
-
-  useEffect(() => {
-    const langInLocalStorage =
-      window.localStorage.getItem("isEnglish") === "true";
-    setIsEnglish(langInLocalStorage);
-  }, [setIsEnglish]);
+  useToggleLanguage(isEnglish, setIsEnglish, isInitialLoad);
 
   useEffect(() => {
     setTimeout(() => {
       setIsInitialLoad(false);
     }, 500);
-  }, []);
+  }, [setIsInitialLoad]);
 
   return (
     <div css={settingPageSt.listContainer}>

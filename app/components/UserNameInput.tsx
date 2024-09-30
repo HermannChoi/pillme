@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import pill from "@/app/assets/svg/pill.svg";
 import { helloItsTakeMedicine } from "../style/framerMotion";
+import useSettingStore from "../store/useSettingStore";
 
 const UserNameInput = () => {
   const [question, setQuestion] = useState<string>("What is your name?");
@@ -19,6 +20,7 @@ const UserNameInput = () => {
     isUserNameInputOn,
     setIsUserNameInputOn,
   } = useUserNameStore();
+  const { isEnglish } = useSettingStore();
 
   const submitForm = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -56,7 +58,11 @@ const UserNameInput = () => {
             transition={helloItsTakeMedicine}
             css={userNameInputSt.formContainer}
           >
-            <p>{`hello, it's Take Medicine!`}</p>
+            <p>
+              {isEnglish
+                ? `hello, it's Take Medicine!`
+                : `안녕하세요, 저는 Take Medicine이에요!`}
+            </p>
             <Image
               src={pill}
               alt="pill"
@@ -72,7 +78,9 @@ const UserNameInput = () => {
             transition={{ duration: 1, delay: 3 }}
             css={userNameInputSt.formContainer}
           >
-            <label htmlFor="userNameInput">{question}</label>
+            <label htmlFor="userNameInput">
+              {isEnglish ? question : `당신의 이름은 무엇인가요?`}
+            </label>
             <form onSubmit={submitForm} css={userNameInputSt.form}>
               <input
                 id="userNameInput"
@@ -85,13 +93,15 @@ const UserNameInput = () => {
                 css={userNameInputSt.input}
               />
               <button css={userNameInputSt.button}>
-                {isSubmitted ? "✓" : "Done"}
+                {isEnglish ? "Done" : "완료"}
               </button>
             </form>
           </motion.div>
         </div>
       ) : (
-        <p css={userNameInputSt.welcomeText}>Welcome, {userName}</p>
+        <p css={userNameInputSt.welcomeText}>
+          {isEnglish ? `Welcome, ${userName}` : `환영합니다, ${userName}님`}
+        </p>
       )}
     </div>
   );
