@@ -2,11 +2,12 @@
 /** @jsxImportSource @emotion/react */
 
 import useSettingStore from "@/app/store/useSettingStore";
+import { settingPageSt } from "@/app/style/settingPageSt";
 
 const Title = () => {
   const { isEnglish } = useSettingStore();
 
-  return <h1>{isEnglish ? `Setting` : `설정`}</h1>;
+  return <h1 css={settingPageSt.title}>{isEnglish ? `Setting` : `설정`}</h1>;
 };
 
 export default Title;

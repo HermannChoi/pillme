@@ -2,9 +2,20 @@ import { css } from "@emotion/react";
 import { colors } from "./commonSt";
 
 export const settingPageSt = {
-  section: css`
+  title: css`
+    margin-top: 1rem;
+  `,
+  sectionTitle: css`
     width: 100%;
-    padding: 1rem;
+    padding-left: 0.5rem;
+    margin-bottom: -0.3rem;
+  `,
+  section: css`
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem;
     border-radius: 10px;
     background-color: #80808020;
   `,
@@ -12,6 +23,36 @@ export const settingPageSt = {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+  `,
+  resetUserNameBtn: css`
+    min-width: 25%;
+    height: 35px;
+    padding: 0.2rem;
+    border: none;
+    border-radius: 10px;
+    background-color: ${colors.green}40;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: ${colors.green}30;
+      transform: scale(0.98);
+    }
+  `,
+  resetItemBtn: css`
+    min-width: 25%;
+    height: 35px;
+    padding: 0.2rem;
+    border: none;
+    border-radius: 10px;
+    background-color: ${colors.red}40;
+    color: ${colors.red};
+    transition: 0.3s;
+
+    &:hover {
+      background-color: ${colors.red}30;
+      transform: scale(0.98);
+    }
   `,
   languageToggle: (isEnglish: boolean) => {
     return css`
@@ -19,11 +60,11 @@ export const settingPageSt = {
       display: flex;
       justify-content: ${isEnglish ? `flex-end` : `flex-start`};
       align-items: center;
-      width: 60px;
-      height: 30px;
+      width: 25%;
+      height: 35px;
       padding: 3px;
       border: 2px solid ${colors.grey};
-      border-radius: 30px;
+      border-radius: 10px;
       background-color: ${isEnglish ? `${colors.blue}` : `${colors.red}`};
       cursor: pointer;
 
@@ -31,7 +72,7 @@ export const settingPageSt = {
         content: "A";
         position: absolute;
         top: 50%;
-        left: 20%;
+        left: 15%;
         transform: translateY(-50%);
         font-weight: bold;
       }
@@ -40,17 +81,17 @@ export const settingPageSt = {
         content: "가";
         position: absolute;
         top: 50%;
-        right: 20%;
+        right: 15%;
         transform: translateY(-50%);
         font-weight: bold;
       }
     `;
   },
   languageHandle: css`
-    width: 24px;
-    height: 24px;
+    width: 50%;
+    height: 100%;
     background-color: white;
-    border-radius: 24px;
+    border-radius: 10px;
     z-index: 1;
   `,
 };

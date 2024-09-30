@@ -9,10 +9,12 @@ import MessageModal from "./components/modals/MessageModal";
 import CongratsPage from "./components/CongratsPage";
 import Footer from "./components/Footer";
 import UserNameSection from "./components/UserNameSection";
+import Header from "./components/Header";
 
 const Home = () => {
   return (
     <main>
+      <Header />
       <UserNameSection />
       <CreateItemForm />
       <ErrorMsg />

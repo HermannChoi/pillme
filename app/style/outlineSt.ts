@@ -10,7 +10,6 @@ export const outlineSt = {
     align-items: center;
     width: 100%;
     height: 3rem;
-    padding: 0 5%;
     background-color: transparent;
     backdrop-filter: blur(15px);
     z-index: 100;
@@ -29,7 +28,7 @@ export const outlineSt = {
   userNameContainer: (isEasterEggsOn: boolean) => {
     return css`
       ${flexCenterX2}
-      width: 90%;
+      width: 100%;
       height: 3rem;
       border-radius: 10px;
       margin-top: 0.5rem;
@@ -39,40 +38,6 @@ export const outlineSt = {
       font-weight: 500;
     `;
   },
-  resetBtnContainer: css`
-    ${flexColumnCenterX2}
-    gap: 5px;
-    width: 100%;
-  `,
-  resetUserNameBtn: css`
-    width: 100%;
-    height: 3rem;
-    padding: 0.2rem;
-    border: none;
-    border-radius: 10px;
-    background-color: ${colors.green}40;
-    transition: 0.3s;
-
-    &:hover {
-      background-color: ${colors.green}30;
-      transform: scale(0.98);
-    }
-  `,
-  resetItemNameBtn: css`
-    width: 100%;
-    height: 3rem;
-    padding: 0.2rem;
-    border: none;
-    border-radius: 10px;
-    background-color: ${colors.red}40;
-    color: ${colors.red};
-    transition: 0.3s;
-
-    &:hover {
-      background-color: ${colors.red}30;
-      transform: scale(0.98);
-    }
-  `,
   footer: [flexCenterX2],
   footerText: css`
     padding: 20px 0;

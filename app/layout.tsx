@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "./components/Header";
 import CoverPage from "./components/CoverPage";
 import UserNameInput from "./components/UserNameInput";
 import Navigator from "./components/Navigator";
@@ -34,7 +33,6 @@ export default function RootLayout({
       <body>
         <CoverPage />
         <UserNameInput />
-        <Header />
         {children}
         <Navigator />
       </body>
