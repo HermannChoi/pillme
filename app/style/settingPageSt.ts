@@ -24,6 +24,7 @@ export const settingPageSt = {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 3rem;
   `,
   resetUserNameBtn: css`
     min-width: 25%;
@@ -62,7 +63,7 @@ export const settingPageSt = {
       width: 25%;
       height: 35px;
       padding: 3px;
-      border: 2px solid ${colors.grey};
+      border: none;
       border-radius: 10px;
       background-color: ${isEnglish ? `${colors.blue}` : `${colors.red}`};
       cursor: pointer;
