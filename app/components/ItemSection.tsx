@@ -169,8 +169,7 @@ const ItemSection = () => {
                         <div
                           css={itemSectionSt.optionContainer(
                             item.id,
-                            selectedItemId,
-                            item.date
+                            selectedItemId
                           )}
                         >
                           <div css={itemSectionSt.optionBtnContainer}>

@@ -86,11 +86,7 @@ export const itemSectionSt = {
   name: css`
     flex: 1;
   `,
-  optionContainer: (
-    itemId: string,
-    selectedItemId: string | null,
-    itemDate: string
-  ) => {
+  optionContainer: (itemId: string, selectedItemId: string | null) => {
     return [
       css`
         transform-origin: top;
