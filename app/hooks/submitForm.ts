@@ -84,7 +84,9 @@ export const submitForm = ({
   setName("");
   setIsSubmitted(true);
   setIsErrorMsgChanged(false);
-  setErrorMsg("✓ the item got added.");
+  setErrorMsg(
+    isEnglish ? "✓ the item got added." : "✓ 아이템이 추가되었습니다."
+  );
   setTimeout(() => {
     setIsSubmitted(false);
     setErrorMsg("");
