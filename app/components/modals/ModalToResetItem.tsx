@@ -5,8 +5,11 @@ import useModalStore from "@/app/store/useModalStore";
 import { modalSt } from "@/app/style/modalSt";
 import useFormStore from "@/app/store/useFormStore";
 import useSettingStore from "@/app/store/useSettingStore";
+import { useRouter } from "next/navigation";
 
 const ModalToResetItem = () => {
+  const router = useRouter();
+
   const { whichModal, setWhichModal } = useModalStore();
   const { setList } = useFormStore();
   const { isEnglish } = useSettingStore();
@@ -19,6 +22,10 @@ const ModalToResetItem = () => {
       Any: [],
     });
     setWhichModal(null);
+    router.push("/");
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
   };
 
   return (

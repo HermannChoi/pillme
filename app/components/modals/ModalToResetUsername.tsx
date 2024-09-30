@@ -5,15 +5,21 @@ import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import useUserNameStore from "@/app/store/useUserNameStore";
 import { modalSt } from "@/app/style/modalSt";
+import { useRouter } from "next/navigation";
 
 const ModalToResetUsername = () => {
+  const router = useRouter();
+
   const { userName } = useUserNameStore();
   const { whichModal, setWhichModal } = useModalStore();
   const { isEnglish } = useSettingStore();
 
   const clickResetUserName = () => {
     localStorage.removeItem("userName");
-    window.location.reload();
+    router.push("/");
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
   };
 
   return (
@@ -38,8 +44,8 @@ const ModalToResetUsername = () => {
         ) : (
           <div css={modalSt.textContainer}>
             <p css={modalSt.text}>
-              정말 당신의 이름, <span css={modalSt.itemName}>{userName}</span>을
-              재설정 하시겠습니까?
+              정말 당신의 이름, <span css={modalSt.itemName}>{userName}</span>
+              을(를) 재설정 하시겠습니까?
             </p>
             <p css={modalSt.subText}>* 등록된 아이템들은 삭제되지 않습니다.</p>
           </div>
