@@ -100,7 +100,7 @@ const UserNameInput = () => {
         </div>
       ) : (
         <p css={userNameInputSt.welcomeText}>
-          {isEnglish ? `Welcome, ${userName}` : `환영합니다, ${userName}님`}
+          {isEnglish ? `Welcome, ${userName}` : `반가워요, ${userName}님`}
         </p>
       )}
     </div>

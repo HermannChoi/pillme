@@ -28,30 +28,6 @@ export const fadeOut = keyframes`
   }
 `;
 
-export const scaleYFadeOut = keyframes`
-  0% {
-    transform: scaleY(1);
-  }
-  100% {
-    transform: scaleY(0);
-    height: 0;
-    padding: 0;
-    opacity: 0;
-  }
-`;
-
-export const fadeInAndOut = keyframes`
-  0% {
-    opacity: 0;
-  }
-  30%,80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-`;
-
 export const scaleZeroTo100 = keyframes`
   0% {
     transform: scale(0);

@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { colors, flexCenterX2, flexColumnCenterX2 } from "./commonSt";
-import { emptyItemSectionAni, scaleYFadeIn, scaleYFadeOut } from "./keyframes";
+import { emptyItemSectionAni } from "./keyframes";
 import { itemProps } from "../types/types";
 
 export const itemSectionSt = {
@@ -51,16 +51,16 @@ export const itemSectionSt = {
       align-items: center;
       gap: 10px;
       width: 100%;
-      height: fit-content;
-      min-height: 60px;
+      height: 60px;
       padding: 5px 10px;
       border: none;
       border-radius: ${item.id === selectedItemId || item.date === "0000-00-00"
         ? `10px 10px 0 0`
         : `10px`};
-      background-color: ${colors.grey}${item.id === selectedItemId ? "30" : "15"};
+      background-color: ${colors.darkGrey};
       transition: background-color 0.2s, border-radius 0.2s;
       cursor: pointer;
+      z-index: 1;
     `;
   },
   toggle: (isTaken: boolean) => {
@@ -100,13 +100,11 @@ export const itemSectionSt = {
         width: 100%;
         height: 60px;
         padding: 5px 10px 5px;
-        border-radius: 0 0 10px 10px;
+        border-radius: ${itemId === selectedItemId ? `0 0 10px 10px` : `10px`};
+        margin-top: ${itemId === selectedItemId ? 0 : -60}px;
         background-color: ${colors.grey}30;
         overflow: hidden;
-        animation: ${itemId === selectedItemId
-            ? scaleYFadeIn
-            : itemDate !== "0000-00-00" && scaleYFadeOut}
-          0.2s forwards;
+        transition: 0.2s;
       `,
     ];
   },

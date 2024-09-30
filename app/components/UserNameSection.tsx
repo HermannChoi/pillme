@@ -36,7 +36,7 @@ const UserNameSection = () => {
         ? isEnglish
           ? `You are welcome :)`
           : `감사합니다 :)`
-        : `${greeting}, ${userName}  ${isEnglish ? `` : `님`}`}
+        : `${greeting}, ${userName}${isEnglish ? `` : `님`}`}
     </div>
   );
 };

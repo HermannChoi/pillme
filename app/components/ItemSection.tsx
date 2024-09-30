@@ -31,17 +31,7 @@ const ItemSection = () => {
   const { isEnglish } = useSettingStore();
 
   const clickItemForOptionsWindow = (item: itemProps) => {
-    if (item.date === "0000-00-00") {
-      setMessage(
-        isEnglish
-          ? "you can close the options window after activating the item once."
-          : "옵션창은 해당 아이템을 최초 1회 활성화 후 닫을 수 있습니다."
-      );
-      return setWhichModal("message");
-    }
-
     if (selectedItemId === item.id) return setSelectedItemId(null);
-
     setSelectedItemId(item.id);
   };
 
@@ -185,15 +175,23 @@ const ItemSection = () => {
                         >
                           <div css={itemSectionSt.optionBtnContainer}>
                             <button
-                              onClick={(e) =>
+                              onClick={(e) => {
+                                if (item.date === "0000-00-00") {
+                                  setMessage(
+                                    isEnglish
+                                      ? "you can modify the date once after you activate the item."
+                                      : "날짜 수정은 아이템 최초 일 회 활성화 이후 가능합니다."
+                                  );
+                                  return setWhichModal("message");
+                                }
                                 clickSetWhichModal({
                                   e,
                                   whichModal: "modifyDate",
                                   setWhichModal,
                                   item,
                                   setItemForModal,
-                                })
-                              }
+                                });
+                              }}
                               css={itemSectionSt.optionBtn}
                             >
                               {isEnglish ? `Date` : `날짜`}

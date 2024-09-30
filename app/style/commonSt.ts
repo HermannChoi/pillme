@@ -2,6 +2,7 @@ import { css } from "@emotion/react";
 
 export const colors = {
   grey: "#808080",
+  darkGrey: "#1c1c1c",
   green: "#00d5a5",
   blue: "#61b2e4",
   darkBackground: "#0a0a0a",

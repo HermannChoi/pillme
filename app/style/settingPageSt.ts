@@ -64,34 +64,36 @@ export const settingPageSt = {
       height: 35px;
       padding: 3px;
       border: none;
-      border-radius: 10px;
-      background-color: ${isEnglish ? `${colors.blue}` : `${colors.red}`};
+      border-radius: 20px;
+      background-color: ${isEnglish ? `${colors.green}` : `${colors.red}`}80;
       cursor: pointer;
 
       &:before {
-        content: "A";
+        content: "ENG";
         position: absolute;
         top: 50%;
-        left: 15%;
+        left: 10%;
         transform: translateY(-50%);
+        ${!isEnglish && `display: none;`}
         font-weight: bold;
       }
 
       &:after {
-        content: "가";
+        content: "한글";
         position: absolute;
         top: 50%;
-        right: 15%;
+        right: 10%;
         transform: translateY(-50%);
+        ${isEnglish && `display: none;`}
         font-weight: bold;
       }
     `;
   },
   languageHandle: css`
-    width: 50%;
+    width: 40%;
     height: 100%;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 20px;
     z-index: 1;
   `,
 };
