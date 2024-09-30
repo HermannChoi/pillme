@@ -58,9 +58,7 @@ export const itemSectionSt = {
       border-radius: ${item.id === selectedItemId || item.date === "0000-00-00"
         ? `10px 10px 0 0`
         : `10px`};
-      background-color: ${item.id === selectedItemId
-        ? colors.green
-        : colors.grey}15;
+      background-color: ${colors.grey}${item.id === selectedItemId ? "30" : "15"};
       transition: background-color 0.2s, border-radius 0.2s;
       cursor: pointer;
     `;
@@ -125,12 +123,12 @@ export const itemSectionSt = {
     padding: 5px 10px;
     border: none;
     border-radius: 10px;
-    background-color: ${colors.green}50;
+    background-color: ${colors.green}80;
     transition: 0.2s;
 
     &:hover {
       transform: scale(0.98);
-      background-color: ${colors.green}40;
+      background-color: ${colors.green}60;
     }
   `,
   toggle2: (isTaken: boolean) => {

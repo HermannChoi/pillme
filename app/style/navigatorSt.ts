@@ -10,7 +10,7 @@ export const navigatorSt = {
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 4rem;
+    height: 3rem;
     border-top: 1px solid #808080;
     border-radius: 20px 20px 0 0;
     background-color: #151515;
@@ -29,17 +29,17 @@ export const navigatorSt = {
     justify-content: center;
     align-items: center;
     width: 3.5rem;
-    height: 3.5rem;
-    padding: 2rem;
+    height: 3rem;
+    padding: 0 0.5rem;
     transition: 0.2s;
   `,
   figure: css`
     ${flexCenterX2}
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     background-color: transparent;
   `,
   text: css`
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   `,
 };

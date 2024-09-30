@@ -29,7 +29,7 @@ export const outlineSt = {
   userNameContainer: (isEasterEggsOn: boolean) => {
     return css`
       ${flexCenterX2}
-      width: 100%;
+      width: 90%;
       height: 3rem;
       border-radius: 10px;
       margin-top: 0.5rem;

@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import CoverPage from "./components/CoverPage";
 import UserNameInput from "./components/UserNameInput";
 import Navigator from "./components/Navigator";
+import UserNameSection from "./components/UserNameSection";
 
 export const metadata: Metadata = {
   title: "Take Medicine",
@@ -35,6 +36,7 @@ export default function RootLayout({
         <CoverPage />
         <UserNameInput />
         <Header />
+        <UserNameSection />
         {children}
         <Navigator />
       </body>
