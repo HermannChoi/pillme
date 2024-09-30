@@ -54,13 +54,15 @@ export const itemSectionSt = {
       height: 60px;
       padding: 5px 10px;
       border: none;
-      border-radius: ${item.id === selectedItemId || item.date === "0000-00-00"
-        ? `10px 10px 0 0`
-        : `10px`};
+      border-radius: ${item.id === selectedItemId ? `10px 10px 0 0` : `10px`};
       background-color: ${colors.darkGrey};
       transition: background-color 0.2s, border-radius 0.2s;
       cursor: pointer;
       z-index: 1;
+
+      @media (prefers-color-scheme: light) {
+        background-color: ${colors.lightGrey};
+      }
     `;
   },
   toggle: (isTaken: boolean) => {
