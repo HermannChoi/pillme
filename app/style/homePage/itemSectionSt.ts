@@ -101,6 +101,7 @@ export const itemSectionSt = {
         margin-top: ${itemId === selectedItemId ? 0 : -60}px;
         background-color: ${colors.grey}30;
         overflow: hidden;
+        opacity: ${itemId === selectedItemId ? 1 : 0};
         transition: 0.2s;
       `,
     ];

@@ -26,32 +26,17 @@ export const settingPageSt = {
     width: 100%;
     height: 3rem;
   `,
-  resetUserNameBtn: css`
+  resetButtons: css`
     min-width: 25%;
     height: 35px;
-    padding: 0.2rem;
     border: none;
     border-radius: 10px;
-    background-color: ${colors.green}80;
+    background-color: ${colors.grey}80;
     transition: 0.2s;
 
     &:hover {
-      background-color: ${colors.green}60;
-      transform: scale(0.98);
-    }
-  `,
-  resetItemBtn: css`
-    min-width: 25%;
-    height: 35px;
-    padding: 0.2rem;
-    border: none;
-    border-radius: 10px;
-    background-color: ${colors.red}80;
-    transition: 0.2s;
-
-    &:hover {
-      background-color: ${colors.red}60;
-      transform: scale(0.98);
+      background-color: ${colors.grey}60;
+      transform: scaleX(0.98);
     }
   `,
   languageToggle: (isEnglish: boolean) => {
@@ -65,7 +50,7 @@ export const settingPageSt = {
       padding: 3px;
       border: none;
       border-radius: 20px;
-      background-color: ${isEnglish ? `${colors.green}` : `${colors.red}`}80;
+      background-color: ${isEnglish ? `${colors.green}` : `${colors.grey}`}80;
       cursor: pointer;
 
       &:before {

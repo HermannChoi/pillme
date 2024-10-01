@@ -15,7 +15,7 @@ const ResetButtons = () => {
         <p>{isEnglish ? `Rename Username` : `이름 재설정`}</p>
         <button
           onClick={() => setWhichModal("resetUsername")}
-          css={settingPageSt.resetUserNameBtn}
+          css={settingPageSt.resetButtons}
         >
           {isEnglish ? `Rename` : `재설정`}
         </button>
@@ -24,7 +24,7 @@ const ResetButtons = () => {
         <p> {isEnglish ? `Reset Items` : `아이템 초기화`}</p>
         <button
           onClick={() => setWhichModal("resetItems")}
-          css={settingPageSt.resetItemBtn}
+          css={settingPageSt.resetButtons}
         >
           {isEnglish ? `Reset` : `초기화`}
         </button>
