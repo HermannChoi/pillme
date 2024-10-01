@@ -2,13 +2,11 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { clickSetWhichModal } from "@/app/hooks/clickSetWhichModal";
 import { toggleIsTaken } from "@/app/hooks/toggleIsTaken";
 import useDateStore from "@/app/store/homePage/useDateStore";
 import useFormStore from "@/app/store/homePage/useFormStore";
 
 import useItemStore from "@/app/store/homePage/useItemStore";
-import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
 import { outlineSt } from "@/app/style/homePage/outlineSt";
@@ -18,6 +16,7 @@ import { getTotalListLength } from "@/app/utils/getToTalListLength";
 import { vibrate } from "@/app/utils/vibrate";
 import { motion } from "framer-motion";
 import { SyntheticEvent, useEffect } from "react";
+import ItemOptionSection from "./ItemOptionSection";
 
 const ItemSection = () => {
   const {
@@ -29,14 +28,15 @@ const ItemSection = () => {
   } = useItemStore();
   const { list, setList, focusInput } = useFormStore();
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
-  const { setWhichModal, setItemForModal, setMessage } = useModalStore();
   const { isEnglish } = useSettingStore();
 
+  //아이템 옵션창 토글 로직
   const clickItemForOptionsWindow = (item: itemProps) => {
     if (selectedItemId === item.id) return setSelectedItemId(null);
     setSelectedItemId(item.id);
   };
 
+  //아이템 활성화 토글 로직
   const clickToggle = (e: SyntheticEvent, clickedItem: itemProps) => {
     e.stopPropagation();
     toggleIsTaken({
@@ -46,22 +46,7 @@ const ItemSection = () => {
     vibrate(100);
   };
 
-  const clickToggleIsEveryOtherDay = (clickedItem: itemProps) => {
-    setList((prev) => ({
-      ...prev,
-      [clickedItem.timePeriod]: prev[
-        clickedItem.timePeriod as keyof listProps
-      ].map((item) => {
-        return item.id === clickedItem.id
-          ? item.isEveryOtherDay
-            ? { ...item, isEveryOtherDay: false, leftDay: 0 }
-            : { ...item, isEveryOtherDay: true, leftDay: 1 }
-          : item;
-      }),
-    }));
-    vibrate(100);
-  };
-
+  //다음날 지나서 아이템 비활성화 되는 로직
   useEffect(() => {
     if (isDateChanged) {
       for (const timePeriod in list) {
@@ -82,9 +67,10 @@ const ItemSection = () => {
   }, [isDateChanged]);
 
   useEffect(() => {
+    //아이템 변경사항 로컬스토레지에 저장 로직
     (!isInitialLoad || isDateChanged) &&
       localStorage.setItem("medList", JSON.stringify(list));
-
+    //모든 아이템 활성화 시 축하메세지 뜨는 로직
     const allItems = [
       ...list.Morning,
       ...list.Noon,
@@ -96,8 +82,8 @@ const ItemSection = () => {
       allItems.length > 0 &&
       !isInitialLoad;
 
-    // 아이템의 isTaken 상태가 변경된 경우에만 동작
     if (allTaken !== previousIsEverythingTaken) {
+      // 아이템의 isTaken 상태가 변경된 경우에만 동작
       setIsEverythingTaken(allTaken);
       setPreviousIsEverythingTaken(allTaken);
 
@@ -109,6 +95,7 @@ const ItemSection = () => {
     }
   }, [list]);
 
+  //로컬 스토레지에서 아이템 데이터 받아오는 로직
   useEffect(() => {
     const storedList = localStorage.getItem("medList");
     if (storedList) {
@@ -137,12 +124,6 @@ const ItemSection = () => {
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 60 }}
-                          transition={{
-                            duration: 700,
-                            type: "spring",
-                            stiffness: 700,
-                            damping: 20,
-                          }}
                           onClick={() => clickItemForOptionsWindow(item)}
                           css={itemSectionSt.listItem(item, selectedItemId)}
                         >
@@ -168,79 +149,7 @@ const ItemSection = () => {
                               String(item.minutes).padStart(2, "0")}
                           </p>
                         </motion.div>
-                        <div
-                          css={itemSectionSt.optionContainer(
-                            item.id,
-                            selectedItemId
-                          )}
-                        >
-                          <div css={itemSectionSt.optionBtnContainer}>
-                            <button
-                              onClick={(e) => {
-                                if (item.date === "0000-00-00") {
-                                  setMessage(
-                                    isEnglish
-                                      ? "you can modify the date once after you activate the item."
-                                      : "날짜 수정은 아이템 최초 일 회 활성화 이후 가능합니다."
-                                  );
-                                  return setWhichModal("message");
-                                }
-                                clickSetWhichModal({
-                                  e,
-                                  whichModal: "modifyDate",
-                                  setWhichModal,
-                                  item,
-                                  setItemForModal,
-                                });
-                              }}
-                              css={itemSectionSt.optionBtn}
-                            >
-                              {isEnglish ? `Date` : `날짜`}
-                            </button>
-                            <button
-                              onClick={(e) =>
-                                clickSetWhichModal({
-                                  e,
-                                  whichModal: "modifyTime",
-                                  setWhichModal,
-                                  item,
-                                  setItemForModal,
-                                })
-                              }
-                              css={itemSectionSt.optionBtn}
-                            >
-                              {isEnglish ? `Time` : `시간`}
-                            </button>
-                          </div>
-                          <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => clickToggleIsEveryOtherDay(item)}
-                            css={itemSectionSt.toggle2(item.isEveryOtherDay)}
-                          >
-                            {isEnglish
-                              ? item.isEveryOtherDay
-                                ? "2D 1T"
-                                : "1D 1T"
-                              : item.isEveryOtherDay
-                              ? "격일"
-                              : "매일"}
-                          </motion.div>
-                          <button
-                            onClick={(e) =>
-                              clickSetWhichModal({
-                                e,
-                                whichModal: "deleteItem",
-                                setWhichModal,
-                                item,
-                                setItemForModal,
-                              })
-                            }
-                            css={itemSectionSt.delBtn}
-                          >
-                            {isEnglish ? `DEL` : `삭제`}
-                          </button>
-                        </div>
+                        <ItemOptionSection item={item} />
                       </div>
                     );
                   })}

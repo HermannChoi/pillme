@@ -91,7 +91,6 @@ export const itemSectionSt = {
   optionContainer: (itemId: string, selectedItemId: string | null) => {
     return [
       css`
-        transform-origin: top;
         display: flex;
         justify-content: space-between;
         align-items: center;
