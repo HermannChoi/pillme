@@ -149,7 +149,6 @@ export const itemSectionSt = {
       border: none;
       border-radius: 10px;
       background-color: ${colors.red}60;
-      color: ${colors.red};
       transition: 0.2s;
 
       &:hover {

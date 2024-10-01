@@ -53,6 +53,7 @@ export const modalSt = {
     margin-right: 5px;
     background-color: ${colors.green}60;
     font-size: 1.2rem;
+    white-space: nowrap;
   `,
   timeInput: css`
     width: 20%;
