@@ -3,6 +3,7 @@
 
 import { itemFrequency } from "@/app/constant/itemFrequency";
 import useFormStore from "@/app/store/homePage/useFormStore";
+import useItemStore from "@/app/store/homePage/useItemStore";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { modalSt } from "@/app/style/modalSt";
@@ -11,15 +12,25 @@ import { useState } from "react";
 
 const ModalToChooseFrequency = () => {
   const [whichFrequency, setWhichFrequency] = useState<number | null>(null);
+
   const { setList } = useFormStore();
-  const { whichModal, setWhichModal, itemForModal } = useModalStore();
+  const { whichModal, setWhichModal, itemForModal, setMessage } =
+    useModalStore();
   const { isEnglish } = useSettingStore();
+  const { setSelectedItemId } = useItemStore();
 
   const clickToChooseFrequency = (frequency: number) => {
     setWhichFrequency(frequency);
   };
 
   const clickToDecideFrequency = () => {
+    setWhichFrequency(null);
+    if (whichFrequency === null) {
+      setMessage(
+        isEnglish ? "Please select a frequency" : "빈도를 선택해 주세요."
+      );
+      return setWhichModal("message");
+    }
     setWhichModal(null);
     setList((prev) => {
       return {
@@ -33,6 +44,7 @@ const ModalToChooseFrequency = () => {
         }),
       };
     });
+    setSelectedItemId(null);
   };
 
   const clickCancel = () => {
