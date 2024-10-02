@@ -127,20 +127,18 @@ export const itemSectionSt = {
       background-color: ${colors.green}60;
     }
   `,
-  toggle2: (isTaken: boolean) => {
-    return css`
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: fit-content;
-      height: 40px;
-      padding: 5px 10px;
-      border-radius: 10px;
-      background-color: ${isTaken ? `${colors.green}50` : `#90909050`};
-      cursor: pointer;
-    `;
-  },
+  toggle2: css`
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: 40px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: ${colors.green}50;
+    cursor: pointer;
+  `,
   delBtn: [
     flexCenterX2,
     css`

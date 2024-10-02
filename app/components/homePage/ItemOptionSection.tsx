@@ -2,13 +2,11 @@
 /** @jsxImportSource @emotion/react */
 
 import { clickSetWhichModal } from "@/app/hooks/clickSetWhichModal";
-import useFormStore from "@/app/store/homePage/useFormStore";
 import useItemStore from "@/app/store/homePage/useItemStore";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
-import { itemProps, listProps } from "@/app/types/types";
-import { vibrate } from "@/app/utils/vibrate";
+import { itemProps } from "@/app/types/types";
 import { motion } from "framer-motion";
 
 interface ItemOptionSectionProps {
@@ -17,25 +15,25 @@ interface ItemOptionSectionProps {
 
 const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
   const { selectedItemId } = useItemStore();
-  const { setList } = useFormStore();
   const { setWhichModal, setItemForModal, setMessage } = useModalStore();
   const { isEnglish } = useSettingStore();
 
-  const clickToggleIsEveryOtherDay = (clickedItem: itemProps) => {
-    setList((prev) => ({
-      ...prev,
-      [clickedItem.timePeriod]: prev[
-        clickedItem.timePeriod as keyof listProps
-      ].map((item) => {
-        return item.id === clickedItem.id
-          ? item.isEveryOtherDay
-            ? { ...item, isEveryOtherDay: false, leftDay: 0 }
-            : { ...item, isEveryOtherDay: true, leftDay: 1 }
-          : item;
-      }),
-    }));
-    vibrate(100);
-  };
+  // const clickToggleIsEveryOtherDay = () => {
+  //   setWhichModal("chooseFrequency");
+  //   // setList((prev) => ({
+  //   //   ...prev,
+  //   //   [clickedItem.timePeriod]: prev[
+  //   //     clickedItem.timePeriod as keyof listProps
+  //   //   ].map((item) => {
+  //   //     return item.id === clickedItem.id
+  //   //       ? item.isEveryOtherDay
+  //   //         ? { ...item, isEveryOtherDay: false, leftDay: 0 }
+  //   //         : { ...item, isEveryOtherDay: true, leftDay: 1 }
+  //   //       : item;
+  //   //   }),
+  //   // }));
+  //   vibrate(100);
+  // };
 
   return (
     <div css={itemSectionSt.optionContainer(item.id, selectedItemId)}>
@@ -80,16 +78,18 @@ const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
       <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        onClick={() => clickToggleIsEveryOtherDay(item)}
-        css={itemSectionSt.toggle2(item.isEveryOtherDay)}
+        onClick={(e) =>
+          clickSetWhichModal({
+            e,
+            whichModal: "chooseFrequency",
+            setWhichModal,
+            item,
+            setItemForModal,
+          })
+        }
+        css={itemSectionSt.toggle2}
       >
-        {isEnglish
-          ? item.isEveryOtherDay
-            ? "2D 1T"
-            : "1D 1T"
-          : item.isEveryOtherDay
-          ? "격일"
-          : "매일"}
+        {isEnglish ? item.frequency + "D 1T" : item.frequency + "일"}
       </motion.div>
       <p>{`D-${item.leftDay}`}</p>
       <button

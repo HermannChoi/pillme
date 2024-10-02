@@ -107,4 +107,24 @@ export const modalSt = {
       background-color: ${colors.red}b6;
     }
   `,
+  frequencyBtnContainer: css`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+    width: 100%;
+  `,
+  frequencyBtn: (
+    itemFrequency: number,
+    selectedFrequency: number,
+    whichFrequency: number | null
+  ) => {
+    return css`
+      height: 3rem;
+      border: ${itemFrequency === selectedFrequency
+        ? `1px solid ${colors.green}`
+        : `none`};
+      border-radius: 10px;
+      background-color: ${colors.green}${whichFrequency === selectedFrequency ? "bb" : 40};
+    `;
+  },
 };

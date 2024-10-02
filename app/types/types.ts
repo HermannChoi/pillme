@@ -6,7 +6,7 @@ export interface itemProps {
   hours: number;
   minutes: number;
   isTaken: boolean;
-  isEveryOtherDay: boolean;
+  frequency: number;
   leftDay: number;
 }
 
@@ -24,6 +24,7 @@ export interface modalList {
   modifyDate: string;
   resetItems: string;
   message: string;
+  chooseFrequency: string;
 }
 
 export interface WhichPage {

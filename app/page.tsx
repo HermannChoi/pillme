@@ -6,6 +6,7 @@ import InfoSection from "./components/homePage/InfoSection";
 import ItemSection from "./components/homePage/ItemSection";
 import UserNameSection from "./components/homePage/UserNameSection";
 import MessageModal from "./components/modals/MessageModal";
+import ModalToChooseFrequency from "./components/modals/ModalToChooseFrequency";
 import ModalToDeleteItem from "./components/modals/ModalToDeleteItem";
 import ModalToModifyDate from "./components/modals/ModalToModifyDate";
 import ModalToModifyTime from "./components/modals/ModalToModifyTime";
@@ -22,6 +23,7 @@ const Home = () => {
       <ModalToDeleteItem />
       <ModalToModifyTime />
       <ModalToModifyDate />
+      <ModalToChooseFrequency />
       <MessageModal />
       <CongratsPage />
     </main>
