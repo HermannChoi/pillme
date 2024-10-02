@@ -19,7 +19,7 @@ const defaultItemSetup = {
   hours: 0,
   minutes: 0,
   isTaken: false,
-  isEveryOtherDay: false,
+  frequency: 0,
   leftDay: 0,
 };
 
