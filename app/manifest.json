@@ -1,0 +1,37 @@
+{
+  "name": "Take Medicine",
+  "short_name": "Take Medicine",
+  "description": "An app for people who keep forgetting to take their medicine",
+
+  "theme_color": "#00d5a5",
+  "background_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "/png/192icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/png/512icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/png/192icon.png",
+      "sizes": "192x192",
+      "purpose": "maskable",
+      "type": "image/png"
+    },
+    {
+      "src": "/png/512icon.png",
+      "sizes": "512x512",
+      "purpose": "maskable",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "any",
+  "display": "standalone",
+  "dir": "auto",
+  "lang": "ko-KR",
+  "start_url": "/"
+}
