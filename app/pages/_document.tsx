@@ -1,29 +1,11 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { useEffect } from "react";
 
 export default function Document() {
-  useEffect(() => {
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker
-          .register("/service-worker.js")
-          .then((registration) => {
-            console.log(
-              "Service Worker registered with scope:",
-              registration.scope
-            );
-          })
-          .catch((error) => {
-            console.log("Service Worker registration failed:", error);
-          });
-      });
-    }
-  }, []);
-
   return (
     <Html>
       <Head>
         <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#00d5a5" />
       </Head>
       <body>
         <Main />
