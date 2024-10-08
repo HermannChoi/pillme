@@ -128,9 +128,6 @@ export const itemSectionSt = {
     }
   `,
   frequencyBtn: css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: fit-content;
     height: 40px;
     padding: 5px 20px;
@@ -142,6 +139,19 @@ export const itemSectionSt = {
     &:hover {
       transform: scale(0.98);
       background-color: ${colors.green}60;
+    }
+  `,
+  leftDayBtn: css`
+    width: fit-content;
+    height: 40px;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: ${colors.grey}30;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(0.98);
     }
   `,
   delBtn: [

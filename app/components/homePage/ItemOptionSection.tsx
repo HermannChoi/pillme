@@ -14,7 +14,7 @@ interface ItemOptionSectionProps {
 
 const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
   const { selectedItemId } = useItemStore();
-  const { setWhichModal, setItemForModal } = useModalStore();
+  const { setWhichModal, setItemForModal, setMessage } = useModalStore();
   const { isEnglish } = useSettingStore();
 
   return (
@@ -57,7 +57,19 @@ const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
           ? "매주"
           : item.frequency === 13 && "격주"}
       </button>
-      <p>{`D-${item.leftDay}`}</p>
+      <button
+        onClick={() => {
+          setWhichModal("message");
+          setMessage(
+            isEnglish
+              ? `Toggle button will be automatically deactivated after ${item.leftDay} days`
+              : `${item.leftDay} 일 후에 토글 버튼이 자동으로 비활성화 될 예정입니다.`
+          );
+        }}
+        css={itemSectionSt.leftDayBtn}
+      >
+        <p>{`D-${item.leftDay}`}</p>
+      </button>
       <button
         onClick={(e) =>
           clickSetWhichModal({
