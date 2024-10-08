@@ -8,9 +8,10 @@ export const navigatorSt = {
     left: 0;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: start;
     width: 100%;
-    height: 3.5rem;
+    height: 5.5rem;
+    padding: 0.5rem;
     border-top: 1px solid #808080;
     border-radius: 20px 20px 0 0;
     background-color: #151515;

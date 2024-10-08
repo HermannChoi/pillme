@@ -30,7 +30,7 @@
     }
   ],
   "orientation": "any",
-  "display": "standalone",
+  "display": "fullscreen",
   "dir": "auto",
   "lang": "ko-KR",
   "start_url": "/"
