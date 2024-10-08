@@ -114,9 +114,9 @@ export const itemSectionSt = {
     width: fit-content;
     height: 100%;
   `,
-  optionBtn: css`
+  modifyBtn: css`
     height: 40px;
-    padding: 5px 10px;
+    padding: 5px 20px;
     border: none;
     border-radius: 10px;
     background-color: ${colors.green}80;
@@ -127,17 +127,22 @@ export const itemSectionSt = {
       background-color: ${colors.green}60;
     }
   `,
-  toggle2: css`
-    position: relative;
+  frequencyBtn: css`
     display: flex;
     justify-content: center;
     align-items: center;
     width: fit-content;
     height: 40px;
-    padding: 5px 10px;
+    padding: 5px 20px;
+    border: none;
     border-radius: 10px;
-    background-color: ${colors.green}50;
+    background-color: ${colors.green}80;
     cursor: pointer;
+
+    &:hover {
+      transform: scale(0.98);
+      background-color: ${colors.green}60;
+    }
   `,
   delBtn: [
     flexCenterX2,
@@ -147,12 +152,12 @@ export const itemSectionSt = {
       padding: 0 5px;
       border: none;
       border-radius: 10px;
-      background-color: ${colors.red}60;
+      background-color: ${colors.red}80;
       transition: 0.2s;
 
       &:hover {
         transform: scale(0.98);
-        background-color: ${colors.red}50;
+        background-color: ${colors.red}60;
       }
     `,
   ],

@@ -88,7 +88,6 @@ export const modalSt = {
     transition: 0.2s;
 
     &:hover {
-      transform: scale(0.99);
       background-color: ${colors.grey}20;
     }
   `,
@@ -103,7 +102,6 @@ export const modalSt = {
     transition: 0.2s;
 
     &:hover {
-      transform: scale(0.99);
       background-color: ${colors.red}20;
     }
   `,
