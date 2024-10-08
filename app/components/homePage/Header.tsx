@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header css={outlineSt.header}>
       <Image src={pill} alt="pill" priority={true} width={45} height={45} />
-      <h1 css={outlineSt.h1}>TakeMedicine</h1>
+      <h1 css={outlineSt.h1}>Pillme</h1>
     </header>
   );
 };

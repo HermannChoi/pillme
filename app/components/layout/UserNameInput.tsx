@@ -60,8 +60,8 @@ const UserNameInput = () => {
           >
             <p>
               {isEnglish
-                ? `hello, it's Take Medicine!`
-                : `안녕하세요, 저는 Take Medicine이에요!`}
+                ? `hello, it's Pillme!`
+                : `안녕하세요, 저는 Pillme에요!`}
             </p>
             <Image
               src={pill}

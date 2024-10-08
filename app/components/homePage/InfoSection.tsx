@@ -50,7 +50,7 @@ const InfoSection = () => {
           ? getTotalListLength(list) +
             (getTotalListLength(list) > 1 ? " items have" : " item has") +
             " been registered."
-          : getTotalListLength(list) + "개의 아이템이 등록되었습니다."}
+          : "현재 " + getTotalListLength(list) + "개의 아이템이 있어요."}
       </p>
     </div>
   );

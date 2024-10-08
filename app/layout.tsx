@@ -8,7 +8,7 @@ import Navigator from "./components/layout/Navigator";
 import Footer from "./components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Take Medicine",
+  title: "Pillme",
   description: "Do not forget to take your medicine",
   manifest: "/manifest.json",
   viewport:
