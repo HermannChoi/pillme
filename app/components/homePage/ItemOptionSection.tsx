@@ -18,23 +18,6 @@ const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
   const { setWhichModal, setItemForModal, setMessage } = useModalStore();
   const { isEnglish } = useSettingStore();
 
-  // const clickToggleIsEveryOtherDay = () => {
-  //   setWhichModal("chooseFrequency");
-  //   // setList((prev) => ({
-  //   //   ...prev,
-  //   //   [clickedItem.timePeriod]: prev[
-  //   //     clickedItem.timePeriod as keyof listProps
-  //   //   ].map((item) => {
-  //   //     return item.id === clickedItem.id
-  //   //       ? item.isEveryOtherDay
-  //   //         ? { ...item, isEveryOtherDay: false, leftDay: 0 }
-  //   //         : { ...item, isEveryOtherDay: true, leftDay: 1 }
-  //   //       : item;
-  //   //   }),
-  //   // }));
-  //   vibrate(100);
-  // };
-
   return (
     <div css={itemSectionSt.optionContainer(item.id, selectedItemId)}>
       <div css={itemSectionSt.optionBtnContainer}>
@@ -89,7 +72,15 @@ const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
         }
         css={itemSectionSt.toggle2}
       >
-        {isEnglish ? item.frequency + "D 1T" : item.frequency + "일"}
+        {isEnglish
+          ? item.frequency + "D 1T"
+          : item.frequency === 0
+          ? "매일"
+          : item.frequency == 1
+          ? "격일"
+          : item.frequency === 6
+          ? "매주"
+          : item.frequency === 13 && "격주"}
       </motion.div>
       <p>{`D-${item.leftDay}`}</p>
       <button
