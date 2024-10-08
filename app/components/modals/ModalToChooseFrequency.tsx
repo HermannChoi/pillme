@@ -44,7 +44,9 @@ const ModalToChooseFrequency = () => {
         }),
       };
     });
-    setSelectedItemId(null);
+    setTimeout(() => {
+      setSelectedItemId(null);
+    }, 1000);
   };
 
   const clickCancel = () => {

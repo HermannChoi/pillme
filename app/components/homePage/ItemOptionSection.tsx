@@ -19,22 +19,21 @@ const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
 
   return (
     <div css={itemSectionSt.optionContainer(item.id, selectedItemId)}>
-      <div css={itemSectionSt.optionBtnContainer}>
-        <button
-          onClick={(e) =>
-            clickSetWhichModal({
-              e,
-              whichModal: "chooseModify",
-              setWhichModal,
-              item,
-              setItemForModal,
-            })
-          }
-          css={itemSectionSt.modifyBtn}
-        >
-          {isEnglish ? `Modify` : `수정`}
-        </button>
-      </div>
+      <button
+        onClick={(e) =>
+          clickSetWhichModal({
+            e,
+            whichModal: "chooseModify",
+            setWhichModal,
+            item,
+            setItemForModal,
+          })
+        }
+        css={itemSectionSt.modifyBtn}
+      >
+        {isEnglish ? `Modify` : `수정`}
+      </button>
+
       <button
         onClick={(e) =>
           clickSetWhichModal({

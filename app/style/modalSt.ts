@@ -124,6 +124,7 @@ export const modalSt = {
         : `none`};
       border-radius: 10px;
       background-color: ${colors.green}${whichFrequency === selectedFrequency ? "bb" : 40};
+      transition: 0.2s;
     `;
   },
 };

@@ -94,6 +94,7 @@ export const itemSectionSt = {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 0.5rem;
         width: 100%;
         height: 60px;
         padding: 5px 10px 5px;
@@ -115,8 +116,9 @@ export const itemSectionSt = {
     height: 100%;
   `,
   modifyBtn: css`
+    flex: 1;
     height: 40px;
-    padding: 5px 20px;
+    padding: 5px;
     border: none;
     border-radius: 10px;
     background-color: ${colors.green}80;
@@ -128,9 +130,9 @@ export const itemSectionSt = {
     }
   `,
   frequencyBtn: css`
-    width: fit-content;
+    flex: 1;
     height: 40px;
-    padding: 5px 20px;
+    padding: 5px;
     border: none;
     border-radius: 10px;
     background-color: ${colors.green}80;
@@ -142,9 +144,9 @@ export const itemSectionSt = {
     }
   `,
   leftDayBtn: css`
-    width: fit-content;
+    flex: 1;
     height: 40px;
-    padding: 5px 20px;
+    padding: 5px;
     border: none;
     border-radius: 10px;
     background-color: ${colors.grey}30;
@@ -157,9 +159,9 @@ export const itemSectionSt = {
   delBtn: [
     flexCenterX2,
     css`
-      width: 50px;
+      flex: 1;
       height: 40px;
-      padding: 0 5px;
+      padding: 5px;
       border: none;
       border-radius: 10px;
       background-color: ${colors.red}80;
