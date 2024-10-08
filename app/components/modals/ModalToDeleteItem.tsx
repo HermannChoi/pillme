@@ -48,11 +48,11 @@ const ModalToDeleteItem = () => {
           )}
         </div>
         <div css={modalSt.btnContainer}>
-          <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
-            {isEnglish ? `CANCEL` : `취소`}
-          </button>
           <button onClick={() => clickDeleteOnModal()} css={modalSt.delBtn}>
             {isEnglish ? `DELETE` : `삭제`}
+          </button>
+          <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
+            {isEnglish ? `CANCEL` : `취소`}
           </button>
         </div>
       </div>

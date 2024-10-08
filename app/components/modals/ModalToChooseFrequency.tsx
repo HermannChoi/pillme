@@ -88,11 +88,11 @@ const ModalToChooseFrequency = () => {
           })}
         </div>
         <div css={modalSt.btnContainer}>
-          <button onClick={() => clickCancel()} css={modalSt.cancelBtn}>
-            {isEnglish ? `CANCEL` : `취소`}
-          </button>
           <button onClick={() => clickToDecideFrequency()} css={modalSt.delBtn}>
             {isEnglish ? `CHOOSE` : `선택`}
+          </button>
+          <button onClick={() => clickCancel()} css={modalSt.cancelBtn}>
+            {isEnglish ? `CANCEL` : `취소`}
           </button>
         </div>
       </div>

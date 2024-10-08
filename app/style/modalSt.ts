@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, flexCenterX2 } from "./commonSt";
+import { colors } from "./commonSt";
 import { fadeIn } from "./keyframes";
 import { modalList } from "../types/types";
 
@@ -25,17 +25,17 @@ export const modalSt = {
     align-items: center;
     row-gap: 1rem;
     width: 300px;
-    padding: 1rem;
     border-radius: 10px;
     background-color: #191919;
     animation: ${fadeIn} 0.5s;
-
+    overflow: hidden;
     @media (prefers-color-scheme: light) {
-      background-color: #ffffff;
+      background-color: #f0f0f0;
     }
   `,
   textContainer: css`
     width: 100%;
+    padding: 1rem;
     text-align: center;
   `,
   text: css`
@@ -74,37 +74,37 @@ export const modalSt = {
     font-size: 1.2rem;
   `,
   btnContainer: css`
-    ${flexCenterX2}
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
     width: 100%;
   `,
   cancelBtn: css`
-    flex: 1;
-    height: 40px;
+    height: 50px;
     padding: 5px 10px;
-    border: 1px solid ${colors.grey};
-    border-radius: 10px;
+    border: none;
+    border-top: 1px solid ${colors.grey}20;
     background-color: transparent;
     font-size: 1.2rem;
     transition: 0.2s;
 
     &:hover {
       transform: scale(0.99);
+      background-color: ${colors.grey}20;
     }
   `,
   delBtn: css`
-    flex: 1;
-    height: 40px;
+    height: 50px;
     padding: 5px 10px;
     border: none;
-    border-radius: 10px;
-    background-color: ${colors.red};
+    border-top: 1px solid ${colors.grey}20;
+    background-color: transparent;
+    color: ${colors.red};
     font-size: 1.2rem;
     transition: 0.2s;
 
     &:hover {
       transform: scale(0.99);
-      background-color: ${colors.red}b6;
+      background-color: ${colors.red}20;
     }
   `,
   frequencyBtnContainer: css`
@@ -112,6 +112,7 @@ export const modalSt = {
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
     width: 100%;
+    padding: 0 1rem;
   `,
   frequencyBtn: (
     itemFrequency: number,

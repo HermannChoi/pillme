@@ -51,11 +51,11 @@ const ModalToResetUsername = () => {
           </div>
         )}
         <div css={modalSt.btnContainer}>
-          <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
-            {isEnglish ? `CANCEL` : `취소`}
-          </button>
           <button onClick={() => clickResetUserName()} css={modalSt.delBtn}>
             {isEnglish ? `CHANGE` : `재설정`}
+          </button>
+          <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
+            {isEnglish ? `CANCEL` : `취소`}
           </button>
         </div>
       </div>
