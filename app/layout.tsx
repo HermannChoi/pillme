@@ -10,6 +10,10 @@ import Footer from "./components/layout/Footer";
 export const metadata: Metadata = {
   title: "Take Medicine",
   description: "Do not forget to take your medicine",
+  manifest: "/manifest.json",
+  viewport:
+    "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
+  icons: [{ rel: "icon", url: "/png/192icon.png", sizes: "192x192" }],
 };
 
 const SUSE = localFont({
