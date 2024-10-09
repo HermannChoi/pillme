@@ -10,7 +10,9 @@ import ModalToChooseFrequency from "./components/modals/ModalToChooseFrequency";
 import ModalToChooseModify from "./components/modals/ModalToChooseModify";
 import ModalToDeleteItem from "./components/modals/ModalToDeleteItem";
 import ModalToModifyDate from "./components/modals/ModalToModifyDate";
+import ModalToModifyLeftDay from "./components/modals/ModalToModifyLeftDay";
 import ModalToModifyTime from "./components/modals/ModalToModifyTime";
+import ModalToShowLeftDay from "./components/modals/ModalToShowLeftDay";
 
 const Home = () => {
   return (
@@ -25,6 +27,8 @@ const Home = () => {
       <ModalToChooseModify />
       <ModalToModifyTime />
       <ModalToModifyDate />
+      <ModalToShowLeftDay />
+      <ModalToModifyLeftDay />
       <ModalToChooseFrequency />
       <MessageModal />
       <CongratsPage />

@@ -23,6 +23,8 @@ export interface modalList {
   chooseModify: string;
   modifyTime: string;
   modifyDate: string;
+  modifyLeftDay: string;
+  showLeftDay: string;
   resetItems: string;
   message: string;
   chooseFrequency: string;
