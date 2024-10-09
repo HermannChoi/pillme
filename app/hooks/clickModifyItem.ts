@@ -1,6 +1,6 @@
 import { itemProps, listProps } from "../types/types";
 
-export const clickModifyTime = (
+export const clickModifyItem = (
   itemForModal: itemProps,
   setList: (prev: (prev: listProps) => listProps) => void
 ) => {

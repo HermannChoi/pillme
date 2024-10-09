@@ -2,12 +2,12 @@
 /** @jsxImportSource @emotion/react */
 
 import React from "react";
-import { clickModifyTime } from "@/app/hooks/clickModifyTime";
 import useModalStore from "@/app/store/useModalStore";
 import { modalSt } from "@/app/style/modalSt";
 import useItemStore from "@/app/store/homePage/useItemStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import useFormStore from "@/app/store/homePage/useFormStore";
+import { clickModifyItem } from "@/app/hooks/clickModifyItem";
 
 const ModalToModifyDate = () => {
   const { setList } = useFormStore();
@@ -23,7 +23,7 @@ const ModalToModifyDate = () => {
 
   const clickModifyOnModal = () => {
     setWhichModal(null);
-    clickModifyTime(itemForModal, setList);
+    clickModifyItem(itemForModal, setList);
     resetItemForModal();
     setSelectedItemId(null);
   };
