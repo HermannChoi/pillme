@@ -11,6 +11,7 @@ export const createItemFormSt = {
   `,
   label: css`
     margin-left: 3px;
+    color: transparent;
   `,
   inputContainer: css`
     flex: 8;
@@ -47,7 +48,7 @@ export const createItemFormSt = {
       }
 
       @media (prefers-color-scheme: light) {
-        background-color: #efefef;
+        background-color: #ffffff;
       }
     `,
   ],

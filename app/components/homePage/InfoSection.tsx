@@ -39,6 +39,10 @@ const InfoSection = () => {
       background-color: ${colors.grey}20;
       backdrop-filter: blur(5px);
       z-index: 2;
+
+      @media (prefers-color-scheme: light) {
+        background-color: #ffffff;
+      }
     `,
   ];
 

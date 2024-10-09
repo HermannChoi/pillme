@@ -36,6 +36,10 @@ export const outlineSt = {
       color: ${isEasterEggsOn && colors.blue};
       font-size: 1.2rem;
       font-weight: 500;
+
+      @media (prefers-color-scheme: light) {
+        background-color: #ffffff;
+      }
     `;
   },
   footer: [

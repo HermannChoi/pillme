@@ -18,6 +18,10 @@ export const settingPageSt = {
     padding: 0.5rem;
     border-radius: 10px;
     background-color: #80808020;
+
+    @media (prefers-color-scheme: light) {
+      background-color: #ffffff;
+    }
   `,
   listContainer: css`
     display: flex;
@@ -31,7 +35,7 @@ export const settingPageSt = {
     height: 35px;
     border: none;
     border-radius: 10px;
-    background-color: ${colors.grey}80;
+    background-color: ${colors.grey}40;
     transition: 0.2s;
 
     &:hover {
@@ -50,7 +54,7 @@ export const settingPageSt = {
       padding: 3px;
       border: none;
       border-radius: 20px;
-      background-color: ${isEnglish ? `${colors.green}` : `${colors.grey}`}80;
+      background-color: ${isEnglish ? `${colors.green}` : `${colors.grey}`}40;
       cursor: pointer;
 
       &:before {

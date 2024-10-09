@@ -20,6 +20,10 @@ export const itemSectionSt = {
       border: none;
       border-radius: 10px;
       background-color: ${colors.grey}15;
+
+      @media (prefers-color-scheme: light) {
+        background-color: #ffffff;
+      }
     `,
   ],
   emptyItemSection: [
@@ -61,7 +65,13 @@ export const itemSectionSt = {
       z-index: 1;
 
       @media (prefers-color-scheme: light) {
-        background-color: ${colors.lightGrey};
+        ${item.id === selectedItemId &&
+        `border: 1px solid #eeeeee; border-bottom: none;`};
+        background-color: #ffffff;
+
+        &:hover {
+          background-color: #eeeeee;
+        }
       }
     `;
   },
@@ -104,6 +114,12 @@ export const itemSectionSt = {
         overflow: hidden;
         opacity: ${itemId === selectedItemId ? 1 : 0};
         transition: 0.2s;
+
+        @media (prefers-color-scheme: light) {
+          border: 1px solid #eeeeee;
+          border-top: none;
+          background-color: #ffffff;
+        }
       `,
     ];
   },
