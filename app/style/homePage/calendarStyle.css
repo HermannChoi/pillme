@@ -24,6 +24,7 @@
 
 .react-calendar__navigation__arrow {
   width: 50px;
+  height: 40px;
 }
 
 .react-calendar__month-view__weekdays {

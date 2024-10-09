@@ -56,4 +56,23 @@ export const optionModalSt = {
     width: 100%;
     height: 50px;
   `,
+  todayText: css`
+    white-space: nowrap;
+    font-size: 0.8rem;
+    font-weight: 600;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+  `,
+  takenDot: css`
+    background-color: ${colors.green};
+    border-radius: 50%;
+    width: 0.5rem;
+    height: 0.5rem;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+  `,
 };

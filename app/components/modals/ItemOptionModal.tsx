@@ -1,41 +1,16 @@
 "use client";
+/** @jsxImportSource @emotion/react */
+
 import {
   frequencyToEnglish,
   frequencyToKorean,
 } from "@/app/constant/itemFrequency";
-/** @jsxImportSource @emotion/react */
-
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { optionModalSt } from "@/app/style/homePage/optionModalSt";
 import { modalSt } from "@/app/style/modalSt";
 import Calendar from "react-calendar";
 import "@/app/style/homePage/calendarStyle.css";
-import styled from "@emotion/styled";
-import { colors } from "@/app/style/commonSt";
-
-/* 오늘 날짜에 텍스트 삽입 스타일 */
-export const StyledToday = styled.div`
-  white-space: nowrap;
-  font-size: 0.8rem;
-  font-weight: 600;
-  position: absolute;
-  top: 0%;
-  left: 50%;
-  transform: translateX(-50%);
-`;
-
-/* 출석한 날짜에 점 표시 스타일 */
-export const StyledDot = styled.div`
-  background-color: ${colors.green};
-  border-radius: 50%;
-  width: 0.5rem;
-  height: 0.5rem;
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-`;
 
 const ItemOptionModal = () => {
   const { whichModal, setWhichModal, itemForModal } = useModalStore();
@@ -127,9 +102,9 @@ const ItemOptionModal = () => {
                 date.getDate() === new Date().getDate()
               ) {
                 html.push(
-                  <StyledToday key={"today"}>
+                  <div key={"today"} css={optionModalSt.todayText}>
                     {isEnglish ? "Today" : "오늘"}
-                  </StyledToday>
+                  </div>
                 );
               }
               const year = date.getFullYear();
@@ -138,7 +113,9 @@ const ItemOptionModal = () => {
 
               const formattedDate = `${year}-${month}-${day}`; // YYYY-MM-DD 형식
               if (itemForModal.takenDays.find((x) => x === formattedDate)) {
-                html.push(<StyledDot key={formattedDate} />);
+                html.push(
+                  <div key={formattedDate} css={optionModalSt.takenDot} />
+                );
               }
               return <>{html}</>;
             }}
