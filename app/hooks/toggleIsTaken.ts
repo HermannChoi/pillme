@@ -12,33 +12,36 @@ export const toggleIsTaken = ({ clickedItem, setList }: ToggleIsTakeProps) => {
   const day = String(today.getDate()).padStart(2, "0");
   const hours = today.getHours();
   const minutes = today.getMinutes();
+  const todayString = `${year}-${month}-${day}`;
+
   setList((prev) => ({
     ...prev,
     [clickedItem.timePeriod]: prev[
       clickedItem.timePeriod as keyof listProps
-    ].map((item) =>
-      item.id === clickedItem.id
-        ? item.isTaken
-          ? //비활성화 할때는 토글 변경 및 복용 기간에서 오늘 삭제
-            {
-              ...item,
-              isTaken: !item.isTaken,
-              takenDays: item.takenDays.filter(
-                (day) => day === `${year}-${month}-${day}`
-              ),
-            }
-          : //활성화 할 때는 시간 업데이트 추가
-            {
-              ...item,
-              isTaken: !item.isTaken,
-              date: year + "-" + month + "-" + day,
-              hours,
-              minutes,
-              takenDays: [
-                ...new Set([...item.takenDays, `${year}-${month}-${day}`]),
-              ],
-            }
-        : item
-    ),
+    ].map((item) => {
+      if (item.id === clickedItem.id) {
+        if (item.isTaken) {
+          // 비활성화 할때는 토글 변경 및 복용 기간에서 오늘 삭제
+          return {
+            ...item,
+            isTaken: !item.isTaken,
+            takenDays: item.takenDays.filter((day) => {
+              return day !== todayString;
+            }),
+          };
+        } else {
+          // 활성화 할 때는 시간 업데이트 추가
+          return {
+            ...item,
+            isTaken: !item.isTaken,
+            date: year + "-" + month + "-" + day,
+            hours,
+            minutes,
+            takenDays: [...new Set([...item.takenDays, todayString])],
+          };
+        }
+      }
+      return item;
+    }),
   }));
 };
