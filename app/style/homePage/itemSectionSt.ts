@@ -57,7 +57,7 @@ export const itemSectionSt = {
       width: 100%;
       height: 60px;
       padding: 5px 10px;
-      border: none;
+      border: 1px solid transparent;
       border-radius: ${item.id === selectedItemId ? `10px 10px 0 0` : `10px`};
       background-color: ${colors.darkGrey};
       transition: background-color 0.2s, border-radius 0.2s;
@@ -110,7 +110,6 @@ export const itemSectionSt = {
         padding: 5px 10px 5px;
         border-radius: ${itemId === selectedItemId ? `0 0 10px 10px` : `10px`};
         margin-top: ${itemId === selectedItemId ? 0 : -60}px;
-        background-color: ${colors.grey}30;
         overflow: hidden;
         opacity: ${itemId === selectedItemId ? 1 : 0};
         transition: 0.2s;
@@ -118,7 +117,6 @@ export const itemSectionSt = {
         @media (prefers-color-scheme: light) {
           border: 1px solid #eeeeee;
           border-top: none;
-          background-color: #ffffff;
         }
       `,
     ];

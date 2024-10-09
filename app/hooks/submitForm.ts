@@ -56,8 +56,9 @@ export const submitForm = ({
   }
   //이스터에그
   if (name.toLocaleLowerCase() === "thank you") {
+    setName("");
     setIsEasterEggsOn(true);
-    setTimeout(() => {
+    return setTimeout(() => {
       setIsEasterEggsOn(false);
     }, 3000);
   }

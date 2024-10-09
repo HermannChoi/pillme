@@ -113,6 +113,10 @@ export const createItemFormSt = {
     border-radius: 10px;
     background-color: ${colors.grey}15;
     text-indent: 5px;
+
+    @media (prefers-color-scheme: light) {
+      background-color: #ffffff;
+    }
   `,
   errorMsg: (isEMsgChanged: boolean) => {
     return css`

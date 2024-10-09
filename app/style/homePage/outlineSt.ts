@@ -1,6 +1,5 @@
 import { css } from "@emotion/react";
 import { colors, flexCenterX2 } from "../commonSt";
-import { h1PillRotate } from "../keyframes";
 
 export const outlineSt = {
   header: css`
@@ -22,9 +21,9 @@ export const outlineSt = {
     letter-spacing: -1px;
   `,
   pillImg: css`
+    filter: grayscale(1);
     width: 45px;
     height: 45px;
-    animation: ${h1PillRotate} 5s infinite ease-in-out;
   `,
   h2: css`
     margin-bottom: 10px;
@@ -35,13 +34,13 @@ export const outlineSt = {
     return css`
       ${flexCenterX2}
       width: 100%;
-      height: 3rem;
+      height: ${isEasterEggsOn ? `30rem` : `4rem`};
       border-radius: 10px;
-      margin-top: 0.5rem;
-      background-color: ${colors.grey}15;
+      background-color: ${isEasterEggsOn ? colors.blue : colors.grey}15;
       color: ${isEasterEggsOn && colors.blue};
       font-size: 1.2rem;
       font-weight: 500;
+      transition: height 1s;
 
       @media (prefers-color-scheme: light) {
         background-color: #ffffff;
