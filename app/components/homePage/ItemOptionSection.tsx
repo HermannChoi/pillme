@@ -81,20 +81,6 @@ const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
       >
         <p>{`D-${item.leftDay}`}</p>
       </button>
-      <button
-        onClick={(e) =>
-          clickSetWhichModal({
-            e,
-            whichModal: "deleteItem",
-            setWhichModal,
-            item,
-            setItemForModal,
-          })
-        }
-        css={itemSectionSt.delBtn}
-      >
-        {isEnglish ? `DEL` : `삭제`}
-      </button>
     </div>
   );
 };
