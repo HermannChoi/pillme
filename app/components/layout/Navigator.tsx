@@ -40,7 +40,7 @@ const Navigator = () => {
                   `}
                 />
               </figure>
-              <p css={navigatorSt.text}>
+              <p css={navigatorSt.text(whichPage, item.name)}>
                 {isEnglish ? item.name : item.nameKo}
               </p>
             </Link>

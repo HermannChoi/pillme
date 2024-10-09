@@ -1,18 +1,18 @@
 import { css } from "@emotion/react";
-import { flexCenterX2 } from "../commonSt";
+import { colors, flexCenterX2 } from "../commonSt";
 
 export const navigatorSt = {
   container: css`
     position: fixed;
-    bottom: 0;
-    left: 0;
+    bottom: -1px;
+    left: -1px;
     display: flex;
     justify-content: space-around;
     align-items: start;
-    width: 100%;
-    height: 5.5rem;
-    padding: 0.5rem;
-    border-top: 1px solid #808080;
+    width: calc(100% + 2px);
+    height: 5.3rem;
+    padding: 0.3rem;
+    border: 1px solid #80808020;
     border-radius: 20px 20px 0 0;
     background-color: #151515;
     z-index: 100;
@@ -36,12 +36,15 @@ export const navigatorSt = {
   `,
   figure: css`
     ${flexCenterX2}
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.8rem;
+    height: 1.8rem;
     background-color: transparent;
   `,
-  text: css`
-    font-size: 0.7rem;
-    font-weight: 600;
-  `,
+  text: (whichPage: string, itemName: string) => {
+    return css`
+      color: ${whichPage === itemName && colors.green};
+      font-size: 0.8rem;
+      font-weight: 500;
+    `;
+  },
 };
