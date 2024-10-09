@@ -1,29 +1,35 @@
 import { css } from "@emotion/react";
-import { fadeIn } from "../keyframes";
-import { colors } from "../commonSt";
+import { colors, flexCenterX2 } from "../commonSt";
 
-export const optionModalSt = {
+export const itemInformationPageSt = {
   optionContainer: css`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    min-width: 360px;
     width: 100%;
-    height: 100%;
-    border-radius: 10px;
+    height: 100vh;
+    padding-bottom: 5.5rem;
     background-color: #191919;
-    // animation: ${fadeIn} 0.5s;
-    overflow: hidden;
+
     @media (prefers-color-scheme: light) {
       background-color: #f0f0f0;
     }
   `,
-  optionCloseBtn: css`
-    height: 100px;
-    padding: 5px 10px 40px;
+  header: css`
+    position: relative;
+    ${flexCenterX2}
+    width: 100%;
+    height: 4rem;
+    border-bottom: 1px solid ${colors.grey}20;
+  `,
+  backBtn: css`
+    position: absolute;
+    top: 0;
+    left: 0;
+    ${flexCenterX2}
+    width: 4rem;
+    height: 100%;
+    padding: 5px 10px;
     border: none;
-    border-top: 1px solid ${colors.grey}20;
     background-color: transparent;
     font-size: 1.2rem;
     transition: 0.2s;

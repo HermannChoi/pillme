@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { itemProps, modalList } from "../types/types";
+import { defaultItemSetup } from "../constant/defaultItemSetup";
 
 interface UseModalStoreProps {
   whichModal: null | keyof modalList;
@@ -10,19 +11,6 @@ interface UseModalStoreProps {
   message: string;
   setMessage: (value: string) => void;
 }
-
-const defaultItemSetup = {
-  id: "",
-  timePeriod: "",
-  date: "",
-  name: "",
-  hours: 0,
-  minutes: 0,
-  isTaken: false,
-  frequency: 0,
-  leftDay: 0,
-  takenDays: [],
-};
 
 const useModalStore = create<UseModalStoreProps>((set) => ({
   whichModal: null,

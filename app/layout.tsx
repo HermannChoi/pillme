@@ -5,7 +5,6 @@ import "./globals.css";
 import CoverPage from "./components/layout/CoverPage";
 import UserNameInput from "./components/layout/UserNameInput";
 import Navigator from "./components/layout/Navigator";
-import Footer from "./components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Pillme",
@@ -40,7 +39,6 @@ export default function RootLayout({
         <CoverPage />
         <UserNameInput />
         {children}
-        <Footer />
         <Navigator />
       </body>
     </html>

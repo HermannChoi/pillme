@@ -129,6 +129,21 @@ export const itemSectionSt = {
     width: fit-content;
     height: 100%;
   `,
+  optionBtn: css`
+    ${flexCenterX2}
+    flex: 1;
+    height: 40px;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    background-color: ${colors.green}80;
+    transition: 0.2s;
+
+    &:hover {
+      transform: scale(0.98);
+      background-color: ${colors.green}60;
+    }
+  `,
   modifyBtn: css`
     flex: 1;
     height: 40px;

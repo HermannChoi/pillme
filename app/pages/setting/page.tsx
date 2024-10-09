@@ -1,3 +1,4 @@
+import Footer from "@/app/components/layout/Footer";
 import ModalToResetItem from "@/app/components/modals/ModalToResetItem";
 import ModalToResetUsername from "@/app/components/modals/ModalToResetUsername";
 import MainSection from "@/app/components/settingPage/MainSection";
@@ -10,6 +11,7 @@ const page = () => {
       <MainSection />
       <ModalToResetUsername />
       <ModalToResetItem />
+      <Footer />
     </main>
   );
 };

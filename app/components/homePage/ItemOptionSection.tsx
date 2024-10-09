@@ -1,13 +1,15 @@
 "use client";
-import { frequencyToKorean } from "@/app/constant/itemFrequency";
 /** @jsxImportSource @emotion/react */
 
+import { memo } from "react";
 import { clickSetWhichModal } from "@/app/hooks/clickSetWhichModal";
 import useItemStore from "@/app/store/homePage/useItemStore";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
 import { itemProps } from "@/app/types/types";
+import Link from "next/link";
+import { frequencyToKorean } from "@/app/constant/itemFrequency";
 
 interface ItemOptionSectionProps {
   item: itemProps;
@@ -20,7 +22,8 @@ const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
 
   return (
     <div css={itemSectionSt.optionContainer(item.id, selectedItemId)}>
-      <button
+      <Link
+        href={`/pages/item-information/${item.id}`}
         onClick={(e) =>
           clickSetWhichModal({
             e,
@@ -30,10 +33,10 @@ const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
             setItemForModal,
           })
         }
-        css={itemSectionSt.modifyBtn}
+        css={itemSectionSt.optionBtn}
       >
         {isEnglish ? `Info.` : `정보`}
-      </button>
+      </Link>
       <button
         onClick={(e) =>
           clickSetWhichModal({
@@ -44,7 +47,7 @@ const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
             setItemForModal,
           })
         }
-        css={itemSectionSt.modifyBtn}
+        css={itemSectionSt.optionBtn}
       >
         {isEnglish ? `Modify` : `수정`}
       </button>
@@ -58,7 +61,7 @@ const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
             setItemForModal,
           })
         }
-        css={itemSectionSt.frequencyBtn}
+        css={itemSectionSt.optionBtn}
       >
         {isEnglish
           ? item.frequency + "D 1T"
@@ -96,4 +99,4 @@ const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
   );
 };
 
-export default ItemOptionSection;
+export default memo(ItemOptionSection);
