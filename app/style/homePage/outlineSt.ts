@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { colors, flexCenterX2 } from "../commonSt";
+import { h1PillRotate } from "../keyframes";
 
 export const outlineSt = {
   header: css`
@@ -19,6 +20,11 @@ export const outlineSt = {
     font-size: 1.8rem;
     font-weight: 700;
     letter-spacing: -1px;
+  `,
+  pillImg: css`
+    width: 45px;
+    height: 45px;
+    animation: ${h1PillRotate} 5s infinite ease-in-out;
   `,
   h2: css`
     margin-bottom: 10px;

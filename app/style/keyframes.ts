@@ -75,6 +75,12 @@ export const rotate360 = keyframes`
   }
 `;
 
+export const h1PillRotate = keyframes`
+  100% {
+    transform: rotate(720deg);
+  }
+`;
+
 export const emptyItemSectionAni = keyframes`
   100% {
     color: ${colors.green};

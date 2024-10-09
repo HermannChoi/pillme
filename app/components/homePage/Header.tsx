@@ -8,7 +8,7 @@ import { outlineSt } from "@/app/style/homePage/outlineSt";
 const Header = () => {
   return (
     <header css={outlineSt.header}>
-      <Image src={pill} alt="pill" priority={true} width={45} height={45} />
+      <Image src={pill} alt="pill" priority={true} css={outlineSt.pillImg} />
       <h1 css={outlineSt.h1}>Pillme</h1>
     </header>
   );
