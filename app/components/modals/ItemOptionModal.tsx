@@ -63,7 +63,7 @@ const ItemOptionModal = () => {
           <div css={optionModalSt.infoSection}>
             <p>
               {isEnglish
-                ? `Recent Date You Took(Used) It : `
+                ? `Recent Date You Took : `
                 : `마지막 복용(사용) 날짜 : `}
             </p>
             <p>{itemForModal.date}</p>
@@ -71,10 +71,14 @@ const ItemOptionModal = () => {
           <div css={optionModalSt.infoSection}>
             <p>
               {isEnglish
-                ? `Recent Time You Took(Used) It : `
+                ? `Recent Time You Took : `
                 : `마지막 복용(사용) 시간 : `}
             </p>
-            <p>{itemForModal.hours + ":" + itemForModal.minutes}</p>
+            <p>
+              {itemForModal.hours.toString().padStart(2, "0") +
+                ":" +
+                itemForModal.minutes.toString().padStart(2, "0")}
+            </p>
           </div>
 
           <div css={optionModalSt.infoSection}>
@@ -88,20 +92,18 @@ const ItemOptionModal = () => {
           <div css={optionModalSt.infoSection}>
             <p>
               {isEnglish
-                ? `The Next Taking(Using) Time : `
+                ? `The Next Time to Take : `
                 : `다음 복용(사용)까지 : `}
             </p>
             <p>D - {itemForModal.leftDay}</p>
           </div>
           <div css={optionModalSt.infoSection}>
             <p>
-              {isEnglish
-                ? `The Next Taking(Using) Time : `
-                : `복용(사용) 일 수 : `}
+              {isEnglish ? `Number of Days to Take : ` : `복용(사용) 일 수 : `}
             </p>
             <p>
               {itemForModal.takenDays.length}
-              {isEnglish ? `Days` : `일`}
+              {isEnglish ? `D` : `일`}
             </p>
           </div>
           <Calendar
@@ -124,7 +126,11 @@ const ItemOptionModal = () => {
                 date.getMonth() === new Date().getMonth() &&
                 date.getDate() === new Date().getDate()
               ) {
-                html.push(<StyledToday key={"today"}>오늘</StyledToday>);
+                html.push(
+                  <StyledToday key={"today"}>
+                    {isEnglish ? "Today" : "오늘"}
+                  </StyledToday>
+                );
               }
               const year = date.getFullYear();
               const month = String(date.getMonth() + 1).padStart(2, "0"); // 월을 2자리로 맞추기

@@ -32,7 +32,7 @@ const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
         }
         css={itemSectionSt.modifyBtn}
       >
-        {isEnglish ? `INFO.` : `정보`}
+        {isEnglish ? `Info.` : `정보`}
       </button>
       <button
         onClick={(e) =>
