@@ -1,7 +1,7 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import "@/app/style/homePage/calendarStyle.css";
+import "@/app/style/item-information/calendarStyle.css";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import Calendar from "react-calendar";

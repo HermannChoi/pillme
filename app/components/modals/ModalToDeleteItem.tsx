@@ -9,12 +9,14 @@ import { modalSt } from "@/app/style/modalSt";
 
 const ModalToDeleteItem = () => {
   const { setList } = useFormStore();
-  const { whichModal, setWhichModal, itemForModal } = useModalStore();
+  const { whichModal, setWhichModal, itemForModal, resetItemForModal } =
+    useModalStore();
   const { isEnglish } = useSettingStore();
 
   const clickDeleteOnModal = () => {
     clickDelete(itemForModal, setList);
     setWhichModal(null);
+    resetItemForModal();
   };
 
   return (

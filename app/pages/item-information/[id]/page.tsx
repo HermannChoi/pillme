@@ -1,7 +1,6 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import "@/app/style/homePage/calendarStyle.css";
 import { itemInformationPageSt } from "@/app/style/item-information/itemInformationPageSt";
 import BasicInfoSection from "@/app/components/itemInformationPage/BasicInfoSection";
 import Header from "@/app/components/itemInformationPage/Header";
@@ -12,6 +11,7 @@ import ModalToDeleteItem from "@/app/components/modals/ModalToDeleteItem";
 import ModalToModifyTime from "@/app/components/modals/ModalToModifyTime";
 import ModalToModifyDate from "@/app/components/modals/ModalToModifyDate";
 import ModalToModifyLeftDay from "@/app/components/modals/ModalToModifyLeftDay";
+import BtnSection from "@/app/components/itemInformationPage/BtnSection";
 
 const page = () => {
   return (
@@ -20,6 +20,7 @@ const page = () => {
       <div css={itemInformationPageSt.outerSection}>
         <BasicInfoSection />
         <ItemCalendar />
+        <BtnSection />
       </div>
       <>
         <ModalToChooseFrequency />

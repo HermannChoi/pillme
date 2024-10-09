@@ -8,7 +8,6 @@ import {
 } from "@/app/constant/itemFrequency";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
-import "@/app/style/homePage/calendarStyle.css";
 import { itemInformationPageSt } from "@/app/style/item-information/itemInformationPageSt";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";

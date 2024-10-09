@@ -81,4 +81,11 @@ export const itemInformationPageSt = {
     left: 50%;
     transform: translateX(-50%);
   `,
+  btnContainer: css`
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    width: 100%;
+    height: 4rem;
+  `,
 };
