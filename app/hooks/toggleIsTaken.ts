@@ -19,10 +19,13 @@ export const toggleIsTaken = ({ clickedItem, setList }: ToggleIsTakeProps) => {
     ].map((item) =>
       item.id === clickedItem.id
         ? item.isTaken
-          ? //비활성화 할때는 토글만 변경
+          ? //비활성화 할때는 토글 변경 및 복용 기간에서 오늘 삭제
             {
               ...item,
               isTaken: !item.isTaken,
+              takenDays: item.takenDays.filter(
+                (day) => day === `${year}-${month}-${day}`
+              ),
             }
           : //활성화 할 때는 시간 업데이트 추가
             {
