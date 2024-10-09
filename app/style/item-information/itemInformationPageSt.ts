@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { colors, flexCenterX2 } from "../commonSt";
+import { fadeInFromBottom } from "../keyframes";
 
 export const itemInformationPageSt = {
   optionContainer: css`
@@ -9,6 +10,7 @@ export const itemInformationPageSt = {
     height: 100vh;
     padding-bottom: 5.5rem;
     background-color: #191919;
+    animation: ${fadeInFromBottom} 1s;
 
     @media (prefers-color-scheme: light) {
       background-color: #f0f0f0;

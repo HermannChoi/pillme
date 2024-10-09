@@ -10,6 +10,17 @@ export const fadeIn = keyframes`
   }
 `;
 
+export const fadeInFromBottom = keyframes`
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  100% {
+  transform: translateX(0rem);
+    opacity: 1;
+  }
+`;
+
 export const scaleYFadeIn = keyframes`
   0% {
     transform: scaleY(0);

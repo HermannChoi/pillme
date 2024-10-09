@@ -21,14 +21,16 @@ const Home = () => {
       <CreateItemForm />
       <InfoSection />
       <ItemSection />
-      <ModalToDeleteItem />
-      <ModalToChooseModify />
-      <ModalToModifyTime />
-      <ModalToModifyDate />
-      <ModalToShowLeftDay />
-      <ModalToModifyLeftDay />
-      <ModalToChooseFrequency />
-      <MessageModal />
+      <>
+        <ModalToDeleteItem />
+        <ModalToChooseModify />
+        <ModalToModifyTime />
+        <ModalToModifyDate />
+        <ModalToShowLeftDay />
+        <ModalToModifyLeftDay />
+        <ModalToChooseFrequency />
+        <MessageModal />
+      </>
       <CongratsPage />
     </main>
   );
