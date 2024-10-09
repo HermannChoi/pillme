@@ -97,13 +97,14 @@ const ItemSection = () => {
     }
   }, [list]);
 
-  //로컬 스토레지에서 아이템 데이터 받아오는 로직
   useEffect(() => {
+    //로컬 스토레지에서 아이템 데이터 받아오는 로직
     const storedList = localStorage.getItem("medList");
     if (storedList) {
       setList(JSON.parse(storedList));
     }
 
+    setIsInitialLoad(true);
     setTimeout(() => {
       setIsInitialLoad(false);
     }, 1000);
