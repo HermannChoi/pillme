@@ -20,3 +20,17 @@ export const itemFrequency = [
     frequency: 13,
   },
 ];
+
+export const frequencyToKorean: { [key: number]: string } = {
+  0: "매일",
+  1: "격일",
+  6: "매주",
+  13: "격주",
+};
+
+export const frequencyToEnglish: { [key: number]: string } = {
+  0: "Everyday",
+  1: "Every Other Day",
+  6: "Every Week",
+  13: "Every Other week",
+};

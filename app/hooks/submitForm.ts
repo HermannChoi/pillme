@@ -73,6 +73,7 @@ export const submitForm = ({
     isTaken: false,
     frequency: 0,
     leftDay: 0,
+    takenDays: [],
   };
   //생성함수
   setList((prev) => {

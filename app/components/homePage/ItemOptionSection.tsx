@@ -1,4 +1,5 @@
 "use client";
+import { frequencyToKorean } from "@/app/constant/itemFrequency";
 /** @jsxImportSource @emotion/react */
 
 import { clickSetWhichModal } from "@/app/hooks/clickSetWhichModal";
@@ -23,6 +24,20 @@ const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
         onClick={(e) =>
           clickSetWhichModal({
             e,
+            whichModal: "itemOption",
+            setWhichModal,
+            item,
+            setItemForModal,
+          })
+        }
+        css={itemSectionSt.modifyBtn}
+      >
+        {isEnglish ? `INFO.` : `정보`}
+      </button>
+      <button
+        onClick={(e) =>
+          clickSetWhichModal({
+            e,
             whichModal: "chooseModify",
             setWhichModal,
             item,
@@ -33,7 +48,6 @@ const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
       >
         {isEnglish ? `Modify` : `수정`}
       </button>
-
       <button
         onClick={(e) =>
           clickSetWhichModal({
@@ -48,13 +62,7 @@ const ItemOptionSection: React.FC<ItemOptionSectionProps> = ({ item }) => {
       >
         {isEnglish
           ? item.frequency + "D 1T"
-          : item.frequency === 0
-          ? "매일"
-          : item.frequency == 1
-          ? "격일"
-          : item.frequency === 6
-          ? "매주"
-          : item.frequency === 13 && "격주"}
+          : frequencyToKorean[item.frequency]}
       </button>
       <button
         onClick={(e) => {

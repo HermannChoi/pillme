@@ -9,7 +9,7 @@ export const toggleIsTaken = ({ clickedItem, setList }: ToggleIsTakeProps) => {
   const today = new Date();
   const year = today.getFullYear();
   const month = String(today.getMonth() + 1).padStart(2, "0");
-  const day = today.getDate();
+  const day = String(today.getDate()).padStart(2, "0");
   const hours = today.getHours();
   const minutes = today.getMinutes();
   setList((prev) => ({
@@ -31,6 +31,9 @@ export const toggleIsTaken = ({ clickedItem, setList }: ToggleIsTakeProps) => {
               date: year + "-" + month + "-" + day,
               hours,
               minutes,
+              takenDays: [
+                ...new Set([...item.takenDays, `${year}-${month}-${day}`]),
+              ],
             }
         : item
     ),

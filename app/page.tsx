@@ -4,6 +4,7 @@ import Header from "./components/homePage/Header";
 import InfoSection from "./components/homePage/InfoSection";
 import ItemSection from "./components/homePage/ItemSection";
 import UserNameSection from "./components/homePage/UserNameSection";
+import ItemOptionModal from "./components/modals/ItemOptionModal";
 import MessageModal from "./components/modals/MessageModal";
 import ModalToChooseFrequency from "./components/modals/ModalToChooseFrequency";
 import ModalToChooseModify from "./components/modals/ModalToChooseModify";
@@ -21,6 +22,7 @@ const Home = () => {
       <CreateItemForm />
       <InfoSection />
       <ItemSection />
+      <ItemOptionModal />
       <ModalToDeleteItem />
       <ModalToChooseModify />
       <ModalToModifyTime />

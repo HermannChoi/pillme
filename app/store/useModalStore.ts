@@ -21,6 +21,7 @@ const defaultItemSetup = {
   isTaken: false,
   frequency: 0,
   leftDay: 0,
+  takenDays: [],
 };
 
 const useModalStore = create<UseModalStoreProps>((set) => ({

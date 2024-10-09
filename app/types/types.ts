@@ -8,6 +8,7 @@ export interface itemProps {
   isTaken: boolean;
   frequency: number;
   leftDay: number;
+  takenDays: string[];
 }
 
 export interface listProps {
@@ -18,6 +19,7 @@ export interface listProps {
 }
 
 export interface modalList {
+  itemOption: string;
   deleteItem: string;
   resetUsername: string;
   chooseModify: string;
