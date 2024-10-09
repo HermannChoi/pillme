@@ -3,6 +3,12 @@ import { colors, flexCenterX2 } from "../commonSt";
 import { twitching1 } from "../keyframes";
 
 export const createItemFormSt = {
+  container: css`
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    width: 100%;
+  `,
   form: css`
     display: flex;
     align-items: end;
@@ -100,10 +106,13 @@ export const createItemFormSt = {
   },
   errorMsgContainer: css`
     display: flex;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    height: 20px;
-    padding: 3px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: ${colors.grey}15;
+    text-indent: 5px;
   `,
   errorMsg: (isEMsgChanged: boolean) => {
     return css`

@@ -1,6 +1,5 @@
 import CongratsPage from "./components/homePage/CongratsPage";
 import CreateItemForm from "./components/homePage/CreateItemForm";
-import ErrorMsg from "./components/homePage/ErrorMsg";
 import Header from "./components/homePage/Header";
 import InfoSection from "./components/homePage/InfoSection";
 import ItemSection from "./components/homePage/ItemSection";
@@ -20,7 +19,6 @@ const Home = () => {
       <Header />
       <UserNameSection />
       <CreateItemForm />
-      <ErrorMsg />
       <InfoSection />
       <ItemSection />
       <ModalToDeleteItem />
