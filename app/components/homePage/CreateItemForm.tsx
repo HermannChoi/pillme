@@ -2,7 +2,6 @@
 /** @jsxImportSource @emotion/react */
 
 import { AnimatePresence, motion } from "framer-motion";
-import { submitForm } from "../../hooks/submitForm";
 import useFormStore from "@/app/store/homePage/useFormStore";
 import useErrorMsgStore from "../../store/homePage/useErrorMsgStore";
 import { listProps } from "../../types/types";
@@ -12,6 +11,7 @@ import { createItemFormSt } from "../../style/homePage/createItemFormSt";
 import useClickOutside from "../../hooks/useClickOutside";
 import useSettingStore from "../../store/useSettingStore";
 import ErrorMsg from "./ErrorMsg";
+import { submitFormToCreateItem } from "@/app/hooks/submitFormToCreateItem";
 
 const CreateItemForm = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -47,7 +47,7 @@ const CreateItemForm = () => {
       <form
         css={createItemFormSt.form}
         onSubmit={(e) =>
-          submitForm({
+          submitFormToCreateItem({
             e,
             timePeriod,
             name,

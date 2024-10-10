@@ -31,7 +31,8 @@ const ItemSection = () => {
   const { isEnglish } = useSettingStore();
 
   //아이템 옵션창 토글 로직
-  const clickItemForOptionsWindow = (item: itemProps) => {
+  const clickOpenItemOptionWindow = (e: SyntheticEvent, item: itemProps) => {
+    e.stopPropagation();
     if (selectedItemId === item.id) return setSelectedItemId(null);
     setSelectedItemId(item.id);
   };
@@ -117,7 +118,11 @@ const ItemSection = () => {
           {Object.keys(list).map(
             (timePeriod) =>
               list[timePeriod as keyof listProps].length > 0 && (
-                <section key={timePeriod} css={itemSectionSt.section}>
+                <section
+                  key={timePeriod}
+                  onClick={() => setSelectedItemId(null)}
+                  css={itemSectionSt.section}
+                >
                   {list[timePeriod as keyof listProps].length > 0 && (
                     <h2 css={outlineSt.h2}>{timePeriod}</h2>
                   )}
@@ -127,7 +132,7 @@ const ItemSection = () => {
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 60 }}
-                          onClick={() => clickItemForOptionsWindow(item)}
+                          onClick={(e) => clickOpenItemOptionWindow(e, item)}
                           css={itemSectionSt.listItem(item, selectedItemId)}
                         >
                           <button

@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import { itemProps, listProps } from "../types/types";
 import { vibrate } from "../utils/vibrate";
 
-interface SubmitFormProps {
+interface SubmitFormToCreateItemProps {
   e: SyntheticEvent;
   timePeriod: keyof listProps;
   name: string;
@@ -17,7 +17,7 @@ interface SubmitFormProps {
   isEnglish: boolean;
 }
 
-export const submitForm = ({
+export const submitFormToCreateItem = ({
   e,
   timePeriod,
   name,
@@ -29,7 +29,7 @@ export const submitForm = ({
   setIsErrorMsgChanged,
   setIsEasterEggsOn,
   isEnglish,
-}: SubmitFormProps) => {
+}: SubmitFormToCreateItemProps) => {
   e.preventDefault();
   //예외처리
   if (name === "") {
