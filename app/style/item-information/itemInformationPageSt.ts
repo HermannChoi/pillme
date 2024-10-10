@@ -48,7 +48,8 @@ export const itemInformationPageSt = {
   `,
   nameSection: css`
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
     height: 15%;
     border-bottom: 1px solid ${colors.grey}20;
@@ -65,23 +66,23 @@ export const itemInformationPageSt = {
     height: 50px;
   `,
   todayText: css`
-    white-space: nowrap;
+    position: absolute;
+    top: -5%;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 0.8rem;
     font-weight: 600;
-    position: absolute;
-    top: 0%;
-    left: 50%;
-    transform: translateX(-50%);
+    white-space: nowrap;
   `,
   takenDot: css`
-    background-color: ${colors.green};
-    border-radius: 50%;
-    width: 0.5rem;
-    height: 0.5rem;
     position: absolute;
-    bottom: 10%;
+    bottom: 0%;
     left: 50%;
     transform: translateX(-50%);
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: ${colors.green};
   `,
   btnContainer: css`
     display: flex;

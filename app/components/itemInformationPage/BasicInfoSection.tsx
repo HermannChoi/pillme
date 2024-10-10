@@ -25,27 +25,8 @@ const BasicInfoSection = () => {
   return (
     <>
       <div css={itemInformationPageSt.nameSection}>
-        <p css={itemInformationPageSt.name}>{itemForModal.name}</p>
-      </div>
-      <div css={itemInformationPageSt.infoSection}>
-        <p>{isEnglish ? `Time Period : ` : `시간대 : `}</p>
         <p>{itemForModal.timePeriod}</p>
-      </div>
-      <div css={itemInformationPageSt.infoSection}>
-        <p>
-          {isEnglish ? `Recent Date You Took : ` : `마지막 복용(사용) 날짜 : `}
-        </p>
-        <p>{itemForModal.date}</p>
-      </div>
-      <div css={itemInformationPageSt.infoSection}>
-        <p>
-          {isEnglish ? `Recent Time You Took : ` : `마지막 복용(사용) 시간 : `}
-        </p>
-        <p>
-          {itemForModal.hours.toString().padStart(2, "0") +
-            ":" +
-            itemForModal.minutes.toString().padStart(2, "0")}
-        </p>
+        <p css={itemInformationPageSt.name}>{itemForModal.name}</p>
       </div>
       <div css={itemInformationPageSt.infoSection}>
         <p>{isEnglish ? `Frequency : ` : `복용(사용) 빈도 : `}</p>

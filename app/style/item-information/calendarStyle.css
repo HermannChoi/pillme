@@ -1,8 +1,8 @@
 .react-calendar {
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
-  margin: 2rem 0 5rem;
+  row-gap: 0.5rem;
+  margin: 1rem 0 5rem;
 }
 
 .react-calendar__navigation {
@@ -39,7 +39,7 @@
 .react-calendar__month-view__weekdays {
   justify-content: center;
   align-items: center;
-  height: 50px;
+  height: 40px;
 }
 
 .react-calendar__month-view__weekdays__weekday {
@@ -53,7 +53,7 @@
 
 .react-calendar__month-view__days__day {
   position: relative;
-  height: 50px;
+  height: 40px;
   border: none;
   background-color: transparent;
 }
