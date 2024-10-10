@@ -37,6 +37,7 @@ export const toggleIsTaken = ({ clickedItem, setList }: ToggleIsTakeProps) => {
             date: year + "-" + month + "-" + day,
             hours,
             minutes,
+            // new Set으로 날짜 중복 제거
             takenDays: [...new Set([...item.takenDays, todayString])],
           };
         }

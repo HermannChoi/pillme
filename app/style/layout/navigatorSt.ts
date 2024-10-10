@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, flexCenterX2 } from "../commonSt";
+import { borderRadius, colors, flexCenterX2 } from "../commonSt";
 
 export const navigatorSt = {
   container: css`
@@ -22,7 +22,7 @@ export const navigatorSt = {
     }
   `,
   linkContainer: css`
-    border-radius: 10px;
+    border-radius: ${borderRadius.small};
   `,
   link: css`
     display: flex;

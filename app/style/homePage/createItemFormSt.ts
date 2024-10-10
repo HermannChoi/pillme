@@ -1,23 +1,18 @@
 import { css } from "@emotion/react";
-import { colors, flexCenterX2 } from "../commonSt";
+import { borderRadius, colors, flexCenterX2 } from "../commonSt";
 import { twitching1 } from "../keyframes";
 
 export const createItemFormSt = {
   container: css`
     display: flex;
     flex-direction: column;
-    row-gap: 8px;
+    row-gap: 1rem;
     width: 100%;
   `,
   form: css`
     display: flex;
     align-items: end;
-    gap: 5px;
     width: 100%;
-  `,
-  label: css`
-    margin-left: 3px;
-    color: transparent;
   `,
   inputContainer: css`
     flex: 8;
@@ -26,10 +21,12 @@ export const createItemFormSt = {
     width: 100%;
     height: 50px;
     border: 1px solid ${colors.grey}80;
-    border-radius: 10px;
-    text-indent: 5px;
+    border-right: none;
+    border-radius: 20px 0 0 20px;
+    text-indent: 15px;
 
     &:focus {
+      border-right: 1px solid ${colors.green};
       border-color: ${colors.green};
     }
   `,
@@ -43,8 +40,8 @@ export const createItemFormSt = {
       position: relative;
       width: 100%;
       height: 50px;
-      border: none;
-      border-radius: 10px;
+      border-top: 1px solid ${colors.grey}80;
+      border-bottom: 1px solid ${colors.grey}80;
       background-color: ${colors.green}30;
       transition: 0.2s;
       cursor: pointer;
@@ -52,21 +49,18 @@ export const createItemFormSt = {
       &:hover {
         background-color: ${colors.green}60;
       }
-
-      @media (prefers-color-scheme: light) {
-        background-color: #ffffff;
-      }
     `,
   ],
   optionContainer: css`
     position: absolute;
-    top: 55px;
+    top: 49px;
     left: 0;
     display: flex;
     flex-direction: column;
     width: 100%;
-    border: none;
-    border-radius: 10px;
+    // border: 1px solid ${colors.grey}80;
+    // border-top: none;
+    border-radius: 0 0 20px 20px;
     background-color: #0a0a0a;
     overflow: hidden;
     cursor: pointer;
@@ -80,7 +74,7 @@ export const createItemFormSt = {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 40px;
+    height: 50px;
     padding-left: 5px;
     &:hover {
       background-color: ${colors.green}30;
@@ -92,25 +86,18 @@ export const createItemFormSt = {
       flex: 2;
       height: 50px;
       background-color: ${colors.green}80;
-      border: none;
-      border-radius: 10px;
+      border: 1px solid ${colors.grey}80;
+      border-left: none;
+      border-radius: 0 20px 20px 0;
     `,
   ],
-  pill: () => {
-    return css`
-      width: 10px;
-      height: 10px;
-      border: none;
-      border-radius: 50%;
-    `;
-  },
   errorMsgContainer: css`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 30px;
-    border-radius: 10px;
+    height: 2.5rem;
+    border-radius: ${borderRadius.medium};
     background-color: ${colors.grey}15;
     text-indent: 5px;
 

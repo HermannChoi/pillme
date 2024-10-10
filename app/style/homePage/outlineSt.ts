@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, flexCenterX2 } from "../commonSt";
+import { borderRadius, colors, flexCenterX2 } from "../commonSt";
 
 export const outlineSt = {
   header: css`
@@ -35,7 +35,7 @@ export const outlineSt = {
       ${flexCenterX2}
       width: 100%;
       height: ${isEasterEggsOn ? `30rem` : `4rem`};
-      border-radius: 10px;
+      border-radius: ${borderRadius.medium};
       background-color: ${isEasterEggsOn ? colors.blue : colors.grey}15;
       color: ${isEasterEggsOn && colors.blue};
       font-size: 1.2rem;

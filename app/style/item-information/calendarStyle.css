@@ -20,11 +20,20 @@
   flex: none !important;
   height: 50px;
   border: none;
+  border-radius: 10px;
+  background-color: #80808030;
 }
 
 .react-calendar__navigation__arrow {
   width: 50px;
   height: 40px;
+  border: 1px solid #80808080;
+  border-radius: 10px;
+}
+
+.react-calendar__navigation__label {
+  border: 1px solid #80808080;
+  border-radius: 10px;
 }
 
 .react-calendar__month-view__weekdays {

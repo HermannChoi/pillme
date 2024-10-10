@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, flexColumnCenterX2 } from "../commonSt";
+import { borderRadius, colors, flexColumnCenterX2 } from "../commonSt";
 import { fadeIn, fadeOut, rotate360 } from "../keyframes";
 
 export const userNameInputSt = {
@@ -46,7 +46,7 @@ export const userNameInputSt = {
   input: css`
     height: 2.5rem;
     border: 1px solid ${colors.grey};
-    border-radius: 10px;
+    border-radius: ${borderRadius.medium};
     text-align: center;
     font-size: 1.2rem;
 
@@ -55,13 +55,14 @@ export const userNameInputSt = {
     }
   `,
   button: css`
+    height: 2.5rem;
     padding: 0.5rem;
     border: none;
-    border-radius: 10px;
-    background-color: ${colors.green}90;
+    border-radius: ${borderRadius.medium};
+    background-color: ${colors.green}80;
 
     &:hover {
-      background-color: ${colors.green};
+      background-color: ${colors.green}60;
     }
   `,
   welcomeText: css`

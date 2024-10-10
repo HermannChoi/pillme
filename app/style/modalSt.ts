@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors } from "./commonSt";
+import { borderRadius, colors } from "./commonSt";
 import { fadeIn } from "./keyframes";
 import { modalList } from "../types/types";
 
@@ -25,7 +25,7 @@ export const modalSt = {
     align-items: center;
     row-gap: 1rem;
     width: 300px;
-    border-radius: 10px;
+    border-radius: ${borderRadius.medium};
     background-color: #191919;
     animation: ${fadeIn} 0.5s;
     overflow: hidden;
@@ -49,7 +49,7 @@ export const modalSt = {
   itemName: css`
     padding: 1px 5px;
     border: 1px solid ${colors.green}80;
-    border-radius: 10px;
+    border-radius: ${borderRadius.small};
     margin-right: 5px;
     background-color: ${colors.green}60;
     font-size: 1.2rem;
@@ -60,7 +60,7 @@ export const modalSt = {
     height: 40px;
     text-align: center;
     border: none;
-    border-radius: 10px;
+    border-radius: ${borderRadius.small};
     background-color: ${colors.grey}30;
     font-size: 1.2rem;
   `,
@@ -69,7 +69,7 @@ export const modalSt = {
     height: 40px;
     text-align: center;
     border: 1px solid grey;
-    border-radius: 10px;
+    border-radius: ${borderRadius.small};
     background-color: ${colors.grey}30;
     font-size: 1.2rem;
   `,
@@ -122,7 +122,7 @@ export const modalSt = {
       border: ${itemFrequency === selectedFrequency
         ? `1px solid ${colors.green}`
         : `none`};
-      border-radius: 10px;
+      border-radius: ${borderRadius.small};
       background-color: ${colors.green}${whichFrequency === selectedFrequency ? "bb" : 40};
       transition: 0.2s;
     `;

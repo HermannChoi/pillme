@@ -1,5 +1,10 @@
 import { css } from "@emotion/react";
-import { colors, flexCenterX2, flexColumnCenterX2 } from "../commonSt";
+import {
+  borderRadius,
+  colors,
+  flexCenterX2,
+  flexColumnCenterX2,
+} from "../commonSt";
 import { emptyItemSectionAni } from "../keyframes";
 import { itemProps } from "@/app/types/types";
 
@@ -7,7 +12,7 @@ export const itemSectionSt = {
   sectionContainer: [
     flexColumnCenterX2,
     css`
-      row-gap: 5px;
+      row-gap: 1rem;
       width: 100%;
     `,
   ],
@@ -18,7 +23,7 @@ export const itemSectionSt = {
       width: 100%;
       padding: 5px;
       border: none;
-      border-radius: 10px;
+      border-radius: ${borderRadius.medium};
       background-color: ${colors.grey}15;
 
       @media (prefers-color-scheme: light) {
@@ -32,7 +37,7 @@ export const itemSectionSt = {
       width: 100%;
       height: 10rem;
       border: none;
-      border-radius: 10px;
+      border-radius: ${borderRadius.medium};
       background-color: ${colors.grey}15;
       color: ${colors.grey};
       transition: 0.2s;
@@ -57,8 +62,13 @@ export const itemSectionSt = {
       width: 100%;
       height: 60px;
       padding: 5px 10px;
-      border: 1px solid transparent;
-      border-radius: ${item.id === selectedItemId ? `10px 10px 0 0` : `10px`};
+      ${item.id === selectedItemId
+        ? `border: 1px solid #80808060;
+        border-bottom: none;`
+        : null};
+      border-radius: ${item.id === selectedItemId
+        ? `10px 10px 0 0`
+        : borderRadius.small};
       background-color: ${colors.darkGrey};
       transition: background-color 0.2s, border-radius 0.2s;
       cursor: pointer;
@@ -84,7 +94,7 @@ export const itemSectionSt = {
       height: 30px;
       padding: 3px;
       border: 2px solid ${isTaken ? colors.grey : colors.red};
-      border-radius: 30px;
+      border-radius: ${borderRadius.large};
       background-color: ${isTaken ? `${colors.green}` : `#90909099`};
       cursor: pointer;
     `;
@@ -93,7 +103,7 @@ export const itemSectionSt = {
     width: 24px;
     height: 24px;
     background-color: white;
-    border-radius: 24px;
+    border-radius: ${borderRadius.medium};
   `,
   name: css`
     flex: 1;
@@ -107,9 +117,16 @@ export const itemSectionSt = {
         gap: 0.5rem;
         width: 100%;
         height: 60px;
-        padding: 5px 10px 5px;
-        border-radius: ${itemId === selectedItemId ? `0 0 10px 10px` : `10px`};
+        padding: 5px 10px;
+        ${itemId === selectedItemId
+          ? `border: 1px solid #80808060;
+          border-top: none;`
+          : null};
+        border-radius: ${itemId === selectedItemId
+          ? `0 0 10px 10px`
+          : borderRadius.small};
         margin-top: ${itemId === selectedItemId ? 0 : -60}px;
+        background-color: ${colors.darkGrey};
         overflow: hidden;
         opacity: ${itemId === selectedItemId ? 1 : 0};
         transition: 0.2s;
@@ -117,6 +134,7 @@ export const itemSectionSt = {
         @media (prefers-color-scheme: light) {
           border: 1px solid #eeeeee;
           border-top: none;
+          background-color: transparent;
         }
       `,
     ];
@@ -135,7 +153,7 @@ export const itemSectionSt = {
     height: 40px;
     padding: 5px;
     border: none;
-    border-radius: 10px;
+    border-radius: ${borderRadius.small};
     background-color: ${colors.green}80;
     transition: 0.2s;
 
@@ -149,7 +167,7 @@ export const itemSectionSt = {
     height: 40px;
     padding: 5px;
     border: none;
-    border-radius: 10px;
+    border-radius: ${borderRadius.small};
     background-color: ${colors.grey}30;
     cursor: pointer;
 
@@ -164,7 +182,7 @@ export const itemSectionSt = {
       height: 40px;
       padding: 5px;
       border: none;
-      border-radius: 10px;
+      border-radius: ${borderRadius.medium};
       background-color: ${colors.red}80;
       transition: 0.2s;
 

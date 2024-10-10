@@ -10,6 +10,12 @@ export const colors = {
   red: "#ff5353",
 };
 
+export const borderRadius = {
+  small: "10px",
+  medium: "20px",
+  large: "30px",
+};
+
 export const flexColumnCenterX2 = css`
   display: flex;
   flex-direction: column;

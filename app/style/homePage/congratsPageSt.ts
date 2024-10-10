@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, flexColumnCenterX2 } from "../commonSt";
+import { borderRadius, colors, flexColumnCenterX2 } from "../commonSt";
 import { congratsBarAni, fadeInAndOut, scaleZeroTo100 } from "../keyframes";
 
 export const congratsPageSt = {
@@ -25,13 +25,13 @@ export const congratsPageSt = {
   barContainer: css`
     width: 300px;
     height: 10px;
-    border-radius: 5px;
+    border-radius: ${borderRadius.small};
     background-color: ${colors.grey};
   `,
   bar: css`
     width: 100%;
     height: 100%;
-    border-radius: 5px;
+    border-radius: ${borderRadius.small};
     background-color: ${colors.green};
     opacity: 0;
     transform-origin: left;

@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors } from "../commonSt";
+import { borderRadius, colors } from "../commonSt";
 
 export const settingPageSt = {
   title: css`
@@ -15,8 +15,8 @@ export const settingPageSt = {
     flex-direction: column;
     row-gap: 0.5rem;
     width: 100%;
-    padding: 0.5rem;
-    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    border-radius: ${borderRadius.medium};
     background-color: #80808020;
 
     @media (prefers-color-scheme: light) {
@@ -34,7 +34,7 @@ export const settingPageSt = {
     min-width: 25%;
     height: 35px;
     border: none;
-    border-radius: 10px;
+    border-radius: ${borderRadius.small};
     background-color: ${colors.grey}40;
     transition: 0.2s;
 
@@ -53,7 +53,7 @@ export const settingPageSt = {
       height: 35px;
       padding: 3px;
       border: none;
-      border-radius: 20px;
+      border-radius: ${borderRadius.medium};
       background-color: ${isEnglish ? `${colors.green}` : `${colors.grey}`}40;
       cursor: pointer;
 
@@ -82,7 +82,7 @@ export const settingPageSt = {
     width: 40%;
     height: 100%;
     background-color: white;
-    border-radius: 20px;
+    border-radius: ${borderRadius.medium};
     z-index: 1;
   `,
 };

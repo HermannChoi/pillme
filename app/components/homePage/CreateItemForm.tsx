@@ -63,9 +63,6 @@ const CreateItemForm = () => {
         }
       >
         <div css={createItemFormSt.inputContainer}>
-          <label htmlFor="name" css={createItemFormSt.label}>
-            {isEnglish ? `Name` : `이름`}
-          </label>
           <input
             ref={inputRef}
             autoComplete="off"
@@ -78,7 +75,6 @@ const CreateItemForm = () => {
           />
         </div>
         <div css={createItemFormSt.timeSelectContainer}>
-          <p css={createItemFormSt.label}> {isEnglish ? `Time` : `시간대`}</p>
           <div
             ref={timePeriodDivRef}
             css={createItemFormSt.timeSelect}
@@ -91,7 +87,7 @@ const CreateItemForm = () => {
                   id="time"
                   css={createItemFormSt.optionContainer}
                   initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 160 }}
+                  animate={{ opacity: 1, height: 200 }}
                   exit={{ opacity: 0, height: 0 }}
                 >
                   {timeOptions.map((opt, i) => {
@@ -114,7 +110,7 @@ const CreateItemForm = () => {
           </div>
         </div>
         <motion.button
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.9 }}
           css={createItemFormSt.addBtn}
         >
