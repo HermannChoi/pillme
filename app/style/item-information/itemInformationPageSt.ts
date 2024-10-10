@@ -9,7 +9,7 @@ export const itemInformationPageSt = {
     width: 100%;
     height: 100vh;
     padding-bottom: 5.5rem;
-    background-color: #191919;
+    background-color: ${colors.darkSection};
     animation: ${fadeInFromBottom} 1s;
 
     @media (prefers-color-scheme: light) {

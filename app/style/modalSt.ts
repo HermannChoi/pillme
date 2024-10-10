@@ -26,7 +26,7 @@ export const modalSt = {
     row-gap: 1rem;
     width: 300px;
     border-radius: ${borderRadius.medium};
-    background-color: #191919;
+    background-color: ${colors.darkSection};
     animation: ${fadeIn} 0.5s;
     overflow: hidden;
     @media (prefers-color-scheme: light) {

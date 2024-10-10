@@ -21,10 +21,10 @@ export const itemSectionSt = {
     css`
       row-gap: 5px;
       width: 100%;
-      padding: 5px;
+      padding: 0.5rem;
       border: none;
       border-radius: ${borderRadius.medium};
-      background-color: ${colors.grey}15;
+      background-color: ${colors.darkSection};
 
       @media (prefers-color-scheme: light) {
         background-color: #ffffff;
@@ -38,7 +38,7 @@ export const itemSectionSt = {
       height: 10rem;
       border: none;
       border-radius: ${borderRadius.medium};
-      background-color: ${colors.grey}15;
+      background-color: ${colors.darkSection};
       color: ${colors.grey};
       transition: 0.2s;
       animation: ${emptyItemSectionAni} 2s ease-in-out alternate infinite;

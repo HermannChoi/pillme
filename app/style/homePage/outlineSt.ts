@@ -36,8 +36,7 @@ export const outlineSt = {
       width: 100%;
       height: ${isEasterEggsOn ? `30rem` : `4rem`};
       border-radius: ${borderRadius.medium};
-      background-color: ${isEasterEggsOn ? colors.blue : colors.grey}15;
-      color: ${isEasterEggsOn && colors.blue};
+      background-color: ${colors.darkSection};
       font-size: 1.2rem;
       font-weight: 500;
       transition: height 1s;

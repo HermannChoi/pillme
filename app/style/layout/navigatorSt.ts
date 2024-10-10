@@ -14,7 +14,7 @@ export const navigatorSt = {
     padding: 0.3rem;
     border: 1px solid #80808020;
     border-radius: 20px 20px 0 0;
-    background-color: #151515;
+    background-color: ${colors.darkSection};
     z-index: 100;
 
     @media (prefers-color-scheme: light) {
@@ -42,7 +42,7 @@ export const navigatorSt = {
   `,
   text: (whichPage: string, itemName: string) => {
     return css`
-      color: ${whichPage === itemName && colors.green};
+      color: ${whichPage === itemName ? "#03a271" : "#808080"};
       font-size: 0.8rem;
       font-weight: 500;
     `;

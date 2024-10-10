@@ -17,7 +17,7 @@ export const settingPageSt = {
     width: 100%;
     padding: 0.5rem 1rem;
     border-radius: ${borderRadius.medium};
-    background-color: #80808020;
+    background-color: ${colors.darkSection};
 
     @media (prefers-color-scheme: light) {
       background-color: #ffffff;

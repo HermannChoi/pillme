@@ -20,14 +20,19 @@ export const createItemFormSt = {
   input: css`
     width: 100%;
     height: 50px;
-    border: 1px solid ${colors.grey}80;
+    border: 1px solid ${colors.grey}30;
     border-right: none;
     border-radius: 20px 0 0 20px;
+    background-color: ${colors.darkSection};
     text-indent: 15px;
 
     &:focus {
       border-right: 1px solid ${colors.green};
       border-color: ${colors.green};
+    }
+
+    @media (prefers-color-scheme: light) {
+      background-color: #ffffff;
     }
   `,
   timeSelectContainer: css`
@@ -40,8 +45,8 @@ export const createItemFormSt = {
       position: relative;
       width: 100%;
       height: 50px;
-      border-top: 1px solid ${colors.grey}80;
-      border-bottom: 1px solid ${colors.grey}80;
+      border-top: 1px solid ${colors.grey}30;
+      border-bottom: 1px solid ${colors.grey}30;
       background-color: ${colors.green}30;
       transition: 0.2s;
       cursor: pointer;
@@ -86,7 +91,7 @@ export const createItemFormSt = {
       flex: 2;
       height: 50px;
       background-color: ${colors.green}80;
-      border: 1px solid ${colors.grey}80;
+      border: 1px solid ${colors.grey}30;
       border-left: none;
       border-radius: 0 20px 20px 0;
     `,
@@ -98,7 +103,7 @@ export const createItemFormSt = {
     width: 100%;
     height: 2.5rem;
     border-radius: ${borderRadius.medium};
-    background-color: ${colors.grey}15;
+    background-color: ${colors.darkSection};
     text-indent: 5px;
 
     @media (prefers-color-scheme: light) {
