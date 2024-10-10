@@ -67,8 +67,8 @@ export const itemSectionSt = {
         border-bottom: none;`
         : null};
       border-radius: ${item.id === selectedItemId
-        ? `10px 10px 0 0`
-        : borderRadius.small};
+        ? `20px 20px 0 0`
+        : borderRadius.medium};
       background-color: ${colors.darkGrey};
       transition: background-color 0.2s, border-radius 0.2s;
       cursor: pointer;
@@ -123,8 +123,8 @@ export const itemSectionSt = {
           border-top: none;`
           : null};
         border-radius: ${itemId === selectedItemId
-          ? `0 0 10px 10px`
-          : borderRadius.small};
+          ? `0 0 20px 20px`
+          : borderRadius.medium};
         margin-top: ${itemId === selectedItemId ? 0 : -60}px;
         background-color: ${colors.darkGrey};
         overflow: hidden;
