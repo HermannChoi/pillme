@@ -12,6 +12,10 @@ export const outlineSt = {
     height: 2.3rem;
     background-color: ${colors.darkBackground};
     z-index: 100;
+
+    @media (prefers-color-scheme: light) {
+      background-color: #eeeeee;
+    }
   `,
   h1: css`
     color: ${colors.grey}80;
