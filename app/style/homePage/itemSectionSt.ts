@@ -5,7 +5,7 @@ import {
   flexCenterX2,
   flexColumnCenterX2,
 } from "../commonSt";
-import { emptyItemSectionAni } from "../keyframes";
+import { emptyItemSectionAni, itemAppearAni } from "../keyframes";
 import { itemProps } from "@/app/types/types";
 
 export const itemSectionSt = {
@@ -73,6 +73,7 @@ export const itemSectionSt = {
       transition: background-color 0.2s, border-radius 0.2s;
       cursor: pointer;
       z-index: 1;
+      animation: ${item.date === "0000-00-00" && itemAppearAni} 0.2s ease-in-out;
 
       @media (prefers-color-scheme: light) {
         ${item.id === selectedItemId &&

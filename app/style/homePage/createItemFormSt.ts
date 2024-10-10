@@ -6,7 +6,6 @@ export const createItemFormSt = {
   container: css`
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
     width: 100%;
   `,
   form: css`
@@ -63,8 +62,6 @@ export const createItemFormSt = {
     display: flex;
     flex-direction: column;
     width: 100%;
-    // border: 1px solid ${colors.grey}80;
-    // border-top: none;
     border-radius: 0 0 20px 20px;
     background-color: #0a0a0a;
     overflow: hidden;
@@ -76,8 +73,7 @@ export const createItemFormSt = {
     }
   `,
   option: css`
-    display: flex;
-    align-items: center;
+    ${flexCenterX2}
     width: 100%;
     height: 50px;
     padding-left: 5px;
@@ -96,20 +92,24 @@ export const createItemFormSt = {
       border-radius: 0 20px 20px 0;
     `,
   ],
-  errorMsgContainer: css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 2.5rem;
-    border-radius: ${borderRadius.medium};
-    background-color: ${colors.darkSection};
-    text-indent: 5px;
+  errorMsgContainer: (errorMsg: string) => {
+    return css`
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: ${errorMsg ? "2rem" : "0"};
+      border-radius: ${borderRadius.medium};
+      margin-top: ${errorMsg ? "1rem" : "0"};
+      background-color: ${colors.darkSection};
+      text-indent: 5px;
+      transition: 0.1s;
 
-    @media (prefers-color-scheme: light) {
-      background-color: #ffffff;
-    }
-  `,
+      @media (prefers-color-scheme: light) {
+        background-color: #ffffff;
+      }
+    `;
+  },
   errorMsg: (isEMsgChanged: boolean) => {
     return css`
       color: ${isEMsgChanged ? colors.red : colors.blue};

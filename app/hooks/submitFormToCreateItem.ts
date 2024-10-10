@@ -92,7 +92,7 @@ export const submitFormToCreateItem = ({
   setTimeout(() => {
     setIsSubmitted(false);
     setErrorMsg("");
-  }, 1000);
+  }, 1500);
 
   vibrate(100);
 };

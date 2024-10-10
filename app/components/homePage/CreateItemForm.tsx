@@ -30,7 +30,7 @@ const CreateItemForm = () => {
     setFocusInput,
     setIsEasterEggsOn,
   } = useFormStore();
-  const { setErrorMsg, setIsErrorMsgChanged } = useErrorMsgStore();
+  const { errorMsg, setErrorMsg, setIsErrorMsgChanged } = useErrorMsgStore();
   const { isEnglish } = useSettingStore();
 
   //다른 곳 누를 시에 시간대 버튼 비활성화 됨.
@@ -110,6 +110,7 @@ const CreateItemForm = () => {
           </div>
         </div>
         <motion.button
+          disabled={errorMsg !== ""}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.9 }}
           css={createItemFormSt.addBtn}

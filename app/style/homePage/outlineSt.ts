@@ -9,21 +9,20 @@ export const outlineSt = {
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 3rem;
-    background-color: transparent;
-    backdrop-filter: blur(15px);
+    height: 2.3rem;
+    background-color: ${colors.darkBackground};
     z-index: 100;
   `,
   h1: css`
     color: ${colors.grey}80;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: -1px;
   `,
   pillImg: css`
     filter: grayscale(1);
-    width: 45px;
-    height: 45px;
+    width: 2.3rem;
+    height: 2.3rem;
   `,
   h2: css`
     margin-bottom: 10px;
@@ -36,6 +35,7 @@ export const outlineSt = {
       width: 100%;
       height: ${isEasterEggsOn ? `30rem` : `4rem`};
       border-radius: ${borderRadius.medium};
+      margin-top: -15px;
       background-color: ${colors.darkSection};
       font-size: 1.2rem;
       font-weight: 500;

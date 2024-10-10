@@ -102,3 +102,14 @@ export const congratsBarAni = keyframes`
     transform: scaleX(1);
   }
 `;
+
+export const itemAppearAni = keyframes`
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+    height: 60px;
+  }
+`;

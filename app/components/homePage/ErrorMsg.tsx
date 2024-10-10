@@ -8,7 +8,7 @@ const ErrorMsg = () => {
   const { errorMsg, isErrorMsgChanged } = useErrorMsgStore();
 
   return (
-    <div css={createItemFormSt.errorMsgContainer}>
+    <div css={createItemFormSt.errorMsgContainer(errorMsg)}>
       <p css={createItemFormSt.errorMsg(isErrorMsgChanged)}>{errorMsg}</p>
     </div>
   );

@@ -129,9 +129,7 @@ const ItemSection = () => {
                   {list[timePeriod as keyof listProps].map((item, i) => {
                     return (
                       <div key={i} css={itemSectionSt.listItemContainer}>
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 60 }}
+                        <div
                           onClick={(e) => clickOpenItemOptionWindow(e, item)}
                           css={itemSectionSt.listItem(item, selectedItemId)}
                         >
@@ -156,7 +154,7 @@ const ItemSection = () => {
                               ":" +
                               String(item.minutes).padStart(2, "0")}
                           </p>
-                        </motion.div>
+                        </div>
                         <ItemOptionSection item={item} />
                       </div>
                     );

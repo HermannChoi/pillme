@@ -35,7 +35,7 @@ const InfoSection = () => {
     itemSectionSt.section,
     css`
       position: sticky;
-      top: 3rem;
+      top: 2.3rem;
       background-color: ${colors.darkSection};
       backdrop-filter: blur(5px);
       z-index: 2;
