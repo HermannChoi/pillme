@@ -55,5 +55,11 @@
   position: relative;
   height: 45px;
   border: none;
+  border-radius: 10px;
   background-color: transparent;
+  transition: 0.2s;
+}
+
+.react-calendar__month-view__days__day:hover {
+  background-color: #80808030;
 }

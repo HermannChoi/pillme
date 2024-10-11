@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 /** @jsxImportSource @emotion/react */
 
@@ -6,13 +7,43 @@ import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import Calendar from "react-calendar";
 import { itemInformationPageSt } from "@/app/style/item-information/itemInformationPageSt";
+import { useEffect } from "react";
+
+export type Range<T> = [T, T];
+type ValuePiece = Date | null;
+export type Value = ValuePiece | Range<ValuePiece>;
 
 const ItemCalendar = () => {
-  const { itemForModal } = useModalStore();
+  const { itemForModal, setItemForModal, whichModal, setWhichModal } =
+    useModalStore();
   const { isEnglish } = useSettingStore();
+
+  let dateToPut: string;
+
+  const handleDateChange = (newDate: Value) => {
+    // YYYY-MM-DD 형태로 변환
+    const date = new Date(String(newDate)!.split(" (")[0]);
+    date.setHours(date.getHours() + 9);
+    dateToPut = date.toISOString().split("T")[0];
+
+    setItemForModal({
+      ...itemForModal,
+      takenDays: [...itemForModal.takenDays, dateToPut],
+    });
+    setWhichModal("modifyTakenDay");
+  };
+
+  useEffect(() => {
+    if (whichModal === null)
+      setItemForModal({
+        ...itemForModal,
+        takenDays: itemForModal.takenDays.filter((item) => item === dateToPut),
+      });
+  }, [whichModal]);
 
   return (
     <Calendar
+      onChange={handleDateChange}
       formatDay={(_, date) => date.getDate().toString()} // 일 제거 숫자만 보이게
       formatYear={(_, date) => date.getFullYear().toString()} // 네비게이션 눌렀을때 숫자 년도만 보이게
       formatMonthYear={(_, date) =>

@@ -7,6 +7,7 @@ import BasicInfoSection from "./BasicInfoSection";
 import ItemCalendar from "./ItemCalendar";
 import BtnSection from "./BtnSection";
 import { itemInformationPageSt } from "@/app/style/item-information/itemInformationPageSt";
+import ModalToAddTakenDay from "../modals/ModalToAddTakenDay";
 
 const ItemInfoPage = () => {
   return (
@@ -18,6 +19,7 @@ const ItemInfoPage = () => {
         <BtnSection />
         <>
           <ModalToDeleteItem />
+          <ModalToAddTakenDay />
         </>
       </div>
     </div>
