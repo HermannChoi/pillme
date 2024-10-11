@@ -3,16 +3,16 @@ import { useEffect } from "react";
 const useToggleLanguage = (
   isEnglish: boolean,
   setIsEnglish: (value: boolean) => void,
-  isInitialLoad: boolean
+  isSettingInitialLoad: boolean
 ) => {
   useEffect(() => {
-    if (!isEnglish && !isInitialLoad) {
+    if (!isEnglish && !isSettingInitialLoad) {
       window.localStorage.setItem("isEnglish", "false");
     }
-    if (isEnglish && !isInitialLoad) {
+    if (isEnglish && !isSettingInitialLoad) {
       window.localStorage.setItem("isEnglish", "true");
     }
-  }, [isEnglish, setIsEnglish, isInitialLoad]);
+  }, [isEnglish, setIsEnglish, isSettingInitialLoad]);
 
   useEffect(() => {
     const langInLocalStorage =

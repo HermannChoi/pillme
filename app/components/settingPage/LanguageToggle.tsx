@@ -2,23 +2,26 @@
 /** @jsxImportSource @emotion/react */
 
 import useToggleLanguage from "@/app/hooks/useToggleLanguage";
-import useDateStore from "@/app/store/homePage/useDateStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { settingPageSt } from "@/app/style/settingPage/settingPageSt";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 
 const LanguageToggle = () => {
-  const { isEnglish, setIsEnglish } = useSettingStore();
-  const { isInitialLoad, setIsInitialLoad } = useDateStore();
+  const {
+    isEnglish,
+    setIsEnglish,
+    isSettingInitialLoad,
+    setIsSettingInitialLoad,
+  } = useSettingStore();
 
-  useToggleLanguage(isEnglish, setIsEnglish, isInitialLoad);
+  useToggleLanguage(isEnglish, setIsEnglish, isSettingInitialLoad);
 
   useEffect(() => {
     setTimeout(() => {
-      setIsInitialLoad(false);
+      setIsSettingInitialLoad(false);
     }, 500);
-  }, [setIsInitialLoad]);
+  }, [setIsSettingInitialLoad]);
 
   return (
     <div css={settingPageSt.sectionOutline}>
