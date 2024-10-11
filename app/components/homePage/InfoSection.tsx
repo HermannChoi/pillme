@@ -5,6 +5,7 @@ import useDateStore from "@/app/store/homePage/useDateStore";
 import useFormStore from "@/app/store/homePage/useFormStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { outlineSt } from "@/app/style/homePage/outlineSt";
+import { getAllItems } from "@/app/utils/getAllItems";
 import { getKoreanDate } from "@/app/utils/getKoreanDate";
 import { useEffect } from "react";
 
@@ -16,12 +17,9 @@ const InfoSection = () => {
 
   const today = getKoreanDate();
 
-  const numOfItemsToTake = [
-    ...list.Any,
-    ...list.Morning,
-    ...list.Noon,
-    ...list.Night,
-  ].filter((item) => !item.isTaken).length;
+  const numOfItemsToTake = getAllItems(list).filter(
+    (item) => !item.isTaken
+  ).length;
 
   useEffect(() => {
     const storedDate = localStorage.getItem("lastCheckedDate");

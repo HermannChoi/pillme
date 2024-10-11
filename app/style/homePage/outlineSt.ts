@@ -10,7 +10,7 @@ export const outlineSt = {
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 2.3rem;
+    height: 2.5rem;
     background-color: ${colors.darkBackground};
     z-index: 100;
 
@@ -20,7 +20,7 @@ export const outlineSt = {
   `,
   h1: css`
     color: ${colors.grey}80;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 700;
     letter-spacing: -1px;
   `,

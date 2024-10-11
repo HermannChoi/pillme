@@ -1,4 +1,6 @@
-export const defaultItemSetup = {
+import { itemProps } from "../types/types";
+
+export const defaultItemSetup: itemProps = {
   id: "",
   timePeriod: "",
   date: "",
@@ -9,4 +11,5 @@ export const defaultItemSetup = {
   frequency: 0,
   leftDay: 0,
   takenDays: [],
+  deletedDate: "",
 };

@@ -48,7 +48,7 @@ export const submitFormToCreateItem = ({
   ) {
     return exceptionFunction({
       errorMsg: isEnglish
-        ? "It already exists on the time."
+        ? "It already exists on the slot."
         : "이미 해당 아이템이 존재합니다",
       setErrorMsg,
       setIsErrorMsgChanged,
@@ -74,6 +74,7 @@ export const submitFormToCreateItem = ({
     frequency: 0,
     leftDay: 0,
     takenDays: [],
+    deletedDate: "",
   };
   //생성함수
   setList((prev) => {

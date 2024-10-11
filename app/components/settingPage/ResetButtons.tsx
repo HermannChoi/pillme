@@ -11,24 +11,29 @@ const ResetButtons = () => {
 
   return (
     <>
-      <div css={settingPageSt.listContainer}>
-        <p>{isEnglish ? `Rename Username` : `이름 재설정`}</p>
-        <button
-          onClick={() => setWhichModal("resetUsername")}
-          css={settingPageSt.resetButtons}
-        >
-          {isEnglish ? `Rename` : `재설정`}
-        </button>
-      </div>
-      <div css={settingPageSt.listContainer}>
-        <p> {isEnglish ? `Reset Items` : `아이템 초기화`}</p>
-        <button
-          onClick={() => setWhichModal("resetItems")}
-          css={settingPageSt.resetButtons}
-        >
-          {isEnglish ? `Reset` : `초기화`}
-        </button>
-      </div>
+      <h2 css={settingPageSt.sectionTitle}>
+        {isEnglish ? `My Info.` : `내 정보`}
+      </h2>
+      <section css={settingPageSt.section}>
+        <div css={settingPageSt.listContainer}>
+          <p>{isEnglish ? `Rename Username` : `이름 재설정`}</p>
+          <button
+            onClick={() => setWhichModal("resetUsername")}
+            css={settingPageSt.resetButtons}
+          >
+            {isEnglish ? `Rename` : `재설정`}
+          </button>
+        </div>
+        <div css={settingPageSt.listContainer}>
+          <p> {isEnglish ? `Reset Items` : `아이템 초기화`}</p>
+          <button
+            onClick={() => setWhichModal("resetItems")}
+            css={settingPageSt.resetButtons}
+          >
+            {isEnglish ? `Reset` : `초기화`}
+          </button>
+        </div>
+      </section>
     </>
   );
 };

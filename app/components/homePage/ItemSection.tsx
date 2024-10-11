@@ -17,6 +17,9 @@ import { vibrate } from "@/app/utils/vibrate";
 import { motion } from "framer-motion";
 import { SyntheticEvent, useEffect } from "react";
 import ItemOptionSection from "./ItemOptionSection";
+import useSaveItemList from "@/app/hooks/useSaveItemList";
+import useInitialLoadChanger from "@/app/hooks/useInitialLoadChanger";
+import { getAllItems } from "@/app/utils/getAllItems";
 
 const ItemSection = () => {
   const {
@@ -69,17 +72,13 @@ const ItemSection = () => {
     }
   }, [isDateChanged]);
 
+  //useEffect
+  useInitialLoadChanger(setIsInitialLoad);
+  useSaveItemList(list, isInitialLoad, isDateChanged);
+
+  //모든 아이템 활성화 시 축하메세지 뜨는 로직
   useEffect(() => {
-    //아이템 변경사항 로컬스토레지에 저장 로직
-    (!isInitialLoad || isDateChanged) &&
-      localStorage.setItem("medList", JSON.stringify(list));
-    //모든 아이템 활성화 시 축하메세지 뜨는 로직
-    const allItems = [
-      ...list.Morning,
-      ...list.Noon,
-      ...list.Night,
-      ...list.Any,
-    ];
+    const allItems = getAllItems(list);
     const allTaken =
       allItems.every((item) => item.isTaken) &&
       allItems.length > 0 &&
@@ -98,17 +97,12 @@ const ItemSection = () => {
     }
   }, [list]);
 
+  //로컬 스토레지에서 아이템 데이터 받아오는 로직
   useEffect(() => {
-    //로컬 스토레지에서 아이템 데이터 받아오는 로직
     const storedList = localStorage.getItem("medList");
     if (storedList) {
       setList(JSON.parse(storedList));
     }
-
-    setIsInitialLoad(true);
-    setTimeout(() => {
-      setIsInitialLoad(false);
-    }, 1000);
   }, []);
 
   return (

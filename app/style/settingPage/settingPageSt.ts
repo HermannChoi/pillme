@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { borderRadius, colors } from "../commonSt";
+import { borderRadius, colors, flexCenterX2 } from "../commonSt";
 
 export const settingPageSt = {
   title: css`
@@ -31,7 +31,7 @@ export const settingPageSt = {
     height: 3rem;
   `,
   resetButtons: css`
-    min-width: 25%;
+    width: 25%;
     height: 35px;
     border: none;
     border-radius: ${borderRadius.small};
@@ -84,5 +84,24 @@ export const settingPageSt = {
     background-color: white;
     border-radius: ${borderRadius.medium};
     z-index: 1;
+  `,
+  trashButton: css`
+    ${flexCenterX2}
+    width: 25%;
+    height: 35px;
+    border: none;
+    border-radius: ${borderRadius.small};
+    background-color: ${colors.red}40;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: ${colors.red}60;
+      transform: scaleX(0.98);
+    }
+  `,
+  trashIcon: css`
+    width: 20px;
+    height: 20px;
+    fill: ${colors.red};
   `,
 };

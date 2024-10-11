@@ -9,6 +9,7 @@ export interface itemProps {
   frequency: number;
   leftDay: number;
   takenDays: string[];
+  deletedDate: string;
 }
 
 export interface listProps {

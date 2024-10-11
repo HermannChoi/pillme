@@ -21,23 +21,30 @@ const LanguageToggle = () => {
   }, [setIsInitialLoad]);
 
   return (
-    <div css={settingPageSt.listContainer}>
-      <p>{isEnglish ? `Language` : `언어`}</p>
-      <button
-        onClick={() => setIsEnglish(!isEnglish)}
-        css={settingPageSt.languageToggle(isEnglish)}
-      >
-        <motion.div
-          css={settingPageSt.languageHandle}
-          layout
-          transition={{
-            type: "spring",
-            stiffness: 700,
-            damping: 30,
-          }}
-        />
-      </button>
-    </div>
+    <>
+      <h2 css={settingPageSt.sectionTitle}>
+        {isEnglish ? `Preference` : `선호`}
+      </h2>
+      <section css={settingPageSt.section}>
+        <div css={settingPageSt.listContainer}>
+          <p>{isEnglish ? `Language` : `언어`}</p>
+          <button
+            onClick={() => setIsEnglish(!isEnglish)}
+            css={settingPageSt.languageToggle(isEnglish)}
+          >
+            <motion.div
+              css={settingPageSt.languageHandle}
+              layout
+              transition={{
+                type: "spring",
+                stiffness: 700,
+                damping: 30,
+              }}
+            />
+          </button>
+        </div>
+      </section>
+    </>
   );
 };
 

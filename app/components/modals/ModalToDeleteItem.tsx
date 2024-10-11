@@ -3,6 +3,7 @@
 
 import { clickDelete } from "@/app/hooks/clickDelete";
 import useFormStore from "@/app/store/homePage/useFormStore";
+import useTrashStore from "@/app/store/trash/useTrashStore";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { modalSt } from "@/app/style/modalSt";
@@ -12,9 +13,10 @@ const ModalToDeleteItem = () => {
   const { whichModal, setWhichModal, itemForModal, resetItemForModal } =
     useModalStore();
   const { isEnglish } = useSettingStore();
+  const { moveToTrash } = useTrashStore();
 
   const clickDeleteOnModal = () => {
-    clickDelete(itemForModal, setList);
+    clickDelete(itemForModal, setList, moveToTrash);
     setWhichModal(null);
     resetItemForModal();
   };
