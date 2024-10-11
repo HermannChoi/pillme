@@ -12,7 +12,7 @@ const Title = () => {
 
   useEffect(() => {
     setWhichPage("Setting");
-  }, []);
+  }, [setWhichPage]);
 
   return <h1 css={settingPageSt.title}>{isEnglish ? `Trash` : `휴지통`}</h1>;
 };

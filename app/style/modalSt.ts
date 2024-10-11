@@ -107,7 +107,7 @@ export const modalSt = {
   `,
   frequencyBtnContainer: css`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-gap: 10px;
     width: 100%;
     padding: 0 1rem;

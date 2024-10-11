@@ -100,11 +100,11 @@ export const settingPageSt = {
     height: 35px;
     border: none;
     border-radius: ${borderRadius.small};
-    background-color: ${colors.red}40;
+    background-color: ${colors.red}60;
     transition: 0.2s;
 
     &:hover {
-      background-color: ${colors.red}60;
+      background-color: ${colors.red}40;
       transform: scaleX(0.98);
     }
   `,
