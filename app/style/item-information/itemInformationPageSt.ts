@@ -65,7 +65,7 @@ export const itemInformationPageSt = {
   `,
   todayText: css`
     position: absolute;
-    top: 0;
+    top: 3%;
     left: 50%;
     transform: translateX(-50%);
     font-size: 0.8rem;
@@ -74,12 +74,12 @@ export const itemInformationPageSt = {
   `,
   takenDot: css`
     position: absolute;
-    bottom: 0%;
+    bottom: 10%;
     left: 50%;
     transform: translateX(-50%);
-    width: 0.5rem;
+    width: 1.2rem;
     height: 0.5rem;
-    border-radius: 50%;
+    border-radius: 1rem;
     background-color: ${colors.green};
   `,
   btnContainer: css`
