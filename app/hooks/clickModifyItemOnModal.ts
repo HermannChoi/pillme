@@ -10,7 +10,6 @@ interface ClickModifyOnModalProps {
   ) => void;
   itemForModal: itemProps;
   setList: (prev: (prev: listProps) => listProps) => void;
-  resetItemForModal: () => void;
   setSelectedItemId: (id: string | null) => void;
 }
 
@@ -21,7 +20,6 @@ export const clickModifyOnModal = ({
   clickModifyItem,
   itemForModal,
   setList,
-  resetItemForModal,
   setSelectedItemId,
 }: ClickModifyOnModalProps) => {
   setWhichModal("message");
@@ -29,7 +27,6 @@ export const clickModifyOnModal = ({
     isEnglish ? "It successfully got modified." : "성공적으로 수정되었습니다."
   );
   clickModifyItem(itemForModal, setList);
-  resetItemForModal();
 
   setTimeout(() => {
     setSelectedItemId(null);

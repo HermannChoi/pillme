@@ -17,7 +17,6 @@ const ModalToModifyLeftDay = () => {
     setWhichModal,
     itemForModal,
     setItemForModal,
-    resetItemForModal,
     setMessage,
   } = useModalStore();
   const { setSelectedItemId } = useItemStore();
@@ -31,7 +30,6 @@ const ModalToModifyLeftDay = () => {
       clickModifyItem,
       itemForModal,
       setList,
-      resetItemForModal,
       setSelectedItemId,
     });
   };

@@ -1,7 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import React from "react";
 import useModalStore from "@/app/store/useModalStore";
 import { modalSt } from "@/app/style/modalSt";
 import useItemStore from "@/app/store/homePage/useItemStore";
@@ -9,16 +9,14 @@ import useSettingStore from "@/app/store/useSettingStore";
 import useFormStore from "@/app/store/homePage/useFormStore";
 import { clickModifyItem } from "@/app/hooks/clickModifyItem";
 import { clickModifyOnModal } from "@/app/hooks/clickModifyItemOnModal";
+import useSaveItemList from "@/app/hooks/useSaveItemList";
+import useDateStore from "@/app/store/homePage/useDateStore";
 
 const ModalToAddTakenDay = () => {
-  const { setList } = useFormStore();
-  const {
-    whichModal,
-    setWhichModal,
-    itemForModal,
-    resetItemForModal,
-    setMessage,
-  } = useModalStore();
+  const { list, setList } = useFormStore();
+  const { isDateChanged, isInitialLoad } = useDateStore();
+  const { whichModal, setWhichModal, itemForModal, setMessage } =
+    useModalStore();
   const { setSelectedItemId } = useItemStore();
   const { isEnglish } = useSettingStore();
 
@@ -30,10 +28,11 @@ const ModalToAddTakenDay = () => {
       clickModifyItem,
       itemForModal,
       setList,
-      resetItemForModal,
       setSelectedItemId,
     });
   };
+
+  useSaveItemList(list, isInitialLoad, isDateChanged);
 
   return (
     <div

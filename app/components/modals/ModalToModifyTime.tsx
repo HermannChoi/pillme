@@ -17,7 +17,6 @@ const ModalToModifyTime = () => {
     setWhichModal,
     itemForModal,
     setItemForModal,
-    resetItemForModal,
     setMessage,
   } = useModalStore();
   const { setSelectedItemId } = useItemStore();
@@ -36,7 +35,6 @@ const ModalToModifyTime = () => {
       clickModifyItem,
       itemForModal,
       setList,
-      resetItemForModal,
       setSelectedItemId,
     });
   };

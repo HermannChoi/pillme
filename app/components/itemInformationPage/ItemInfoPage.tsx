@@ -8,6 +8,7 @@ import ItemCalendar from "./ItemCalendar";
 import BtnSection from "./BtnSection";
 import { itemInformationPageSt } from "@/app/style/item-information/itemInformationPageSt";
 import ModalToAddTakenDay from "../modals/ModalToAddTakenDay";
+import MessageModal from "../modals/MessageModal";
 
 const ItemInfoPage = () => {
   return (
@@ -20,6 +21,7 @@ const ItemInfoPage = () => {
         <>
           <ModalToDeleteItem />
           <ModalToAddTakenDay />
+          <MessageModal />
         </>
       </div>
     </div>

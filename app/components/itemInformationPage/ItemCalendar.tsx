@@ -8,23 +8,25 @@ import useSettingStore from "@/app/store/useSettingStore";
 import Calendar from "react-calendar";
 import { itemInformationPageSt } from "@/app/style/item-information/itemInformationPageSt";
 import { useEffect } from "react";
+import useFormStore from "@/app/store/homePage/useFormStore";
+import { listProps } from "@/app/types/types";
+import { defaultItemSetup } from "@/app/constant/defaultItemSetup";
 
 export type Range<T> = [T, T];
 type ValuePiece = Date | null;
 export type Value = ValuePiece | Range<ValuePiece>;
 
 const ItemCalendar = () => {
+  const { list } = useFormStore();
   const { itemForModal, setItemForModal, whichModal, setWhichModal } =
     useModalStore();
   const { isEnglish } = useSettingStore();
-
-  let dateToPut: string;
 
   const handleDateChange = (newDate: Value) => {
     // YYYY-MM-DD 형태로 변환
     const date = new Date(String(newDate)!.split(" (")[0]);
     date.setHours(date.getHours() + 9);
-    dateToPut = date.toISOString().split("T")[0];
+    const dateToPut = date.toISOString().split("T")[0];
 
     setItemForModal({
       ...itemForModal,
@@ -34,11 +36,12 @@ const ItemCalendar = () => {
   };
 
   useEffect(() => {
-    if (whichModal === null)
-      setItemForModal({
-        ...itemForModal,
-        takenDays: itemForModal.takenDays.filter((item) => item === dateToPut),
-      });
+    if (whichModal === null && itemForModal !== defaultItemSetup) {
+      const foundItem = list[itemForModal.timePeriod as keyof listProps].find(
+        (item) => item.id === itemForModal.id
+      );
+      foundItem && setItemForModal(foundItem);
+    }
   }, [whichModal]);
 
   return (
