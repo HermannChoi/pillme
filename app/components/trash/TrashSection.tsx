@@ -7,7 +7,6 @@ import useDateStore from "@/app/store/homePage/useDateStore";
 import useFormStore from "@/app/store/homePage/useFormStore";
 import useTrashStore from "@/app/store/trash/useTrashStore";
 import useSettingStore from "@/app/store/useSettingStore";
-import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
 import { settingPageSt } from "@/app/style/settingPage/settingPageSt";
 import { trashSt } from "@/app/style/trash/trashSt";
 import { itemProps, listProps } from "@/app/types/types";
@@ -54,18 +53,29 @@ const TrashSection = () => {
 
   return (
     <div css={trashSt.container}>
-      {trashList.map((item) => (
-        <div key={item.id} css={trashSt.listContainer}>
-          <span>{item.timePeriod + " |"}</span>
-          <p css={itemSectionSt.name}>{item.name}</p>
-          <button
-            onClick={() => clickRestoreBtn(item)}
-            css={settingPageSt.resetButtons}
-          >
-            {isEnglish ? `RESTORE` : `복구`}
-          </button>
-        </div>
-      ))}
+      {trashList.map((item) => {
+        const deletedDate = new Date(item.deletedDate);
+        const diffTime = Math.abs(new Date().getTime() - deletedDate.getTime());
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        return (
+          <div key={item.id} css={trashSt.listContainer}>
+            <div css={trashSt.listLeftPart}>
+              <div>
+                <span>{item.timePeriod + " | "}</span>
+                <span>{`D + ${diffDays}`}</span>
+              </div>
+              <p css={trashSt.name}>{item.name}</p>
+            </div>
+
+            <button
+              onClick={() => clickRestoreBtn(item)}
+              css={settingPageSt.resetButtons}
+            >
+              {isEnglish ? `RESTORE` : `복구`}
+            </button>
+          </div>
+        );
+      })}
     </div>
   );
 };

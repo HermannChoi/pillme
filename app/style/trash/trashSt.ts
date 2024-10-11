@@ -11,9 +11,9 @@ export const trashSt = {
   listContainer: css`
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
     width: 100%;
-    height: 4rem;
+    height: 4.5rem;
     padding: 0 1rem;
     border-radius: ${borderRadius.medium};
     background-color: ${colors.darkSection};
@@ -22,7 +22,15 @@ export const trashSt = {
       background-color: #ffffff;
     }
   `,
-  timePeriod: css`
-    width: 20%;
+  listLeftPart: css`
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
   `,
+  name: css`
+    font-size: 1.2rem;
+    font-weight: 600;
+  `,
+  timePeriod: css``,
 };
