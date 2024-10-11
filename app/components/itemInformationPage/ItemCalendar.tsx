@@ -11,6 +11,8 @@ import { useEffect } from "react";
 import useFormStore from "@/app/store/homePage/useFormStore";
 import { listProps } from "@/app/types/types";
 import { defaultItemSetup } from "@/app/constant/defaultItemSetup";
+import useSaveItemList from "@/app/hooks/useSaveItemList";
+import useDateStore from "@/app/store/homePage/useDateStore";
 
 export type Range<T> = [T, T];
 type ValuePiece = Date | null;
@@ -18,6 +20,7 @@ export type Value = ValuePiece | Range<ValuePiece>;
 
 const ItemCalendar = () => {
   const { list } = useFormStore();
+  const { isDateChanged, isInitialLoad } = useDateStore();
   const { itemForModal, setItemForModal, whichModal, setWhichModal } =
     useModalStore();
   const { isEnglish } = useSettingStore();
@@ -28,11 +31,17 @@ const ItemCalendar = () => {
     date.setHours(date.getHours() + 9);
     const dateToPut = date.toISOString().split("T")[0];
 
+    const isTheDateAlreadyTaken = itemForModal.takenDays.find(
+      (x) => x === dateToPut
+    );
+
     setItemForModal({
       ...itemForModal,
-      takenDays: [...itemForModal.takenDays, dateToPut],
+      takenDays: isTheDateAlreadyTaken
+        ? itemForModal.takenDays.filter((x) => x !== dateToPut)
+        : [...itemForModal.takenDays, dateToPut],
     });
-    setWhichModal("modifyTakenDay");
+    setWhichModal(isTheDateAlreadyTaken ? "deleteTakenDays" : "addTakenDays");
   };
 
   useEffect(() => {
@@ -43,6 +52,8 @@ const ItemCalendar = () => {
       foundItem && setItemForModal(foundItem);
     }
   }, [whichModal]);
+
+  useSaveItemList(list, isInitialLoad, isDateChanged);
 
   return (
     <Calendar

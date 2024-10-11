@@ -9,12 +9,9 @@ import useSettingStore from "@/app/store/useSettingStore";
 import useFormStore from "@/app/store/homePage/useFormStore";
 import { clickModifyItem } from "@/app/hooks/clickModifyItem";
 import { clickModifyOnModal } from "@/app/hooks/clickModifyItemOnModal";
-import useSaveItemList from "@/app/hooks/useSaveItemList";
-import useDateStore from "@/app/store/homePage/useDateStore";
 
-const ModalToAddTakenDay = () => {
-  const { list, setList } = useFormStore();
-  const { isDateChanged, isInitialLoad } = useDateStore();
+const ModalToAddTakenDays = () => {
+  const { setList } = useFormStore();
   const { whichModal, setWhichModal, itemForModal, setMessage } =
     useModalStore();
   const { setSelectedItemId } = useItemStore();
@@ -32,12 +29,10 @@ const ModalToAddTakenDay = () => {
     });
   };
 
-  useSaveItemList(list, isInitialLoad, isDateChanged);
-
   return (
     <div
       onClick={() => setWhichModal(null)}
-      css={modalSt.background(whichModal, "modifyTakenDay")}
+      css={modalSt.background(whichModal, "addTakenDays")}
     >
       <div
         onClick={(e) => {
@@ -65,4 +60,4 @@ const ModalToAddTakenDay = () => {
   );
 };
 
-export default ModalToAddTakenDay;
+export default ModalToAddTakenDays;
