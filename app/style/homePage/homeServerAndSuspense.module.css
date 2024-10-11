@@ -6,7 +6,7 @@
   align-items: center;
   width: 100%;
   height: 2.5rem;
-  background-color: var(--background);
+  background-color: var(--sectionBackground);
   z-index: 100;
 }
 
@@ -23,45 +23,50 @@
   letter-spacing: -1px;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 10px;
-  width: 100%;
-}
-
 .userNameSection {
   width: 100%;
   height: 4rem;
-  border-radius: var(--sectionBorderRadius);
+  border-radius: 20px;
   margin-top: -15px;
-  background-color: var(--darkSection);
+  background-color: #191b1b;
+  animation: loading 1s infinite alternate;
 }
 
 .createItemForm {
   width: 100%;
   height: 50px;
-  border-radius: var(--sectionBorderRadius);
-  background-color: var(--darkSection);
+  border-radius: 20px;
+  background-color: #191b1b;
+  animation: loading 1s 0.2s infinite alternate;
 }
 
 .infoSection {
   width: 100%;
   height: 62px;
-  border-radius: var(--sectionBorderRadius);
-  background-color: var(--darkSection);
+  border-radius: 20px;
+  background-color: #191b1b;
+  animation: loading 1s 0.4s infinite alternate;
 }
 
 .itemSection {
   width: 100%;
   height: 8rem;
-  border-radius: var(--sectionBorderRadius);
-  background-color: var(--darkSection);
+  border-radius: 20px;
+  background-color: #191b1b;
+  animation: loading 1s 0.6s infinite alternate;
 }
 
 @media (prefers-color-scheme: light) {
   .header {
     background-color: #eeeeee;
+  }
+}
+
+@keyframes loading {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
   }
 }

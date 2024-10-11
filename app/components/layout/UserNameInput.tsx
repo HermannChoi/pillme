@@ -36,8 +36,9 @@ const UserNameInput = () => {
   useLayoutEffect(() => {
     const localStorageUserName = localStorage.getItem("userName");
 
-    if (localStorageUserName) {
-      setIsUserNameInputOn(false);
+    if (!localStorageUserName) {
+      setIsUserNameInputOn(true);
+    } else {
       setUserName(localStorageUserName);
     }
   }, [setIsUserNameInputOn, setUserName]);

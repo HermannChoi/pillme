@@ -14,7 +14,7 @@ const useUserNameStore = create<UseUserNameStoreProps>((set) => ({
   setUserName: (value: string) => set({ userName: value }),
   isSubmitted: false,
   setIsSubmitted: (value) => set({ isSubmitted: value }),
-  isUserNameInputOn: true,
+  isUserNameInputOn: false,
   setIsUserNameInputOn: (value) => set({ isUserNameInputOn: value }),
 }));
 

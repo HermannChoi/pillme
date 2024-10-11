@@ -1,8 +1,6 @@
 :root {
   --background: #eeeeee;
   --foreground: #171717;
-  --darkSection: #191b1b;
-  --sectionBorderRadius: 20px;
 }
 
 @media (prefers-color-scheme: dark) {
