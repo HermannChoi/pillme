@@ -1,6 +1,6 @@
 import Image from "next/image";
 import pill from "@/app/assets/svg/pill.svg";
-import style from "@/app/style/homePage/homeServerAndSuspense.module.css";
+import style from "@/app/style/homePage/homeSus.module.css";
 
 const Header = () => {
   return (

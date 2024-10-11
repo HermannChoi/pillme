@@ -1,4 +1,4 @@
-import style from "@/app/style/homePage/homeServerAndSuspense.module.css";
+import style from "@/app/style/homePage/homeSus.module.css";
 
 const UserNameSectionSus = () => {
   return <div className={style.userNameSection} />;

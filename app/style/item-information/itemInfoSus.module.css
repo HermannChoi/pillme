@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  padding-bottom: 5.5rem;
+  background-color: #191b1b;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 4rem;
+  border-bottom: 1px solid #80808020;
+}
+
+.header > div {
+  width: 30%;
+  height: 30%;
+  background-color: #80808080;
+  animation: loading 1s infinite alternate;
+}
+
+.mainSection {
+  flex: 1;
+  width: 100%;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.nameSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 0.5rem;
+  width: 100%;
+  height: 15%;
+  border-bottom: 1px solid #80808020;
+}
+
+.name {
+  width: 7rem;
+  height: 40px;
+  background-color: #80808080;
+  animation: loading 1s infinite alternate;
+}
+
+.infoTextSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+}
+
+.infoTitle {
+  width: 40%;
+  height: 20px;
+  background-color: #80808080;
+  animation: loading 1s infinite alternate;
+}
+
+.infoText {
+  width: 20%;
+  height: 20px;
+  background-color: #80808080;
+  animation: loading 1s infinite alternate;
+}
+
+.calendarSus {
+  width: 100%;
+  height: 288px;
+  background-color: #80808080;
+  animation: loading 1s infinite alternate;
+}
+
+@media (prefers-color-scheme: light) {
+  .container {
+    background-color: #ffffff;
+  }
+}
+
+@keyframes loading {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
