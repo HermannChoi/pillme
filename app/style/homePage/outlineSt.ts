@@ -3,32 +3,6 @@ import { borderRadius, colors, flexCenterX2 } from "../commonSt";
 import { itemSectionSt } from "./itemSectionSt";
 
 export const outlineSt = {
-  header: css`
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    height: 2.5rem;
-    background-color: ${colors.darkBackground};
-    z-index: 100;
-
-    @media (prefers-color-scheme: light) {
-      background-color: #eeeeee;
-    }
-  `,
-  h1: css`
-    color: ${colors.grey}80;
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: -1px;
-  `,
-  pillImg: css`
-    filter: grayscale(1);
-    width: 2.3rem;
-    height: 2.3rem;
-  `,
   h2: css`
     margin-bottom: 10px;
     font-size: 1.8rem;

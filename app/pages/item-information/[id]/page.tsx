@@ -10,7 +10,7 @@ import BtnSection from "@/app/components/itemInformationPage/BtnSection";
 
 const page = () => {
   return (
-    <div css={itemInformationPageSt.optionContainer}>
+    <div css={itemInformationPageSt.container}>
       <Header />
       <div css={itemInformationPageSt.outerSection}>
         <BasicInfoSection />

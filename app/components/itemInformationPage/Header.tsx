@@ -1,5 +1,4 @@
 "use client";
-
 /** @jsxImportSource @emotion/react */
 
 import Link from "next/link";

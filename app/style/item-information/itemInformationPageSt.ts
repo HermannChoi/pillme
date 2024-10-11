@@ -3,7 +3,7 @@ import { colors, flexCenterX2 } from "../commonSt";
 import { fadeInFromBottom } from "../keyframes";
 
 export const itemInformationPageSt = {
-  optionContainer: css`
+  container: css`
     display: flex;
     flex-direction: column;
     width: 100%;

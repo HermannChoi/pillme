@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import CongratsPage from "./components/homePage/CongratsPage";
 import CreateItemForm from "./components/homePage/CreateItemForm";
 import Header from "./components/homePage/Header";
@@ -12,26 +13,29 @@ import ModalToModifyDate from "./components/modals/ModalToModifyDate";
 import ModalToModifyLeftDay from "./components/modals/ModalToModifyLeftDay";
 import ModalToModifyTime from "./components/modals/ModalToModifyTime";
 import ModalToShowLeftDay from "./components/modals/ModalToShowLeftDay";
+import HomePageSuspense from "./components/suspense/HomePageSuspense";
 
 const Home = () => {
   return (
     <main>
       <Header />
-      <UserNameSection />
-      <CreateItemForm />
-      <InfoSection />
-      <ItemSection />
-      <>
-        <ModalToDeleteItem />
-        <ModalToChooseModify />
-        <ModalToModifyTime />
-        <ModalToModifyDate />
-        <ModalToShowLeftDay />
-        <ModalToModifyLeftDay />
-        <ModalToChooseFrequency />
-        <MessageModal />
-      </>
-      <CongratsPage />
+      <Suspense fallback={<HomePageSuspense />}>
+        <UserNameSection />
+        <CreateItemForm />
+        <InfoSection />
+        <ItemSection />
+        <>
+          <ModalToDeleteItem />
+          <ModalToChooseModify />
+          <ModalToModifyTime />
+          <ModalToModifyDate />
+          <ModalToShowLeftDay />
+          <ModalToModifyLeftDay />
+          <ModalToChooseFrequency />
+          <MessageModal />
+        </>
+        <CongratsPage />
+      </Suspense>
     </main>
   );
 };

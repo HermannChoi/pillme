@@ -1,23 +1,12 @@
-"use client";
-/** @jsxImportSource @emotion/react */
-
 import Image from "next/image";
 import pill from "@/app/assets/svg/pill.svg";
-import { outlineSt } from "@/app/style/homePage/outlineSt";
-import useNavigatorStore from "@/app/store/layout/useNavigatorStore";
-import { useEffect } from "react";
+import style from "@/app/style/homePage/homeServerAndSuspense.module.css";
 
 const Header = () => {
-  const { setWhichPage } = useNavigatorStore();
-
-  useEffect(() => {
-    setWhichPage("Home");
-  }, [setWhichPage]);
-
   return (
-    <header css={outlineSt.header}>
-      <Image src={pill} alt="pill" priority={true} css={outlineSt.pillImg} />
-      <h1 css={outlineSt.h1}>Pillme</h1>
+    <header className={style.header}>
+      <Image src={pill} alt="pill" priority={true} className={style.pillImg} />
+      <h1 className={style.h1}>Pillme</h1>
     </header>
   );
 };

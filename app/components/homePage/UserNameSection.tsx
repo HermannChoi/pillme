@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import useFormStore from "@/app/store/homePage/useFormStore";
 import useDateStore from "@/app/store/homePage/useDateStore";
 import { outlineSt } from "@/app/style/homePage/outlineSt";
+import useNavigatorStore from "@/app/store/layout/useNavigatorStore";
 
 const UserNameSection = () => {
   const [greeting, setGreeting] = useState("");
@@ -16,6 +17,11 @@ const UserNameSection = () => {
   const { isEasterEggsOn } = useFormStore();
   const { isEnglish, setIsEnglish } = useSettingStore();
   const { isInitialLoad } = useDateStore();
+  const { setWhichPage } = useNavigatorStore();
+
+  useEffect(() => {
+    setWhichPage("Home");
+  }, [setWhichPage]);
 
   useToggleLanguage(isEnglish, setIsEnglish, isInitialLoad);
 
