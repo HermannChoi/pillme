@@ -1,25 +1,16 @@
-import Footer from "@/app/components/layout/Footer";
-import ModalToResetItem from "@/app/components/modals/ModalToResetItem";
-import ModalToResetUsername from "@/app/components/modals/ModalToResetUsername";
-import LanguageToggle from "@/app/components/settingPage/LanguageToggle";
-import ResetButtons from "@/app/components/settingPage/ResetButtons";
-import Title from "@/app/components/settingPage/Title";
-import Trash from "@/app/components/settingPage/Trash";
+import SettingSus from "@/app/components/settingPage/settingSuspense/SettingSus";
+import dynamic from "next/dynamic";
+
+const SettingPage = dynamic(
+  () => import("@/app/components/settingPage/SettingPage"),
+  {
+    ssr: false,
+    loading: () => <SettingSus />,
+  }
+);
 
 const page = () => {
-  return (
-    <main>
-      <Title />
-      <ResetButtons />
-      <LanguageToggle />
-      <Trash />
-      <>
-        <ModalToResetUsername />
-        <ModalToResetItem />
-      </>
-      <Footer />
-    </main>
-  );
+  return <SettingPage />;
 };
 
 export default page;

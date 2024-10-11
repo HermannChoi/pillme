@@ -21,7 +21,7 @@ const LanguageToggle = () => {
   }, [setIsInitialLoad]);
 
   return (
-    <>
+    <div css={settingPageSt.sectionOutline}>
       <h2 css={settingPageSt.sectionTitle}>
         {isEnglish ? `Preference` : `선호`}
       </h2>
@@ -44,7 +44,7 @@ const LanguageToggle = () => {
           </button>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

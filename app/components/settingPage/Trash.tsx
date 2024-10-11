@@ -11,7 +11,7 @@ const Trash = () => {
   const { isEnglish } = useSettingStore();
 
   return (
-    <>
+    <div css={settingPageSt.sectionOutline}>
       <h2 css={settingPageSt.sectionTitle}>{isEnglish ? `Data` : `데이터`}</h2>
       <section css={settingPageSt.section}>
         <div css={settingPageSt.listContainer}>
@@ -21,7 +21,7 @@ const Trash = () => {
           </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

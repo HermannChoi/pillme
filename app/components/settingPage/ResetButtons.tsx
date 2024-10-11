@@ -10,7 +10,7 @@ const ResetButtons = () => {
   const { isEnglish } = useSettingStore();
 
   return (
-    <>
+    <div css={settingPageSt.sectionOutline}>
       <h2 css={settingPageSt.sectionTitle}>
         {isEnglish ? `My Info.` : `내 정보`}
       </h2>
@@ -34,7 +34,7 @@ const ResetButtons = () => {
           </button>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

@@ -3,12 +3,21 @@ import { borderRadius, colors, flexCenterX2 } from "../commonSt";
 
 export const settingPageSt = {
   title: css`
-    margin-top: 1rem;
+    ${flexCenterX2}
+    width: 100%;
+    height: 2rem;
+    margin-bottom: -1rem;
+  `,
+  sectionOutline: css`
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.3rem;
+    width: 100%;
+    height: auto;
   `,
   sectionTitle: css`
     width: 100%;
     padding-left: 0.5rem;
-    margin-bottom: -0.3rem;
   `,
   section: css`
     display: flex;
