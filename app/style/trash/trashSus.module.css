@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+  width: 95%;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 2rem;
+  margin-bottom: -1rem;
+}
+
+.headerText {
+  width: 40%;
+  height: 70%;
+  border-radius: 5px;
+  background-color: #80808080;
+  animation: loading 1s infinite alternate;
+}
+
+.infoSection {
+  width: 100%;
+  height: 36.67px;
+  border-radius: 20px;
+  background-color: #80808080;
+  animation: loading 1s infinite alternate;
+}
+
+.itemSection {
+  width: 100%;
+  height: 4.5rem;
+  border-radius: 20px;
+  background-color: #80808080;
+  animation: loading 1s infinite alternate;
+}
+
+@keyframes loading {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}

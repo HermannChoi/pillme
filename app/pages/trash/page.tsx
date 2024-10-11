@@ -1,17 +1,13 @@
-import ClearAllBtn from "@/app/components/trash/ClearAllBtn";
-import Title from "@/app/components/trash/Title";
-import TrashInfoSection from "@/app/components/trash/TrashInfoSection";
-import TrashSection from "@/app/components/trash/TrashSection";
+import TrashSus from "@/app/components/trash/trashSuspense/TrashSus";
+import dynamic from "next/dynamic";
+
+const TrashPage = dynamic(() => import("@/app/components/trash/TrashPage"), {
+  ssr: false,
+  loading: () => <TrashSus />,
+});
 
 const page = () => {
-  return (
-    <main>
-      <Title />
-      <TrashInfoSection />
-      <ClearAllBtn />
-      <TrashSection />
-    </main>
-  );
+  return <TrashPage />;
 };
 
 export default page;
