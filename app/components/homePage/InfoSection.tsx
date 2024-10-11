@@ -17,6 +17,8 @@ const InfoSection = () => {
 
   const today = getKoreanDate();
 
+  const itemsLength = getAllItems(list).length;
+
   const numOfItemsToTake = getAllItems(list).filter(
     (item) => !item.isTaken
   ).length;
@@ -37,16 +39,18 @@ const InfoSection = () => {
     <div css={outlineSt.infoSectionSt}>
       <p>{lastCheckedDate?.replaceAll("-", "/")}</p>
       <p>
-        {numOfItemsToTake
-          ? isEnglish
-            ? "There" +
-              (numOfItemsToTake > 1 ? " are " : " is ") +
-              numOfItemsToTake +
-              " items to take today."
-            : "오늘 복용할 약이 " + numOfItemsToTake + "개 남았어요."
-          : isEnglish
-          ? "You have taken all your items today."
-          : "오늘 약을 다 복용했어요!"}
+        {itemsLength > 0
+          ? numOfItemsToTake > 0
+            ? isEnglish
+              ? "There" +
+                (numOfItemsToTake > 1 ? " are " : " is ") +
+                numOfItemsToTake +
+                " items to take today."
+              : "오늘 복용할 약이 " + numOfItemsToTake + "개 남았어요."
+            : isEnglish
+            ? "You have taken all your items today."
+            : "오늘 약을 다 복용했어요!"
+          : null}
       </p>
     </div>
   );
