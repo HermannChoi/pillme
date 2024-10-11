@@ -31,7 +31,10 @@ const ModalToChooseFrequency = () => {
       );
       return setWhichModal("message");
     }
-    setWhichModal(null);
+    setWhichModal("message");
+    setMessage(
+      isEnglish ? "It successfully got modified." : "성공적으로 수정되었습니다."
+    );
     setList((prev) => {
       return {
         ...prev,

@@ -69,7 +69,7 @@ export const itemSectionSt = {
       border-radius: ${item.id === selectedItemId
         ? `20px 20px 0 0`
         : borderRadius.medium};
-      background-color: ${colors.darkGrey};
+      background-color: ${colors.darkSection};
       transition: background-color 0.2s, border-radius 0.2s;
       cursor: pointer;
       z-index: 1;
@@ -127,7 +127,7 @@ export const itemSectionSt = {
           ? `0 0 20px 20px`
           : borderRadius.medium};
         margin-top: ${itemId === selectedItemId ? 0 : -60}px;
-        background-color: ${colors.darkGrey};
+        background-color: ${colors.darkSection};
         overflow: hidden;
         opacity: ${itemId === selectedItemId ? 1 : 0};
         transition: 0.2s;
@@ -164,9 +164,8 @@ export const itemSectionSt = {
     }
   `,
   leftDayBtn: css`
-    flex: 1;
     height: 40px;
-    padding: 5px;
+    padding: 5px 1rem;
     border: none;
     border-radius: ${borderRadius.small};
     background-color: ${colors.grey}30;

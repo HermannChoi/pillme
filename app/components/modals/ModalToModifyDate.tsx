@@ -8,6 +8,7 @@ import useItemStore from "@/app/store/homePage/useItemStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import useFormStore from "@/app/store/homePage/useFormStore";
 import { clickModifyItem } from "@/app/hooks/clickModifyItem";
+import { clickModifyOnModal } from "@/app/hooks/clickModifyItemOnModal";
 
 const ModalToModifyDate = () => {
   const { setList } = useFormStore();
@@ -17,15 +18,22 @@ const ModalToModifyDate = () => {
     itemForModal,
     setItemForModal,
     resetItemForModal,
+    setMessage,
   } = useModalStore();
   const { setSelectedItemId } = useItemStore();
   const { isEnglish } = useSettingStore();
 
-  const clickModifyOnModal = () => {
-    setWhichModal(null);
-    clickModifyItem(itemForModal, setList);
-    resetItemForModal();
-    setSelectedItemId(null);
+  const clickModifyBtn = () => {
+    clickModifyOnModal({
+      setWhichModal,
+      setMessage,
+      isEnglish,
+      clickModifyItem,
+      itemForModal,
+      setList,
+      resetItemForModal,
+      setSelectedItemId,
+    });
   };
 
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,7 +68,7 @@ const ModalToModifyDate = () => {
           />
         </div>
         <div css={modalSt.btnContainer}>
-          <button onClick={() => clickModifyOnModal()} css={modalSt.delBtn}>
+          <button onClick={() => clickModifyBtn()} css={modalSt.delBtn}>
             {isEnglish ? `Modify` : `수정`}
           </button>
           <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>

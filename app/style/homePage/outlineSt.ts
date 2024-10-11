@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { borderRadius, colors, flexCenterX2 } from "../commonSt";
+import { itemSectionSt } from "./itemSectionSt";
 
 export const outlineSt = {
   header: css`
@@ -50,6 +51,20 @@ export const outlineSt = {
       }
     `;
   },
+  infoSectionSt: [
+    itemSectionSt.section,
+    css`
+      position: sticky;
+      top: 2.3rem;
+      background-color: ${colors.darkSection};
+      backdrop-filter: blur(5px);
+      z-index: 2;
+
+      @media (prefers-color-scheme: light) {
+        background-color: #ffffff;
+      }
+    `,
+  ],
   footer: [
     flexCenterX2,
     css`

@@ -8,6 +8,7 @@ import useItemStore from "@/app/store/homePage/useItemStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import useFormStore from "@/app/store/homePage/useFormStore";
 import { clickModifyItem } from "@/app/hooks/clickModifyItem";
+import { clickModifyOnModal } from "@/app/hooks/clickModifyItemOnModal";
 
 const ModalToModifyLeftDay = () => {
   const { setList } = useFormStore();
@@ -22,17 +23,17 @@ const ModalToModifyLeftDay = () => {
   const { setSelectedItemId } = useItemStore();
   const { isEnglish } = useSettingStore();
 
-  const clickModifyOnModal = () => {
-    setWhichModal("message");
-    setMessage(
-      isEnglish ? "It successfully got modified." : "성공적으로 수정되었습니다."
-    );
-    clickModifyItem(itemForModal, setList);
-    resetItemForModal();
-
-    setTimeout(() => {
-      setSelectedItemId(null);
-    }, 1000);
+  const clickModifyBtn = () => {
+    clickModifyOnModal({
+      setWhichModal,
+      setMessage,
+      isEnglish,
+      clickModifyItem,
+      itemForModal,
+      setList,
+      resetItemForModal,
+      setSelectedItemId,
+    });
   };
 
   const handleChangeLeftDay = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,7 +68,7 @@ const ModalToModifyLeftDay = () => {
           />
         </div>
         <div css={modalSt.btnContainer}>
-          <button onClick={() => clickModifyOnModal()} css={modalSt.delBtn}>
+          <button onClick={() => clickModifyBtn()} css={modalSt.delBtn}>
             {isEnglish ? `DONE` : `완료`}
           </button>
           <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
