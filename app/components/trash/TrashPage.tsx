@@ -6,7 +6,7 @@ import TrashSection from "./TrashSection";
 
 const TrashPage = () => {
   return (
-    <main>
+    <main className="showUpFromTop">
       <Title />
       <TrashInfoSection />
       <ClearAllBtn />

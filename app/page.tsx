@@ -1,9 +1,9 @@
-import Header from "./components/homePage/Header";
 import dynamic from "next/dynamic";
-import UserNameSectionSus from "./components/homePage/homeSuspense/UserNameSectionSus";
+import Header from "./components/homePage/Header";
 import CreateItemFormSus from "./components/homePage/homeSuspense/CreateItemFormSus";
 import InfoSectionSus from "./components/homePage/homeSuspense/InfoSectionSus";
 import ItemSectionSus from "./components/homePage/homeSuspense/ItemSectionSus";
+import UserNameSectionSus from "./components/homePage/homeSuspense/UserNameSectionSus";
 
 const UserNameSection = dynamic(
   () => import("./components/homePage/UserNameSection"),
@@ -33,7 +33,7 @@ const CongratsPage = dynamic(
 
 const Home = () => {
   return (
-    <main>
+    <main className="showUpFromLeft">
       <Header />
       <UserNameSection />
       <CreateItemForm />

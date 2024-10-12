@@ -40,6 +40,12 @@ export const fadeInAndOut = keyframes`
   }
 `;
 
+export const showUpFromBottom = keyframes`
+  0% {
+    transform: translateY(2%);
+  }
+`;
+
 export const scaleZeroTo100 = keyframes`
   0% {
     transform: scale(0);

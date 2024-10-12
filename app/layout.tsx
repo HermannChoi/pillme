@@ -8,6 +8,9 @@ import UserNameInput from "./components/layout/UserNameInput";
 export const metadata: Metadata = {
   title: "Pillme",
   description: "Do not forget to take your medicine",
+  appleWebApp: {
+    capable: true,
+  },
   manifest: "/manifest.json",
   viewport:
     "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
