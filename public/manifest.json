@@ -2,7 +2,6 @@
   "name": "Pillme",
   "short_name": "Pillme",
   "description": "An app for people who keep forgetting to take their medicine",
-
   "theme_color": "#141414",
   "background_color": "#141414",
   "icons": [
