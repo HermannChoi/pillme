@@ -14,6 +14,7 @@ const TrashInfoSection = () => {
 
   const today = getKoreanDate();
 
+  // 7일 이내에 삭제된 아이템만 쓰레기통에 남겨두는 로직
   useEffect(() => {
     const updatedTrashList = trashList.filter((item) => {
       if (!item.deletedDate) return false; // Ensure deletedDate is defined
