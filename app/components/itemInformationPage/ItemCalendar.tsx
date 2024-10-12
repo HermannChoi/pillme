@@ -2,17 +2,15 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import "@/app/style/item-information/calendarStyle.css";
+import { defaultItemSetup } from "@/app/constant/defaultItemSetup";
+import useFormStore from "@/app/store/homePage/useFormStore";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
-import Calendar from "react-calendar";
+import "@/app/style/item-information/calendarStyle.css";
 import { itemInformationPageSt } from "@/app/style/item-information/itemInformationPageSt";
-import { useEffect } from "react";
-import useFormStore from "@/app/store/homePage/useFormStore";
 import { listProps } from "@/app/types/types";
-import { defaultItemSetup } from "@/app/constant/defaultItemSetup";
-import useSaveItemList from "@/app/hooks/useSaveItemList";
-import useDateStore from "@/app/store/homePage/useDateStore";
+import { useEffect } from "react";
+import Calendar from "react-calendar";
 
 export type Range<T> = [T, T];
 type ValuePiece = Date | null;
@@ -20,7 +18,6 @@ export type Value = ValuePiece | Range<ValuePiece>;
 
 const ItemCalendar = () => {
   const { list } = useFormStore();
-  const { isDateChanged, isInitialLoad } = useDateStore();
   const { itemForModal, setItemForModal, whichModal, setWhichModal } =
     useModalStore();
   const { isEnglish } = useSettingStore();
@@ -52,8 +49,6 @@ const ItemCalendar = () => {
       foundItem && setItemForModal(foundItem);
     }
   }, [whichModal]);
-
-  useSaveItemList(list, isInitialLoad, isDateChanged);
 
   return (
     <Calendar

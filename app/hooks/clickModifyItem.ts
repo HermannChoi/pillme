@@ -5,7 +5,7 @@ export const clickModifyItem = (
   setList: (prev: (prev: listProps) => listProps) => void
 ) => {
   setList((prev) => {
-    return {
+    const updatedList = {
       ...prev,
       [itemForModal.timePeriod]: prev[
         itemForModal.timePeriod as keyof listProps
@@ -13,5 +13,7 @@ export const clickModifyItem = (
         return item.id === itemForModal.id ? (item = itemForModal) : item;
       }),
     };
+    localStorage.setItem("medList", JSON.stringify(updatedList));
+    return updatedList;
   });
 };

@@ -1,27 +1,26 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import useToggleLanguage from "@/app/hooks/useToggleLanguage";
 import useSettingStore from "@/app/store/useSettingStore";
 import { settingPageSt } from "@/app/style/settingPage/settingPageSt";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 
 const LanguageToggle = () => {
-  const {
-    isEnglish,
-    setIsEnglish,
-    isSettingInitialLoad,
-    setIsSettingInitialLoad,
-  } = useSettingStore();
+  const { isEnglish, setIsEnglish } = useSettingStore();
 
-  useToggleLanguage(isEnglish, setIsEnglish, isSettingInitialLoad);
+  const clickLanguageToggleBtn = () => {
+    const newState = !isEnglish; // Use the current state directly
+    setIsEnglish(newState); // Set the new state directly
+    localStorage.setItem("isEnglish", JSON.stringify(newState)); // 상태 변경 시 로컬 스토리지에 저장
+  };
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsSettingInitialLoad(false);
-    }, 500);
-  }, [setIsSettingInitialLoad]);
+    const savedLanguage = localStorage.getItem("isEnglish");
+    if (savedLanguage) {
+      setIsEnglish(savedLanguage === "true");
+    }
+  }, [setIsEnglish]);
 
   return (
     <div css={settingPageSt.sectionOutline}>
@@ -32,7 +31,7 @@ const LanguageToggle = () => {
         <div css={settingPageSt.listContainer}>
           <p>{isEnglish ? `Language` : `언어`}</p>
           <button
-            onClick={() => setIsEnglish(!isEnglish)}
+            onClick={() => clickLanguageToggleBtn()}
             css={settingPageSt.languageToggle(isEnglish)}
           >
             <motion.div

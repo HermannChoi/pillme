@@ -17,8 +17,6 @@ import { vibrate } from "@/app/utils/vibrate";
 import { motion } from "framer-motion";
 import { SyntheticEvent, useEffect } from "react";
 import ItemOptionSection from "./ItemOptionSection";
-import useSaveItemList from "@/app/hooks/useSaveItemList";
-import useInitialLoadChanger from "@/app/hooks/useInitialLoadChanger";
 import { getAllItems } from "@/app/utils/getAllItems";
 
 const ItemSection = () => {
@@ -30,7 +28,7 @@ const ItemSection = () => {
     setPreviousIsEverythingTaken,
   } = useItemStore();
   const { list, setList, focusInput } = useFormStore();
-  const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
+  const { isDateChanged, isInitialLoad } = useDateStore();
   const { isEnglish } = useSettingStore();
 
   //아이템 옵션창 토글 로직
@@ -54,27 +52,27 @@ const ItemSection = () => {
   useEffect(() => {
     if (isDateChanged) {
       for (const timePeriod in list) {
-        setList((prev) => ({
-          ...prev,
-          [timePeriod]: prev[timePeriod as keyof listProps].map((item) => {
-            return item.isTaken
-              ? item.leftDay === 0
-                ? {
-                    ...item,
-                    isTaken: false,
-                    leftDay: item.frequency,
-                  }
-                : { ...item, leftDay: item.leftDay - 1 }
-              : item;
-          }),
-        }));
+        setList((prev) => {
+          const updatedList = {
+            ...prev,
+            [timePeriod]: prev[timePeriod as keyof listProps].map((item) => {
+              return item.isTaken
+                ? item.leftDay === 0
+                  ? {
+                      ...item,
+                      isTaken: false,
+                      leftDay: item.frequency,
+                    }
+                  : { ...item, leftDay: item.leftDay - 1 }
+                : item;
+            }),
+          };
+          localStorage.setItem("medList", JSON.stringify(updatedList));
+          return updatedList;
+        });
       }
     }
   }, [isDateChanged]);
-
-  //useEffect
-  useInitialLoadChanger(setIsInitialLoad);
-  useSaveItemList(list, isInitialLoad, isDateChanged);
 
   //모든 아이템 활성화 시 축하메세지 뜨는 로직
   useEffect(() => {

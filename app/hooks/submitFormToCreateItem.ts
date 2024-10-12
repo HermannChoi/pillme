@@ -78,10 +78,12 @@ export const submitFormToCreateItem = ({
   };
   //생성함수
   setList((prev) => {
-    return {
+    const updatedList = {
       ...prev,
       [timePeriod]: [...prev[timePeriod], newItem],
     };
+    localStorage.setItem("medList", JSON.stringify(updatedList));
+    return updatedList;
   });
   //생성 후 처리되는 함수들
   setName("");

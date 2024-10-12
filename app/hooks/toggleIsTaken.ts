@@ -14,35 +14,39 @@ export const toggleIsTaken = ({ clickedItem, setList }: ToggleIsTakeProps) => {
   const minutes = today.getMinutes();
   const todayString = `${year}-${month}-${day}`;
 
-  setList((prev) => ({
-    ...prev,
-    [clickedItem.timePeriod]: prev[
-      clickedItem.timePeriod as keyof listProps
-    ].map((item) => {
-      if (item.id === clickedItem.id) {
-        if (item.isTaken) {
-          // 비활성화 할때는 토글 변경 및 복용 기간에서 오늘 삭제
-          return {
-            ...item,
-            isTaken: !item.isTaken,
-            takenDays: item.takenDays.filter((day) => {
-              return day !== todayString;
-            }),
-          };
-        } else {
-          // 활성화 할 때는 시간 업데이트 추가
-          return {
-            ...item,
-            isTaken: !item.isTaken,
-            date: year + "-" + month + "-" + day,
-            hours,
-            minutes,
-            // new Set으로 날짜 중복 제거
-            takenDays: [...new Set([...item.takenDays, todayString])],
-          };
+  setList((prev) => {
+    const updatedList = {
+      ...prev,
+      [clickedItem.timePeriod]: prev[
+        clickedItem.timePeriod as keyof listProps
+      ].map((item) => {
+        if (item.id === clickedItem.id) {
+          if (item.isTaken) {
+            // 비활성화 할때는 토글 변경 및 복용 기간에서 오늘 삭제
+            return {
+              ...item,
+              isTaken: !item.isTaken,
+              takenDays: item.takenDays.filter((day) => {
+                return day !== todayString;
+              }),
+            };
+          } else {
+            // 활성화 할 때는 시간 업데이트 추가
+            return {
+              ...item,
+              isTaken: !item.isTaken,
+              date: year + "-" + month + "-" + day,
+              hours,
+              minutes,
+              // new Set으로 날짜 중복 제거
+              takenDays: [...new Set([...item.takenDays, todayString])],
+            };
+          }
         }
-      }
-      return item;
-    }),
-  }));
+        return item;
+      }),
+    };
+    localStorage.setItem("medList", JSON.stringify(updatedList));
+    return updatedList;
+  });
 };

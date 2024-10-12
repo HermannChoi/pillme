@@ -5,8 +5,6 @@ interface TrashStoreProps {
   trashList: itemProps[];
   setTrashList: (value: itemProps[]) => void;
   moveToTrash: (value: itemProps | itemProps[]) => void;
-  isTrashInitialLoad: boolean;
-  setIsTrashInitialLoad: (value: boolean) => void;
 }
 
 const useTrashStore = create<TrashStoreProps>((set) => ({
@@ -18,8 +16,6 @@ const useTrashStore = create<TrashStoreProps>((set) => ({
         ? [...state.trashList, ...value]
         : [...state.trashList, value],
     })),
-  isTrashInitialLoad: true,
-  setIsTrashInitialLoad: (value) => set({ isTrashInitialLoad: value }),
 }));
 
 export default useTrashStore;

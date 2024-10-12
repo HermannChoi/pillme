@@ -2,9 +2,8 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-// import CoverPage from "./components/layout/CoverPage";
-import UserNameInput from "./components/layout/UserNameInput";
 import Navigator from "./components/layout/Navigator";
+import UserNameInput from "./components/layout/UserNameInput";
 
 export const metadata: Metadata = {
   title: "Pillme",
@@ -36,7 +35,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${SUSE.variable} system-ui`}>
       <body>
-        {/* <CoverPage /> */}
         <UserNameInput />
         {children}
         <Navigator />

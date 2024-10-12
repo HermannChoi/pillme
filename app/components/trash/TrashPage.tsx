@@ -1,7 +1,7 @@
-import React from "react";
+import MessageModal from "../modals/MessageModal";
+import ClearAllBtn from "./ClearAllBtn";
 import Title from "./Title";
 import TrashInfoSection from "./TrashInfoSection";
-import ClearAllBtn from "./ClearAllBtn";
 import TrashSection from "./TrashSection";
 
 const TrashPage = () => {
@@ -11,6 +11,9 @@ const TrashPage = () => {
       <TrashInfoSection />
       <ClearAllBtn />
       <TrashSection />
+      <>
+        <MessageModal />
+      </>
     </main>
   );
 };

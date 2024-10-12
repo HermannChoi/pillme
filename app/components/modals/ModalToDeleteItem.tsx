@@ -13,10 +13,10 @@ const ModalToDeleteItem = () => {
   const { whichModal, setWhichModal, itemForModal, resetItemForModal } =
     useModalStore();
   const { isEnglish } = useSettingStore();
-  const { moveToTrash } = useTrashStore();
+  const { trashList, moveToTrash } = useTrashStore();
 
   const clickDeleteOnModal = () => {
-    clickDelete(itemForModal, setList, moveToTrash);
+    clickDelete(itemForModal, setList, trashList, moveToTrash);
     setWhichModal(null);
     resetItemForModal();
   };

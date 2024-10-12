@@ -1,31 +1,48 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import useModalStore from "@/app/store/useModalStore";
-import { modalSt } from "@/app/style/modalSt";
-import useSettingStore from "@/app/store/useSettingStore";
-import { useRouter } from "next/navigation";
+import { defaultList } from "@/app/constant/defaultList";
 import useFormStore from "@/app/store/homePage/useFormStore";
+import useModalStore from "@/app/store/useModalStore";
+import useSettingStore from "@/app/store/useSettingStore";
+import { modalSt } from "@/app/style/modalSt";
+import { getAllItems } from "@/app/utils/getAllItems";
 
 const ModalToResetItem = () => {
-  const router = useRouter();
-
-  const { whichModal, setWhichModal } = useModalStore();
-  const { setList } = useFormStore();
+  const { whichModal, setWhichModal, setMessage } = useModalStore();
+  const { list } = useFormStore();
   const { isEnglish } = useSettingStore();
 
   const clickResetUserName = () => {
-    setList({
-      Morning: [],
-      Noon: [],
-      Night: [],
-      Any: [],
-    });
-    setWhichModal(null);
-    router.push("/");
-    setTimeout(() => {
-      window.location.reload();
-    }, 100);
+    const savedTrashList = JSON.parse(
+      localStorage.getItem("trashList") || "[]"
+    );
+    const itemsOnTheList = getAllItems(list);
+
+    if (itemsOnTheList.length === 0) {
+      setWhichModal("message");
+      return setMessage(
+        isEnglish ? "There is no item to delete." : "삭제할 아이템이 없습니다."
+      );
+    }
+
+    localStorage.setItem(
+      "trashList",
+      JSON.stringify(
+        Array.isArray(savedTrashList)
+          ? [...savedTrashList, ...itemsOnTheList]
+          : [...itemsOnTheList]
+      )
+    );
+
+    localStorage.setItem("medList", JSON.stringify(defaultList));
+
+    setWhichModal("message");
+    setMessage(
+      isEnglish
+        ? `All items have been deleted.`
+        : `모든 아이템이 삭제되었습니다.`
+    );
   };
 
   return (

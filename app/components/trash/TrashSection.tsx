@@ -1,9 +1,6 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import useSaveItemList from "@/app/hooks/useSaveItemList";
-import useSaveTrashList from "@/app/hooks/useSaveTrashList";
-import useDateStore from "@/app/store/homePage/useDateStore";
 import useFormStore from "@/app/store/homePage/useFormStore";
 import useTrashStore from "@/app/store/trash/useTrashStore";
 import useSettingStore from "@/app/store/useSettingStore";
@@ -13,35 +10,31 @@ import { itemProps, listProps } from "@/app/types/types";
 import { useEffect } from "react";
 
 const TrashSection = () => {
-  const { trashList, setTrashList, isTrashInitialLoad, setIsTrashInitialLoad } =
-    useTrashStore();
+  const { trashList, setTrashList } = useTrashStore();
   const { isEnglish } = useSettingStore();
-  const { isInitialLoad, isDateChanged } = useDateStore();
-  const { list, setList } = useFormStore();
+  const { setList } = useFormStore();
 
   const clickRestoreBtn = (trash: itemProps) => {
-    setTrashList(trashList.filter((item) => item.id !== trash.id));
+    // 쓰레기 목록에서 항목 제거
+    const updatedTrashList = trashList.filter((item) => item.id !== trash.id);
+    setTrashList(updatedTrashList);
+    // localStorage 업데이트
+    localStorage.setItem("trashList", JSON.stringify(updatedTrashList));
+
+    // 목록 업데이트
     setList((prev) => {
-      return {
+      const updatedList = {
         ...prev,
         [trash.timePeriod]: [
           ...prev[trash.timePeriod as keyof listProps],
           { ...trash, deletedDate: "" },
         ],
       };
+      // localStorage 업데이트
+      localStorage.setItem("medList", JSON.stringify(updatedList));
+      return updatedList;
     });
   };
-
-  useSaveTrashList(trashList, isTrashInitialLoad);
-  useSaveItemList(list, isInitialLoad, isDateChanged);
-
-  useEffect(() => {
-    setIsTrashInitialLoad(true);
-
-    setTimeout(() => {
-      setIsTrashInitialLoad(false);
-    }, 1000);
-  }, [setIsTrashInitialLoad]);
 
   //로컬 스토레지에서 쓰레기 데이터 받아오는 로직
   useEffect(() => {
