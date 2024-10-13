@@ -2,44 +2,41 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { toggleIsTaken } from "@/app/hooks/toggleIsTaken";
-import useDateStore from "@/app/store/homePage/useDateStore";
-import useFormStore from "@/app/store/homePage/useFormStore";
-
-import useItemStore from "@/app/store/homePage/useItemStore";
-import useSettingStore from "@/app/store/useSettingStore";
-import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
-import { outlineSt } from "@/app/style/homePage/outlineSt";
-
 import {
   frequencyToEnglish,
   frequencyToKorean,
 } from "@/app/constant/itemFrequency";
+import { toggleIsTaken } from "@/app/hooks/toggleIsTaken";
+import useDateStore from "@/app/store/homePage/useDateStore";
+import useFormStore from "@/app/store/homePage/useFormStore";
+import useItemStore from "@/app/store/homePage/useItemStore";
+import useModalStore from "@/app/store/useModalStore";
+import useSettingStore from "@/app/store/useSettingStore";
+import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
+import { outlineSt } from "@/app/style/homePage/outlineSt";
 import { itemProps, listProps } from "@/app/types/types";
 import { getAllItems } from "@/app/utils/getAllItems";
 import { getTotalListLength } from "@/app/utils/getToTalListLength";
 import { vibrate } from "@/app/utils/vibrate";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { SyntheticEvent, useEffect } from "react";
-import ItemOptionSection from "./ItemOptionSection";
 
 const ItemSection = () => {
   const {
-    selectedItemId,
-    setSelectedItemId,
     setIsEverythingTaken,
     previousIsEverythingTaken,
     setPreviousIsEverythingTaken,
   } = useItemStore();
   const { list, setList, focusInput } = useFormStore();
+  const { setItemForModal } = useModalStore();
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
   const { isEnglish } = useSettingStore();
 
   //아이템 옵션창 토글 로직
-  const clickOpenItemOptionWindow = (e: SyntheticEvent, item: itemProps) => {
+  const clickItem = (e: SyntheticEvent, item: itemProps) => {
     e.stopPropagation();
-    if (selectedItemId === item.id) return setSelectedItemId(null);
-    setSelectedItemId(item.id);
+    setItemForModal(item);
   };
 
   //아이템 활성화 토글 로직
@@ -118,61 +115,56 @@ const ItemSection = () => {
           {Object.keys(list).map(
             (timePeriod) =>
               list[timePeriod as keyof listProps].length > 0 && (
-                <section
-                  key={timePeriod}
-                  onClick={() => setSelectedItemId(null)}
-                  css={itemSectionSt.section}
-                >
+                <section key={timePeriod} css={itemSectionSt.section}>
                   {list[timePeriod as keyof listProps].length > 0 && (
                     <h2 css={outlineSt.h2}>{timePeriod}</h2>
                   )}
                   {list[timePeriod as keyof listProps].map((item, i) => {
                     return (
-                      <div key={i} css={itemSectionSt.listItemContainer}>
-                        <div
-                          onClick={(e) => clickOpenItemOptionWindow(e, item)}
-                          css={itemSectionSt.listItem(item, selectedItemId)}
+                      <Link
+                        key={i}
+                        href={`/pages/item-information/${item.id}`}
+                        onClick={(e) => clickItem(e, item)}
+                        css={itemSectionSt.listItem(item)}
+                      >
+                        <button
+                          onClick={(e) => clickToggle(e, item)}
+                          css={itemSectionSt.toggle(item.isTaken)}
                         >
-                          <button
-                            onClick={(e) => clickToggle(e, item)}
-                            css={itemSectionSt.toggle(item.isTaken)}
-                          >
-                            <motion.div
-                              css={itemSectionSt.handle}
-                              layout
-                              transition={{
-                                type: "spring",
-                                stiffness: 700,
-                                damping: 30,
-                              }}
-                            />
-                          </button>
-                          <div css={itemSectionSt.infoContainer}>
-                            <p css={itemSectionSt.name}>{item.name}</p>
-                            <div css={itemSectionSt.optionInfoContainer}>
-                              <p css={itemSectionSt.optionInfoText}>
-                                {item.date.substring(5).replaceAll("-", "/")}
-                              </p>
-                              <p css={itemSectionSt.optionInfoText}>|</p>
-                              <p css={itemSectionSt.optionInfoText}>
-                                {String(item.hours).padStart(2, "0") +
-                                  ":" +
-                                  String(item.minutes).padStart(2, "0")}
-                              </p>
-                              <p css={itemSectionSt.optionInfoText}>|</p>
-                              <p css={itemSectionSt.optionInfoText}>
-                                {isEnglish
-                                  ? frequencyToEnglish[item.frequency]
-                                  : frequencyToKorean[item.frequency]}
-                              </p>
-                            </div>
-                          </div>
-                          <div css={itemSectionSt.leftDayContainer}>
-                            <p>D - {item.leftDay}</p>
+                          <motion.div
+                            css={itemSectionSt.handle}
+                            layout
+                            transition={{
+                              type: "spring",
+                              stiffness: 700,
+                              damping: 30,
+                            }}
+                          />
+                        </button>
+                        <div css={itemSectionSt.infoContainer}>
+                          <p css={itemSectionSt.name}>{item.name}</p>
+                          <div css={itemSectionSt.optionInfoContainer}>
+                            <p css={itemSectionSt.optionInfoText}>
+                              {item.date.substring(5).replaceAll("-", "/")}
+                            </p>
+                            <p css={itemSectionSt.optionInfoText}>|</p>
+                            <p css={itemSectionSt.optionInfoText}>
+                              {String(item.hours).padStart(2, "0") +
+                                ":" +
+                                String(item.minutes).padStart(2, "0")}
+                            </p>
+                            <p css={itemSectionSt.optionInfoText}>|</p>
+                            <p css={itemSectionSt.optionInfoText}>
+                              {isEnglish
+                                ? frequencyToEnglish[item.frequency]
+                                : frequencyToKorean[item.frequency]}
+                            </p>
                           </div>
                         </div>
-                        <ItemOptionSection item={item} />
-                      </div>
+                        <div css={itemSectionSt.leftDayContainer}>
+                          <p>D - {item.leftDay}</p>
+                        </div>
+                      </Link>
                     );
                   })}
                 </section>

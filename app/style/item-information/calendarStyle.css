@@ -60,6 +60,6 @@
   transition: 0.2s;
 }
 
-.react-calendar__month-view__days__day:hover {
+.react-calendar__month-view__days__day:active {
   background-color: #80808030;
 }

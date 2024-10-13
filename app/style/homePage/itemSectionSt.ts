@@ -56,7 +56,7 @@ export const itemSectionSt = {
   listItemContainer: css`
     width: 100%;
   `,
-  listItem: (item: itemProps, selectedItemId: string | null) => {
+  listItem: (item: itemProps) => {
     return css`
       position: relative;
       display: flex;
@@ -66,13 +66,8 @@ export const itemSectionSt = {
       width: 100%;
       height: 60px;
       padding: 5px 10px;
-      ${item.id === selectedItemId
-        ? `border: 1px solid #80808060;
-        border-bottom: none;`
-        : null};
-      border-radius: ${item.id === selectedItemId
-        ? `20px 20px 0 0`
-        : borderRadius.medium};
+      border: none;
+      border-radius: ${borderRadius.medium};
       background-color: ${colors.darkSection};
       transition: background-color 0.2s, border-radius 0.2s;
       cursor: pointer;
@@ -80,12 +75,10 @@ export const itemSectionSt = {
       animation: ${item.date === "0000-00-00" && itemAppearAni} 0.2s ease-in-out;
 
       &:active {
-        background-color: ${colors.grey}30;
+        background-color: ${colors.grey}20;
       }
 
       @media (prefers-color-scheme: light) {
-        ${item.id === selectedItemId &&
-        `border: 1px solid #eeeeee; border-bottom: none;`};
         background-color: #ffffff;
       }
     `;

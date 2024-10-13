@@ -3,7 +3,6 @@
 
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
-import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
 import { itemInformationPageSt } from "@/app/style/item-information/itemInformationPageSt";
 
 const BtnSection = () => {
@@ -13,8 +12,14 @@ const BtnSection = () => {
   return (
     <div css={itemInformationPageSt.btnContainer}>
       <button
+        onClick={() => setWhichModal("chooseModify")}
+        css={itemInformationPageSt.modifyBtn}
+      >
+        {isEnglish ? `Modify` : `수정`}
+      </button>
+      <button
         onClick={() => setWhichModal("deleteItem")}
-        css={itemSectionSt.delBtn}
+        css={itemInformationPageSt.delBtn}
       >
         {isEnglish ? `DEL` : `삭제`}
       </button>

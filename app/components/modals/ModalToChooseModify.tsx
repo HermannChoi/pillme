@@ -40,6 +40,18 @@ const ModalToChooseModify = () => {
           >
             {isEnglish ? `TIME` : `시간`}
           </button>
+          <button
+            onClick={() => setWhichModal("chooseFrequency")}
+            css={modalSt.cancelBtn}
+          >
+            {isEnglish ? `FREQUENCY` : `빈도`}
+          </button>
+          <button
+            onClick={() => setWhichModal("modifyLeftDay")}
+            css={modalSt.cancelBtn}
+          >
+            {isEnglish ? `NEXT TAKING DATE` : `다음 복용일`}
+          </button>
           <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
             {isEnglish ? `CANCEL` : `취소`}
           </button>

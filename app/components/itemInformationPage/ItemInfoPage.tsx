@@ -1,15 +1,13 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import Header from "./Header";
-import ModalToDeleteItem from "../modals/ModalToDeleteItem";
-import BasicInfoSection from "./BasicInfoSection";
-import ItemCalendar from "./ItemCalendar";
-import BtnSection from "./BtnSection";
 import { itemInformationPageSt } from "@/app/style/item-information/itemInformationPageSt";
-import MessageModal from "../modals/MessageModal";
-import ModalToAddTakenDays from "../modals/ModalToAddTakenDays";
-import ModalToDeleteTakenDays from "../modals/ModalToDeleteTakenDays";
+
+import BasicInfoSection from "./BasicInfoSection";
+import BtnSection from "./BtnSection";
+import Header from "./Header";
+import ItemCalendar from "./ItemCalendar";
+import ItemInfoPageModals from "./ItemInfoPageModals";
 
 const ItemInfoPage = () => {
   return (
@@ -19,12 +17,7 @@ const ItemInfoPage = () => {
         <BasicInfoSection />
         <ItemCalendar />
         <BtnSection />
-        <>
-          <ModalToDeleteItem />
-          <ModalToAddTakenDays />
-          <ModalToDeleteTakenDays />
-          <MessageModal />
-        </>
+        <ItemInfoPageModals />
       </div>
     </div>
   );

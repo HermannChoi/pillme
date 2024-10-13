@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, flexCenterX2 } from "../commonSt";
+import { borderRadius, colors, flexCenterX2 } from "../commonSt";
 import { showUpFromBottom } from "../keyframes";
 
 export const itemInformationPageSt = {
@@ -89,6 +89,38 @@ export const itemInformationPageSt = {
     flex-direction: column;
     row-gap: 0.5rem;
     width: 100%;
-    height: 4rem;
+    height: 6rem;
   `,
+  modifyBtn: css`
+    ${flexCenterX2}
+    flex: 1;
+    height: 40px;
+    padding: 5px;
+    border: none;
+    border-radius: ${borderRadius.small};
+    background-color: ${colors.green}80;
+    transition: 0.2s;
+
+    &:hover {
+      transform: scale(0.98);
+      background-color: ${colors.green}60;
+    }
+  `,
+  delBtn: [
+    flexCenterX2,
+    css`
+      flex: 1;
+      height: 40px;
+      padding: 5px;
+      border: none;
+      border-radius: ${borderRadius.small};
+      background-color: ${colors.red}80;
+      transition: 0.2s;
+
+      &:hover {
+        transform: scale(0.98);
+        background-color: ${colors.red}60;
+      }
+    `,
+  ],
 };
