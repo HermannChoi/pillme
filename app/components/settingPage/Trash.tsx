@@ -1,11 +1,11 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { settingPageSt } from "@/app/style/settingPage/settingPageSt";
-import useSettingStore from "../../store/useSettingStore";
-import Image from "next/image";
 import trash from "@/app/assets/svg/trash.svg";
+import { settingPageSt } from "@/app/style/settingPage/settingPageSt";
+import Image from "next/image";
 import Link from "next/link";
+import useSettingStore from "../../store/useSettingStore";
 
 const Trash = () => {
   const { isEnglish } = useSettingStore();
@@ -17,7 +17,12 @@ const Trash = () => {
         <div css={settingPageSt.listContainer}>
           <p>{isEnglish ? `Trash Can` : `휴지통`}</p>
           <Link href={"/pages/trash"} css={settingPageSt.trashButton}>
-            <Image src={trash} alt="trash" css={settingPageSt.trashIcon} />
+            <Image
+              src={trash}
+              alt="trash"
+              priority={true}
+              css={settingPageSt.trashIcon}
+            />
           </Link>
         </div>
       </section>

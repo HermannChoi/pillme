@@ -68,11 +68,11 @@ main {
 }
 
 .showUpFromTop {
-  animation: showUpFromTop 0.1s ease-in-out;
+  animation: showUpFromTop 0.2s ease-in-out;
 }
 
 .showUpFromBottom {
-  animation: showUpFromBottom 0.1s ease-in-out;
+  animation: showUpFromBottom 0.2s ease-in-out;
 }
 
 .defaultOutline {
