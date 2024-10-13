@@ -10,7 +10,7 @@ import { getAllItems } from "@/app/utils/getAllItems";
 
 const ModalToResetItem = () => {
   const { whichModal, setWhichModal, setMessage } = useModalStore();
-  const { list } = useFormStore();
+  const { list, setList } = useFormStore();
   const { isEnglish } = useSettingStore();
 
   const clickResetUserName = () => {
@@ -35,6 +35,7 @@ const ModalToResetItem = () => {
       )
     );
 
+    setList(defaultList);
     localStorage.setItem("medList", JSON.stringify(defaultList));
 
     setWhichModal("message");
