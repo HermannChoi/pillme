@@ -1,3 +1,4 @@
+import { itemProps } from "@/app/types/types";
 import { css } from "@emotion/react";
 import {
   borderRadius,
@@ -6,7 +7,6 @@ import {
   flexColumnCenterX2,
 } from "../commonSt";
 import { emptyItemSectionAni, itemAppearAni } from "../keyframes";
-import { itemProps } from "@/app/types/types";
 
 export const itemSectionSt = {
   sectionContainer: [
@@ -79,14 +79,14 @@ export const itemSectionSt = {
       z-index: 1;
       animation: ${item.date === "0000-00-00" && itemAppearAni} 0.2s ease-in-out;
 
+      &:active {
+        background-color: ${colors.grey}30;
+      }
+
       @media (prefers-color-scheme: light) {
         ${item.id === selectedItemId &&
         `border: 1px solid #eeeeee; border-bottom: none;`};
         background-color: #ffffff;
-
-        &:hover {
-          background-color: #eeeeee;
-        }
       }
     `;
   },
@@ -110,8 +110,34 @@ export const itemSectionSt = {
     background-color: white;
     border-radius: ${borderRadius.medium};
   `,
+  infoContainer: css`
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.2rem;
+  `,
   name: css`
     flex: 1;
+  `,
+  optionInfoContainer: css`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.3rem;
+  `,
+  optionInfoText: css`
+    font-size: 0.8rem;
+    color: ${colors.grey};
+  `,
+  leftDayContainer: css`
+    ${flexCenterX2}
+    width: 61px;
+    height: fit-content;
+    padding: 0.2rem 0.5rem;
+    border-radius: ${borderRadius.small};
+    background-color: ${colors.green}30;
+    font-size: 0.8rem;
+    color: ${colors.grey};
   `,
   optionContainer: (itemId: string, selectedItemId: string | null) => {
     return [

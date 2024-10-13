@@ -30,7 +30,7 @@ export const frequencyToKorean: { [key: number]: string } = {
 
 export const frequencyToEnglish: { [key: number]: string } = {
   0: "Everyday",
-  1: "Every Other Day",
+  1: "E.O.D",
   6: "Every Week",
-  13: "Every Other week",
+  13: "E.O.W",
 };

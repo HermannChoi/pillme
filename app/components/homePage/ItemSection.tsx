@@ -11,6 +11,10 @@ import useSettingStore from "@/app/store/useSettingStore";
 import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
 import { outlineSt } from "@/app/style/homePage/outlineSt";
 
+import {
+  frequencyToEnglish,
+  frequencyToKorean,
+} from "@/app/constant/itemFrequency";
 import { itemProps, listProps } from "@/app/types/types";
 import { getAllItems } from "@/app/utils/getAllItems";
 import { getTotalListLength } from "@/app/utils/getToTalListLength";
@@ -143,13 +147,29 @@ const ItemSection = () => {
                               }}
                             />
                           </button>
-                          <p>{item.date.substring(5).replaceAll("-", "/")}</p>
-                          <p css={itemSectionSt.name}>{item.name}</p>
-                          <p>
-                            {String(item.hours).padStart(2, "0") +
-                              ":" +
-                              String(item.minutes).padStart(2, "0")}
-                          </p>
+                          <div css={itemSectionSt.infoContainer}>
+                            <p css={itemSectionSt.name}>{item.name}</p>
+                            <div css={itemSectionSt.optionInfoContainer}>
+                              <p css={itemSectionSt.optionInfoText}>
+                                {item.date.substring(5).replaceAll("-", "/")}
+                              </p>
+                              <p css={itemSectionSt.optionInfoText}>|</p>
+                              <p css={itemSectionSt.optionInfoText}>
+                                {String(item.hours).padStart(2, "0") +
+                                  ":" +
+                                  String(item.minutes).padStart(2, "0")}
+                              </p>
+                              <p css={itemSectionSt.optionInfoText}>|</p>
+                              <p css={itemSectionSt.optionInfoText}>
+                                {isEnglish
+                                  ? frequencyToEnglish[item.frequency]
+                                  : frequencyToKorean[item.frequency]}
+                              </p>
+                            </div>
+                          </div>
+                          <div css={itemSectionSt.leftDayContainer}>
+                            <p>D - {item.leftDay}</p>
+                          </div>
                         </div>
                         <ItemOptionSection item={item} />
                       </div>
