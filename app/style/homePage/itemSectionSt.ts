@@ -32,8 +32,8 @@ export const itemSectionSt = {
     `,
   ],
   h2: css`
-    font-size: 1.8rem;
-    font-weight: 500;
+    font-size: 1.3rem;
+    font-weight: 600;
   `,
   emptyItemSection: [
     flexCenterX2,

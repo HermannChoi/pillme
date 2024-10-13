@@ -110,6 +110,7 @@ export const createItemFormSt = {
   },
   errorMsg: (isEMsgChanged: boolean) => {
     return css`
+      font-size: 0.9rem;
       color: ${isEMsgChanged ? colors.red : colors.blue};
       animation: ${isEMsgChanged && twitching1} 0.4s;
     `;

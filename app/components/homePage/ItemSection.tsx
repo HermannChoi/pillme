@@ -96,7 +96,7 @@ const ItemSection = () => {
               list[timePeriod as keyof listProps].length > 0 && (
                 <section key={timePeriod} css={itemSectionSt.section}>
                   {list[timePeriod as keyof listProps].length > 0 && (
-                    <h2 css={itemSectionSt.h2}>{timePeriod}</h2>
+                    <h2 css={itemSectionSt.h2}>{timePeriod.toUpperCase()}</h2>
                   )}
                   {list[timePeriod as keyof listProps].map((item, i) => {
                     return (
