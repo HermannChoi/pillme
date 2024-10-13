@@ -3,9 +3,11 @@ import { itemProps, listProps } from "../types/types";
 export const clickDelete = (
   itemForModal: itemProps,
   setList: (prev: (prev: listProps) => listProps) => void,
-  trashList: itemProps[],
   moveToTrash: (value: itemProps) => void
 ) => {
+  const storedTrashList = localStorage.getItem("trashList");
+  const parsedTrashList = storedTrashList ? JSON.parse(storedTrashList) : [];
+
   const newTrashList = {
     ...itemForModal,
     deletedDate: new Date().toISOString().split("T")[0],
@@ -13,7 +15,7 @@ export const clickDelete = (
 
   localStorage.setItem(
     "trashList",
-    JSON.stringify([...trashList, newTrashList])
+    JSON.stringify([...parsedTrashList, newTrashList])
   );
   moveToTrash(newTrashList);
 
