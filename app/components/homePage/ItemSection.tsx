@@ -19,10 +19,11 @@ import { getAllItems } from "@/app/utils/getAllItems";
 import { getTotalListLength } from "@/app/utils/getToTalListLength";
 import { vibrate } from "@/app/utils/vibrate";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { SyntheticEvent, useEffect } from "react";
 
 const ItemSection = () => {
+  const router = useRouter();
   const {
     setIsEverythingTaken,
     previousIsEverythingTaken,
@@ -33,10 +34,10 @@ const ItemSection = () => {
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
   const { isEnglish } = useSettingStore();
 
-  //아이템 옵션창 토글 로직
+  //아이템 정보 페이지 이동 로직
   const clickItem = (e: SyntheticEvent, item: itemProps) => {
-    e.stopPropagation();
     setItemForModal(item);
+    router.push(`/pages/item-information/${item.id}`);
   };
 
   //아이템 활성화 토글 로직
@@ -121,9 +122,8 @@ const ItemSection = () => {
                   )}
                   {list[timePeriod as keyof listProps].map((item, i) => {
                     return (
-                      <Link
+                      <div
                         key={i}
-                        href={`/pages/item-information/${item.id}`}
                         onClick={(e) => clickItem(e, item)}
                         css={itemSectionSt.listItem(item)}
                       >
@@ -164,7 +164,7 @@ const ItemSection = () => {
                         <div css={itemSectionSt.leftDayContainer}>
                           <p>D - {item.leftDay}</p>
                         </div>
-                      </Link>
+                      </div>
                     );
                   })}
                 </section>
