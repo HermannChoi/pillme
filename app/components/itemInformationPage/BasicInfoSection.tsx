@@ -10,10 +10,12 @@ import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { itemInformationPageSt } from "@/app/style/item-information/itemInformationPageSt";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const BasicInfoSection = () => {
   const router = useRouter();
+
+  const [isShowingMoreInfo, setIsShowingMoreInfo] = useState(false);
 
   const { itemForModal } = useModalStore();
   const { isEnglish } = useSettingStore();
@@ -49,6 +51,30 @@ const BasicInfoSection = () => {
           {isEnglish ? `D` : `일`}
         </p>
       </div>
+      {isShowingMoreInfo ? (
+        <>
+          <div css={itemInformationPageSt.infoSection}>
+            <p>{isEnglish ? `Last Taken Date : ` : `마지막 복용(사용)일 : `}</p>
+            <p>{itemForModal.date.replaceAll("-", ".")}</p>
+          </div>
+          <div css={itemInformationPageSt.infoSection}>
+            <p>
+              {isEnglish ? `Last Time to Take : ` : `마지막 복용(사용) 시간 : `}
+            </p>
+            <p>
+              {itemForModal.hours.toString().padStart(2, "0")} :{" "}
+              {itemForModal.minutes.toString().padStart(2, "0")}
+            </p>
+          </div>
+        </>
+      ) : (
+        <button
+          onClick={() => setIsShowingMoreInfo(true)}
+          css={itemInformationPageSt.showMoreInfoBtn}
+        >
+          더보기
+        </button>
+      )}
     </>
   );
 };

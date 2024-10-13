@@ -123,7 +123,7 @@ const ItemSection = () => {
                           <p css={itemSectionSt.name}>{item.name}</p>
                           <div css={itemSectionSt.optionInfoContainer}>
                             <p css={itemSectionSt.optionInfoText}>
-                              {item.date.substring(5).replaceAll("-", "/")}
+                              {item.date.substring(5).replaceAll("-", ".")}
                             </p>
                             <p css={itemSectionSt.optionInfoText}>|</p>
                             <p css={itemSectionSt.optionInfoText}>
@@ -136,10 +136,6 @@ const ItemSection = () => {
                               {isEnglish
                                 ? frequencyToEnglish[item.frequency]
                                 : frequencyToKorean[item.frequency]}
-                            </p>
-                            <p css={itemSectionSt.optionInfoText}>|</p>
-                            <p css={itemSectionSt.optionInfoText}>
-                              D - {item.leftDay}
                             </p>
                           </div>
                         </div>

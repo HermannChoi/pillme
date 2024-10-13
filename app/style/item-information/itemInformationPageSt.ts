@@ -64,6 +64,14 @@ export const itemInformationPageSt = {
     width: 100%;
     height: 50px;
   `,
+  showMoreInfoBtn: css`
+    width: 100%;
+    height: 30px;
+    border: 1px solid ${colors.grey}80;
+    border-radius: ${borderRadius.small};
+    background-color: transparent;
+    font-size: 0.9rem;
+  `,
   todayText: css`
     position: absolute;
     top: 3%;

@@ -36,7 +36,7 @@ const InfoSection = () => {
 
   return (
     <div css={outlineSt.infoSectionSt}>
-      <p>{lastCheckedDate?.replaceAll("-", "/")}</p>
+      <p>{lastCheckedDate?.replaceAll("-", ".")}</p>
       <p>
         {itemsLength > 0
           ? numOfItemsToTake > 0
@@ -49,7 +49,9 @@ const InfoSection = () => {
             : isEnglish
             ? "You have taken all your items today."
             : "오늘 약을 다 복용했어요!"
-          : null}
+          : isEnglish
+          ? "WELCOME!"
+          : "환영합니다!"}
       </p>
     </div>
   );
