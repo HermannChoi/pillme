@@ -5,11 +5,8 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="apple-touch-icon" href="/png/192icon.png" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-touch-fullscreen" content="yes" />
-          <link rel="apple-touch-icon" href="/png/192icon.png" />
-          <link rel="apple-touch-icon" href="/png/512icon.png" />
 
           <link
             rel="apple-touch-startup-image"
