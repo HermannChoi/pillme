@@ -128,17 +128,17 @@ export const itemSectionSt = {
   `,
   modifyBtn: css`
     ${flexCenterX2}
-    width: 55px;
-    height: 1.5rem;
+    width: 70px;
+    height: 2rem;
     padding: 0.2rem 0.5rem;
     border: none;
     border-radius: ${borderRadius.small};
-    margin-top: -1rem;
-    background-color: ${colors.green}30;
+    margin-top: -0.5rem;
+    background-color: ${colors.grey}30;
     font-size: 0.8rem;
 
     &:active {
-      background-color: ${colors.green}20;
+      background-color: ${colors.grey}20;
     }
   `,
 };
