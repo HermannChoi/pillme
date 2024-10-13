@@ -62,12 +62,12 @@ export const itemSectionSt = {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
+      gap: 0.5rem;
       width: 100%;
       height: 60px;
-      padding: 5px 10px;
+      padding: 5px;
       border: none;
-      border-radius: ${borderRadius.medium};
+      border-radius: ${borderRadius.small};
       background-color: ${colors.darkSection};
       transition: background-color 0.2s, border-radius 0.2s;
       cursor: pointer;
@@ -104,13 +104,15 @@ export const itemSectionSt = {
     border-radius: ${borderRadius.medium};
   `,
   infoContainer: css`
-    flex: 1;
     display: flex;
     flex-direction: column;
     row-gap: 0.2rem;
+    width: calc(100% - 125px - 0.4rem);
   `,
   name: css`
-    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   `,
   optionInfoContainer: css`
     display: flex;
@@ -122,14 +124,19 @@ export const itemSectionSt = {
     font-size: 0.8rem;
     color: ${colors.grey};
   `,
-  leftDayContainer: css`
+  modifyBtn: css`
     ${flexCenterX2}
-    width: 61px;
-    height: fit-content;
+    width: 55px;
+    height: 1.5rem;
     padding: 0.2rem 0.5rem;
+    border: none;
     border-radius: ${borderRadius.small};
+    margin-top: -0.5rem;
     background-color: ${colors.green}30;
     font-size: 0.8rem;
-    color: ${colors.grey};
+
+    &:active {
+      background-color: ${colors.green}20;
+    }
   `,
 };

@@ -30,7 +30,7 @@ const ItemSection = () => {
     setPreviousIsEverythingTaken,
   } = useItemStore();
   const { list, setList, focusInput } = useFormStore();
-  const { setItemForModal } = useModalStore();
+  const { setWhichModal, setItemForModal } = useModalStore();
   const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
   const { isEnglish } = useSettingStore();
 
@@ -48,6 +48,13 @@ const ItemSection = () => {
       setList,
     });
     vibrate(100);
+  };
+
+  const clickModifyBtn = (e: SyntheticEvent, item: itemProps) => {
+    e.stopPropagation();
+    router.push(`/pages/item-information/${item.id}`);
+    setItemForModal(item);
+    setWhichModal("chooseModify");
   };
 
   //다음날 지나서 아이템 비활성화 되는 로직
@@ -159,11 +166,18 @@ const ItemSection = () => {
                                 ? frequencyToEnglish[item.frequency]
                                 : frequencyToKorean[item.frequency]}
                             </p>
+                            <p css={itemSectionSt.optionInfoText}>|</p>
+                            <p css={itemSectionSt.optionInfoText}>
+                              D - {item.leftDay}
+                            </p>
                           </div>
                         </div>
-                        <div css={itemSectionSt.leftDayContainer}>
-                          <p>D - {item.leftDay}</p>
-                        </div>
+                        <button
+                          onClick={(e) => clickModifyBtn(e, item)}
+                          css={itemSectionSt.modifyBtn}
+                        >
+                          {isEnglish ? "Modify" : "수정"}
+                        </button>
                       </div>
                     );
                   })}

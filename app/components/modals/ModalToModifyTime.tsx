@@ -4,7 +4,6 @@
 import { clickModifyItem } from "@/app/hooks/clickModifyItem";
 import { clickModifyOnModal } from "@/app/hooks/clickModifyItemOnModal";
 import useFormStore from "@/app/store/homePage/useFormStore";
-import useItemStore from "@/app/store/homePage/useItemStore";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { modalSt } from "@/app/style/modalSt";
@@ -19,7 +18,6 @@ const ModalToModifyTime = () => {
     setItemForModal,
     setMessage,
   } = useModalStore();
-  const { setSelectedItemId } = useItemStore();
   const { isEnglish } = useSettingStore();
 
   const hoursMin = 0;
@@ -35,7 +33,6 @@ const ModalToModifyTime = () => {
       clickModifyItem,
       itemForModal,
       setList,
-      setSelectedItemId,
     });
   };
 

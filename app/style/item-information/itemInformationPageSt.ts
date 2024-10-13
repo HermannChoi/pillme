@@ -49,7 +49,8 @@ export const itemInformationPageSt = {
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: 15%;
+    min-height: 15%;
+    padding-bottom: 1rem;
     border-bottom: 1px solid ${colors.grey}20;
   `,
   name: css`
