@@ -7,7 +7,11 @@ const TrashPage = dynamic(() => import("@/app/components/trash/TrashPage"), {
 });
 
 const page = () => {
-  return <TrashPage />;
+  return (
+    <div className="showUpFromTop defaultOutline">
+      <TrashPage />
+    </div>
+  );
 };
 
 export default page;

@@ -10,7 +10,11 @@ const ItemInfoPage = dynamic(
 );
 
 const page = () => {
-  return <ItemInfoPage />;
+  return (
+    <div className="showUpFromBottom defaultOutline">
+      <ItemInfoPage />
+    </div>
+  );
 };
 
 export default page;

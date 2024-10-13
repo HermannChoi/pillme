@@ -71,6 +71,16 @@ main {
   animation: showUpFromTop 0.1s ease-in-out;
 }
 
+.showUpFromBottom {
+  animation: showUpFromBottom 0.1s ease-in-out;
+}
+
+.defaultOutline {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 @keyframes showUpFromLeft {
   0% {
     transform: translateX(-2%);
@@ -86,6 +96,12 @@ main {
 @keyframes showUpFromTop {
   0% {
     transform: translateY(-3%);
+  }
+}
+
+@keyframes showUpFromBottom {
+  0% {
+    transform: translateY(3%);
   }
 }
 

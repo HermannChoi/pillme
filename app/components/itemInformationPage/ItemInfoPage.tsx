@@ -2,7 +2,6 @@
 /** @jsxImportSource @emotion/react */
 
 import { itemInformationPageSt } from "@/app/style/item-information/itemInformationPageSt";
-
 import BasicInfoSection from "./BasicInfoSection";
 import BtnSection from "./BtnSection";
 import Header from "./Header";

@@ -10,7 +10,11 @@ const SettingPage = dynamic(
 );
 
 const page = () => {
-  return <SettingPage />;
+  return (
+    <div className="showUpFromRight defaultOutline">
+      <SettingPage />
+    </div>
+  );
 };
 
 export default page;

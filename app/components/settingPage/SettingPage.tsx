@@ -9,7 +9,7 @@ import MessageModal from "../modals/MessageModal";
 
 const SettingPage = () => {
   return (
-    <main className="showUpFromRight">
+    <main>
       <Title />
       <ResetButtons />
       <LanguageToggle />
