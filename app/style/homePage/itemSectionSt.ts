@@ -21,7 +21,7 @@ export const itemSectionSt = {
     css`
       row-gap: 5px;
       width: 100%;
-      padding: 0.5rem;
+      padding: 0.3rem 0;
       border: none;
       border-radius: ${borderRadius.medium};
       background-color: ${colors.darkSection};
@@ -65,16 +65,18 @@ export const itemSectionSt = {
       gap: 0.5rem;
       width: 100%;
       height: 60px;
-      padding: 5px;
+      padding: 5px 10px;
       border: none;
-      border-radius: ${borderRadius.small};
+      border-radius: ${borderRadius.medium};
       background-color: ${colors.darkSection};
       transition: background-color 0.2s, border-radius 0.2s;
       cursor: pointer;
       z-index: 1;
       animation: ${item.date === "0000-00-00" && itemAppearAni} 0.2s ease-in-out;
+      transition: 0.1s;
 
       &:active {
+        transform: scale(0.98);
         background-color: ${colors.grey}20;
       }
 
@@ -131,7 +133,7 @@ export const itemSectionSt = {
     padding: 0.2rem 0.5rem;
     border: none;
     border-radius: ${borderRadius.small};
-    margin-top: -0.5rem;
+    margin-top: -1rem;
     background-color: ${colors.green}30;
     font-size: 0.8rem;
 
