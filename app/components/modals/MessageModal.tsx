@@ -29,7 +29,7 @@ const MessageModal = () => {
           <p css={modalSt.text}>{message}</p>
         </div>
         <div css={modalSt.btnContainer}>
-          <button onClick={() => clickCloseBtn()} css={modalSt.cancelBtn}>
+          <button onClick={() => clickCloseBtn()} css={modalSt.whiteColorBtn}>
             {isEnglish ? `CLOSE` : `닫기`}
           </button>
         </div>

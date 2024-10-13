@@ -30,11 +30,14 @@ const ModalToShowLeftDay = () => {
         <div css={modalSt.btnContainer}>
           <button
             onClick={() => setWhichModal("modifyLeftDay")}
-            css={modalSt.delBtn}
+            css={modalSt.redColorBtn}
           >
             {isEnglish ? `MODIFY` : `수정`}
           </button>
-          <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
+          <button
+            onClick={() => setWhichModal(null)}
+            css={modalSt.whiteColorBtn}
+          >
             {isEnglish ? `CLOSE` : `닫기`}
           </button>
         </div>

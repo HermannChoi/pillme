@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
+import { modalList } from "../types/types";
 import { borderRadius, colors } from "./commonSt";
 import { fadeIn } from "./keyframes";
-import { modalList } from "../types/types";
 
 export const modalSt = {
   background: (whichModal: null | keyof modalList, modal: keyof modalList) => {
@@ -78,7 +78,7 @@ export const modalSt = {
     flex-direction: column;
     width: 100%;
   `,
-  cancelBtn: css`
+  whiteColorBtn: css`
     height: 50px;
     padding: 5px 10px;
     border: none;
@@ -91,7 +91,7 @@ export const modalSt = {
       background-color: ${colors.grey}20;
     }
   `,
-  delBtn: css`
+  redColorBtn: css`
     height: 50px;
     padding: 5px 10px;
     border: none;

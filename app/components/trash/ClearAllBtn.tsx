@@ -4,7 +4,7 @@
 import useTrashStore from "@/app/store/trash/useTrashStore";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
-import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
+import { itemInformationPageSt } from "@/app/style/item-information/itemInformationPageSt";
 import { trashSt } from "@/app/style/trash/trashSt";
 
 const ClearAllBtn = () => {
@@ -25,7 +25,10 @@ const ClearAllBtn = () => {
 
   return (
     <div css={trashSt.listContainer}>
-      <button onClick={() => clickClearAllBtn()} css={itemSectionSt.delBtn}>
+      <button
+        onClick={() => clickClearAllBtn()}
+        css={itemInformationPageSt.delBtn}
+      >
         {isEnglish ? `CLEAR ALL` : `전체 삭제`}
       </button>
     </div>

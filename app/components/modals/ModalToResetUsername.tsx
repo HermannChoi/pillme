@@ -1,9 +1,9 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
+import useUserNameStore from "@/app/store/homePage/useUserNameStore";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
-import useUserNameStore from "@/app/store/homePage/useUserNameStore";
 import { modalSt } from "@/app/style/modalSt";
 import { useRouter } from "next/navigation";
 
@@ -51,10 +51,16 @@ const ModalToResetUsername = () => {
           </div>
         )}
         <div css={modalSt.btnContainer}>
-          <button onClick={() => clickResetUserName()} css={modalSt.delBtn}>
+          <button
+            onClick={() => clickResetUserName()}
+            css={modalSt.redColorBtn}
+          >
             {isEnglish ? `CHANGE` : `재설정`}
           </button>
-          <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
+          <button
+            onClick={() => setWhichModal(null)}
+            css={modalSt.whiteColorBtn}
+          >
             {isEnglish ? `CANCEL` : `취소`}
           </button>
         </div>

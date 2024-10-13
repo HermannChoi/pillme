@@ -52,10 +52,16 @@ const ModalToDeleteItem = () => {
           )}
         </div>
         <div css={modalSt.btnContainer}>
-          <button onClick={() => clickDeleteOnModal()} css={modalSt.delBtn}>
+          <button
+            onClick={() => clickDeleteOnModal()}
+            css={modalSt.redColorBtn}
+          >
             {isEnglish ? `DELETE` : `삭제`}
           </button>
-          <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
+          <button
+            onClick={() => setWhichModal(null)}
+            css={modalSt.whiteColorBtn}
+          >
             {isEnglish ? `CANCEL` : `취소`}
           </button>
         </div>

@@ -1,14 +1,14 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import React from "react";
-import useModalStore from "@/app/store/useModalStore";
-import { modalSt } from "@/app/style/modalSt";
-import useItemStore from "@/app/store/homePage/useItemStore";
-import useSettingStore from "@/app/store/useSettingStore";
-import useFormStore from "@/app/store/homePage/useFormStore";
 import { clickModifyItem } from "@/app/hooks/clickModifyItem";
 import { clickModifyOnModal } from "@/app/hooks/clickModifyItemOnModal";
+import useFormStore from "@/app/store/homePage/useFormStore";
+import useItemStore from "@/app/store/homePage/useItemStore";
+import useModalStore from "@/app/store/useModalStore";
+import useSettingStore from "@/app/store/useSettingStore";
+import { modalSt } from "@/app/style/modalSt";
+import React from "react";
 
 const ModalToModifyDate = () => {
   const { setList } = useFormStore();
@@ -66,10 +66,13 @@ const ModalToModifyDate = () => {
           />
         </div>
         <div css={modalSt.btnContainer}>
-          <button onClick={() => clickModifyBtn()} css={modalSt.delBtn}>
+          <button onClick={() => clickModifyBtn()} css={modalSt.redColorBtn}>
             {isEnglish ? `Modify` : `수정`}
           </button>
-          <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
+          <button
+            onClick={() => setWhichModal(null)}
+            css={modalSt.whiteColorBtn}
+          >
             {isEnglish ? `CANCEL` : `취소`}
           </button>
         </div>

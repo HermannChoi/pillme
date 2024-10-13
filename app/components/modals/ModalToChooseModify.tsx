@@ -4,10 +4,22 @@
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { modalSt } from "@/app/style/modalSt";
+import { modalList } from "@/app/types/types";
 
 const ModalToChooseModify = () => {
   const { whichModal, setWhichModal } = useModalStore();
   const { isEnglish } = useSettingStore();
+
+  const modifyModalOptions = [
+    { name: isEnglish ? "DATE" : "날짜", value: "modifyDate" },
+    { name: isEnglish ? "TIME" : "시간", value: "modifyTime" },
+    { name: isEnglish ? "FREQUENCY" : "빈도", value: "chooseFrequency" },
+    {
+      name: isEnglish ? "NEXT TAKING DATE" : "다음 복용일",
+      value: "modifyLeftDay",
+    },
+    { name: isEnglish ? "CANCEL" : "취소", value: null },
+  ];
 
   return (
     <div
@@ -28,33 +40,15 @@ const ModalToChooseModify = () => {
           </p>
         </div>
         <div css={modalSt.btnContainer}>
-          <button
-            onClick={() => setWhichModal("modifyDate")}
-            css={modalSt.cancelBtn}
-          >
-            {isEnglish ? `DATE` : `날짜`}
-          </button>
-          <button
-            onClick={() => setWhichModal("modifyTime")}
-            css={modalSt.cancelBtn}
-          >
-            {isEnglish ? `TIME` : `시간`}
-          </button>
-          <button
-            onClick={() => setWhichModal("chooseFrequency")}
-            css={modalSt.cancelBtn}
-          >
-            {isEnglish ? `FREQUENCY` : `빈도`}
-          </button>
-          <button
-            onClick={() => setWhichModal("modifyLeftDay")}
-            css={modalSt.cancelBtn}
-          >
-            {isEnglish ? `NEXT TAKING DATE` : `다음 복용일`}
-          </button>
-          <button onClick={() => setWhichModal(null)} css={modalSt.cancelBtn}>
-            {isEnglish ? `CANCEL` : `취소`}
-          </button>
+          {modifyModalOptions.map((option) => (
+            <button
+              key={option.value}
+              onClick={() => setWhichModal(option.value as keyof modalList)}
+              css={modalSt.whiteColorBtn}
+            >
+              {option.name}
+            </button>
+          ))}
         </div>
       </div>
     </div>
