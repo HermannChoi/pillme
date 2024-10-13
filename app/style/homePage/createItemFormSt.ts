@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { borderRadius, colors, flexCenterX2 } from "../commonSt";
+import { colors, flexCenterX2 } from "../commonSt";
 import { twitching1 } from "../keyframes";
 
 export const createItemFormSt = {
@@ -95,14 +95,12 @@ export const createItemFormSt = {
   errorMsgContainer: (errorMsg: string) => {
     return css`
       display: flex;
-      justify-content: center;
       align-items: center;
       width: 100%;
-      height: ${errorMsg ? "2rem" : "0"};
-      border-radius: ${borderRadius.medium};
-      margin-top: ${errorMsg ? "1rem" : "0"};
-      background-color: ${colors.darkSection};
-      text-indent: 5px;
+      height: ${errorMsg ? "1rem" : "0"};
+      margin: ${errorMsg ? "0.2rem 0 -0.5rem 0" : "0"};
+      // background-color: ${colors.darkSection};
+      text-indent: 10px;
       transition: 0.1s;
 
       @media (prefers-color-scheme: light) {

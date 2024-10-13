@@ -9,13 +9,10 @@ import {
 import { toggleIsTaken } from "@/app/hooks/toggleIsTaken";
 import useDateStore from "@/app/store/homePage/useDateStore";
 import useFormStore from "@/app/store/homePage/useFormStore";
-import useItemStore from "@/app/store/homePage/useItemStore";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
-import { outlineSt } from "@/app/style/homePage/outlineSt";
 import { itemProps, listProps } from "@/app/types/types";
-import { getAllItems } from "@/app/utils/getAllItems";
 import { getTotalListLength } from "@/app/utils/getToTalListLength";
 import { vibrate } from "@/app/utils/vibrate";
 import { motion } from "framer-motion";
@@ -24,14 +21,9 @@ import { SyntheticEvent, useEffect } from "react";
 
 const ItemSection = () => {
   const router = useRouter();
-  const {
-    setIsEverythingTaken,
-    previousIsEverythingTaken,
-    setPreviousIsEverythingTaken,
-  } = useItemStore();
   const { list, setList, focusInput } = useFormStore();
   const { setWhichModal, setItemForModal } = useModalStore();
-  const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
+  const { isDateChanged, setIsInitialLoad } = useDateStore();
   const { isEnglish } = useSettingStore();
 
   //아이템 정보 페이지 이동 로직
@@ -83,27 +75,6 @@ const ItemSection = () => {
     }
   }, [isDateChanged]);
 
-  //모든 아이템 활성화 시 축하메세지 뜨는 로직
-  useEffect(() => {
-    const allItems = getAllItems(list);
-    const allTaken =
-      allItems.every((item) => item.isTaken) &&
-      allItems.length > 0 &&
-      !isInitialLoad;
-
-    if (allTaken !== previousIsEverythingTaken) {
-      // 아이템의 isTaken 상태가 변경된 경우에만 동작
-      setIsEverythingTaken(allTaken);
-      setPreviousIsEverythingTaken(allTaken);
-
-      if (allTaken) {
-        setTimeout(() => {
-          setIsEverythingTaken(false);
-        }, 3000);
-      }
-    }
-  }, [list]);
-
   useEffect(() => {
     //로컬 스토레지에서 아이템 데이터 받아오는 로직
     const storedList = localStorage.getItem("medList");
@@ -125,7 +96,7 @@ const ItemSection = () => {
               list[timePeriod as keyof listProps].length > 0 && (
                 <section key={timePeriod} css={itemSectionSt.section}>
                   {list[timePeriod as keyof listProps].length > 0 && (
-                    <h2 css={outlineSt.h2}>{timePeriod}</h2>
+                    <h2 css={itemSectionSt.h2}>{timePeriod}</h2>
                   )}
                   {list[timePeriod as keyof listProps].map((item, i) => {
                     return (

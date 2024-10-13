@@ -27,10 +27,6 @@ const ItemSection = dynamic(() => import("./components/homePage/ItemSection"), {
 
 const HomeModals = dynamic(() => import("./components/homePage/HomeModals"));
 
-const CongratsPage = dynamic(
-  () => import("./components/homePage/CongratsPage")
-);
-
 const Home = () => {
   return (
     <main className="showUpFromLeft">
@@ -40,7 +36,6 @@ const Home = () => {
       <InfoSection />
       <ItemSection />
       <HomeModals />
-      <CongratsPage />
     </main>
   );
 };

@@ -64,6 +64,8 @@ export const settingPageSt = {
       border: none;
       border-radius: ${borderRadius.medium};
       background-color: ${isEnglish ? `${colors.green}` : `${colors.grey}`}40;
+      color: ${colors.grey};
+      font-size: 0.9rem;
       cursor: pointer;
 
       &:before {

@@ -12,7 +12,7 @@ export const itemSectionSt = {
   sectionContainer: [
     flexColumnCenterX2,
     css`
-      row-gap: 1rem;
+      row-gap: 0.8rem;
       width: 100%;
     `,
   ],
@@ -31,6 +31,10 @@ export const itemSectionSt = {
       }
     `,
   ],
+  h2: css`
+    font-size: 1.8rem;
+    font-weight: 500;
+  `,
   emptyItemSection: [
     flexCenterX2,
     css`
@@ -94,7 +98,7 @@ export const itemSectionSt = {
       height: 30px;
       padding: 3px;
       border: 2px solid ${isTaken ? colors.grey : colors.red};
-      border-radius: ${borderRadius.large};
+      border-radius: ${borderRadius.medium};
       background-color: ${isTaken ? `${colors.green}` : `#90909099`};
       cursor: pointer;
     `;
@@ -109,9 +113,10 @@ export const itemSectionSt = {
     display: flex;
     flex-direction: column;
     row-gap: 0.2rem;
-    width: calc(100% - 125px - 0.4rem);
+    width: 60%;
   `,
   name: css`
+    font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -128,14 +133,20 @@ export const itemSectionSt = {
   `,
   modifyBtn: css`
     ${flexCenterX2}
-    width: 70px;
+    width: 55px;
     height: 2rem;
     padding: 0.2rem 0.5rem;
     border: none;
     border-radius: ${borderRadius.small};
     margin-top: -0.5rem;
     background-color: ${colors.grey}30;
+    color: #dddddd;
     font-size: 0.8rem;
+    font-weight: 600;
+
+    @media (prefers-color-scheme: light) {
+      color: #404040;
+    }
 
     &:active {
       background-color: ${colors.grey}20;

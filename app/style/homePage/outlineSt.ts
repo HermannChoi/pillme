@@ -3,22 +3,17 @@ import { borderRadius, colors, flexCenterX2 } from "../commonSt";
 import { itemSectionSt } from "./itemSectionSt";
 
 export const outlineSt = {
-  h2: css`
-    margin-bottom: 10px;
-    font-size: 1.8rem;
-    font-weight: 500;
-  `,
   userNameContainer: (isEasterEggsOn: boolean) => {
     return css`
       ${flexCenterX2}
       width: 100%;
-      height: ${isEasterEggsOn ? `30rem` : `4rem`};
+      height: ${isEasterEggsOn ? `30rem` : `3.5rem`};
       border-radius: ${borderRadius.medium};
       margin-top: -15px;
       background-color: ${colors.darkSection};
       font-size: 1.2rem;
       font-weight: 500;
-      transition: height 1s;
+      transition: height 0.5s;
 
       @media (prefers-color-scheme: light) {
         background-color: #ffffff;
