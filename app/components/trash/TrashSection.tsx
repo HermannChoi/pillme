@@ -24,11 +24,14 @@ const TrashSection = () => {
     localStorage.setItem("trashList", JSON.stringify(updatedTrashList));
 
     // 목록 업데이트
-    setList((prev) => {
+    setList(() => {
+      const parsedStoredList = JSON.parse(
+        localStorage.getItem("medList") || "{}"
+      );
       const updatedList = {
-        ...prev,
+        ...parsedStoredList,
         [trash.timePeriod]: [
-          ...prev[trash.timePeriod as keyof listProps],
+          ...parsedStoredList[trash.timePeriod as keyof listProps],
           { ...trash, deletedDate: "" },
         ],
       };
