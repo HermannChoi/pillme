@@ -106,14 +106,19 @@ export const itemSectionSt = {
   handle: css`
     width: 24px;
     height: 24px;
-    background-color: white;
+    background-color: #ffffff;
     border-radius: ${borderRadius.medium};
+
+    @media (prefers-color-scheme: dark) {
+      background-color: ${colors.darkSection};
+    }
   `,
   infoContainer: css`
+    flex: 1;
     display: flex;
     flex-direction: column;
     row-gap: 0.2rem;
-    width: 60%;
+    overflow: hidden;
   `,
   name: css`
     font-weight: 600;
