@@ -133,7 +133,7 @@ const ItemSection = () => {
                                 src={require(`@/app/assets/itemType/${
                                   item.itemType
                                     ? item.itemType.toLowerCase()
-                                    : "Oral"
+                                    : "oral"
                                 }.svg`)}
                                 alt={item.itemType}
                                 width={13}
