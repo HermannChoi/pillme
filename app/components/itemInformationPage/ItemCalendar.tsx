@@ -9,6 +9,7 @@ import useSettingStore from "@/app/store/useSettingStore";
 import "@/app/style/item-information/calendarStyle.css";
 import { itemInformationPageSt } from "@/app/style/item-information/itemInformationPageSt";
 import { listProps } from "@/app/types/types";
+import { getKoreanDate } from "@/app/utils/getKoreanDate";
 import { useEffect } from "react";
 import Calendar from "react-calendar";
 
@@ -32,12 +33,33 @@ const ItemCalendar = () => {
       (x) => x === dateToPut
     );
 
+    const nowDate = new Date();
+    const isNewDateToday = dateToPut === getKoreanDate();
+
+    const hours = nowDate.getHours();
+    const minutes = nowDate.getMinutes();
+
     setItemForModal({
       ...itemForModal,
       takenDays: isTheDateAlreadyTaken
         ? itemForModal.takenDays.filter((x) => x !== dateToPut)
         : [...itemForModal.takenDays, dateToPut],
-      isTaken: isTheDateAlreadyTaken ? false : true,
+      // 캘린더 추가 날짜가 오늘이면 토글 활성화 및 복용 날짜, 시간 추가
+      isTaken: isNewDateToday
+        ? isTheDateAlreadyTaken
+          ? false
+          : true
+        : itemForModal.isTaken,
+      date:
+        isNewDateToday && !isTheDateAlreadyTaken
+          ? dateToPut
+          : itemForModal.date,
+      hours:
+        isNewDateToday && !isTheDateAlreadyTaken ? hours : itemForModal.hours,
+      minutes:
+        isNewDateToday && !isTheDateAlreadyTaken
+          ? minutes
+          : itemForModal.minutes,
     });
     setWhichModal(isTheDateAlreadyTaken ? "deleteTakenDays" : "addTakenDays");
   };
