@@ -7,6 +7,7 @@ import {
   frequencyToKorean,
 } from "@/app/constant/itemFrequency";
 import { itemTypesKo } from "@/app/constant/itemTypes";
+import { timeOptionsKo } from "@/app/constant/timeOptions";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { itemInformationPageSt } from "@/app/style/item-information/itemInformationPageSt";
@@ -28,7 +29,11 @@ const BasicInfoSection = () => {
   return (
     <>
       <div css={itemInformationPageSt.nameSection}>
-        <p>{itemForModal.timePeriod}</p>
+        <p>
+          {isEnglish
+            ? itemForModal.timePeriod
+            : timeOptionsKo[itemForModal.timePeriod]}
+        </p>
         <p css={itemInformationPageSt.name}>{itemForModal.name}</p>
       </div>
       <div css={itemInformationPageSt.infoSection}>
