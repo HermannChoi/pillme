@@ -71,6 +71,12 @@ export const itemInformationPageSt = {
     border-radius: ${borderRadius.small};
     background-color: transparent;
     font-size: 0.9rem;
+    transition: 0.2s;
+
+    &:active {
+      background-color: ${colors.grey}20;
+      transform: scale(0.98);
+    }
   `,
   todayText: css`
     position: absolute;

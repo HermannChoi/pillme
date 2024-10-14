@@ -22,6 +22,12 @@
   border: none;
   border-radius: 10px;
   background-color: #80808030;
+  transition: 0.2s;
+}
+
+.react-calendar__year-view__months__month:active {
+  background-color: #80808020;
+  transform: scale(0.95);
 }
 
 .react-calendar__navigation__arrow {
@@ -29,11 +35,21 @@
   height: 40px;
   border: 1px solid #80808080;
   border-radius: 10px;
+  transition: 0.2s;
+}
+
+.react-calendar__navigation__arrow:active {
+  transform: scale(0.95);
 }
 
 .react-calendar__navigation__label {
   border: 1px solid #80808080;
   border-radius: 10px;
+  transition: 0.2s;
+}
+
+.react-calendar__navigation__label:active {
+  transform: scale(0.95);
 }
 
 .react-calendar__month-view__weekdays {
@@ -62,4 +78,5 @@
 
 .react-calendar__month-view__days__day:active {
   background-color: #80808030;
+  transform: scale(0.95);
 }

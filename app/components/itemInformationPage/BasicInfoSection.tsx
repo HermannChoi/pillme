@@ -39,12 +39,6 @@ const BasicInfoSection = () => {
         </p>
       </div>
       <div css={itemInformationPageSt.infoSection}>
-        <p>
-          {isEnglish ? `The Next Time to Take : ` : `다음 복용(사용)까지 : `}
-        </p>
-        <p>D - {itemForModal.leftDay}</p>
-      </div>
-      <div css={itemInformationPageSt.infoSection}>
         <p>{isEnglish ? `Number of Days to Take : ` : `복용(사용) 일 수 : `}</p>
         <p>
           {itemForModal.takenDays.length}
@@ -65,6 +59,14 @@ const BasicInfoSection = () => {
               {itemForModal.hours.toString().padStart(2, "0")} :{" "}
               {itemForModal.minutes.toString().padStart(2, "0")}
             </p>
+          </div>
+          <div css={itemInformationPageSt.infoSection}>
+            <p>
+              {isEnglish
+                ? `The Next Time to Take : `
+                : `다음 복용(사용)까지 : `}
+            </p>
+            <p>D - {itemForModal.leftDay}</p>
           </div>
         </>
       ) : (
