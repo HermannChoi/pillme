@@ -131,7 +131,9 @@ const ItemSection = () => {
                             <figure css={itemSectionSt.figure}>
                               <Image
                                 src={require(`@/app/assets/itemType/${
-                                  item.itemType ? item.itemType : "oral"
+                                  item.itemType
+                                    ? item.itemType.toLowerCase()
+                                    : "Oral"
                                 }.svg`)}
                                 alt={item.itemType}
                                 width={13}

@@ -31,7 +31,7 @@ const ItemSample = () => {
           <div css={itemSectionSt.optionInfoContainer}>
             <figure css={itemSectionSt.figure}>
               <Image
-                src={require(`@/app/assets/itemType/${itemType}.svg`)}
+                src={require(`@/app/assets/itemType/${itemType.toLowerCase()}.svg`)}
                 alt={itemType}
                 width={13}
                 height={13}

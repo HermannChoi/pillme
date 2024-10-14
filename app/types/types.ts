@@ -1,7 +1,7 @@
 export interface ItemTypes {
-  oral: string;
-  topical: string;
-  item: string;
+  Oral: string;
+  Topical: string;
+  Etc: string;
 }
 
 export interface itemProps {

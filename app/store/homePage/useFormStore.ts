@@ -23,7 +23,7 @@ interface UseFormStoreProps {
 const useFormStore = create<UseFormStoreProps>((set) => ({
   name: "",
   setName: (value) => set({ name: value }),
-  itemType: "oral",
+  itemType: "Oral",
   setItemType: (value) => set({ itemType: value }),
   timePeriod: "Morning",
   setTimePeriod: (value) => set({ timePeriod: value }),

@@ -73,7 +73,7 @@ export const submitFormToCreateItem = ({
   //생성 아이템
   const newItem: itemProps = {
     id: uuid(),
-    itemType: itemType ? itemType : "oral",
+    itemType: itemType ? itemType : "Oral",
     timePeriod: timePeriod,
     date: "0000-00-00",
     name: name,
@@ -96,7 +96,7 @@ export const submitFormToCreateItem = ({
   });
   //생성 후 처리되는 함수들
   setName("");
-  setItemType && setItemType("oral");
+  setItemType && setItemType("Oral");
   setFrequency && setFrequency(0);
   setIsSubmitted(true);
   setIsErrorMsgChanged(false);

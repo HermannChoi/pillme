@@ -1,7 +1,7 @@
-export const itemTypes = ["oral", "topical", "item"];
+export const itemTypes = ["Oral", "Topical", "Etc"];
 
 export const itemTypesKo: { [key: string]: string } = {
-  oral: "먹는 약",
-  topical: "바르는 약",
-  item: "아이템",
+  Oral: "먹는 약",
+  Topical: "바르는 약",
+  Etc: "기타",
 };

@@ -15,7 +15,7 @@ export const itemFrequency = [
     frequency: 6,
   },
   {
-    name: "Every Other week",
+    name: "Every Other Week",
     nameKo: "격주",
     frequency: 13,
   },
