@@ -1,15 +1,15 @@
-import CreateItemTitle from "@/app/components/item-createPage/CreateItemTitle";
-import ItemSample from "@/app/components/item-createPage/ItemSample";
-import MainCreateSection from "@/app/components/item-createPage/MainCreateSection";
+import ItemCreateSus from "@/app/components/item-createPage/itemCreateSus/ItemCreateSus";
+import dynamic from "next/dynamic";
+
+const ItemCreatePage = dynamic(
+  () => import("@/app/components/item-createPage/ItemCreatePage"),
+  { ssr: false, loading: () => <ItemCreateSus /> }
+);
 
 const page = () => {
   return (
     <div className="showUpFromBottom defaultOutline">
-      <main>
-        <CreateItemTitle />
-        <ItemSample />
-        <MainCreateSection />
-      </main>
+      <ItemCreatePage />
     </div>
   );
 };
