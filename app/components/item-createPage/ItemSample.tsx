@@ -56,10 +56,7 @@ const ItemSample = () => {
               <div css={itemCreateSt.frequencyInnerContainer(frequency)}>
                 {itemFrequency.map((option) => {
                   return (
-                    <p
-                      key={option.frequency}
-                      css={itemSectionSt.optionInfoText}
-                    >
+                    <p key={option.frequency} css={itemCreateSt.frequency}>
                       {isEnglish
                         ? frequencyToEnglish[option.frequency]
                         : frequencyToKorean[option.frequency]}
