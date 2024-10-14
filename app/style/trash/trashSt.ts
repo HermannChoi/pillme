@@ -54,7 +54,7 @@ export const trashSt = {
     ${trashBtn}
     background-color: ${colors.grey}80;
 
-    &:hover {
+    &:active {
       background-color: ${colors.grey}60;
       transform: scaleX(0.98);
     }
@@ -63,7 +63,7 @@ export const trashSt = {
     ${trashBtn}
     background-color: ${colors.red}80;
 
-    &:hover {
+    &:active {
       background-color: ${colors.red}60;
       transform: scale(0.98);
     }

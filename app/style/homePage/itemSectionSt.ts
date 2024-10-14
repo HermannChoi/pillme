@@ -47,7 +47,7 @@ export const itemSectionSt = {
       transition: 0.2s;
       animation: ${emptyItemSectionAni} 2s ease-in-out alternate infinite;
 
-      &:hover {
+      &:active {
         background-color: ${colors.grey}20;
         color: ${colors.green};
       }

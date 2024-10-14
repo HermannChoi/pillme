@@ -47,7 +47,7 @@ export const settingPageSt = {
     background-color: ${colors.grey}40;
     transition: 0.2s;
 
-    &:hover {
+    &:active {
       background-color: ${colors.grey}60;
       transform: scaleX(0.98);
     }
@@ -105,7 +105,7 @@ export const settingPageSt = {
     background-color: ${colors.red}60;
     transition: 0.2s;
 
-    &:hover {
+    &:active {
       background-color: ${colors.red}40;
       transform: scaleX(0.98);
     }

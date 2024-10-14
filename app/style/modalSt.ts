@@ -87,7 +87,7 @@ export const modalSt = {
     font-size: 1.2rem;
     transition: 0.2s;
 
-    &:hover {
+    &:active {
       background-color: ${colors.grey}20;
     }
   `,
@@ -101,7 +101,7 @@ export const modalSt = {
     font-size: 1.2rem;
     transition: 0.2s;
 
-    &:hover {
+    &:active {
       background-color: ${colors.red}20;
     }
   `,

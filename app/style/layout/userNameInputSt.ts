@@ -61,7 +61,7 @@ export const userNameInputSt = {
     border-radius: ${borderRadius.medium};
     background-color: ${colors.green}80;
 
-    &:hover {
+    &:active {
       background-color: ${colors.green}60;
     }
   `,

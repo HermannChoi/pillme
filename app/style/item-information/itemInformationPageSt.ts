@@ -34,7 +34,7 @@ export const itemInformationPageSt = {
     font-size: 1.2rem;
     transition: 0.2s;
 
-    &:hover {
+    &:active {
       background-color: ${colors.grey}20;
     }
   `,
@@ -114,7 +114,7 @@ export const itemInformationPageSt = {
     background-color: ${colors.green}80;
     transition: 0.2s;
 
-    &:hover {
+    &:active {
       transform: scale(0.98);
       background-color: ${colors.green}60;
     }
@@ -130,7 +130,7 @@ export const itemInformationPageSt = {
       background-color: ${colors.red}80;
       transition: 0.2s;
 
-      &:hover {
+      &:active {
         transform: scale(0.98);
         background-color: ${colors.red}60;
       }
