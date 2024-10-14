@@ -6,8 +6,8 @@ export interface ItemTypes {
 
 export interface itemProps {
   id: string;
-  itemType: keyof ItemTypes;
-  timePeriod: keyof listProps;
+  itemType: keyof ItemTypes | "";
+  timePeriod: keyof listProps | "";
   date: string;
   name: string;
   hours: number;

@@ -2,6 +2,7 @@ import { itemProps } from "../types/types";
 
 export const defaultItemSetup: itemProps = {
   id: "",
+  itemType: "",
   timePeriod: "",
   date: "",
   name: "",
