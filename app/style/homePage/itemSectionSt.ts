@@ -8,6 +8,29 @@ import {
 } from "../commonSt";
 import { emptyItemSectionAni, itemAppearAni } from "../keyframes";
 
+export const listItemCommonPart = css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 60px;
+  padding: 10px;
+  border: none;
+  border-radius: ${borderRadius.medium};
+  background-color: ${colors.darkSection};
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.96, 0.95);
+    background-color: ${colors.grey}20;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background-color: #ffffff;
+  }
+`;
+
 export const itemSectionSt = {
   sectionContainer: [
     flexColumnCenterX2,
@@ -52,10 +75,6 @@ export const itemSectionSt = {
         background-color: ${colors.grey}20;
         color: ${colors.green};
       }
-
-      @media (prefers-color-scheme: light) {
-        background-color: #ffffff;
-      }
     `,
   ],
   listItemContainer: css`
@@ -63,29 +82,10 @@ export const itemSectionSt = {
   `,
   listItem: (item?: itemProps) => {
     return css`
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.5rem;
-      width: 100%;
-      height: 60px;
-      padding: 10px;
-      border: none;
-      border-radius: ${borderRadius.medium};
-      background-color: ${colors.darkSection};
+      ${listItemCommonPart}
       transition: 0.1s;
-      cursor: pointer;
       animation: ${item?.date === "0000-00-00" && itemAppearAni} 0.2s
         ease-in-out;
-
-      &:active {
-        transform: scale(0.96, 0.95);
-        background-color: ${colors.grey}20;
-      }
-
-      @media (prefers-color-scheme: light) {
-        background-color: #ffffff;
-      }
     `;
   },
   toggleContainer: css`

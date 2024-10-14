@@ -5,6 +5,7 @@ import {
   flexCenterX2,
   flexColumnCenterX2,
 } from "../commonSt";
+import { listItemCommonPart } from "../homePage/itemSectionSt";
 
 export const itemCreateSt = {
   sampleSection: [
@@ -65,28 +66,13 @@ export const itemCreateSt = {
   },
   listItem: (isSubmitted: boolean) => {
     return css`
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-    height: 60px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: ${borderRadius.medium};
-    background-color: ${colors.darkSection};
-    transition: 0.3s;
-    ${
-      isSubmitted &&
+      ${listItemCommonPart}
+      transition: 0.3s;
+      ${isSubmitted &&
       `transform: scale(0.5);
-      background-color: ${colors.grey}80;
-      opacity: 0; `
-    }
-    
-    @media (prefers-color-scheme: light) {
-      background-color: #ffffff;
-  `;
+        background-color: ${colors.grey}80;
+        opacity: 0; `}
+    `;
   },
   frequencyContainer: css`
     width: 65px;

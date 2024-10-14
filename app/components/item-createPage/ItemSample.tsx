@@ -45,7 +45,12 @@ const ItemSample = () => {
                 height={13}
               />
             </figure>
-            <p css={itemSectionSt.name}>{name === "" ? "..." : name}</p>
+            <p
+              css={itemSectionSt.name}
+              style={name === "" ? { color: "grey" } : {}}
+            >
+              {name === "" ? (isEnglish ? "Name" : "이름") : name}
+            </p>
           </div>
           <div css={itemSectionSt.optionInfoContainer}>
             <p css={itemSectionSt.optionInfoText}>00.00</p>

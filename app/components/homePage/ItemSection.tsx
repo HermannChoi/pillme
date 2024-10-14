@@ -119,7 +119,6 @@ const ItemSection = () => {
                           </button>
                         </div>
                         <Link
-                          prefetch={true}
                           href={`/pages/item-information/${item.id}`}
                           onClick={() => setItemForModal(item)}
                           css={itemSectionSt.infoContainer}
