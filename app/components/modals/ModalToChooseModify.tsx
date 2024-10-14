@@ -7,7 +7,7 @@ import { modalSt } from "@/app/style/modalSt";
 import { modalList } from "@/app/types/types";
 
 const ModalToChooseModify = () => {
-  const { whichModal, setWhichModal } = useModalStore();
+  const { whichModal, setWhichModal, itemForModal } = useModalStore();
   const { isEnglish } = useSettingStore();
 
   const modifyModalOptions = [
@@ -15,7 +15,9 @@ const ModalToChooseModify = () => {
     { name: isEnglish ? "TIME" : "시간", value: "modifyTime" },
     { name: isEnglish ? "FREQUENCY" : "빈도", value: "chooseFrequency" },
     {
-      name: isEnglish ? "NEXT TAKING DATE" : "다음 복용일",
+      name: isEnglish
+        ? "NEXT TAKING DATE"
+        : `다음 ${itemForModal.itemType === "Oral" ? "복용" : "사용"}일`,
       value: "modifyLeftDay",
     },
     { name: isEnglish ? "CANCEL" : "취소", value: null },

@@ -31,7 +31,11 @@ const BasicInfoSection = () => {
         <p css={itemInformationPageSt.name}>{itemForModal.name}</p>
       </div>
       <div css={itemInformationPageSt.infoSection}>
-        <p>{isEnglish ? `Frequency : ` : `복용(사용) 빈도 : `}</p>
+        <p>
+          {isEnglish
+            ? `Frequency : `
+            : `${itemForModal.itemType === "Oral" ? "복용" : "사용"} 빈도 : `}
+        </p>
         <p>
           {isEnglish
             ? frequencyToEnglish[itemForModal.frequency]
@@ -39,7 +43,11 @@ const BasicInfoSection = () => {
         </p>
       </div>
       <div css={itemInformationPageSt.infoSection}>
-        <p>{isEnglish ? `Number of Days to Take : ` : `복용(사용) 일 수 : `}</p>
+        <p>
+          {isEnglish
+            ? `Number of Days to Take : `
+            : `${itemForModal.itemType === "Oral" ? "복용" : "사용"} 일 수 : `}
+        </p>
         <p>
           {itemForModal.takenDays.length}
           {isEnglish ? `D` : `일`}
@@ -48,12 +56,22 @@ const BasicInfoSection = () => {
       {isShowingMoreInfo ? (
         <>
           <div css={itemInformationPageSt.infoSection}>
-            <p>{isEnglish ? `Last Taken Date : ` : `마지막 복용(사용)일 : `}</p>
+            <p>
+              {isEnglish
+                ? `Last Taken Date : `
+                : `마지막 ${
+                    itemForModal.itemType === "Oral" ? "복용" : "사용"
+                  }일 : `}
+            </p>
             <p>{itemForModal.date.replaceAll("-", ".")}</p>
           </div>
           <div css={itemInformationPageSt.infoSection}>
             <p>
-              {isEnglish ? `Last Time to Take : ` : `마지막 복용(사용) 시간 : `}
+              {isEnglish
+                ? `Last Time to Take : `
+                : `마지막 ${
+                    itemForModal.itemType === "Oral" ? "복용" : "사용"
+                  } 시간 : `}
             </p>
             <p>
               {itemForModal.hours.toString().padStart(2, "0")} :{" "}
@@ -64,7 +82,9 @@ const BasicInfoSection = () => {
             <p>
               {isEnglish
                 ? `The Next Time to Take : `
-                : `다음 복용(사용)까지 : `}
+                : `다음 ${
+                    itemForModal.itemType === "Oral" ? "복용" : "사용"
+                  }까지 : `}
             </p>
             <p>D - {itemForModal.leftDay}</p>
           </div>

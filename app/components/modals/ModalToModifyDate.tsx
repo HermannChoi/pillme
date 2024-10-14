@@ -53,7 +53,9 @@ const ModalToModifyDate = () => {
           <p css={modalSt.text}>
             {isEnglish
               ? `Modify the last time you took`
-              : `마지막으로 복용(사용)한 날`}
+              : `마지막으로 ${
+                  itemForModal.itemType === "Oral" ? "복용" : "사용"
+                }한 날`}
           </p>
           <input
             type="date"

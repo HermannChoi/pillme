@@ -41,7 +41,9 @@ const ModalToDeleteTakenDays = () => {
           <p css={modalSt.text}>
             {isEnglish
               ? `Do you want to delete a taken day on the selected date?`
-              : `선택한 날짜에 복용 날을 삭제하시겠습니까?`}
+              : `선택한 날짜에 ${
+                  itemForModal.itemType === "Oral" ? "복용" : "사용"
+                } 날을 삭제하시겠습니까?`}
           </p>
         </div>
         <div css={modalSt.btnContainer}>

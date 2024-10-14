@@ -96,7 +96,9 @@ const MainCreateSection = () => {
       </section>
       <section css={itemCreateSt.section}>
         <p css={settingPageSt.sectionTitle}>
-          {isEnglish ? "When do you take it?" : "언제 복용(사용)하세요?"}
+          {isEnglish
+            ? "When do you take it?"
+            : `언제 ${itemType === "Oral" ? "복용" : "사용"}하나요?`}
         </p>
         <div css={itemCreateSt.optionContainer}>
           {timeOptions.map((option, i) => {
@@ -117,7 +119,7 @@ const MainCreateSection = () => {
         <p css={settingPageSt.sectionTitle}>
           {isEnglish
             ? "How often do you take it?"
-            : "얼마나 자주 복용(사용)하세요?"}
+            : `얼마나 자주 ${itemType === "Oral" ? "복용" : "사용"}하나요?`}
         </p>
         <div css={itemCreateSt.optionContainer}>
           {itemFrequency.map((option, i) => {

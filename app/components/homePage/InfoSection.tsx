@@ -44,11 +44,15 @@ const InfoSection = () => {
               ? "There" +
                 (numOfItemsToTake > 1 ? " are " : " is ") +
                 numOfItemsToTake +
-                " items to take today."
-              : "오늘 복용할 약이 " + numOfItemsToTake + "개 남았어요."
+                (numOfItemsToTake > 1 ? " items" : " item") +
+                " to activate today."
+              : "오늘 활성화할 아이템이 " +
+                numOfItemsToTake +
+                (numOfItemsToTake > 1 ? "개" : "개") +
+                " 남았어요."
             : isEnglish
-            ? "You have taken all your items today."
-            : "오늘 약을 다 복용했어요!"
+            ? "You have activated all your items today!"
+            : "오늘 아이템을 다 활성화했어요!"
           : isEnglish
           ? "WELCOME!"
           : "환영합니다!"}

@@ -76,7 +76,9 @@ const ModalToModifyTime = () => {
           <p css={modalSt.text}>
             {isEnglish
               ? `Modify the last time you took`
-              : `마지막으로 복용(사용)한 시간`}
+              : `마지막으로 ${
+                  itemForModal.itemType === "Oral" ? "복용" : "사용"
+                }한 시간`}
           </p>
           <input
             name="modifyHours"
