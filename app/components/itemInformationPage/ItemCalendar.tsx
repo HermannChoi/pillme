@@ -37,6 +37,7 @@ const ItemCalendar = () => {
       takenDays: isTheDateAlreadyTaken
         ? itemForModal.takenDays.filter((x) => x !== dateToPut)
         : [...itemForModal.takenDays, dateToPut],
+      isTaken: isTheDateAlreadyTaken ? false : true,
     });
     setWhichModal(isTheDateAlreadyTaken ? "deleteTakenDays" : "addTakenDays");
   };
