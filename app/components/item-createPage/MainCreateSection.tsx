@@ -31,7 +31,7 @@ const MainCreateSection = () => {
     setIsEasterEggsOn,
   } = useFormStore();
   const { isEnglish } = useSettingStore();
-  const { setErrorMsg, setIsErrorMsgChanged } = useErrorMsgStore();
+  const { errorMsg, setErrorMsg, setIsErrorMsgChanged } = useErrorMsgStore();
 
   const isNameFilledOut = name !== "";
 
@@ -139,8 +139,8 @@ const MainCreateSection = () => {
       <section css={itemCreateSt.section}>
         <button
           type="submit"
-          disabled={!isNameFilledOut}
-          css={itemCreateSt.submitBtn(isNameFilledOut)}
+          disabled={!isNameFilledOut && errorMsg !== ""}
+          css={itemCreateSt.submitBtn(isNameFilledOut, errorMsg)}
         >
           {isEnglish ? "Create" : "생성"}
         </button>

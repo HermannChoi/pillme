@@ -25,6 +25,7 @@ export const itemSectionSt = {
       border: none;
       border-radius: ${borderRadius.medium};
       background-color: ${colors.darkSection};
+      overflow: hidden;
 
       @media (prefers-color-scheme: light) {
         background-color: #ffffff;
@@ -63,7 +64,6 @@ export const itemSectionSt = {
   `,
   listItem: (item?: itemProps) => {
     return css`
-      position: relative;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -74,12 +74,10 @@ export const itemSectionSt = {
       border: none;
       border-radius: ${borderRadius.medium};
       background-color: ${colors.darkSection};
-      transition: background-color 0.2s, border-radius 0.2s;
+      transition: 0.1s;
       cursor: pointer;
-      z-index: 1;
       animation: ${item?.date === "0000-00-00" && itemAppearAni} 0.2s
         ease-in-out;
-      transition: 0.1s;
 
       &:active {
         transform: scale(0.98);

@@ -4,24 +4,31 @@
 import {
   frequencyToEnglish,
   frequencyToKorean,
+  itemFrequency,
 } from "@/app/constant/itemFrequency";
-import { timeOptionsKo } from "@/app/constant/timeOptions";
+import { timeOptions, timeOptionsKo } from "@/app/constant/timeOptions";
 import useFormStore from "@/app/store/homePage/useFormStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
+import { itemCreateSt } from "@/app/style/item-create/itemCreateSt";
 import Image from "next/image";
 
 const ItemSample = () => {
-  const { name, itemType, timePeriod, frequency } = useFormStore();
+  const { name, itemType, timePeriod, frequency, isSubmitted } = useFormStore();
   const { isEnglish } = useSettingStore();
 
   return (
     <section css={itemSectionSt.section}>
-      <h2 css={itemSectionSt.h2}>
-        {isEnglish ? timePeriod.toUpperCase() : timeOptionsKo[timePeriod]}
-      </h2>
-
-      <div css={itemSectionSt.listItem()}>
+      <div css={itemCreateSt.timeContainer}>
+        <div css={itemCreateSt.timeInnerContainer(timePeriod)}>
+          {timeOptions.map((time) => (
+            <p key={time} css={itemCreateSt.time}>
+              {isEnglish ? time : timeOptionsKo[time]}
+            </p>
+          ))}
+        </div>
+      </div>
+      <div css={itemCreateSt.listItem(isSubmitted)}>
         <div css={itemSectionSt.toggleContainer}>
           <button css={itemSectionSt.toggle(false)}>
             <div css={itemSectionSt.handle} />
@@ -29,10 +36,11 @@ const ItemSample = () => {
         </div>
         <div css={itemSectionSt.infoContainer}>
           <div css={itemSectionSt.optionInfoContainer}>
-            <figure css={itemSectionSt.figure}>
+            <figure css={itemCreateSt.figure(itemType)}>
               <Image
                 src={require(`@/app/assets/itemType/${itemType.toLowerCase()}.svg`)}
                 alt={itemType}
+                loading="lazy"
                 width={13}
                 height={13}
               />
@@ -44,11 +52,22 @@ const ItemSample = () => {
             <p css={itemSectionSt.optionInfoText}>|</p>
             <p css={itemSectionSt.optionInfoText}>00:00</p>
             <p css={itemSectionSt.optionInfoText}>|</p>
-            <p css={itemSectionSt.optionInfoText}>
-              {isEnglish
-                ? frequencyToEnglish[frequency]
-                : frequencyToKorean[frequency]}
-            </p>
+            <div css={itemCreateSt.frequencyContainer}>
+              <div css={itemCreateSt.frequencyInnerContainer(frequency)}>
+                {itemFrequency.map((option) => {
+                  return (
+                    <p
+                      key={option.frequency}
+                      css={itemSectionSt.optionInfoText}
+                    >
+                      {isEnglish
+                        ? frequencyToEnglish[option.frequency]
+                        : frequencyToKorean[option.frequency]}
+                    </p>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
         <button css={itemSectionSt.modifyBtn}>

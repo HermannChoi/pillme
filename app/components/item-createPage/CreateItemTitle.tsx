@@ -14,7 +14,7 @@ const CreateItemTitle = () => {
   const { setWhichPage } = useNavigatorStore();
 
   useEffect(() => {
-    setWhichPage("ItemCreate");
+    setWhichPage("Create");
   }, [setWhichPage]);
 
   useToggleLanguage(isEnglish, setIsEnglish, isInitialLoad);
