@@ -1,7 +1,7 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { itemFrequency } from "@/app/constant/itemFrequency";
+import { itemTypes, itemTypesKo } from "@/app/constant/itemTypes";
 import useFormStore from "@/app/store/homePage/useFormStore";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
@@ -9,32 +9,32 @@ import { modalSt } from "@/app/style/modalSt";
 import { listProps } from "@/app/types/types";
 import { useState } from "react";
 
-const ModalToChooseFrequency = () => {
-  const [whichFrequency, setWhichFrequency] = useState<number | null>(null);
+const ModalToChooseItemType = () => {
+  const [whichType, setWhichType] = useState<string | null>(null);
 
   const { setList } = useFormStore();
   const { whichModal, setWhichModal, itemForModal, setMessage } =
     useModalStore();
   const { isEnglish } = useSettingStore();
 
-  const clickToChooseFrequency = (frequency: number) => {
-    setWhichFrequency(frequency);
-  };
+  const clickToDecideItemType = () => {
+    setWhichType(null);
 
-  const clickToDecideFrequency = () => {
-    setWhichFrequency(null);
-
-    if (whichFrequency === null) {
+    if (whichType === null) {
       setMessage(
-        isEnglish ? "Please select a frequency" : "빈도를 선택해 주세요."
+        isEnglish
+          ? "Please select a type of the item"
+          : "아이템의 종류를 선택하세요."
       );
       return setWhichModal("message");
+    } else {
+      setWhichModal("message");
+      setMessage(
+        isEnglish
+          ? "It successfully got modified."
+          : "성공적으로 수정되었습니다."
+      );
     }
-
-    setWhichModal("message");
-    setMessage(
-      isEnglish ? "It successfully got modified." : "성공적으로 수정되었습니다."
-    );
 
     setList((prev) => {
       const updatedList = {
@@ -43,7 +43,7 @@ const ModalToChooseFrequency = () => {
           itemForModal.timePeriod as keyof listProps
         ].map((item) => {
           return item.id === itemForModal.id
-            ? { ...item, frequency: whichFrequency, leftDay: whichFrequency }
+            ? { ...item, itemType: whichType }
             : item;
         }),
       };
@@ -55,13 +55,13 @@ const ModalToChooseFrequency = () => {
 
   const clickCancel = () => {
     setWhichModal(null);
-    setWhichFrequency(null);
+    setWhichType(null);
   };
 
   return (
     <div
       onClick={() => clickCancel()}
-      css={modalSt.background(whichModal, "chooseFrequency")}
+      css={modalSt.background(whichModal, "chooseItemType")}
     >
       <div
         onClick={(e) => {
@@ -72,30 +72,26 @@ const ModalToChooseFrequency = () => {
         <div css={modalSt.textContainer}>
           <p css={modalSt.text}>
             {isEnglish
-              ? `Choose frequency of the item`
-              : `아이템의 빈도를 선택하세요.`}
+              ? `Choose a type of the item`
+              : `아이템의 종류를 선택하세요.`}
           </p>
         </div>
         <div css={modalSt.frequencyBtnContainer}>
-          {itemFrequency.map((item, i) => {
+          {itemTypes.map((item, i) => {
             return (
               <button
                 key={i}
-                onClick={() => clickToChooseFrequency(item.frequency)}
-                css={modalSt.optionBtn(
-                  itemForModal.frequency,
-                  item.frequency,
-                  whichFrequency
-                )}
+                onClick={() => setWhichType(item)}
+                css={modalSt.optionBtn(itemForModal.itemType, item, whichType)}
               >
-                {isEnglish ? item.name : item.nameKo}
+                {isEnglish ? item : itemTypesKo[item]}
               </button>
             );
           })}
         </div>
         <div css={modalSt.btnContainer}>
           <button
-            onClick={() => clickToDecideFrequency()}
+            onClick={() => clickToDecideItemType()}
             css={modalSt.redColorBtn}
           >
             {isEnglish ? `CHOOSE` : `선택`}
@@ -109,4 +105,4 @@ const ModalToChooseFrequency = () => {
   );
 };
 
-export default ModalToChooseFrequency;
+export default ModalToChooseItemType;

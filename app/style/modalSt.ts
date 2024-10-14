@@ -112,18 +112,18 @@ export const modalSt = {
     width: 100%;
     padding: 0 1rem;
   `,
-  frequencyBtn: (
-    itemFrequency: number,
-    selectedFrequency: number,
-    whichFrequency: number | null
+  optionBtn: (
+    modalItemInfo: number | string,
+    selectedItemInfo: number | string,
+    stateInfo: number | string | null
   ) => {
     return css`
       height: 3rem;
-      border: ${itemFrequency === selectedFrequency
+      border: ${modalItemInfo === selectedItemInfo
         ? `1px solid ${colors.green}`
         : `none`};
       border-radius: ${borderRadius.small};
-      background-color: ${colors.green}${whichFrequency === selectedFrequency ? "bb" : 40};
+      background-color: ${colors.green}${stateInfo === selectedItemInfo ? "bb" : 40};
       transition: 0.2s;
     `;
   },

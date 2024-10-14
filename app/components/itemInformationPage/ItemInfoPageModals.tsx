@@ -1,6 +1,7 @@
 import MessageModal from "../modals/MessageModal";
 import ModalToAddTakenDays from "../modals/ModalToAddTakenDays";
 import ModalToChooseFrequency from "../modals/ModalToChooseFrequency";
+import ModalToChooseItemType from "../modals/ModalToChooseItemType";
 import ModalToChooseModify from "../modals/ModalToChooseModify";
 import ModalToDeleteItem from "../modals/ModalToDeleteItem";
 import ModalToDeleteTakenDays from "../modals/ModalToDeleteTakenDays";
@@ -14,6 +15,7 @@ const ItemInfoPageModals = () => {
       <ModalToChooseModify />
       <ModalToModifyDate />
       <ModalToModifyTime />
+      <ModalToChooseItemType />
       <ModalToChooseFrequency />
       <ModalToModifyLeftDay />
       <ModalToDeleteItem />
