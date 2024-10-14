@@ -25,7 +25,6 @@ export const itemSectionSt = {
       border: none;
       border-radius: ${borderRadius.medium};
       background-color: ${colors.darkSection};
-      overflow: hidden;
 
       @media (prefers-color-scheme: light) {
         background-color: #ffffff;

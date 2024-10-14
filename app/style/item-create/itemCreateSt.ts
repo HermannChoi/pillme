@@ -1,7 +1,30 @@
 import { css } from "@emotion/react";
-import { borderRadius, colors, flexCenterX2 } from "../commonSt";
+import {
+  borderRadius,
+  colors,
+  flexCenterX2,
+  flexColumnCenterX2,
+} from "../commonSt";
 
 export const itemCreateSt = {
+  sampleSection: [
+    flexColumnCenterX2,
+    css`
+      position: sticky;
+      top: 0.5rem;
+      width: 100%;
+      padding: 0.3rem 0;
+      border-radius: ${borderRadius.medium};
+      background-color: ${colors.darkSection};
+      box-shadow: 0 10px 10px 0 ${colors.darkBackground};
+      z-index: 1;
+
+      @media (prefers-color-scheme: light) {
+        background-color: #ffffff;
+        box-shadow: 0 10px 10px 0 ${colors.lightGrey};
+      }
+    `,
+  ],
   timeContainer: css`
     display: flex;
     width: 6rem;

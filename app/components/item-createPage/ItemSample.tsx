@@ -18,7 +18,7 @@ const ItemSample = () => {
   const { isEnglish } = useSettingStore();
 
   return (
-    <section css={itemSectionSt.section}>
+    <section css={itemCreateSt.sampleSection}>
       <div css={itemCreateSt.timeContainer}>
         <div css={itemCreateSt.timeInnerContainer(timePeriod)}>
           {timeOptions.map((time) => (
