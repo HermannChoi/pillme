@@ -18,6 +18,7 @@ import { getTotalListLength } from "@/app/utils/getToTalListLength";
 import { vibrate } from "@/app/utils/vibrate";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SyntheticEvent, useEffect } from "react";
 
@@ -27,12 +28,6 @@ const ItemSection = () => {
   const { setWhichModal, setItemForModal } = useModalStore();
   const { isDateChanged, setIsInitialLoad } = useDateStore();
   const { isEnglish } = useSettingStore();
-
-  //아이템 정보 페이지 이동 로직
-  const clickItem = (e: SyntheticEvent, item: itemProps) => {
-    setItemForModal(item);
-    router.push(`/pages/item-information/${item.id}`);
-  };
 
   //아이템 활성화 토글 로직
   const clickToggle = (e: SyntheticEvent, clickedItem: itemProps) => {
@@ -123,8 +118,10 @@ const ItemSection = () => {
                             />
                           </button>
                         </div>
-                        <div
-                          onClick={(e) => clickItem(e, item)}
+                        <Link
+                          prefetch={true}
+                          href={`/pages/item-information/${item.id}`}
+                          onClick={() => setItemForModal(item)}
                           css={itemSectionSt.infoContainer}
                         >
                           <div css={itemSectionSt.optionInfoContainer}>
@@ -159,7 +156,7 @@ const ItemSection = () => {
                                 : frequencyToKorean[item.frequency]}
                             </p>
                           </div>
-                        </div>
+                        </Link>
                         <button
                           onClick={(e) => clickModifyBtn(e, item)}
                           css={itemSectionSt.modifyBtn}

@@ -69,7 +69,7 @@ export const itemSectionSt = {
       gap: 0.5rem;
       width: 100%;
       height: 60px;
-      padding: 5px 10px;
+      padding: 10px;
       border: none;
       border-radius: ${borderRadius.medium};
       background-color: ${colors.darkSection};
@@ -79,7 +79,7 @@ export const itemSectionSt = {
         ease-in-out;
 
       &:active {
-        transform: scale(0.98);
+        transform: scale(0.96, 0.95);
         background-color: ${colors.grey}20;
       }
 
@@ -121,7 +121,9 @@ export const itemSectionSt = {
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     row-gap: 0.2rem;
+    height: 100%;
     overflow: hidden;
   `,
   figure: css`

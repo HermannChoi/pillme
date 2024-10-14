@@ -3,7 +3,7 @@ import style from "@/app/style/homePage/homeSus.module.css";
 const HomePageSus = () => {
   return (
     <div className={style.container}>
-      <div className={style.header}>
+      <div className={style.headerSus}>
         <div className={style.h1Text} />
       </div>
       <div className={style.userNameSection} />

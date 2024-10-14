@@ -31,9 +31,15 @@
   letter-spacing: -1px;
 }
 
+.headerSus {
+  width: 100%;
+  height: 2.3rem;
+  margin: 0.2rem 0;
+}
+
 .h1Text {
   width: 130px;
-  height: 2.5rem;
+  height: 2.3rem;
   border-radius: 10px;
   background-color: #808080;
   animation: loading 1s infinite alternate;
