@@ -47,7 +47,7 @@ const ItemCalendar = () => {
       // 캘린더 추가 날짜가 오늘이면 토글 활성화 및 복용 날짜, 시간 추가
       isTaken: isNewDateToday
         ? isTheDateAlreadyTaken
-          ? false
+          ? itemForModal.isTaken
           : true
         : itemForModal.isTaken,
       date:
