@@ -6,3 +6,10 @@ export const timeOptions: (keyof listProps)[] = [
   "Night",
   "Any",
 ];
+
+export const timeOptionsKo: { [key: string]: string } = {
+  Morning: "아침",
+  Noon: "점심",
+  Night: "저녁",
+  Any: "언제나",
+};

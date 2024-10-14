@@ -48,6 +48,7 @@ export const itemSectionSt = {
       animation: ${emptyItemSectionAni} 2s ease-in-out alternate infinite;
 
       &:active {
+        transform: scale(0.95);
         background-color: ${colors.grey}20;
         color: ${colors.green};
       }
@@ -60,7 +61,7 @@ export const itemSectionSt = {
   listItemContainer: css`
     width: 100%;
   `,
-  listItem: (item: itemProps) => {
+  listItem: (item?: itemProps) => {
     return css`
       position: relative;
       display: flex;
@@ -76,7 +77,8 @@ export const itemSectionSt = {
       transition: background-color 0.2s, border-radius 0.2s;
       cursor: pointer;
       z-index: 1;
-      animation: ${item.date === "0000-00-00" && itemAppearAni} 0.2s ease-in-out;
+      animation: ${item?.date === "0000-00-00" && itemAppearAni} 0.2s
+        ease-in-out;
       transition: 0.1s;
 
       &:active {
@@ -121,6 +123,7 @@ export const itemSectionSt = {
     overflow: hidden;
   `,
   name: css`
+    height: 20px;
     font-weight: 600;
     white-space: nowrap;
     overflow: hidden;

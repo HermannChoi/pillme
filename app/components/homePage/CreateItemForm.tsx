@@ -1,21 +1,23 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { AnimatePresence, motion } from "framer-motion";
-import useFormStore from "@/app/store/homePage/useFormStore";
-import useErrorMsgStore from "../../store/homePage/useErrorMsgStore";
-import { listProps } from "../../types/types";
-import { timeOptions } from "../../constant/timeOptions";
-import { useEffect, useRef } from "react";
-import { createItemFormSt } from "../../style/homePage/createItemFormSt";
-import useClickOutside from "../../hooks/useClickOutside";
-import useSettingStore from "../../store/useSettingStore";
-import ErrorMsg from "./ErrorMsg";
+import { defaultList } from "@/app/constant/defaultList";
 import { submitFormToCreateItem } from "@/app/hooks/submitFormToCreateItem";
+import useFormStore from "@/app/store/homePage/useFormStore";
+import { AnimatePresence, motion } from "framer-motion";
+import _ from "lodash";
+import { useRef } from "react";
+import { timeOptions, timeOptionsKo } from "../../constant/timeOptions";
+import useClickOutside from "../../hooks/useClickOutside";
+import useErrorMsgStore from "../../store/homePage/useErrorMsgStore";
+import useSettingStore from "../../store/useSettingStore";
+import { createItemFormSt } from "../../style/homePage/createItemFormSt";
+import { listProps } from "../../types/types";
+import ErrorMsg from "./ErrorMsg";
 
 const CreateItemForm = () => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const timePeriodDivRef = useRef<HTMLDivElement>(null);
+  const timePeriodButtonRef = useRef<HTMLButtonElement>(null);
   const {
     name,
     setName,
@@ -27,23 +29,18 @@ const CreateItemForm = () => {
     setList,
     isSubmitted,
     setIsSubmitted,
-    setFocusInput,
     setIsEasterEggsOn,
   } = useFormStore();
   const { errorMsg, setErrorMsg, setIsErrorMsgChanged } = useErrorMsgStore();
   const { isEnglish } = useSettingStore();
 
-  //다른 곳 누를 시에 시간대 버튼 비활성화 됨.
-  useClickOutside(timePeriodDivRef, () => setIsSelectOpen(false));
+  const areArraysEqual = _.isEqual(list, defaultList);
 
-  useEffect(() => {
-    setFocusInput(() => {
-      inputRef.current && inputRef.current.focus(); // 실제 포커스 함수
-    });
-  }, [setFocusInput]);
+  //다른 곳 누를 시에 시간대 버튼 비활성화 됨.
+  useClickOutside(timePeriodButtonRef, () => setIsSelectOpen(false));
 
   return (
-    <section css={createItemFormSt.container}>
+    <section css={createItemFormSt.container(areArraysEqual)}>
       <form
         css={createItemFormSt.form}
         onSubmit={(e) =>
@@ -75,12 +72,15 @@ const CreateItemForm = () => {
           />
         </div>
         <div css={createItemFormSt.timeSelectContainer}>
-          <div
-            ref={timePeriodDivRef}
+          <button
+            type="button"
+            ref={timePeriodButtonRef}
             css={createItemFormSt.timeSelect}
             onClick={() => setIsSelectOpen(!isSelectOpen)}
           >
-            {timePeriod || "Select an option"}
+            {isEnglish
+              ? timePeriod || "Select an option"
+              : timeOptionsKo[timePeriod]}
             <AnimatePresence>
               {isSelectOpen && (
                 <motion.ul
@@ -92,7 +92,8 @@ const CreateItemForm = () => {
                 >
                   {timeOptions.map((opt, i) => {
                     return (
-                      <li
+                      <button
+                        type="button"
                         key={i}
                         onClick={() => {
                           setTimePeriod(opt as keyof listProps);
@@ -100,14 +101,14 @@ const CreateItemForm = () => {
                         }}
                         css={createItemFormSt.option}
                       >
-                        {opt}
-                      </li>
+                        {isEnglish ? opt : timeOptionsKo[opt]}
+                      </button>
                     );
                   })}
                 </motion.ul>
               )}
             </AnimatePresence>
-          </div>
+          </button>
         </div>
         <motion.button
           disabled={errorMsg !== ""}

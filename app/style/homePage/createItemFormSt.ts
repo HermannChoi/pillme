@@ -3,11 +3,13 @@ import { colors, flexCenterX2 } from "../commonSt";
 import { twitching1 } from "../keyframes";
 
 export const createItemFormSt = {
-  container: css`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  `,
+  container: (areArraysEqual: boolean) => {
+    return css`
+      display: ${areArraysEqual ? "none" : "flex"};
+      flex-direction: column;
+      width: 100%;
+    `;
+  },
   form: css`
     display: flex;
     align-items: end;
@@ -44,6 +46,7 @@ export const createItemFormSt = {
       position: relative;
       width: 100%;
       height: 50px;
+      border: none;
       border-top: 1px solid ${colors.grey}30;
       border-bottom: 1px solid ${colors.grey}30;
       background-color: ${colors.green}30;
@@ -73,11 +76,17 @@ export const createItemFormSt = {
     }
   `,
   option: css`
+    flex: 1;
     ${flexCenterX2}
     width: 100%;
-    height: 50px;
+    height: 40px;
     padding-left: 5px;
-    &:active {
+    border: none;
+
+    background-color: transparent;
+
+    &:active,
+    &:focus {
       background-color: ${colors.green}30;
     }
   `,

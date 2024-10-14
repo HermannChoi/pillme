@@ -6,14 +6,14 @@ interface UseFormStoreProps {
   setName: (value: string) => void;
   timePeriod: keyof listProps;
   setTimePeriod: (value: keyof listProps) => void;
+  frequency: number;
+  setFrequency: (value: number) => void;
   isSelectOpen: boolean;
   setIsSelectOpen: (value: boolean) => void;
   list: listProps;
   setList: (newList: listProps | ((prevList: listProps) => listProps)) => void;
   isSubmitted: boolean;
   setIsSubmitted: (value: boolean) => void;
-  focusInput: () => void;
-  setFocusInput: (focusFunc: () => void) => void;
   isEasterEggsOn: boolean;
   setIsEasterEggsOn: (value: boolean) => void;
 }
@@ -23,6 +23,8 @@ const useFormStore = create<UseFormStoreProps>((set) => ({
   setName: (value) => set({ name: value }),
   timePeriod: "Morning",
   setTimePeriod: (value) => set({ timePeriod: value }),
+  frequency: 0,
+  setFrequency: (value) => set({ frequency: value }),
   isSelectOpen: false,
   setIsSelectOpen: (value) => set({ isSelectOpen: value }),
   list: {
@@ -42,8 +44,6 @@ const useFormStore = create<UseFormStoreProps>((set) => ({
 
   isSubmitted: false,
   setIsSubmitted: (value) => set({ isSubmitted: value }),
-  focusInput: () => {}, // 기본적으로 빈 함수로 초기화
-  setFocusInput: (focusFunc) => set({ focusInput: focusFunc }),
   isEasterEggsOn: false,
   setIsEasterEggsOn: (value) => set({ isEasterEggsOn: value }),
 }));

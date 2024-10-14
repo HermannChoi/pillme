@@ -7,10 +7,12 @@ interface SubmitFormToCreateItemProps {
   e: SyntheticEvent;
   timePeriod: keyof listProps;
   name: string;
+  frequency?: number;
   list: listProps;
   setList: (prev: (prev: listProps) => listProps) => void;
   setIsSubmitted: (value: boolean) => void;
   setName: (value: string) => void;
+  setFrequency?: (value: number) => void;
   setErrorMsg: (value: string) => void;
   setIsErrorMsgChanged: (value: boolean) => void;
   setIsEasterEggsOn: (value: boolean) => void;
@@ -21,10 +23,12 @@ export const submitFormToCreateItem = ({
   e,
   timePeriod,
   name,
+  frequency,
   list,
   setList,
   setIsSubmitted,
   setName,
+  setFrequency,
   setErrorMsg,
   setIsErrorMsgChanged,
   setIsEasterEggsOn,
@@ -71,7 +75,7 @@ export const submitFormToCreateItem = ({
     hours: 0,
     minutes: 0,
     isTaken: false,
-    frequency: 0,
+    frequency: frequency ? frequency : 0,
     leftDay: 0,
     takenDays: [],
     deletedDate: "",
@@ -87,6 +91,7 @@ export const submitFormToCreateItem = ({
   });
   //생성 후 처리되는 함수들
   setName("");
+  setFrequency && setFrequency(0);
   setIsSubmitted(true);
   setIsErrorMsgChanged(false);
   setErrorMsg(

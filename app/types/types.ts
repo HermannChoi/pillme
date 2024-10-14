@@ -37,4 +37,5 @@ export interface modalList {
 export interface WhichPage {
   Home: string;
   Setting: string;
+  ItemCreate: string;
 }

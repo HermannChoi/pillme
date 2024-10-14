@@ -6,7 +6,6 @@ export const settingPageSt = {
     ${flexCenterX2}
     width: 100%;
     height: 2rem;
-    margin-bottom: -1rem;
   `,
   sectionOutline: css`
     display: flex;
@@ -18,6 +17,7 @@ export const settingPageSt = {
   sectionTitle: css`
     width: 100%;
     padding-left: 0.5rem;
+    font-weight: 600;
   `,
   section: css`
     display: flex;

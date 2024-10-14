@@ -6,6 +6,7 @@ import {
   frequencyToEnglish,
   frequencyToKorean,
 } from "@/app/constant/itemFrequency";
+import { timeOptionsKo } from "@/app/constant/timeOptions";
 import { toggleIsTaken } from "@/app/hooks/toggleIsTaken";
 import useDateStore from "@/app/store/homePage/useDateStore";
 import useFormStore from "@/app/store/homePage/useFormStore";
@@ -21,7 +22,7 @@ import { SyntheticEvent, useEffect } from "react";
 
 const ItemSection = () => {
   const router = useRouter();
-  const { list, setList, focusInput } = useFormStore();
+  const { list, setList } = useFormStore();
   const { setWhichModal, setItemForModal } = useModalStore();
   const { isDateChanged, setIsInitialLoad } = useDateStore();
   const { isEnglish } = useSettingStore();
@@ -96,7 +97,11 @@ const ItemSection = () => {
               list[timePeriod as keyof listProps].length > 0 && (
                 <section key={timePeriod} css={itemSectionSt.section}>
                   {list[timePeriod as keyof listProps].length > 0 && (
-                    <h2 css={itemSectionSt.h2}>{timePeriod.toUpperCase()}</h2>
+                    <h2 css={itemSectionSt.h2}>
+                      {isEnglish
+                        ? timePeriod.toUpperCase()
+                        : timeOptionsKo[timePeriod]}
+                    </h2>
                   )}
                   {list[timePeriod as keyof listProps].map((item, i) => {
                     return (
@@ -154,10 +159,12 @@ const ItemSection = () => {
         </>
       ) : (
         <button
-          onClick={() => focusInput()}
+          onClick={() => router.push("/pages/item-create")}
           css={itemSectionSt.emptyItemSection}
         >
-          {isEnglish ? `Add your medicine!` : `약을 추가해 보세요!`}
+          {isEnglish
+            ? `Click me and add your medicine!`
+            : `저를 클릭해서 약을 추가해 보세요!`}
         </button>
       )}
     </div>
