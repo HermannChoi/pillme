@@ -91,12 +91,17 @@ export const itemSectionSt = {
       }
     `;
   },
+  toggleContainer: css`
+    ${flexCenterX2}
+    width: 55px;
+    height: 100%;
+  `,
   toggle: (isTaken: boolean) => {
     return css`
       display: flex;
       justify-content: ${isTaken ? `flex-end` : `flex-start`};
       align-items: center;
-      width: 60px;
+      width: 100%;
       height: 30px;
       padding: 3px;
       border: 2px solid ${isTaken ? colors.grey : colors.red};
@@ -122,18 +127,27 @@ export const itemSectionSt = {
     row-gap: 0.2rem;
     overflow: hidden;
   `,
+  figure: css`
+    ${flexCenterX2}
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    background-color: ${colors.green}30;
+  `,
   name: css`
+    flex: 1;
     height: 20px;
     font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    overflow: hidden;
   `,
   optionInfoContainer: css`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.2rem;
   `,
   optionInfoText: css`
     font-size: 0.8rem;

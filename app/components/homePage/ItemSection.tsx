@@ -17,6 +17,7 @@ import { itemProps, listProps } from "@/app/types/types";
 import { getTotalListLength } from "@/app/utils/getToTalListLength";
 import { vibrate } from "@/app/utils/vibrate";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { SyntheticEvent, useEffect } from "react";
 
@@ -105,27 +106,40 @@ const ItemSection = () => {
                   )}
                   {list[timePeriod as keyof listProps].map((item, i) => {
                     return (
-                      <div
-                        key={i}
-                        onClick={(e) => clickItem(e, item)}
-                        css={itemSectionSt.listItem(item)}
-                      >
-                        <button
+                      <div key={i} css={itemSectionSt.listItem(item)}>
+                        <div
                           onClick={(e) => clickToggle(e, item)}
-                          css={itemSectionSt.toggle(item.isTaken)}
+                          css={itemSectionSt.toggleContainer}
                         >
-                          <motion.div
-                            css={itemSectionSt.handle}
-                            layout
-                            transition={{
-                              type: "spring",
-                              stiffness: 700,
-                              damping: 30,
-                            }}
-                          />
-                        </button>
-                        <div css={itemSectionSt.infoContainer}>
-                          <p css={itemSectionSt.name}>{item.name}</p>
+                          <button css={itemSectionSt.toggle(item.isTaken)}>
+                            <motion.div
+                              css={itemSectionSt.handle}
+                              layout
+                              transition={{
+                                type: "spring",
+                                stiffness: 700,
+                                damping: 30,
+                              }}
+                            />
+                          </button>
+                        </div>
+                        <div
+                          onClick={(e) => clickItem(e, item)}
+                          css={itemSectionSt.infoContainer}
+                        >
+                          <div css={itemSectionSt.optionInfoContainer}>
+                            <figure css={itemSectionSt.figure}>
+                              <Image
+                                src={require(`@/app/assets/itemType/${
+                                  item.itemType ? item.itemType : "oral"
+                                }.svg`)}
+                                alt={item.itemType}
+                                width={13}
+                                height={13}
+                              />
+                            </figure>
+                            <p css={itemSectionSt.name}>{item.name}</p>
+                          </div>
                           <div css={itemSectionSt.optionInfoContainer}>
                             <p css={itemSectionSt.optionInfoText}>
                               {item.date.substring(5).replaceAll("-", ".")}

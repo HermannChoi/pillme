@@ -9,9 +9,10 @@ import { timeOptionsKo } from "@/app/constant/timeOptions";
 import useFormStore from "@/app/store/homePage/useFormStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
+import Image from "next/image";
 
 const ItemSample = () => {
-  const { name, timePeriod, frequency } = useFormStore();
+  const { name, itemType, timePeriod, frequency } = useFormStore();
   const { isEnglish } = useSettingStore();
 
   return (
@@ -21,11 +22,23 @@ const ItemSample = () => {
       </h2>
 
       <div css={itemSectionSt.listItem()}>
-        <button css={itemSectionSt.toggle(false)}>
-          <div css={itemSectionSt.handle} />
-        </button>
+        <div css={itemSectionSt.toggleContainer}>
+          <button css={itemSectionSt.toggle(false)}>
+            <div css={itemSectionSt.handle} />
+          </button>
+        </div>
         <div css={itemSectionSt.infoContainer}>
-          <p css={itemSectionSt.name}>{name}</p>
+          <div css={itemSectionSt.optionInfoContainer}>
+            <figure css={itemSectionSt.figure}>
+              <Image
+                src={require(`@/app/assets/itemType/${itemType}.svg`)}
+                alt={itemType}
+                width={13}
+                height={13}
+              />
+            </figure>
+            <p css={itemSectionSt.name}>{name === "" ? "..." : name}</p>
+          </div>
           <div css={itemSectionSt.optionInfoContainer}>
             <p css={itemSectionSt.optionInfoText}>00.00</p>
             <p css={itemSectionSt.optionInfoText}>|</p>

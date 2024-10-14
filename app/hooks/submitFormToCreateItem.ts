@@ -1,10 +1,11 @@
 import { SyntheticEvent } from "react";
 import { v4 as uuid } from "uuid";
-import { itemProps, listProps } from "../types/types";
+import { itemProps, ItemTypes, listProps } from "../types/types";
 import { vibrate } from "../utils/vibrate";
 
 interface SubmitFormToCreateItemProps {
   e: SyntheticEvent;
+  itemType?: keyof ItemTypes;
   timePeriod: keyof listProps;
   name: string;
   frequency?: number;
@@ -12,6 +13,7 @@ interface SubmitFormToCreateItemProps {
   setList: (prev: (prev: listProps) => listProps) => void;
   setIsSubmitted: (value: boolean) => void;
   setName: (value: string) => void;
+  setItemType?: (value: keyof ItemTypes) => void;
   setFrequency?: (value: number) => void;
   setErrorMsg: (value: string) => void;
   setIsErrorMsgChanged: (value: boolean) => void;
@@ -21,6 +23,7 @@ interface SubmitFormToCreateItemProps {
 
 export const submitFormToCreateItem = ({
   e,
+  itemType,
   timePeriod,
   name,
   frequency,
@@ -28,6 +31,7 @@ export const submitFormToCreateItem = ({
   setList,
   setIsSubmitted,
   setName,
+  setItemType,
   setFrequency,
   setErrorMsg,
   setIsErrorMsgChanged,
@@ -69,6 +73,7 @@ export const submitFormToCreateItem = ({
   //생성 아이템
   const newItem: itemProps = {
     id: uuid(),
+    itemType: itemType ? itemType : "oral",
     timePeriod: timePeriod,
     date: "0000-00-00",
     name: name,
@@ -91,6 +96,7 @@ export const submitFormToCreateItem = ({
   });
   //생성 후 처리되는 함수들
   setName("");
+  setItemType && setItemType("oral");
   setFrequency && setFrequency(0);
   setIsSubmitted(true);
   setIsErrorMsgChanged(false);

@@ -6,17 +6,21 @@ import { timeOptions, timeOptionsKo } from "@/app/constant/timeOptions";
 import { submitFormToCreateItem } from "@/app/hooks/submitFormToCreateItem";
 import useErrorMsgStore from "@/app/store/homePage/useErrorMsgStore";
 
+import { itemTypes, itemTypesKo } from "@/app/constant/itemTypes";
 import useFormStore from "@/app/store/homePage/useFormStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
 import { itemCreateSt } from "@/app/style/item-create/itemCreateSt";
 import { settingPageSt } from "@/app/style/settingPage/settingPageSt";
+import { ItemTypes } from "@/app/types/types";
 import ErrorMsg from "../homePage/ErrorMsg";
 
 const MainCreateSection = () => {
   const {
     name,
     setName,
+    itemType,
+    setItemType,
     timePeriod,
     setTimePeriod,
     frequency,
@@ -36,6 +40,7 @@ const MainCreateSection = () => {
       onSubmit={(e) =>
         submitFormToCreateItem({
           e,
+          itemType,
           timePeriod,
           name,
           frequency,
@@ -43,6 +48,7 @@ const MainCreateSection = () => {
           setList,
           setIsSubmitted,
           setName,
+          setItemType,
           setFrequency,
           setErrorMsg,
           setIsErrorMsgChanged,
@@ -66,6 +72,27 @@ const MainCreateSection = () => {
           css={itemCreateSt.input}
         />
         <ErrorMsg />
+      </section>
+      <section css={itemCreateSt.section}>
+        <p css={settingPageSt.sectionTitle}>
+          {isEnglish
+            ? "What is the type of this item?"
+            : "이 아이템의 타입은 무엇인가요?"}
+        </p>
+        <div css={itemCreateSt.typeContainer}>
+          {itemTypes.map((type, i) => {
+            return (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setItemType(type as keyof ItemTypes)}
+                css={itemCreateSt.option(type, itemType)}
+              >
+                {isEnglish ? type : itemTypesKo[type]}
+              </button>
+            );
+          })}
+        </div>
       </section>
       <section css={itemCreateSt.section}>
         <p css={settingPageSt.sectionTitle}>

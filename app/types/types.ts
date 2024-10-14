@@ -1,6 +1,13 @@
+export interface ItemTypes {
+  oral: string;
+  topical: string;
+  item: string;
+}
+
 export interface itemProps {
   id: string;
-  timePeriod: string;
+  itemType: keyof ItemTypes;
+  timePeriod: keyof listProps;
   date: string;
   name: string;
   hours: number;

@@ -22,7 +22,7 @@ export const itemCreateSt = {
   `,
   label: css`
     font-size: 0.9rem;
-    text-indent: 1rem;
+    text-indent: 0.5rem;
   `,
   input: css`
     width: 100%;
@@ -37,6 +37,13 @@ export const itemCreateSt = {
       border: 1px solid ${colors.green};
     }
   `,
+  typeContainer: css`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    width: 100%;
+    border-radius: ${borderRadius.medium};
+  `,
   optionContainer: css`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -49,7 +56,7 @@ export const itemCreateSt = {
       height: 3rem;
       padding: 0.5rem 1rem;
       border: 1px solid ${option === whichOption ? colors.green : colors.grey}30;
-      border-radius: ${borderRadius.medium};
+      border-radius: ${borderRadius.small};
       background-color: ${option === whichOption
         ? `${colors.green}80`
         : "transparent"};

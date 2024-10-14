@@ -1,9 +1,11 @@
-import { listProps } from "@/app/types/types";
+import { ItemTypes, listProps } from "@/app/types/types";
 import { create } from "zustand";
 
 interface UseFormStoreProps {
   name: string;
   setName: (value: string) => void;
+  itemType: keyof ItemTypes;
+  setItemType: (value: keyof ItemTypes) => void;
   timePeriod: keyof listProps;
   setTimePeriod: (value: keyof listProps) => void;
   frequency: number;
@@ -21,6 +23,8 @@ interface UseFormStoreProps {
 const useFormStore = create<UseFormStoreProps>((set) => ({
   name: "",
   setName: (value) => set({ name: value }),
+  itemType: "oral",
+  setItemType: (value) => set({ itemType: value }),
   timePeriod: "Morning",
   setTimePeriod: (value) => set({ timePeriod: value }),
   frequency: 0,
