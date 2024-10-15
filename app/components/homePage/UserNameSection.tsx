@@ -2,18 +2,18 @@
 /** @jsxImportSource @emotion/react */
 
 import useToggleLanguage from "@/app/hooks/useToggleLanguage";
-import useSettingStore from "@/app/store/useSettingStore";
-import useUserNameStore from "@/app/store/homePage/useUserNameStore";
-import { useEffect, useState } from "react";
-import useFormStore from "@/app/store/homePage/useFormStore";
 import useDateStore from "@/app/store/homePage/useDateStore";
-import { outlineSt } from "@/app/style/homePage/outlineSt";
+import useFormStore from "@/app/store/homePage/useFormStore";
+import useUserNameStore from "@/app/store/homePage/useUserNameStore";
 import useNavigatorStore from "@/app/store/layout/useNavigatorStore";
+import useSettingStore from "@/app/store/useSettingStore";
+import { outlineSt } from "@/app/style/homePage/outlineSt";
+import { useEffect, useState } from "react";
 
 const UserNameSection = () => {
   const [greeting, setGreeting] = useState("");
 
-  const { userName } = useUserNameStore();
+  const { userName, setFirstDate, setAddedItemNum } = useUserNameStore();
   const { isEasterEggsOn } = useFormStore();
   const { isEnglish, setIsEnglish } = useSettingStore();
   const { isInitialLoad } = useDateStore();
@@ -36,6 +36,14 @@ const UserNameSection = () => {
       setGreeting(isEnglish ? "Good Afternoon" : `좋은 오후에요`);
     else setGreeting(isEnglish ? "Good Evening" : `좋은 저녁이에요`);
   }, [setGreeting, isEnglish]);
+
+  useEffect(() => {
+    const storedFirstDate = localStorage.getItem("firstDate");
+    storedFirstDate && setFirstDate(storedFirstDate);
+
+    const storedAddedItemNum = localStorage.getItem("addedItemNum");
+    storedAddedItemNum && setAddedItemNum(Number(storedAddedItemNum));
+  }, [setFirstDate, setAddedItemNum]);
 
   return (
     <div css={outlineSt.userNameContainer(isEasterEggsOn)}>

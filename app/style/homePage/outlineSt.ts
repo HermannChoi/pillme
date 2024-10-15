@@ -26,7 +26,7 @@ export const outlineSt = {
       position: sticky;
       top: 2.3rem;
       background-color: ${colors.darkSection};
-      backdrop-filter: blur(5px);
+      box-shadow: 0 10px 10px 0 ${colors.darkBackground};
       z-index: 2;
 
       @media (prefers-color-scheme: light) {

@@ -4,6 +4,7 @@
 import { defaultList } from "@/app/constant/defaultList";
 import { submitFormToCreateItem } from "@/app/hooks/submitFormToCreateItem";
 import useFormStore from "@/app/store/homePage/useFormStore";
+import useUserNameStore from "@/app/store/homePage/useUserNameStore";
 import { AnimatePresence, motion } from "framer-motion";
 import _ from "lodash";
 import { useRef } from "react";
@@ -32,6 +33,7 @@ const CreateItemForm = () => {
     setIsEasterEggsOn,
   } = useFormStore();
   const { errorMsg, setErrorMsg, setIsErrorMsgChanged } = useErrorMsgStore();
+  const { addedItemNum, setAddedItemNum } = useUserNameStore();
   const { isEnglish } = useSettingStore();
 
   const areArraysEqual = _.isEqual(list, defaultList);
@@ -49,12 +51,14 @@ const CreateItemForm = () => {
             timePeriod,
             name,
             list,
+            addedItemNum,
             setList,
             setIsSubmitted,
             setName,
             setErrorMsg,
             setIsErrorMsgChanged,
             setIsEasterEggsOn,
+            setAddedItemNum,
             isEnglish,
           })
         }

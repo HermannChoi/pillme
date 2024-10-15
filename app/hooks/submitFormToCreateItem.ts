@@ -10,6 +10,7 @@ interface SubmitFormToCreateItemProps {
   name: string;
   frequency?: number;
   list: listProps;
+  addedItemNum: number;
   setList: (prev: (prev: listProps) => listProps) => void;
   setIsSubmitted: (value: boolean) => void;
   setName: (value: string) => void;
@@ -18,6 +19,7 @@ interface SubmitFormToCreateItemProps {
   setErrorMsg: (value: string) => void;
   setIsErrorMsgChanged: (value: boolean) => void;
   setIsEasterEggsOn: (value: boolean) => void;
+  setAddedItemNum: (value: number) => void;
   isEnglish: boolean;
 }
 
@@ -28,6 +30,7 @@ export const submitFormToCreateItem = ({
   name,
   frequency,
   list,
+  addedItemNum,
   setList,
   setIsSubmitted,
   setName,
@@ -36,6 +39,7 @@ export const submitFormToCreateItem = ({
   setErrorMsg,
   setIsErrorMsgChanged,
   setIsEasterEggsOn,
+  setAddedItemNum,
   isEnglish,
 }: SubmitFormToCreateItemProps) => {
   e.preventDefault();
@@ -103,6 +107,9 @@ export const submitFormToCreateItem = ({
   setErrorMsg(
     isEnglish ? "✓ the item got added." : "✓ 아이템이 추가되었습니다."
   );
+  const newAddedItemNum = addedItemNum + 1;
+  setAddedItemNum(newAddedItemNum);
+  localStorage.setItem("addedItemNum", newAddedItemNum.toString());
   setTimeout(() => {
     setIsSubmitted(false);
     setErrorMsg("");

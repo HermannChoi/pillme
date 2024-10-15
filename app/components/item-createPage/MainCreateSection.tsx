@@ -2,12 +2,12 @@
 /** @jsxImportSource @emotion/react */
 
 import { itemFrequency } from "@/app/constant/itemFrequency";
+import { itemTypes, itemTypesKo } from "@/app/constant/itemTypes";
 import { timeOptions, timeOptionsKo } from "@/app/constant/timeOptions";
 import { submitFormToCreateItem } from "@/app/hooks/submitFormToCreateItem";
 import useErrorMsgStore from "@/app/store/homePage/useErrorMsgStore";
-
-import { itemTypes, itemTypesKo } from "@/app/constant/itemTypes";
 import useFormStore from "@/app/store/homePage/useFormStore";
+import useUserNameStore from "@/app/store/homePage/useUserNameStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
 import { itemCreateSt } from "@/app/style/item-create/itemCreateSt";
@@ -30,6 +30,7 @@ const MainCreateSection = () => {
     setList,
     setIsEasterEggsOn,
   } = useFormStore();
+  const { addedItemNum, setAddedItemNum } = useUserNameStore();
   const { isEnglish } = useSettingStore();
   const { errorMsg, setErrorMsg, setIsErrorMsgChanged } = useErrorMsgStore();
 
@@ -45,6 +46,7 @@ const MainCreateSection = () => {
           name,
           frequency,
           list,
+          addedItemNum,
           setList,
           setIsSubmitted,
           setName,
@@ -53,6 +55,7 @@ const MainCreateSection = () => {
           setErrorMsg,
           setIsErrorMsgChanged,
           setIsEasterEggsOn,
+          setAddedItemNum,
           isEnglish,
         })
       }

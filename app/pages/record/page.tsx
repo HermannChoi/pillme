@@ -1,5 +1,11 @@
+import RouteMainSection from "@/app/components/routePage/RouteMainSection";
+
 const page = () => {
-  return <div>기록 페이지 공사 중</div>;
+  return (
+    <div className="defaultOutline">
+      <RouteMainSection />
+    </div>
+  );
 };
 
 export default page;
