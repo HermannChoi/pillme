@@ -3,14 +3,14 @@
 
 import Link from "next/link";
 
-import Image from "next/image";
+import { navigatorItems } from "@/app/constant/navigatorItems";
+import useNavigatorStore from "@/app/store/layout/useNavigatorStore";
+import useSettingStore from "@/app/store/useSettingStore";
+import { navigatorSt } from "@/app/style/layout/navigatorSt";
+import { WhichPage } from "@/app/types/types";
 import { css } from "@emotion/react";
 import { motion } from "framer-motion";
-import useSettingStore from "@/app/store/useSettingStore";
-import { navigatorItems } from "@/app/constant/navigatorItems";
-import { WhichPage } from "@/app/types/types";
-import useNavigatorStore from "@/app/store/layout/useNavigatorStore";
-import { navigatorSt } from "@/app/style/layout/navigatorSt";
+import Image from "next/image";
 
 const Navigator = () => {
   const { whichPage, setWhichPage } = useNavigatorStore();
@@ -26,7 +26,7 @@ const Navigator = () => {
             css={navigatorSt.linkContainer}
             onClick={() => setWhichPage(item.name as keyof WhichPage)}
           >
-            <Link href={item.url} css={navigatorSt.link}>
+            <Link href={item.href} css={navigatorSt.link}>
               <figure css={navigatorSt.figure}>
                 <Image
                   src={require(`@/app/assets/svg/${item.img}.svg`)}

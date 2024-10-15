@@ -37,7 +37,7 @@ export const itemCreateSt = {
     width: 4.5rem;
     height: 1.5rem;
     border-radius: 15px 5px 5px 5px;
-    background-color: ${colors.grey}30;
+    background-color: ${colors.grey}20;
     color: ${colors.grey};
     font-size: 0.9rem;
   `,

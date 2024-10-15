@@ -1,10 +1,16 @@
 export const navigatorItems = [
-  { name: "Home", nameKo: "홈", img: "home", url: "/" },
+  { name: "Home", nameKo: "홈", img: "home", href: "/" },
   {
     name: "Create",
     nameKo: "생성",
     img: "add-circle",
-    url: "/pages/item-create",
+    href: "/pages/item-create",
   },
-  { name: "Setting", nameKo: "설정", img: "setting", url: "/pages/setting" },
+  {
+    name: "Record",
+    nameKo: "기록",
+    img: "record",
+    href: "/pages/record",
+  },
+  { name: "Setting", nameKo: "설정", img: "setting", href: "/pages/setting" },
 ];
