@@ -11,6 +11,8 @@ export const itemCreateSt = {
   sampleSection: [
     flexColumnCenterX2,
     css`
+      position: relative;
+      row-gap: 0.3rem;
       position: sticky;
       top: 0.5rem;
       width: 100%;
@@ -18,6 +20,7 @@ export const itemCreateSt = {
       border-radius: ${borderRadius.medium};
       background-color: ${colors.darkSection};
       box-shadow: 0 10px 10px 0 ${colors.darkBackground};
+      overflow: hidden;
       z-index: 1;
 
       @media (prefers-color-scheme: light) {
@@ -26,6 +29,18 @@ export const itemCreateSt = {
       }
     `,
   ],
+  sampleTitle: css`
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    ${flexCenterX2}
+    width: 4.5rem;
+    height: 1.5rem;
+    border-radius: 15px 5px 5px 5px;
+    background-color: ${colors.grey}30;
+    color: ${colors.grey};
+    font-size: 0.9rem;
+  `,
   timeContainer: css`
     display: flex;
     width: 6rem;

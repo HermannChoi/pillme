@@ -19,6 +19,9 @@ const ItemSample = () => {
 
   return (
     <section css={itemCreateSt.sampleSection}>
+      <div css={itemCreateSt.sampleTitle}>
+        {isEnglish ? "Sample" : "미리 보기"}
+      </div>
       <div css={itemCreateSt.timeContainer}>
         <div css={itemCreateSt.timeInnerContainer(timePeriod)}>
           {timeOptions.map((time) => (
