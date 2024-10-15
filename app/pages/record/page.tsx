@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 
 const RouteMainSection = dynamic(
-  () => import("@/app/components/routePage/RouteMainSection")
+  () => import("@/app/components/recordPage/RecordMainSection")
 );
 
 const page = () => {

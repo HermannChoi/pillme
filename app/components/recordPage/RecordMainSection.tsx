@@ -7,7 +7,7 @@ import useSettingStore from "@/app/store/useSettingStore";
 import { routeSt } from "@/app/style/route/routeSt";
 import { useEffect, useState } from "react";
 
-const RouteMainSection = () => {
+const RecordMainSection = () => {
   const [isAniDone, setIsAniDone] = useState(false);
 
   const {
@@ -69,7 +69,7 @@ const RouteMainSection = () => {
                 : `${userName}님은 Pillme와 ${firstDate.replaceAll(
                     "-",
                     "."
-                  )}에 만나서
+                  )}에 만나
               함께 한지 ${getDays()}일이 되었어요!`}
             </p>
             <div css={routeSt.personalInfoContainer}>
@@ -106,4 +106,4 @@ const RouteMainSection = () => {
   );
 };
 
-export default RouteMainSection;
+export default RecordMainSection;
