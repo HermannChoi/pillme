@@ -4,11 +4,13 @@
 import useToggleLanguage from "@/app/hooks/useToggleLanguage";
 import useDateStore from "@/app/store/homePage/useDateStore";
 import useFormStore from "@/app/store/homePage/useFormStore";
+import useLoadingStore from "@/app/store/homePage/useLoadingStore";
 import useUserNameStore from "@/app/store/homePage/useUserNameStore";
 import useNavigatorStore from "@/app/store/layout/useNavigatorStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { outlineSt } from "@/app/style/homePage/outlineSt";
 import { useEffect, useState } from "react";
+import Loading from "./Loading";
 
 const UserNameSection = () => {
   const [greeting, setGreeting] = useState("");
@@ -18,10 +20,12 @@ const UserNameSection = () => {
   const { isEnglish, setIsEnglish } = useSettingStore();
   const { isInitialLoad } = useDateStore();
   const { setWhichPage } = useNavigatorStore();
+  const { isLoading, setIsLoading } = useLoadingStore();
 
   useEffect(() => {
     setWhichPage("Home");
-  }, [setWhichPage]);
+    setIsLoading(false);
+  }, [setWhichPage, setIsLoading]);
 
   useToggleLanguage(isEnglish, setIsEnglish, isInitialLoad);
 
@@ -47,11 +51,17 @@ const UserNameSection = () => {
 
   return (
     <div css={outlineSt.userNameContainer(isEasterEggsOn)}>
-      {isEasterEggsOn
-        ? isEnglish
-          ? `You are welcome :)`
-          : `천만에요! :)`
-        : `${greeting}, ${userName}${isEnglish ? `` : `님`}`}
+      {isLoading ? (
+        <Loading />
+      ) : isEasterEggsOn ? (
+        isEnglish ? (
+          `You are welcome :)`
+        ) : (
+          `천만에요! :)`
+        )
+      ) : (
+        `${greeting}, ${userName}${isEnglish ? `` : `님`}`
+      )}
     </div>
   );
 };

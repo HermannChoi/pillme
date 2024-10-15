@@ -10,6 +10,7 @@ import { timeOptionsKo } from "@/app/constant/timeOptions";
 import { toggleIsTaken } from "@/app/hooks/toggleIsTaken";
 import useDateStore from "@/app/store/homePage/useDateStore";
 import useFormStore from "@/app/store/homePage/useFormStore";
+import useLoadingStore from "@/app/store/homePage/useLoadingStore";
 import useUserNameStore from "@/app/store/homePage/useUserNameStore";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
@@ -22,6 +23,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SyntheticEvent, useEffect } from "react";
+import Loading from "./Loading";
 
 const ItemSection = () => {
   const router = useRouter();
@@ -30,6 +32,8 @@ const ItemSection = () => {
   const { isDateChanged, setIsInitialLoad } = useDateStore();
   const { isEnglish } = useSettingStore();
   const { activatedTime, setActivatedTime } = useUserNameStore();
+  const { isLoading } = useLoadingStore();
+
   //아이템 활성화 토글 로직
   const clickToggle = (e: SyntheticEvent, clickedItem: itemProps) => {
     e.stopPropagation();
@@ -172,6 +176,8 @@ const ItemSection = () => {
               )
           )}
         </>
+      ) : isLoading ? (
+        <Loading />
       ) : (
         <button
           onClick={() => router.push("/pages/item-create")}

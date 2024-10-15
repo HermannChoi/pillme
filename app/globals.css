@@ -59,7 +59,7 @@ main {
   margin-bottom: 6rem;
 }
 
-.showUpFromLeft {
+/* .showUpFromLeft {
   animation: showUpFromLeft 0.1s ease-in-out;
 }
 
@@ -73,7 +73,7 @@ main {
 
 .showUpFromBottom {
   animation: showUpFromBottom 0.2s ease-in-out;
-}
+} */
 
 .defaultOutline {
   display: flex;
