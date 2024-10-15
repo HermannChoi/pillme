@@ -18,6 +18,10 @@ const ModalToResetItem = () => {
       localStorage.getItem("trashList") || "[]"
     );
     const itemsOnTheList = getAllItems(list);
+    const itemsOnTheListWithDeletedDate = itemsOnTheList.map((item) => ({
+      ...item,
+      deletedDate: new Date().toISOString().split("T")[0],
+    }));
 
     if (itemsOnTheList.length === 0) {
       setWhichModal("message");
@@ -30,8 +34,8 @@ const ModalToResetItem = () => {
       "trashList",
       JSON.stringify(
         Array.isArray(savedTrashList)
-          ? [...savedTrashList, ...itemsOnTheList]
-          : [...itemsOnTheList]
+          ? [...savedTrashList, ...itemsOnTheListWithDeletedDate]
+          : [...itemsOnTheListWithDeletedDate]
       )
     );
 
