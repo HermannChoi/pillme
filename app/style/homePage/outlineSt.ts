@@ -31,6 +31,7 @@ export const outlineSt = {
 
       @media (prefers-color-scheme: light) {
         background-color: #ffffff;
+        box-shadow: 0 10px 10px 0 ${colors.lightGrey};
       }
     `,
   ],

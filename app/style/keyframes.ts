@@ -131,7 +131,7 @@ export const routeMessageAni = keyframes`
     border: 1px solid transparent;
     border-radius: 20px;
     width: 20rem;
-    height: 25rem;
+    height: 20rem;
   }
 `;
 

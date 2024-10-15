@@ -11,8 +11,8 @@ interface UseUserNameStoreProps {
   setFirstDate: (value: string) => void;
   addedItemNum: number;
   setAddedItemNum: (value: number) => void;
-  allActivatedTime: number;
-  setAllActivatedTime: (value: number) => void;
+  activatedTime: number;
+  setActivatedTime: (value: number) => void;
 }
 
 const useUserNameStore = create<UseUserNameStoreProps>((set) => ({
@@ -26,8 +26,8 @@ const useUserNameStore = create<UseUserNameStoreProps>((set) => ({
   setFirstDate: (value: string) => set({ firstDate: value }),
   addedItemNum: 0,
   setAddedItemNum: (value: number) => set({ addedItemNum: value }),
-  allActivatedTime: 0,
-  setAllActivatedTime: (value: number) => set({ allActivatedTime: value }),
+  activatedTime: 0,
+  setActivatedTime: (value: number) => set({ activatedTime: value }),
 }));
 
 export default useUserNameStore;

@@ -1,4 +1,8 @@
-import RouteMainSection from "@/app/components/routePage/RouteMainSection";
+import dynamic from "next/dynamic";
+
+const RouteMainSection = dynamic(
+  () => import("@/app/components/routePage/RouteMainSection")
+);
 
 const page = () => {
   return (

@@ -7,7 +7,7 @@ import {
   routeMessageAni,
 } from "../keyframes";
 
-const animationTime = 7;
+const animationTime = 6;
 
 export const routeSt = {
   outline: css`
@@ -58,7 +58,7 @@ export const routeSt = {
     height: 100%;
     padding: 1rem;
     opacity: 0;
-    animation: ${fadeIn} 1s 0.3s ease-in-out forwards;
+    animation: ${fadeIn} 1s ease-in-out forwards;
   `,
   message: css`
     font-size: 1.2rem;

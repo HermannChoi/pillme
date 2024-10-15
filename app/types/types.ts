@@ -44,6 +44,7 @@ export interface modalList {
 
 export interface WhichPage {
   Home: string;
+  Record: string;
   Setting: string;
   Create: string;
 }

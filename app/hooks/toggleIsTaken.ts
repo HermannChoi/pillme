@@ -2,10 +2,17 @@ import { itemProps, listProps } from "../types/types";
 
 interface ToggleIsTakeProps {
   clickedItem: itemProps;
+  activatedTime: number;
   setList: (prev: (prev: listProps) => listProps) => void;
+  setActivatedTime: (value: number) => void;
 }
 
-export const toggleIsTaken = ({ clickedItem, setList }: ToggleIsTakeProps) => {
+export const toggleIsTaken = ({
+  clickedItem,
+  activatedTime,
+  setList,
+  setActivatedTime,
+}: ToggleIsTakeProps) => {
   const today = new Date();
   const year = today.getFullYear();
   const month = String(today.getMonth() + 1).padStart(2, "0");
@@ -31,6 +38,11 @@ export const toggleIsTaken = ({ clickedItem, setList }: ToggleIsTakeProps) => {
               }),
             };
           } else {
+            // 활성화 할 때 활성화 횟수 업데이트
+            const newActivatedTime = activatedTime + 1;
+            setActivatedTime(newActivatedTime);
+            localStorage.setItem("activatedTime", newActivatedTime.toString());
+
             // 활성화 할 때는 시간 업데이트 추가
             return {
               ...item,

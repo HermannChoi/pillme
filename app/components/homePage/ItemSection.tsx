@@ -10,6 +10,7 @@ import { timeOptionsKo } from "@/app/constant/timeOptions";
 import { toggleIsTaken } from "@/app/hooks/toggleIsTaken";
 import useDateStore from "@/app/store/homePage/useDateStore";
 import useFormStore from "@/app/store/homePage/useFormStore";
+import useUserNameStore from "@/app/store/homePage/useUserNameStore";
 import useModalStore from "@/app/store/useModalStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { itemSectionSt } from "@/app/style/homePage/itemSectionSt";
@@ -28,13 +29,15 @@ const ItemSection = () => {
   const { setWhichModal, setItemForModal } = useModalStore();
   const { isDateChanged, setIsInitialLoad } = useDateStore();
   const { isEnglish } = useSettingStore();
-
+  const { activatedTime, setActivatedTime } = useUserNameStore();
   //아이템 활성화 토글 로직
   const clickToggle = (e: SyntheticEvent, clickedItem: itemProps) => {
     e.stopPropagation();
     toggleIsTaken({
       clickedItem,
+      activatedTime,
       setList,
+      setActivatedTime,
     });
     vibrate(100);
   };

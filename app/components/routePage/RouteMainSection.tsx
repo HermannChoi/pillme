@@ -2,22 +2,42 @@
 /** @jsxImportSource @emotion/react */
 
 import useUserNameStore from "@/app/store/homePage/useUserNameStore";
+import useNavigatorStore from "@/app/store/layout/useNavigatorStore";
+import useSettingStore from "@/app/store/useSettingStore";
 import { routeSt } from "@/app/style/route/routeSt";
 import { useEffect, useState } from "react";
 
 const RouteMainSection = () => {
   const [isAniDone, setIsAniDone] = useState(false);
 
-  const { userName, firstDate, setFirstDate, addedItemNum, allActivatedTime } =
-    useUserNameStore();
+  const {
+    userName,
+    firstDate,
+    setFirstDate,
+    addedItemNum,
+    activatedTime,
+    setActivatedTime,
+    setAddedItemNum,
+  } = useUserNameStore();
+  const { setWhichPage } = useNavigatorStore();
+  const { isEnglish, setIsEnglish } = useSettingStore();
 
   useEffect(() => {
     const storedFirstDate = localStorage.getItem("firstDate");
     storedFirstDate && setFirstDate(storedFirstDate);
 
+    const storedActivatedTime = localStorage.getItem("activatedTime");
+    storedActivatedTime && setActivatedTime(Number(storedActivatedTime));
+
+    const storedAddedItemNum = localStorage.getItem("addedItemNum");
+    storedAddedItemNum && setAddedItemNum(Number(storedAddedItemNum));
+
+    setWhichPage("Record");
+    setIsEnglish(localStorage.getItem("isEnglish") === "true");
+
     setTimeout(() => {
       setIsAniDone(true);
-    }, 7000);
+    }, 6000);
   }, [setFirstDate]);
 
   const getDays = () => {
@@ -37,23 +57,47 @@ const RouteMainSection = () => {
         </div>
         {isAniDone && (
           <div css={routeSt.messageContainer}>
-            <p css={routeSt.message}>안녕하세요, {userName}님!</p>
+            <p css={routeSt.message}>
+              {isEnglish ? `Hello, ${userName}!` : `안녕하세요, ${userName}님!`}
+            </p>
             <p css={routeSt.message2}>
-              {userName}님은 Pillme와 {firstDate.replaceAll("-", ".")}에 만나서
-              함께 한지 {getDays()}일이 되었어요!
+              {isEnglish
+                ? `${userName} and Pillme met on ${firstDate.replaceAll(
+                    "-",
+                    "."
+                  )} and have been together for ${getDays()} days!`
+                : `${userName}님은 Pillme와 ${firstDate.replaceAll(
+                    "-",
+                    "."
+                  )}에 만나서
+              함께 한지 ${getDays()}일이 되었어요!`}
             </p>
             <div css={routeSt.personalInfoContainer}>
               <div css={routeSt.personalInfoSection}>
-                <p>모든 아이템을 활성화한 일 수 : </p>
-                <p>{allActivatedTime}D</p>
+                <p>
+                  {isEnglish
+                    ? "Total Activation Time : "
+                    : "역대 아이템 활성화 횟수 : "}
+                </p>
+                <p>
+                  {activatedTime.toLocaleString()} {isEnglish ? "times" : "번"}
+                </p>
               </div>
               <div css={routeSt.personalInfoSection}>
-                <p>역대 아이템 추가 개수 : </p>
-                <p>{addedItemNum}개</p>
+                <p>
+                  {isEnglish
+                    ? "Total item added : "
+                    : "역대 아이템 추가 개수 : "}
+                </p>
+                <p>
+                  {addedItemNum.toLocaleString()} {isEnglish ? "items" : "개"}
+                </p>
               </div>
             </div>
             <p css={routeSt.message}>
-              앞으로 더 열심히 도움을 드리는 Pillme가 될게요!
+              {isEnglish
+                ? `I will work harder to help you more!`
+                : `앞으로 더 열심히 도움을 드리는 Pillme가 될게요!`}
             </p>
           </div>
         )}

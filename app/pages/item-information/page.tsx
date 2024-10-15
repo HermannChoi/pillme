@@ -1,12 +1,7 @@
-import ItemInfoSus from "@/app/components/itemInformationPage/itemInfoSuspense/ItemInfoSus";
 import dynamic from "next/dynamic";
 
 const ItemInfoPage = dynamic(
-  () => import("@/app/components/itemInformationPage/ItemInfoPage"),
-  {
-    ssr: false,
-    loading: () => <ItemInfoSus />,
-  }
+  () => import("@/app/components/itemInformationPage/ItemInfoPage")
 );
 
 const page = () => {

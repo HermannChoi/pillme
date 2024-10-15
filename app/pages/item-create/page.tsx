@@ -1,9 +1,7 @@
-import ItemCreateSus from "@/app/components/item-createPage/itemCreateSus/ItemCreateSus";
 import dynamic from "next/dynamic";
 
 const ItemCreatePage = dynamic(
-  () => import("@/app/components/item-createPage/ItemCreatePage"),
-  { ssr: false, loading: () => <ItemCreateSus /> }
+  () => import("@/app/components/item-createPage/ItemCreatePage")
 );
 
 const page = () => {

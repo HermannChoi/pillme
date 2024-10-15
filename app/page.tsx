@@ -1,10 +1,6 @@
 import dynamic from "next/dynamic";
-import HomePageSus from "./components/homePage/homeSuspense/HomePageSus";
 
-const HomePage = dynamic(() => import("./components/homePage/HomePage"), {
-  ssr: false,
-  loading: () => <HomePageSus />,
-});
+const HomePage = dynamic(() => import("./components/homePage/HomePage"));
 
 const Home = () => {
   return (
