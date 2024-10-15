@@ -41,7 +41,7 @@ const ItemSection = () => {
 
   const clickModifyBtn = (e: SyntheticEvent, item: itemProps) => {
     e.stopPropagation();
-    router.push(`/pages/item-information/${item.id}`);
+    router.push(`/pages/item-information`);
     setItemForModal(item);
     setWhichModal("chooseModify");
   };
@@ -119,7 +119,7 @@ const ItemSection = () => {
                           </button>
                         </div>
                         <Link
-                          href={`/pages/item-information/${item.id}`}
+                          href={`/pages/item-information`}
                           onClick={() => setItemForModal(item)}
                           css={itemSectionSt.infoContainer}
                         >
