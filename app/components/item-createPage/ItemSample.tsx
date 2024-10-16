@@ -31,6 +31,7 @@ const ItemSample = () => {
           ))}
         </div>
       </div>
+      <div css={itemCreateSt.check(isSubmitted)}>✓</div>
       <div css={itemCreateSt.listItem(isSubmitted)}>
         <div css={itemSectionSt.toggleContainer}>
           <button css={itemSectionSt.toggle(false)}>

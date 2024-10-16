@@ -75,6 +75,10 @@ export const itemSectionSt = {
         background-color: ${colors.grey}20;
         color: ${colors.green};
       }
+
+      @media (prefers-color-scheme: light) {
+        background-color: #ffffff;
+      }
     `,
   ],
   listItemContainer: css`

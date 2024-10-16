@@ -67,6 +67,8 @@ export const routeSt = {
     text-align: center;
   `,
   message2: css`
+    width: 100%;
+    white-space: pre-wrap;
     font-size: 1rem;
     text-align: center;
   `,
@@ -75,6 +77,9 @@ export const routeSt = {
     flex-direction: column;
     row-gap: 1rem;
     width: 100%;
+    padding: 1rem 0;
+    border-top: 1px solid ${colors.grey}60;
+    border-bottom: 1px solid ${colors.grey}60;
   `,
   personalInfoSection: css`
     display: flex;

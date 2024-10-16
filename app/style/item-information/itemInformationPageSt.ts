@@ -11,7 +11,7 @@ export const itemInformationPageSt = {
     background-color: ${colors.darkSection};
 
     @media (prefers-color-scheme: light) {
-      background-color: #f0f0f0;
+      background-color: #ffffff;
     }
   `,
   header: css`

@@ -177,7 +177,9 @@ const ItemSection = () => {
           )}
         </>
       ) : isLoading ? (
-        <Loading />
+        <div css={itemSectionSt.emptyItemSection}>
+          <Loading />
+        </div>
       ) : (
         <button
           onClick={() => router.push("/pages/item-create")}

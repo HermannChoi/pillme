@@ -105,13 +105,13 @@ export const itemAppearAni = keyframes`
 
 export const routeMessageAni = keyframes`
   //작아지고 원형으로 변하는 애니메이션
-  30%,35% {
+  30%,40% {
     transform: rotate(1080deg) scale(0.5);
     border-radius: 50%;
     width: 5rem;
   }
   //원형으로 변한 후 직사각형으로 변하는 애니메이션
-  45%, 50% {
+  48%, 50% {
   transform: rotate(1080deg) scale(1);
     border-radius: 20px;
     width: 20rem;
@@ -131,7 +131,7 @@ export const routeMessageAni = keyframes`
     border: 1px solid transparent;
     border-radius: 20px;
     width: 20rem;
-    height: 20rem;
+    height: 25rem;
   }
 `;
 

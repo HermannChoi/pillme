@@ -78,6 +78,18 @@ export const itemCreateSt = {
       transition: 0.2s;
     `;
   },
+  check: (isSubmitted: boolean) => {
+    return css`
+      ${flexCenterX2}
+      width: 100%;
+      height: 60px;
+      margin-bottom: calc(-60px - 0.3rem);
+      font-size: ${isSubmitted ? 3 : 0.1}rem;
+      color: ${colors.green};
+      opacity: ${isSubmitted ? 1 : 0};
+      transition: 0.3s;
+    `;
+  },
   listItem: (isSubmitted: boolean) => {
     return css`
       ${listItemCommonPart}

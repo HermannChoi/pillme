@@ -69,8 +69,7 @@ const RecordMainSection = () => {
                 : `${userName}님은 Pillme와 ${firstDate.replaceAll(
                     "-",
                     "."
-                  )}에 만나
-              함께 한지 ${getDays()}일이 되었어요!`}
+                  )}에 만나 \n 함께한 지 ${getDays()}일이 되었어요!`}
             </p>
             <div css={routeSt.personalInfoContainer}>
               <div css={routeSt.personalInfoSection}>
