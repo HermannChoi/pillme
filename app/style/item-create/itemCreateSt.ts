@@ -43,14 +43,14 @@ export const itemCreateSt = {
   `,
   timeContainer: css`
     display: flex;
-    width: 4.5rem;
+    width: 5rem;
     height: 1.5rem;
     overflow: hidden;
   `,
   timeInnerContainer: (timePeriod: string) => {
     return css`
       transform: translateX(
-        -${timePeriod === "Morning" ? 0 : timePeriod === "Noon" ? 4.5 : timePeriod === "Night" ? 4.5 * 2 : 4.5 * 3}rem
+        -${timePeriod === "Morning" ? 0 : timePeriod === "Noon" ? 5 : timePeriod === "Night" ? 5 * 2 : 5 * 3}rem
       );
       ${flexCenterX2}
       height: 100%;
@@ -60,7 +60,7 @@ export const itemCreateSt = {
   time: css`
     ${flexCenterX2}
     flex-shrink: 0; // flex로 인한 줄어듦 방지
-    width: 4.5rem;
+    width: 5rem;
     height: 100%;
     font-size: 1.2rem;
     font-weight: 600;
