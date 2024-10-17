@@ -23,10 +23,14 @@ const ModalToShowLeftDay = () => {
         <div css={modalSt.textContainer}>
           <p css={modalSt.text}>
             {isEnglish
-              ? `Toggle button will be automatically deactivated after ${itemForModal.leftDay} days`
-              : `${itemForModal.leftDay} 일 후에 토글 버튼이 자동으로 비활성화 될 예정입니다.`}
+              ? `Toggle button will be automatically deactivated after ${
+                  itemForModal.leftDay + 1
+                } days`
+              : `${
+                  itemForModal.leftDay + 1
+                } 일 후에 토글 버튼이 자동으로 비활성화 될 예정입니다.`}
           </p>
-          <p css={modalSt.subText}>D - 0 : {isEnglish ? "Tomorrow" : "내일"}</p>
+          <p css={modalSt.subText}>D - 1 : {isEnglish ? "Tomorrow" : "내일"}</p>
         </div>
         <div css={modalSt.btnContainer}>
           <button

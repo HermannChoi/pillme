@@ -58,7 +58,7 @@ const ModalToModifyLeftDay = () => {
             name="modifyLeftDay"
             type="number"
             css={modalSt.timeInput}
-            value={itemForModal.leftDay}
+            value={itemForModal.leftDay + 1}
             onChange={(e) => handleChangeLeftDay(e)}
           />
         </div>
