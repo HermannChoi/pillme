@@ -177,7 +177,7 @@ export const itemCreateSt = {
       height: 3rem;
       padding: 0.5rem 1rem;
       border: 1px solid ${option === whichOption ? colors.green : colors.grey}30;
-      border-radius: ${borderRadius.small};
+      border-radius: ${borderRadius.medium};
       background-color: ${option === whichOption
         ? `${colors.green}80`
         : "transparent"};

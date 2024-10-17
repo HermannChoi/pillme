@@ -30,6 +30,7 @@ export interface modalList {
   deleteItem: string;
   resetUsername: string;
   chooseModify: string;
+  chooseTimePeriod: string;
   chooseItemType: string;
   addTakenDays: string;
   deleteTakenDays: string;

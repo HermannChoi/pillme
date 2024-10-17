@@ -14,6 +14,7 @@ const ModalToChooseModify = () => {
     { name: isEnglish ? "DATE" : "날짜", value: "modifyDate" },
     { name: isEnglish ? "TIME" : "시간", value: "modifyTime" },
     { name: isEnglish ? "TYPE" : "종류", value: "chooseItemType" },
+    { name: isEnglish ? "TIME PERIOD" : "시간대", value: "chooseTimePeriod" },
     { name: isEnglish ? "FREQUENCY" : "빈도", value: "chooseFrequency" },
     {
       name: isEnglish
