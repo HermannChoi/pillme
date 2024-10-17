@@ -64,6 +64,20 @@ export const itemInformationPageSt = {
     width: 100%;
     height: 50px;
   `,
+  questionBtn: css`
+    position: absolute;
+    top: 50%;
+    left: -25px;
+    transform: translateY(-50%);
+    ${flexCenterX2}
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border: 1.5px solid ${colors.grey};
+    border-radius: 50%;
+    background-color: transparent;
+    color: ${colors.grey};
+  `,
   showMoreInfoBtn: css`
     width: 100%;
     height: 30px;

@@ -19,7 +19,7 @@ const BasicInfoSection = () => {
 
   const [isShowingMoreInfo, setIsShowingMoreInfo] = useState(false);
 
-  const { itemForModal } = useModalStore();
+  const { itemForModal, setWhichModal } = useModalStore();
   const { isEnglish } = useSettingStore();
 
   useEffect(() => {
@@ -100,7 +100,15 @@ const BasicInfoSection = () => {
                     itemForModal.itemType === "Oral" ? "복용" : "사용"
                   }까지 : `}
             </p>
-            <p>D - {itemForModal.leftDay}</p>
+            <p css={[`position: relative;`]}>
+              <button
+                onClick={() => setWhichModal("showLeftDay")}
+                css={itemInformationPageSt.questionBtn}
+              >
+                ?
+              </button>
+              D - {itemForModal.leftDay}
+            </p>
           </div>
         </>
       ) : (

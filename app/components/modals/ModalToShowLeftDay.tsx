@@ -26,6 +26,7 @@ const ModalToShowLeftDay = () => {
               ? `Toggle button will be automatically deactivated after ${itemForModal.leftDay} days`
               : `${itemForModal.leftDay} 일 후에 토글 버튼이 자동으로 비활성화 될 예정입니다.`}
           </p>
+          <p css={modalSt.subText}>D - 0 : {isEnglish ? "Tomorrow" : "내일"}</p>
         </div>
         <div css={modalSt.btnContainer}>
           <button

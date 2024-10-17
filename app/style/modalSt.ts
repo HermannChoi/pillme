@@ -36,6 +36,7 @@ export const modalSt = {
   textContainer: css`
     width: 100%;
     padding: 1rem;
+    padding-bottom: 0;
     text-align: center;
   `,
   text: css`

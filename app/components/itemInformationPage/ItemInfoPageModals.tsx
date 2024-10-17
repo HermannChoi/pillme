@@ -9,6 +9,7 @@ import ModalToDeleteTakenDays from "../modals/ModalToDeleteTakenDays";
 import ModalToModifyDate from "../modals/ModalToModifyDate";
 import ModalToModifyLeftDay from "../modals/ModalToModifyLeftDay";
 import ModalToModifyTime from "../modals/ModalToModifyTime";
+import ModalToShowLeftDay from "../modals/ModalToShowLeftDay";
 
 const ItemInfoPageModals = () => {
   return (
@@ -23,6 +24,7 @@ const ItemInfoPageModals = () => {
       <ModalToDeleteItem />
       <ModalToAddTakenDays />
       <ModalToDeleteTakenDays />
+      <ModalToShowLeftDay />
       <MessageModal />
     </>
   );
