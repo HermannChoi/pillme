@@ -39,7 +39,14 @@ export const toggleIsTaken = ({
             };
           } else {
             // 활성화 할 때 활성화 횟수 업데이트
-            const newActivatedTime = activatedTime + 1;
+            const storedActivatedTime: number | null = localStorage.getItem(
+              "activatedTime"
+            )
+              ? parseInt(localStorage.getItem("activatedTime")!)
+              : null;
+            const newActivatedTime = storedActivatedTime
+              ? storedActivatedTime + 1
+              : activatedTime + 1;
             setActivatedTime(newActivatedTime);
             localStorage.setItem("activatedTime", newActivatedTime.toString());
 
