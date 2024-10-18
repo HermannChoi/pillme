@@ -82,9 +82,7 @@ const ItemSection = () => {
   useEffect(() => {
     //로컬 스토레지에서 아이템 데이터 받아오는 로직
     const storedList = localStorage.getItem("medList");
-    if (storedList) {
-      setList(JSON.parse(storedList));
-    }
+    storedList && setList(JSON.parse(storedList));
     //초기 로딩 완료 후 초기 로딩 상태 초기화
     setTimeout(() => {
       setIsInitialLoad(false);

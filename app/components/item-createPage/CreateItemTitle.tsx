@@ -3,6 +3,7 @@
 
 import useToggleLanguage from "@/app/hooks/useToggleLanguage";
 import useDateStore from "@/app/store/homePage/useDateStore";
+import useFormStore from "@/app/store/homePage/useFormStore";
 import useUserNameStore from "@/app/store/homePage/useUserNameStore";
 import useNavigatorStore from "@/app/store/layout/useNavigatorStore";
 import useSettingStore from "@/app/store/useSettingStore";
@@ -14,6 +15,7 @@ const CreateItemTitle = () => {
   const { isInitialLoad } = useDateStore();
   const { setWhichPage } = useNavigatorStore();
   const { setFirstDate } = useUserNameStore();
+  const { setList } = useFormStore();
 
   useEffect(() => {
     setWhichPage("Create");
@@ -27,7 +29,9 @@ const CreateItemTitle = () => {
       setFirstDate(date.toISOString().split("T")[0]);
       localStorage.setItem("firstDate", date.toISOString().split("T")[0]);
     }
-  }, [setFirstDate]);
+    const storedList = localStorage.getItem("medList");
+    storedList && setList(JSON.parse(storedList));
+  }, [setFirstDate, setList]);
 
   useToggleLanguage(isEnglish, setIsEnglish, isInitialLoad);
 

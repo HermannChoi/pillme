@@ -107,7 +107,10 @@ export const submitFormToCreateItem = ({
   setErrorMsg(
     isEnglish ? "✓ the item got added." : "✓ 아이템이 추가되었습니다."
   );
-  const newAddedItemNum = addedItemNum + 1;
+  const storedAddedItemNum = localStorage.getItem("addedItemNum");
+  const newAddedItemNum = storedAddedItemNum
+    ? Number(storedAddedItemNum) + 1
+    : addedItemNum + 1;
   setAddedItemNum(newAddedItemNum);
   localStorage.setItem("addedItemNum", newAddedItemNum.toString());
   setTimeout(() => {

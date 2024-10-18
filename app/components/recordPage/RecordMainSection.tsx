@@ -38,7 +38,13 @@ const RecordMainSection = () => {
     setTimeout(() => {
       setIsAniDone(true);
     }, 6000);
-  }, [setFirstDate]);
+  }, [
+    setFirstDate,
+    setActivatedTime,
+    setAddedItemNum,
+    setIsEnglish,
+    setWhichPage,
+  ]);
 
   const getDays = () => {
     const startDate = new Date(firstDate);

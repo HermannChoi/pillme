@@ -15,7 +15,7 @@ import Loading from "./Loading";
 const UserNameSection = () => {
   const [greeting, setGreeting] = useState("");
 
-  const { userName, setFirstDate, setAddedItemNum } = useUserNameStore();
+  const { userName, setFirstDate } = useUserNameStore();
   const { isEasterEggsOn } = useFormStore();
   const { isEnglish, setIsEnglish } = useSettingStore();
   const { isInitialLoad } = useDateStore();
@@ -44,10 +44,7 @@ const UserNameSection = () => {
   useEffect(() => {
     const storedFirstDate = localStorage.getItem("firstDate");
     storedFirstDate && setFirstDate(storedFirstDate);
-
-    const storedAddedItemNum = localStorage.getItem("addedItemNum");
-    storedAddedItemNum && setAddedItemNum(Number(storedAddedItemNum));
-  }, [setFirstDate, setAddedItemNum]);
+  }, [setFirstDate]);
 
   return (
     <div css={outlineSt.userNameContainer(isEasterEggsOn)}>
