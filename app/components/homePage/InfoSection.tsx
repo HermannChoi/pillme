@@ -11,8 +11,7 @@ import { useEffect } from "react";
 
 const InfoSection = () => {
   const { list } = useFormStore();
-  const { lastCheckedDate, setLastCheckedDate, setIsDateChanged } =
-    useDateStore();
+  const { setIsDateChanged } = useDateStore();
   const { isEnglish } = useSettingStore();
 
   const today = getKoreanDate();
@@ -27,16 +26,13 @@ const InfoSection = () => {
 
     if (!storedDate || storedDate !== today) {
       setIsDateChanged(true);
-      setLastCheckedDate(today);
       localStorage.setItem("lastCheckedDate", today);
-    } else {
-      setLastCheckedDate(storedDate);
     }
-  }, [today, setIsDateChanged, lastCheckedDate, setLastCheckedDate]);
+  }, [today, setIsDateChanged]);
 
   return (
     <div css={outlineSt.infoSectionSt}>
-      <p>{lastCheckedDate?.replaceAll("-", ".")}</p>
+      <p>{today?.replaceAll("-", ".")}</p>
       <p>
         {itemsLength > 0
           ? numOfItemsToTake > 0
