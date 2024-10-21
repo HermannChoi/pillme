@@ -15,10 +15,9 @@ const InfoSection = () => {
   const { isEnglish } = useSettingStore();
 
   const today = getKoreanDate();
-  const itemsLength = getAllItems(list).length;
-  const numOfItemsToTake = getAllItems(list).filter(
-    (item) => !item.isTaken
-  ).length;
+  const allItems = getAllItems(list);
+  const itemsLength = allItems.length;
+  const numOfItemsToTake = allItems.filter((item) => !item.isTaken).length;
 
   //날짜 변경 시 로직
   useEffect(() => {

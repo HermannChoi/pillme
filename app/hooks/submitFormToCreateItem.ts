@@ -85,7 +85,7 @@ export const submitFormToCreateItem = ({
     minutes: 0,
     isTaken: false,
     frequency: frequency ? frequency : 0,
-    leftDay: 0,
+    leftDay: frequency ? frequency : 0,
     takenDays: [],
     deletedDate: "",
   };
