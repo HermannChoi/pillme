@@ -15,7 +15,7 @@ import Loading from "./Loading";
 const UserNameSection = () => {
   const [greeting, setGreeting] = useState("");
 
-  const { userName, setFirstDate } = useUserNameStore();
+  const { userName } = useUserNameStore();
   const { isEasterEggsOn } = useFormStore();
   const { isEnglish, setIsEnglish } = useSettingStore();
   const { isInitialLoad } = useDateStore();
@@ -40,11 +40,6 @@ const UserNameSection = () => {
       setGreeting(isEnglish ? "Good Afternoon" : `좋은 오후에요`);
     else setGreeting(isEnglish ? "Good Evening" : `좋은 저녁이에요`);
   }, [setGreeting, isEnglish]);
-
-  useEffect(() => {
-    const storedFirstDate = localStorage.getItem("firstDate");
-    storedFirstDate && setFirstDate(storedFirstDate);
-  }, [setFirstDate]);
 
   return (
     <div css={outlineSt.userNameContainer(isEasterEggsOn)}>

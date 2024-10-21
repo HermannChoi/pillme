@@ -1,7 +1,7 @@
 "use client";
 /** @jsxImportSource @emotion/react */
 
-import { SyntheticEvent, useEffect, useLayoutEffect, useState } from "react";
+import { SyntheticEvent, useLayoutEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import pill from "@/app/assets/svg/pill.svg";
@@ -11,7 +11,6 @@ import { helloItsTakeMedicine } from "@/app/style/framerMotion";
 import { userNameInputSt } from "@/app/style/layout/userNameInputSt";
 
 const UserNameInput = () => {
-  const [question, setQuestion] = useState<string>("What is your name?");
   const {
     userName,
     setUserName,
@@ -21,10 +20,20 @@ const UserNameInput = () => {
     setIsUserNameInputOn,
   } = useUserNameStore();
   const { isEnglish } = useSettingStore();
+  const { setFirstDate } = useUserNameStore();
 
   const submitForm = (e: SyntheticEvent) => {
     e.preventDefault();
     localStorage.setItem("userName", userName);
+
+    const storedFirstDate = localStorage.getItem("firstDate");
+    if (!storedFirstDate) {
+      const date = new Date();
+      date.setHours(date.getHours() + 9);
+      setFirstDate(date.toISOString().split("T")[0]);
+      localStorage.setItem("firstDate", date.toISOString().split("T")[0]);
+    }
+
     setTimeout(() => {
       setIsSubmitted(true);
     }, 300);
@@ -42,12 +51,6 @@ const UserNameInput = () => {
       setUserName(localStorageUserName);
     }
   }, [setIsUserNameInputOn, setUserName]);
-
-  useEffect(() => {
-    userName.length > 0
-      ? setQuestion("That's a great name!")
-      : setQuestion("What is your name?");
-  }, [userName, setQuestion]);
 
   return (
     <div css={userNameInputSt.container(isUserNameInputOn, isSubmitted)}>
@@ -80,7 +83,7 @@ const UserNameInput = () => {
             css={userNameInputSt.formContainer}
           >
             <label htmlFor="userNameInput">
-              {isEnglish ? question : `당신의 이름은 무엇인가요?`}
+              {isEnglish ? `What is your name?` : `당신의 이름은 무엇인가요?`}
             </label>
             <form onSubmit={submitForm} css={userNameInputSt.form}>
               <input
