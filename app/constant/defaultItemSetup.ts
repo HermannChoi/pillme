@@ -9,8 +9,8 @@ export const defaultItemSetup: itemProps = {
   hours: 0,
   minutes: 0,
   isTaken: false,
-  frequency: 0,
-  leftDay: 0,
+  frequency: 1,
+  leftDay: 1,
   takenDays: [],
   deletedDate: "",
 };

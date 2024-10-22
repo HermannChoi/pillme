@@ -2,35 +2,35 @@ export const itemFrequency = [
   {
     name: "Everyday",
     nameKo: "매일",
-    frequency: 0,
+    frequency: 1,
   },
   {
     name: "Every Other Day",
     nameKo: "격일",
-    frequency: 1,
+    frequency: 2,
   },
   {
     name: "Every Week",
     nameKo: "매주",
-    frequency: 6,
+    frequency: 7,
   },
   {
     name: "Every Other Week",
     nameKo: "격주",
-    frequency: 13,
+    frequency: 14,
   },
 ];
 
 export const frequencyToKorean: { [key: number]: string } = {
-  0: "매일",
-  1: "격일",
-  6: "매주",
-  13: "격주",
+  1: "매일",
+  2: "격일",
+  7: "매주",
+  14: "격주",
 };
 
 export const frequencyToEnglish: { [key: number]: string } = {
-  0: "Everyday",
-  1: "E.O.D",
-  6: "Every Week",
-  13: "E.O.W",
+  1: "Everyday",
+  2: "E.O.D",
+  7: "Every Week",
+  14: "E.O.W",
 };

@@ -27,7 +27,7 @@ const useFormStore = create<UseFormStoreProps>((set) => ({
   setItemType: (value) => set({ itemType: value }),
   timePeriod: "Morning",
   setTimePeriod: (value) => set({ timePeriod: value }),
-  frequency: 0,
+  frequency: 1,
   setFrequency: (value) => set({ frequency: value }),
   isSelectOpen: false,
   setIsSelectOpen: (value) => set({ isSelectOpen: value }),

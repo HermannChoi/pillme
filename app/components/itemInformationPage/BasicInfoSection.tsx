@@ -107,7 +107,7 @@ const BasicInfoSection = () => {
               >
                 ?
               </button>
-              D - {itemForModal.leftDay + 1}
+              D - {itemForModal.leftDay}
             </p>
           </div>
         </>

@@ -62,7 +62,7 @@ const ItemSection = () => {
             ...prev,
             [timePeriod]: prev[timePeriod as keyof listProps].map((item) => {
               return item.isTaken
-                ? item.leftDay === 0
+                ? item.leftDay === 1
                   ? {
                       ...item,
                       isTaken: false,
