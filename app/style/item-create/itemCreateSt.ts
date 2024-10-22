@@ -108,7 +108,7 @@ export const itemCreateSt = {
   frequencyInnerContainer: (frequency: number) => {
     return css`
       transform: translateY(
-        -${frequency === 0 ? 0 : frequency === 1 ? 1 : frequency === 6 ? 2 : 3}rem
+        -${frequency === 1 ? 0 : frequency === 2 ? 1 : frequency === 7 ? 2 : 3}rem
       );
       display: flex;
       flex-direction: column;
@@ -197,6 +197,7 @@ export const itemCreateSt = {
       border-radius: ${borderRadius.medium};
       margin-top: 2rem;
       background-color: ${colors.green}${isNameFilledOut && errorMsg === "" ? "80" : "40"};
+      color: ${!isNameFilledOut && errorMsg === "" && "#808080"};
       transition: 0.2s;
     `;
   },

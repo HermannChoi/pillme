@@ -142,7 +142,7 @@ const MainCreateSection = () => {
       <section css={itemCreateSt.section}>
         <button
           type="submit"
-          disabled={!isNameFilledOut && errorMsg !== ""}
+          disabled={!isNameFilledOut || errorMsg !== ""}
           css={itemCreateSt.submitBtn(isNameFilledOut, errorMsg)}
         >
           {isEnglish ? "Create" : "생성"}
