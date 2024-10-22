@@ -8,6 +8,7 @@ import useTrashStore from "@/app/store/trash/useTrashStore";
 import useSettingStore from "@/app/store/useSettingStore";
 import { trashSt } from "@/app/style/trash/trashSt";
 import { itemProps, listProps } from "@/app/types/types";
+import { getKoreanDate } from "@/app/utils/getKoreanDate";
 import Image from "next/image";
 import { useEffect } from "react";
 
@@ -52,8 +53,20 @@ const TrashSection = () => {
   //로컬 스토레지에서 쓰레기 데이터 받아오는 로직
   useEffect(() => {
     const storedList = localStorage.getItem("trashList");
+
     if (storedList) {
-      setTrashList(JSON.parse(storedList));
+      const parsedStoredList: itemProps[] = JSON.parse(storedList);
+      const updatedTrashList = parsedStoredList.filter((item) => {
+        if (!item.deletedDate) return false; // Ensure deletedDate is defined
+        const deletedDate = new Date(item.deletedDate);
+        const diffTime = Math.abs(
+          new Date(getKoreanDate()).getTime() - deletedDate.getTime()
+        );
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        return diffDays <= 7;
+      });
+      localStorage.setItem("trashList", JSON.stringify(updatedTrashList));
+      setTrashList(updatedTrashList);
     }
   }, [setTrashList]);
 
