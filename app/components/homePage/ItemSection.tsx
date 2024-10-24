@@ -55,7 +55,7 @@ const ItemSection = () => {
 
   //다음날 지나서 아이템 비활성화 되는 로직
   useEffect(() => {
-    if (isDateChanged) {
+    if (isDateChanged && isInitialLoad) {
       for (const timePeriod in list) {
         setList((prev) => {
           const updatedList = {
@@ -88,7 +88,7 @@ const ItemSection = () => {
     //초기 로딩 완료 후 초기 로딩 상태 초기화
     setTimeout(() => {
       setIsInitialLoad(false);
-    }, 1000);
+    }, 500);
   }, []);
 
   return (
