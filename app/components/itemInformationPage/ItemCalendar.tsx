@@ -13,9 +13,10 @@ import { getKoreanDate } from "@/app/utils/getKoreanDate";
 import { useEffect } from "react";
 import Calendar from "react-calendar";
 
-export type Range<T> = [T, T];
+//from react-calendar types
+type Range<T> = [T, T];
 type ValuePiece = Date | null;
-export type Value = ValuePiece | Range<ValuePiece>;
+type Value = ValuePiece | Range<ValuePiece>;
 
 const ItemCalendar = () => {
   const { list } = useFormStore();
@@ -24,7 +25,7 @@ const ItemCalendar = () => {
   const { isEnglish } = useSettingStore();
 
   const handleDateChange = (newDate: Value) => {
-    // YYYY-MM-DD 형태로 변환
+    // 인자를 한국 날짜 YYYY-MM-DD 형태로 변환
     const date = new Date(String(newDate)!.split(" (")[0]);
     date.setHours(date.getHours() + 9);
     const dateToPut = date.toISOString().split("T")[0];
@@ -45,11 +46,8 @@ const ItemCalendar = () => {
         ? itemForModal.takenDays.filter((x) => x !== dateToPut)
         : [...itemForModal.takenDays, dateToPut],
       // 캘린더 추가 날짜가 오늘이면 토글 활성화 및 복용 날짜, 시간 추가
-      isTaken: isNewDateToday
-        ? isTheDateAlreadyTaken
-          ? itemForModal.isTaken
-          : true
-        : itemForModal.isTaken,
+      isTaken:
+        isNewDateToday && !isTheDateAlreadyTaken ? true : itemForModal.isTaken,
       date:
         isNewDateToday && !isTheDateAlreadyTaken
           ? dateToPut
