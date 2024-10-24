@@ -29,7 +29,7 @@ const ItemSection = () => {
   const router = useRouter();
   const { list, setList } = useFormStore();
   const { setWhichModal, setItemForModal } = useModalStore();
-  const { isDateChanged, setIsInitialLoad } = useDateStore();
+  const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
   const { isEnglish } = useSettingStore();
   const { activatedTime, setActivatedTime } = useUserNameStore();
   const { isLoading } = useLoadingStore();
@@ -81,8 +81,10 @@ const ItemSection = () => {
 
   useEffect(() => {
     //로컬 스토레지에서 아이템 데이터 받아오는 로직
-    const storedList = localStorage.getItem("medList");
-    storedList && setList(JSON.parse(storedList));
+    if (isInitialLoad) {
+      const storedList = localStorage.getItem("medList");
+      storedList && setList(JSON.parse(storedList));
+    }
     //초기 로딩 완료 후 초기 로딩 상태 초기화
     setTimeout(() => {
       setIsInitialLoad(false);

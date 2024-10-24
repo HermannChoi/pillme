@@ -10,7 +10,7 @@ export const clickModifyItem = (
       [itemForModal.timePeriod]: prev[
         itemForModal.timePeriod as keyof listProps
       ].map((item) => {
-        return item.id === itemForModal.id ? (item = itemForModal) : item;
+        return item.id === itemForModal.id ? itemForModal : item;
       }),
     };
     localStorage.setItem("medList", JSON.stringify(updatedList));
