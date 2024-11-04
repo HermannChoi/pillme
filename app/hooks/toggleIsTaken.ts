@@ -50,6 +50,8 @@ export const toggleIsTaken = ({
             setActivatedTime(newActivatedTime);
             localStorage.setItem("activatedTime", newActivatedTime.toString());
 
+            const newTakenDays = [...new Set([...item.takenDays, todayString])];
+
             // 활성화 할 때는 시간 업데이트 추가
             return {
               ...item,
@@ -58,7 +60,9 @@ export const toggleIsTaken = ({
               hours,
               minutes,
               // new Set으로 날짜 중복 제거
-              takenDays: [...new Set([...item.takenDays, todayString])],
+              takenDays: newTakenDays.sort(
+                (a, b) => new Date(b).getTime() - new Date(a).getTime()
+              ),
             };
           }
         }

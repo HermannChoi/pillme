@@ -24,12 +24,14 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SyntheticEvent, useEffect } from "react";
 import Loading from "./Loading";
+import { getKoreanDate } from "@/app/utils/getKoreanDate";
 
 const ItemSection = () => {
   const router = useRouter();
   const { list, setList } = useFormStore();
   const { setWhichModal, setItemForModal } = useModalStore();
-  const { isDateChanged, isInitialLoad, setIsInitialLoad } = useDateStore();
+  const { storedDateState, isDateChanged, isInitialLoad, setIsInitialLoad } =
+    useDateStore();
   const { isEnglish } = useSettingStore();
   const { activatedTime, setActivatedTime } = useUserNameStore();
   const { isLoading } = useLoadingStore();
@@ -56,6 +58,10 @@ const ItemSection = () => {
   //다음날 지나서 아이템 비활성화 되는 로직
   useEffect(() => {
     if (isDateChanged && isInitialLoad) {
+      const currentDateGetTime = new Date(getKoreanDate()).getTime();
+      const storedDateGetTime = new Date(storedDateState).getTime();
+      const aDayLongNumber: number = 1000 * 60 * 60 * 24;
+
       for (const timePeriod in list) {
         setList((prev) => {
           const updatedList = {
@@ -68,6 +74,26 @@ const ItemSection = () => {
                       isTaken: false,
                       leftDay: item.frequency,
                     }
+                  : //유저가 앱에 2일 이상 접속 안 했을 때
+                  Math.ceil(currentDateGetTime - storedDateGetTime) /
+                      aDayLongNumber >
+                    2
+                  ? //미접속 일 수가 아이템 leftDay보다 길 때
+                    Math.ceil(currentDateGetTime - storedDateGetTime) /
+                      aDayLongNumber >
+                    item.leftDay
+                    ? {
+                        ...item,
+                        isTaken: false,
+                        leftDay: item.frequency,
+                      }
+                    : {
+                        ...item,
+                        leftDay:
+                          item.leftDay -
+                          Math.ceil(currentDateGetTime - storedDateGetTime) /
+                            aDayLongNumber,
+                      }
                   : { ...item, leftDay: item.leftDay - 1 }
                 : item;
             }),
@@ -77,18 +103,19 @@ const ItemSection = () => {
         });
       }
     }
-  }, [isDateChanged]);
+  }, [isDateChanged, storedDateState]);
 
   useEffect(() => {
-    //로컬 스토레지에서 아이템 데이터 받아오는 로직
     if (isInitialLoad) {
+      //로컬 스토레지에서 아이템 데이터 받아오는 로직
       const storedList = localStorage.getItem("medList");
       storedList && setList(JSON.parse(storedList));
+
+      //초기 로딩 완료 후 초기 로딩 상태 초기화
+      setTimeout(() => {
+        setIsInitialLoad(false);
+      }, 500);
     }
-    //초기 로딩 완료 후 초기 로딩 상태 초기화
-    setTimeout(() => {
-      setIsInitialLoad(false);
-    }, 500);
   }, []);
 
   return (

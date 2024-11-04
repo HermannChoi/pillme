@@ -40,11 +40,17 @@ const ItemCalendar = () => {
     const hours = nowDate.getHours();
     const minutes = nowDate.getMinutes();
 
+    const takenDaysWithDateToPut = [...itemForModal.takenDays, dateToPut];
+
+    const sortedTakenDays = takenDaysWithDateToPut.sort(
+      (a, b) => new Date(b).getTime() - new Date(a).getTime()
+    );
+
     setItemForModal({
       ...itemForModal,
       takenDays: isTheDateAlreadyTaken
         ? itemForModal.takenDays.filter((x) => x !== dateToPut)
-        : [...itemForModal.takenDays, dateToPut],
+        : sortedTakenDays,
       // 캘린더 추가 날짜가 오늘이면 토글 활성화 및 복용 날짜, 시간 추가
       isTaken:
         isNewDateToday && !isTheDateAlreadyTaken ? true : itemForModal.isTaken,

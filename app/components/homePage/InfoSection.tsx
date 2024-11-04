@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 /** @jsxImportSource @emotion/react */
 
@@ -11,7 +12,7 @@ import { useEffect } from "react";
 
 const InfoSection = () => {
   const { list } = useFormStore();
-  const { setIsDateChanged } = useDateStore();
+  const { setStoredDateState, setIsDateChanged } = useDateStore();
   const { isEnglish } = useSettingStore();
 
   const today = getKoreanDate();
@@ -23,11 +24,16 @@ const InfoSection = () => {
   useEffect(() => {
     const storedDate = localStorage.getItem("lastCheckedDate");
 
-    if (!storedDate || storedDate !== today) {
-      setIsDateChanged(true);
-      localStorage.setItem("lastCheckedDate", today);
+    if (storedDate) {
+      setStoredDateState(storedDate);
     }
-  }, [today, setIsDateChanged]);
+    if (!storedDate || storedDate !== today) {
+      setTimeout(() => {
+        setIsDateChanged(true);
+        localStorage.setItem("lastCheckedDate", today);
+      }, 100);
+    }
+  }, []);
 
   return (
     <div css={outlineSt.infoSectionSt}>
