@@ -42,8 +42,10 @@ const ItemSample = () => {
           <div css={itemSectionSt.optionInfoContainer}>
             <figure css={itemCreateSt.figure(itemType)}>
               <Image
-                src={require(`@/app/assets/itemType/${itemType.toLowerCase()}.svg`)}
-                alt={itemType}
+                src={require(`@/app/assets/itemType/${`${
+                  itemType ? itemType : "Oral"
+                }`.toLowerCase()}.svg`)}
+                alt={itemType ? itemType : ""}
                 loading="lazy"
                 width={13}
                 height={13}

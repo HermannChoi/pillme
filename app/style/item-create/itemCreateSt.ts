@@ -47,7 +47,7 @@ export const itemCreateSt = {
     height: 1.5rem;
     overflow: hidden;
   `,
-  timeInnerContainer: (timePeriod: string) => {
+  timeInnerContainer: (timePeriod: string | null) => {
     return css`
       transform: translateX(
         -${timePeriod === "Morning" ? 0 : timePeriod === "Noon" ? 5 : timePeriod === "Night" ? 5 * 2 : 5 * 3}rem
@@ -65,7 +65,7 @@ export const itemCreateSt = {
     font-size: 1.2rem;
     font-weight: 600;
   `,
-  figure: (itemType: string) => {
+  figure: (itemType: string | null) => {
     return css`
       transform: rotate(
         ${itemType === "Oral" ? 0 : itemType === "Topical" ? 360 : 720}deg
@@ -124,13 +124,30 @@ export const itemCreateSt = {
     color: ${colors.grey};
   `,
   form: css`
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    row-gap: 0.8rem;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+    height: 18rem;
     padding: 0.5rem;
     border-radius: ${borderRadius.medium};
+    background-color: ${colors.darkSection};
+
+    @media (prefers-color-scheme: light) {
+      background-color: #ffffff;
+    }
+  `,
+  backBtn: css`
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: 4rem;
+    height: 2rem;
+    border: none;
+    background-color: transparent;
+    color: ${colors.green}dd;
   `,
   section: css`
     display: flex;
@@ -141,9 +158,11 @@ export const itemCreateSt = {
     padding: 0.5rem;
     border-radius: ${borderRadius.medium};
   `,
-  label: css`
-    font-size: 0.9rem;
-    text-indent: 0.5rem;
+  optionTitle: css`
+    ${flexCenterX2}
+    height: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
   `,
   input: css`
     width: 100%;
@@ -172,7 +191,7 @@ export const itemCreateSt = {
     width: 100%;
     border-radius: ${borderRadius.medium};
   `,
-  option: (option: string | number, whichOption: string | number) => {
+  option: (option: string | number, whichOption: string | number | null) => {
     return css`
       height: 3rem;
       padding: 0.5rem 1rem;
@@ -189,13 +208,36 @@ export const itemCreateSt = {
       }
     `;
   },
+
+  optionOrderBtn: (isSatisfied: boolean) => {
+    return css`
+      width: 100%;
+      height: 3rem;
+      border: none;
+      border: 0.5px solid ${colors.grey};
+      border-radius: ${borderRadius.medium};
+      background-color: ${isSatisfied ? `${colors.green}80` : "transparent"};
+      color: ${!isSatisfied && "#808080"};
+      transition: 0.2s;
+    `;
+  },
+  submitBtnContainer: css`
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: ${borderRadius.medium};
+    background-color: ${colors.darkSection};
+    z-index: 1;
+
+    @media (prefers-color-scheme: light) {
+      background-color: #ffffff;
+    }
+  `,
   submitBtn: (isNameFilledOut: boolean, errorMsg: string) => {
     return css`
       width: 100%;
       height: 3rem;
       border: none;
       border-radius: ${borderRadius.medium};
-      margin-top: 2rem;
       background-color: ${colors.green}${isNameFilledOut && errorMsg === "" ? "80" : "40"};
       color: ${!isNameFilledOut && errorMsg === "" && "#808080"};
       transition: 0.2s;

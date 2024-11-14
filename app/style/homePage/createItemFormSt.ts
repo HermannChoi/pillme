@@ -101,22 +101,18 @@ export const createItemFormSt = {
       border-radius: 0 20px 20px 0;
     `,
   ],
-  errorMsgContainer: (errorMsg: string) => {
-    return css`
-      display: flex;
-      align-items: center;
-      width: 100%;
-      height: ${errorMsg ? "1rem" : "0"};
-      margin: ${errorMsg ? "0.2rem 0 -0.5rem 0" : "0"};
-      // background-color: ${colors.darkSection};
-      text-indent: 10px;
-      transition: 0.1s;
+  errorMsgContainer: css`
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 1rem;
+    text-indent: 10px;
+    transition: 0.1s;
 
-      @media (prefers-color-scheme: light) {
-        background-color: #ffffff;
-      }
-    `;
-  },
+    @media (prefers-color-scheme: light) {
+      background-color: #ffffff;
+    }
+  `,
   errorMsg: (isEMsgChanged: boolean) => {
     return css`
       font-size: 0.9rem;

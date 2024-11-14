@@ -4,10 +4,10 @@ import { create } from "zustand";
 interface UseFormStoreProps {
   name: string;
   setName: (value: string) => void;
-  itemType: keyof ItemTypes;
-  setItemType: (value: keyof ItemTypes) => void;
-  timePeriod: keyof listProps;
-  setTimePeriod: (value: keyof listProps) => void;
+  itemType: keyof ItemTypes | null;
+  setItemType: (value: keyof ItemTypes | null) => void;
+  timePeriod: keyof listProps | null;
+  setTimePeriod: (value: keyof listProps | null) => void;
   frequency: number;
   setFrequency: (value: number) => void;
   isSelectOpen: boolean;
@@ -23,11 +23,11 @@ interface UseFormStoreProps {
 const useFormStore = create<UseFormStoreProps>((set) => ({
   name: "",
   setName: (value) => set({ name: value }),
-  itemType: "Oral",
+  itemType: null,
   setItemType: (value) => set({ itemType: value }),
-  timePeriod: "Morning",
+  timePeriod: null,
   setTimePeriod: (value) => set({ timePeriod: value }),
-  frequency: 1,
+  frequency: 0,
   setFrequency: (value) => set({ frequency: value }),
   isSelectOpen: false,
   setIsSelectOpen: (value) => set({ isSelectOpen: value }),

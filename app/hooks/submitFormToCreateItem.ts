@@ -5,7 +5,7 @@ import { vibrate } from "../utils/vibrate";
 
 interface SubmitFormToCreateItemProps {
   e: SyntheticEvent;
-  itemType?: keyof ItemTypes;
+  itemType: keyof ItemTypes;
   timePeriod: keyof listProps;
   name: string;
   frequency?: number;
@@ -14,12 +14,14 @@ interface SubmitFormToCreateItemProps {
   setList: (prev: (prev: listProps) => listProps) => void;
   setIsSubmitted: (value: boolean) => void;
   setName: (value: string) => void;
-  setItemType?: (value: keyof ItemTypes) => void;
+  setItemType?: (value: keyof ItemTypes | null) => void;
+  setTimePeriod?: (value: keyof listProps | null) => void;
   setFrequency?: (value: number) => void;
   setErrorMsg: (value: string) => void;
   setIsErrorMsgChanged: (value: boolean) => void;
   setIsEasterEggsOn: (value: boolean) => void;
   setAddedItemNum: (value: number) => void;
+  setOptionOrder: (value: number) => void;
   isEnglish: boolean;
 }
 
@@ -35,11 +37,13 @@ export const submitFormToCreateItem = ({
   setIsSubmitted,
   setName,
   setItemType,
+  setTimePeriod,
   setFrequency,
   setErrorMsg,
   setIsErrorMsgChanged,
   setIsEasterEggsOn,
   setAddedItemNum,
+  setOptionOrder,
   isEnglish,
 }: SubmitFormToCreateItemProps) => {
   e.preventDefault();
@@ -100,7 +104,8 @@ export const submitFormToCreateItem = ({
   });
   //생성 후 처리되는 함수들
   setName("");
-  setItemType && setItemType("Oral");
+  setItemType && setItemType(null);
+  setTimePeriod && setTimePeriod(null);
   setFrequency && setFrequency(0);
   setIsSubmitted(true);
   setIsErrorMsgChanged(false);
@@ -116,6 +121,7 @@ export const submitFormToCreateItem = ({
   setTimeout(() => {
     setIsSubmitted(false);
     setErrorMsg("");
+    setOptionOrder(0);
   }, 1500);
 
   vibrate(100);
