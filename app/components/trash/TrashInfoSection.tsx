@@ -9,7 +9,7 @@ const TrashInfoSection = () => {
   const { isEnglish } = useSettingStore();
 
   return (
-    <div css={[outlineSt.infoSectionSt, `top: 0;`]}>
+    <div css={[outlineSt.infoSectionSt(), `top: 0;`]}>
       <p>
         {isEnglish
           ? "* Items here will be removed after 7 days."

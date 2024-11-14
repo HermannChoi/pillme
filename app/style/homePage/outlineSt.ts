@@ -46,7 +46,7 @@ export const outlineSt = {
     font-weight: 700;
     letter-spacing: -1px;
   `,
-  infoSectionSt: (numOfItemsToTake: number) => {
+  infoSectionSt: (numOfItemsToTake?: number) => {
     return [
       itemSectionSt.section,
       css`
