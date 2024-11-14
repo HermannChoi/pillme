@@ -36,8 +36,7 @@ const InfoSection = () => {
   }, []);
 
   return (
-    <div css={outlineSt.infoSectionSt}>
-      <p>{today?.replaceAll("-", ".")}</p>
+    <div css={outlineSt.infoSectionSt(numOfItemsToTake)}>
       <p>
         {itemsLength > 0
           ? numOfItemsToTake > 0
@@ -52,8 +51,8 @@ const InfoSection = () => {
                 (numOfItemsToTake > 1 ? "개" : "개") +
                 " 남았어요."
             : isEnglish
-            ? "You have activated all your items today!"
-            : "오늘 아이템을 다 활성화했어요!"
+            ? "Every pill for today got recorded!"
+            : "오늘 약을 모두 기록했어요!"
           : isEnglish
           ? "WELCOME!"
           : "환영합니다!"}

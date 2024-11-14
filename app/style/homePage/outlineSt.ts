@@ -20,21 +20,53 @@ export const outlineSt = {
       }
     `;
   },
-  infoSectionSt: [
-    itemSectionSt.section,
-    css`
-      position: sticky;
-      top: 2.3rem;
-      background-color: ${colors.darkSection};
-      box-shadow: 0 10px 10px 0 ${colors.darkBackground};
-      z-index: 2;
+  header: css`
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 2.5rem;
+    background-color: #141414;
+    z-index: 100;
+  `,
+  titleContainer: css`
+    display: flex;
+    height: 100%;
+  `,
+  pillImg: css`
+    filter: grayscale(1);
+    width: 2.3rem;
+    height: 2.3rem;
+  `,
+  h1: css`
+    color: #80808080;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+  `,
+  infoSectionSt: (numOfItemsToTake: number) => {
+    return [
+      itemSectionSt.section,
+      css`
+        position: sticky;
+        top: 2.3rem;
+        height: 3rem;
+        background-color: ${numOfItemsToTake
+          ? colors.darkSection
+          : `${colors.green}aa`};
+        font-weight: ${!numOfItemsToTake && `bold`};
+        box-shadow: 0 10px 10px 0 ${colors.darkBackground};
+        z-index: 2;
 
-      @media (prefers-color-scheme: light) {
-        background-color: #ffffff;
-        box-shadow: 0 10px 10px 0 ${colors.lightGrey};
-      }
-    `,
-  ],
+        @media (prefers-color-scheme: light) {
+          background-color: #ffffff;
+          box-shadow: 0 10px 10px 0 ${colors.lightGrey};
+        }
+      `,
+    ];
+  },
   footer: [
     flexCenterX2,
     css`
